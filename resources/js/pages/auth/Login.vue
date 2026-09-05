@@ -72,6 +72,11 @@
               Forgot your password?
             </router-link>
           </p>
+          <p class="pt-3 border-t border-gray-100">
+            <router-link to="/demo" class="text-gray-600 hover:text-[#0055A4] font-medium">
+              Curious? Preview the student dashboard →
+            </router-link>
+          </p>
         </div>
 
       </div>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\{
     StudentExamPrepController,
     TutorExamPrepController,
     ClientErrorLogController,
+    DemoController,
 };
 
 /*
@@ -59,6 +60,14 @@ Route::middleware(['web'])->prefix('auth')->group(function () {
 
 // Public Settings Route
 Route::get('settings/public', [AdminController::class, 'publicSettings']);
+
+// Demo Routes (PUBLIC, read-only — powers the logged-out demo dashboard)
+Route::middleware('throttle:30,1')->prefix('demo')->group(function () {
+    Route::get('courses', [DemoController::class, 'courses']);
+    Route::get('courses/{id}', [DemoController::class, 'course'])->whereNumber('id');
+    Route::get('exam-preps', [DemoController::class, 'examPreps']);
+    Route::get('exam-preps/{id}', [DemoController::class, 'examPrep'])->whereNumber('id');
+});
 
 // Student Portal Maintenance Status (Public)
 Route::get('student-portal/maintenance-status', [AdminController::class, 'studentPortalMaintenanceStatus']);
@@ -423,7 +432,8 @@ Route::prefix('payment')->group(function () {
 Route::get('courses/{id}', [CourseController::class, 'show']);
 
 // Frontend error reporter (browsers POST JS errors here so we can read them on the server)
-Route::post('client-error-log', [ClientErrorLogController::class, 'store']);
+Route::post('client-error-log', [ClientErrorLogController::class, 'store'])
+    ->middleware('throttle:60,1');
 
 // Public Exam Prep Routes (no authentication required for viewing)
 Route::get('exam-preps/{id}', [AdminExamPrepController::class, 'show']);
