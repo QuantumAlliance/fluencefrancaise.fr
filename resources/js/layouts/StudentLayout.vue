@@ -61,8 +61,17 @@
       <!-- Top Bar -->
       <div class="bg-white shadow-sm border-b border-gray-200 h-16 flex items-center justify-between px-4 sm:px-8 z-30">
         <div class="flex items-center">
+            <!-- Back to the public site. Plain anchor, not router-link: the homepage is a
+                 Blade view (web.php:91), not an SPA route, so it needs a real page load. -->
+            <a
+              href="/"
+              aria-label="Back to website"
+              class="mr-3 -ml-1 p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <ArrowLeft class="w-5 h-5" />
+            </a>
             <!-- Hamburger Menu -->
-            <button 
+            <button
               @click="isSidebarOpen = !isSidebarOpen"
               class="mr-4 text-gray-600 hover:text-gray-900 focus:outline-none md:hidden"
             >
@@ -137,7 +146,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { BarChart3, BookOpen, User, Loader, FileText, Menu, LogOut, Lock, GraduationCap } from 'lucide-vue-next'
+import { BarChart3, BookOpen, User, Loader, FileText, Menu, LogOut, Lock, GraduationCap, ArrowLeft } from 'lucide-vue-next'
 import axios from 'axios'
 import { useAuthStore } from '../stores/auth'
 import { useToastStore } from '../stores/toast'

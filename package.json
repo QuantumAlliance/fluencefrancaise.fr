@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "dev:all": "concurrently \"npm run dev\" \"php artisan serve --port=8001\""
+        "dev:all": "concurrently \"npm run dev\" \"php artisan serve --port=8001\"",
+        "dev:full": "powershell -ExecutionPolicy Bypass -File scripts/dev-all.ps1"
     },
     "dependencies": {
         "@tinymce/tinymce-vue": "^6.3.0",

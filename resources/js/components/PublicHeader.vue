@@ -4,16 +4,9 @@
       <div class="header-inner flex justify-between items-center w-full">
         <!-- Logo -->
         <div class="flex items-center w-auto md:w-[200px] shrink-0">
-          <a href="/" class="flex items-center">
-            <img 
-              v-if="settingsStore.siteLogo" 
-              :src="logoUrl" 
-              :alt="settingsStore.siteName" 
-              class="h-8 w-auto"
-            >
-            <span v-else class="text-lg font-black uppercase tracking-tighter" style="color: rgb(0, 85, 164)">
-              {{ settingsStore.siteName }}
-            </span>
+          <a href="/" class="flex items-center gap-2.5">
+            <img src="/images/brand-mark.png" alt="" class="brand-mark-img w-auto shrink-0">
+            <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
           </a>
         </div>
 
@@ -25,6 +18,9 @@
           <a href="/tef-tcf" class="nav-link">TEF/TCF</a>
           <a href="/contact-us" class="nav-link">CONTACT US</a>
           <a href="/about-us" class="nav-link">ABOUT US</a>
+          <!-- Guests land in the demo portal; signed-in users are redirected to their own
+               dashboard by the router guard, so one link serves both. -->
+          <router-link to="/demo" class="nav-link">STUDENT PORTAL</router-link>
         </nav>
 
         <!-- Header Actions -->
@@ -35,7 +31,9 @@
              </router-link>
           </template>
           <template v-else>
-            <router-link to="/login" class="action-btn-login whitespace-nowrap">LOGIN</router-link>
+            <!-- One CTA only: the navbar serves new visitors. Returning users reach
+                 login from the sign-up page ("Already have an account?") or /login.
+                 The demo is reached from the STUDENT PORTAL nav link, not a button. -->
             <router-link to="/register" class="action-btn-signup whitespace-nowrap">SIGN UP</router-link>
           </template>
         </div>
@@ -60,16 +58,9 @@
       <!-- Menu Content -->
       <div class="relative w-full h-full flex flex-col p-8 bg-white">
         <div class="flex justify-between items-center mb-12">
-          <a href="/" class="flex items-center shrink-0">
-             <img 
-               v-if="settingsStore.siteLogo" 
-               :src="logoUrl" 
-               :alt="settingsStore.siteName" 
-               class="h-8 w-auto"
-             >
-             <span v-else class="text-xl font-black uppercase tracking-tighter text-[#0055A4]">
-               {{ settingsStore.siteName }}
-             </span>
+          <a href="/" class="flex items-center gap-2.5 shrink-0">
+            <img src="/images/brand-mark.png" alt="" class="brand-mark-img w-auto shrink-0">
+            <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
           </a>
           <button @click="closeMobileMenu" class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-900 transition">
             <i class="fas fa-times text-2xl"></i>
@@ -84,6 +75,7 @@
             <a href="/tef-tcf" class="text-xl font-semibold tracking-tight text-gray-900 hover:text-[#0055A4] transition">TEF/TCF</a>
             <a href="/contact-us" class="text-xl font-semibold tracking-tight text-gray-900 hover:text-[#0055A4] transition">Contact Us</a>
             <a href="/about-us" class="text-xl font-semibold tracking-tight text-gray-900 hover:text-[#0055A4] transition">About Us</a>
+            <router-link to="/demo" class="text-xl font-semibold tracking-tight text-gray-900 hover:text-[#0055A4] transition">Student Portal</router-link>
           </div>
 
           <div class="mt-8 flex flex-col gap-6">
@@ -98,6 +90,9 @@
                </router-link>
                <router-link to="/login" class="w-full py-2 text-center text-gray-500 font-bold text-sm uppercase tracking-widest hover:text-[#0055A4] transition block">
                  LOGIN
+               </router-link>
+               <router-link to="/demo" class="w-full py-2 text-center text-gray-500 font-bold text-sm uppercase tracking-widest hover:text-[#0055A4] transition block">
+                 See Demo
                </router-link>
             </template>
           </div>
@@ -120,11 +115,6 @@ onMounted(() => {
   settingsStore.fetchSettings()
 })
 
-const logoUrl = computed(() => {
-  return settingsStore.siteLogo 
-    ? `${import.meta.env.VITE_API_URL}/storage/${settingsStore.siteLogo}` 
-    : ''
-})
 
 const dashboardLink = computed(() => {
   if (auth.user?.user_type === 'admin' || auth.user?.user_type === 'super_admin') {
@@ -148,6 +138,21 @@ const closeMobileMenu = () => {
 </script>
 
 <style scoped>
+.brand-wordmark {
+    font-family: 'Urbanist', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: #002654;
+    line-height: 1;
+    white-space: nowrap;
+}
+.brand-wordmark .accent { color: #EF4135; }
+.brand-mark-img { height: 40px; }
+@media (max-width: 768px) {
+    .brand-wordmark { font-size: 0.9375rem; }
+    .brand-mark-img { height: 32px; }
+}
 .main-header {
     height: 65px;
     display: flex;
