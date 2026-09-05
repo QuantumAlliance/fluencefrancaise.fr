@@ -179,6 +179,11 @@ Route::prefix('tutor')->group(function () {
     Route::get('/{any?}', function () { return view('app'); })->where('any', '.*');
 });
 
+// Guest demo dashboard — served by the SPA so /demo links can be opened directly.
+Route::prefix('demo')->group(function () {
+    Route::get('/{any?}', function () { return view('app'); })->where('any', '.*');
+});
+
 Route::get('/books', function () { return view('app'); });
 
 // Policies page (Blade template)
@@ -198,4 +203,4 @@ Route::prefix('payment')->group(function () {
 
 // Catch-all route for dynamic pages from database
 Route::get('/{slug}', [PageController::class, 'show'])
-    ->where('slug', '^(?!installer|api|debug-hash|storage|why-french|tef-tcf|about-us|our-courses|contact-us|beginner|elementary|intermediate|upper-intermediate|login|register|forgot-password|reset-password|dashboard|home|student|admin|tutor|books|courses|exam-preps|payment|new-policies).*$');
+    ->where('slug', '^(?!installer|api|debug-hash|storage|why-french|tef-tcf|about-us|our-courses|contact-us|beginner|elementary|intermediate|upper-intermediate|login|register|forgot-password|reset-password|dashboard|home|student|admin|tutor|demo|books|courses|exam-preps|payment|new-policies).*$');
