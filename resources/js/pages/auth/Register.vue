@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <PublicHeader />
-    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-12">
+    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-20">
       <div class="w-full max-w-4xl mx-auto">
         <!-- Hero -->
         <div class="text-center mb-9 md:mb-12">
@@ -1033,34 +1033,42 @@ onMounted(async () => {
 .enroll-page {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #002654 0, #002654 34rem, #edeff2 34rem, #edeff2);
+  /* Navy runs the full length of the card; the last 5rem (the section's own
+     bottom padding) turns light, so the page still changes colour before the
+     dark footer instead of running navy straight into it. */
+  background: linear-gradient(
+    180deg,
+    #002654 0,
+    #002654 calc(100% - 5rem),
+    #edeff2 calc(100% - 5rem),
+    #edeff2 100%
+  );
 }
 
-/* Painterly tricolour wash over the navy: soft blue left, white centre, red
-   right. Heavily blurred and masked so it dissolves before the card and never
-   competes with the headline. Purely decorative, so it must not eat clicks. */
+/* French flag over the navy: three straight vertical columns, full bleed, no
+   vertical fade, so blue and red run all the way down both sides of the card.
+   The stops carry a ~3.5% feather so the two seams sit softly behind the
+   headline rather than cutting through it. Decorative: must not eat clicks. */
 .enroll-page::before {
   content: '';
   position: absolute;
-  top: -4rem;
-  left: -3rem;
-  right: -3rem;
-  height: 38rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100% - 5rem);
   pointer-events: none;
-  opacity: 0.5;
-  filter: blur(40px);
-  background:
-    radial-gradient(38% 58% at 14% 34%, rgba(0, 85, 164, 0.85), transparent 70%),
-    radial-gradient(30% 46% at 27% 64%, rgba(0, 85, 164, 0.55), transparent 72%),
-    radial-gradient(34% 56% at 50% 30%, rgba(255, 255, 255, 0.26), transparent 70%),
-    radial-gradient(26% 42% at 46% 66%, rgba(255, 255, 255, 0.16), transparent 72%),
-    radial-gradient(38% 58% at 85% 36%, rgba(239, 65, 53, 0.70), transparent 70%),
-    radial-gradient(28% 44% at 74% 64%, rgba(239, 65, 53, 0.45), transparent 72%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 60%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0, #000 60%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 85, 164, 0.55) 0,
+    rgba(0, 85, 164, 0.55) 31.5%,
+    rgba(255, 255, 255, 0.22) 35.2%,
+    rgba(255, 255, 255, 0.22) 64.8%,
+    rgba(239, 65, 53, 0.45) 68.5%,
+    rgba(239, 65, 53, 0.45) 100%
+  );
 }
 
-/* Keep the hero and the card above the wash. */
+/* Keep the hero and the card above the flag. */
 .enroll-page > * {
   position: relative;
   z-index: 1;
