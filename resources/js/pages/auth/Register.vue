@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <PublicHeader />
-    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-20">
+    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-12">
       <div class="w-full max-w-4xl mx-auto">
         <!-- Hero -->
         <div class="text-center mb-9 md:mb-12">
@@ -14,7 +14,7 @@
             French for the life you&rsquo;re<br class="hidden sm:block" />
             building <span class="text-[#EF4135]">in France.</span>
           </h1>
-          <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          <p class="text-gray-200 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             Set up your student account below to reserve your place in the next live cohort.
           </p>
         </div>
@@ -1031,40 +1031,54 @@ onMounted(async () => {
 /* Two-tone page: navy behind the header and the top of the card, then a light
    body below, so the card reads as lifted rather than sitting on a flat slab. */
 .enroll-page {
+  /* Height of the navy band, and therefore of the flag. Scales with the
+     viewport: on a phone the columns are only ~a third of a narrow screen
+     wide, so a fixed 34rem leaves the middle one reading as a long thin
+     strip. One variable drives both the band and the overlay below. */
+  --band: 26rem;
   position: relative;
   overflow: hidden;
-  /* Navy runs the full length of the card; the last 5rem (the section's own
-     bottom padding) turns light, so the page still changes colour before the
-     dark footer instead of running navy straight into it. */
-  background: linear-gradient(
-    180deg,
-    #002654 0,
-    #002654 calc(100% - 5rem),
-    #edeff2 calc(100% - 5rem),
-    #edeff2 100%
-  );
+  /* Hard horizontal cut-off partway down the page, as before: navy above,
+     light below. The flag fills this band all the way to the cut. */
+  background: linear-gradient(180deg, #002654 0, #002654 var(--band), #edeff2 var(--band), #edeff2);
 }
 
-/* French flag over the navy: three straight vertical columns, full bleed, no
-   vertical fade, so blue and red run all the way down both sides of the card.
-   The stops carry a ~3.5% feather so the two seams sit softly behind the
-   headline rather than cutting through it. Decorative: must not eat clicks. */
+@media (min-width: 640px) {
+  .enroll-page {
+    --band: 30rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .enroll-page {
+    --band: 34rem;
+  }
+}
+
+/* French flag over the navy: three straight vertical columns running the full
+   height of the band. Each column resolves to transparent before the next
+   begins, so the navy shows through as a separating gutter rather than the
+   colours blending into one another. Decorative: must not eat clicks. */
 .enroll-page::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: calc(100% - 5rem);
+  height: var(--band);
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(0, 85, 164, 0.55) 0,
-    rgba(0, 85, 164, 0.55) 31.5%,
-    rgba(255, 255, 255, 0.22) 35.2%,
-    rgba(255, 255, 255, 0.22) 64.8%,
-    rgba(239, 65, 53, 0.45) 68.5%,
-    rgba(239, 65, 53, 0.45) 100%
+    rgba(0, 85, 164, 0.22) 0,
+    rgba(0, 85, 164, 0.22) 27%,
+    transparent 33.5%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.20) 41%,
+    rgba(255, 255, 255, 0.20) 59%,
+    transparent 65%,
+    transparent 66.5%,
+    rgba(239, 65, 53, 0.13) 73%,
+    rgba(239, 65, 53, 0.13) 100%
   );
 }
 
