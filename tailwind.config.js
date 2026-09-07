@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
         display: ['Urbanist', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
       },
       colors: {
         primary: '#0055A4',

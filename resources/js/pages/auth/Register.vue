@@ -1,71 +1,86 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <PublicHeader />
-    <div class="flex-grow flex items-center justify-center bg-gradient-to-br from-brand-600 to-brand-700 px-4 pt-40 pb-12">
-      <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl">
-        <!-- Form Header -->
-        <div class="sticky top-0 bg-white border-b border-gray-200 p-6 z-10">
-          <h1 class="text-3xl font-bold text-brand-600 text-center mb-2">Enrollment Form</h1>
-          <p class="text-gray-600 text-center">Join our learning community today</p>
+    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-12">
+      <div class="w-full max-w-4xl mx-auto">
+        <!-- Hero -->
+        <div class="text-center mb-9 md:mb-12">
+          <div class="flex items-center justify-center gap-3 mb-5">
+            <span class="h-px w-8 md:w-10 bg-[#c9a227]/50"></span>
+            <span class="text-[#d8b978] text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em]">Enrollment</span>
+            <span class="h-px w-8 md:w-10 bg-[#c9a227]/50"></span>
+          </div>
+          <h1 class="font-serif text-[2rem] leading-[1.15] md:text-5xl md:leading-[1.12] text-white mb-5">
+            French for the life you&rsquo;re<br class="hidden sm:block" />
+            building <span class="text-[#EF4135]">in France.</span>
+          </h1>
+          <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Set up your student account below to reserve your place in the next live cohort.
+          </p>
         </div>
 
-        <form @submit.prevent="handleRegister" class="p-6 space-y-6">
+        <div class="enroll-card bg-white rounded-3xl shadow-2xl">
+
+        <form @submit.prevent="handleRegister" class="p-6 md:p-10 space-y-8">
           <!-- Personal Information Section -->
-          <div class="border-b pb-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Personal Information</h3>
-            
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-lg bg-[#c9a227] text-white font-bold flex items-center justify-center text-sm shrink-0">1</span>
+              <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900">Personal Information</h3>
+            </div>
+
             <!-- Name Fields -->
             <div class="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-gray-700 text-sm font-semibold mb-2">
-                  First Name <span class="text-red-500">*</span>
+                <label class="block text-gray-800 text-sm font-semibold mb-2">
+                  First name <span class="text-red-500">*</span>
                 </label>
                 <input
                   v-model="form.firstName"
                   type="text"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
-                  placeholder="Enter Your First Name"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  placeholder="Enter your first name"
                 />
               </div>
               <div>
-                <label class="block text-gray-700 text-sm font-semibold mb-2">
-                  Last Name <span class="text-red-500">*</span>
+                <label class="block text-gray-800 text-sm font-semibold mb-2">
+                  Last name <span class="text-red-500">*</span>
                 </label>
                 <input
                   v-model="form.lastName"
                   type="text"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
-                  placeholder="Enter Your Last Name"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  placeholder="Enter your last name"
                 />
               </div>
             </div>
 
             <!-- Email -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Email Address <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Email address <span class="text-red-500">*</span>
               </label>
               <input
                 v-model="form.email"
                 type="email"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
-                placeholder="Enter an active Email Address"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                placeholder="Enter an active email address"
               />
             </div>
 
             <!-- Username -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Create a Username <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Create a username <span class="text-red-500">*</span>
               </label>
               <input
                 v-model="form.username"
                 type="text"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Choose a username"
               />
               <small class="text-gray-500 text-xs mt-1 block">
@@ -76,7 +91,7 @@
             <!-- Password -->
             <div class="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <label class="block text-gray-700 text-sm font-semibold mb-2">
+                <label class="block text-gray-800 text-sm font-semibold mb-2">
                   Password <span class="text-red-500">*</span>
                 </label>
                 <input
@@ -84,20 +99,20 @@
                   type="password"
                   required
                   minlength="6"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Minimum 6 characters"
                 />
               </div>
               <div>
-                <label class="block text-gray-700 text-sm font-semibold mb-2">
-                  Confirm Password <span class="text-red-500">*</span>
+                <label class="block text-gray-800 text-sm font-semibold mb-2">
+                  Confirm password <span class="text-red-500">*</span>
                 </label>
                 <input
                   v-model="form.passwordConfirmation"
                   type="password"
                   required
                   minlength="6"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Confirm password"
                 />
                 <p v-if="form.password && form.passwordConfirmation && form.password !== form.passwordConfirmation" class="text-red-500 text-xs mt-1">
@@ -108,46 +123,49 @@
 
             <!-- Phone Number -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Phone Number <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Phone number <span class="text-red-500">*</span>
               </label>
               <input
                 v-model="form.phone"
                 type="tel"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Enter your phone number"
               />
             </div>
 
             <!-- City -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
                 City <span class="text-red-500">*</span>
               </label>
               <input
                 v-model="form.city"
                 type="text"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Enter your city"
               />
             </div>
           </div>
 
           <!-- Language & Learning Information Section -->
-          <div class="border-b pb-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Language & Learning Information</h3>
-            
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-lg bg-[#c9a227] text-white font-bold flex items-center justify-center text-sm shrink-0">2</span>
+              <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900">Language & Learning Information</h3>
+            </div>
+
             <!-- Native Language -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Native Language <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Native language <span class="text-red-500">*</span>
               </label>
               <select
                 v-model="form.nativeLanguage"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select Native Language</option>
                 <option value="english">English</option>
@@ -161,13 +179,13 @@
 
             <!-- English Level -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                English Level <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                English level <span class="text-red-500">*</span>
               </label>
               <select
                 v-model="form.englishLevel"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select English Level</option>
                 <option value="beginner">Beginner</option>
@@ -179,13 +197,13 @@
 
             <!-- French Level -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                French Level <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                French level <span class="text-red-500">*</span>
               </label>
               <select
                 v-model="form.frenchLevel"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select French Level</option>
                 <option value="complete-beginner">Complete Beginner</option>
@@ -200,43 +218,52 @@
 
             <!-- Course Purpose -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Course Purpose <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Course purpose <span class="text-red-500">*</span>
               </label>
               <input
                 v-model="form.coursePurpose"
                 type="text"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="e.g., Hobby, Travel, Immigration"
               />
             </div>
           </div>
 
           <!-- Class Selection Section -->
-          <div class="border-b pb-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Class Selection</h3>
-            
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-lg bg-[#c9a227] text-white font-bold flex items-center justify-center text-sm shrink-0">3</span>
+              <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900">Class Selection</h3>
+            </div>
+
             <div v-if="loadingClassTypes" class="text-center py-4">
               <p class="text-gray-500">Loading class types...</p>
             </div>
-            
+
             <div v-else-if="classTypes.length === 0" class="text-center py-4">
               <p class="text-gray-500">No class types available</p>
             </div>
-            
+
             <div v-else class="space-y-3">
               <div
                 v-for="classType in classTypes"
                 :key="classType.id"
-                class="border rounded-lg p-4 transition-colors"
+                class="relative border rounded-xl p-5 transition-all"
                 :class="{
-                  'border-gray-300 hover:border-brand-600 cursor-pointer': !classType.is_batch_full,
+                  'border-[#e8e2d6] bg-white hover:border-brand-400 hover:shadow-sm cursor-pointer': !classType.is_batch_full,
                   'border-red-300 bg-red-50 cursor-not-allowed opacity-75': classType.is_batch_full,
-                  'border-brand-600 bg-brand-600/10': form.classTypeId === classType.id && !classType.is_batch_full
+                  'border-brand-600 bg-[#faf3ea] shadow-sm': form.classTypeId === classType.id && !classType.is_batch_full
                 }"
                 @click="!classType.is_batch_full && (form.classTypeId = classType.id)"
               >
+                <span
+                  v-if="classType.is_popular && !classType.is_batch_full"
+                  class="absolute -top-3 left-5 bg-[#cb8e4f] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full"
+                >
+                  Popular
+                </span>
                 <div class="flex items-start gap-3">
                   <input
                     type="radio"
@@ -248,32 +275,32 @@
                     class="mt-1"
                     :class="{ 'cursor-not-allowed': classType.is_batch_full }"
                   />
-                  <div class="flex-1">
-                    <label 
-                      :for="`class-${classType.id}`" 
-                      class="font-semibold text-gray-800"
-                      :class="{ 'cursor-pointer': !classType.is_batch_full, 'cursor-not-allowed text-gray-500': classType.is_batch_full }"
-                    >
-                      {{ classType.class_name || classType.name || 'Class Type' }}
-                    </label>
-                    <p v-if="classType.description" class="text-sm text-gray-600 mt-1">
-                      {{ classType.description }}
-                    </p>
-                    <p class="text-sm font-bold text-brand-600 mt-2" v-if="!classType.is_batch_full">
+                  <div class="flex-1 flex items-center justify-between gap-4">
+                    <div class="min-w-0">
+                      <label
+                        :for="`class-${classType.id}`"
+                        class="font-semibold text-gray-800"
+                        :class="{ 'cursor-pointer': !classType.is_batch_full, 'cursor-not-allowed text-gray-500': classType.is_batch_full }"
+                      >
+                        {{ classType.class_name || classType.name || 'Class Type' }}
+                      </label>
+                      <p v-if="classType.description" class="text-sm text-gray-600 mt-1">
+                        {{ classType.description }}
+                      </p>
+                      <p v-if="classType.is_batch_full" class="text-sm font-semibold text-red-600 mt-2">
+                        {{ classType.batch_full_message || 'This batch is full' }}
+                      </p>
+                    </div>
+                    <p v-if="!classType.is_batch_full" class="text-xl md:text-2xl font-bold text-brand-600 shrink-0 text-right">
                       {{ formatPrice(classType.price || 0, classType.currency || 'CAD') }}
                     </p>
-                    <div v-if="classType.is_batch_full" class="mt-2">
-                      <p class="text-sm font-semibold text-red-600">
-                        {{ classType.batch_full_message || 'This batch is full' }}
-                    </p>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Availability Information (Conditional) -->
-            <div v-if="requiresAvailability" class="mt-6 p-4 bg-brand-50 border border-brand-200 rounded-lg animate-fade-in">
+            <div v-if="requiresAvailability" class="mt-6 p-5 bg-[#faf7f0] border border-[#e8e2d6] rounded-2xl animate-fade-in">
               <label class="block text-gray-800 text-sm font-bold mb-2">
                 Add availability and time zone <span class="text-red-500">*</span>
               </label>
@@ -284,15 +311,15 @@
                 v-model="form.availability"
                 required
                 rows="3"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="e.g., Monday 5pm-7pm (EST), Saturday mornings..."
               />
             </div>
           </div>
 
           <!-- Confirmation Section -->
-          <div class="border-b pb-6">
-            <div class="flex items-start gap-3 mb-4">
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-start gap-3 p-5 bg-[#faf7f0] border border-[#e8e2d6] rounded-2xl">
               <input
                 type="checkbox"
                 id="confirmation"
@@ -310,31 +337,34 @@
           </div>
 
           <!-- Additional Information Section -->
-          <div class="border-b pb-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Additional Information</h3>
-            
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-lg bg-[#c9a227] text-white font-bold flex items-center justify-center text-sm shrink-0">4</span>
+              <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900">Additional Information</h3>
+            </div>
+
             <!-- Special Request -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Special Request (Optional)
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                Special request (optional)
               </label>
               <textarea
                 v-model="form.specialRequest"
                 rows="4"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Any special requests or messages..."
               />
             </div>
 
             <!-- How Did You Hear About Us -->
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                How Did You Hear About Us? <span class="text-red-500">*</span>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">
+                How did you hear about us? <span class="text-red-500">*</span>
               </label>
               <select
                 v-model="form.referralSource"
                 required
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select an option</option>
                 <option value="instagram">Instagram</option>
@@ -349,23 +379,26 @@
           </div>
 
           <!-- Pricing Section -->
-          <div class="border-b pb-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Pricing</h3>
-            
+          <div class="enroll-sec border-b border-gray-100 pb-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-lg bg-[#c9a227] text-white font-bold flex items-center justify-center text-sm shrink-0">5</span>
+              <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900">Pricing</h3>
+            </div>
+
             <!-- Coupon Code -->
             <div v-if="!couponsDisabled" class="mb-4">
-              <label class="block text-gray-700 text-sm font-semibold mb-2">Coupon Code (Optional)</label>
+              <label class="block text-gray-800 text-sm font-semibold mb-2">Coupon code (optional)</label>
               <div class="flex gap-2">
                 <input
                   v-model="couponCode"
                   type="text"
                   placeholder="Enter coupon code"
-                  class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors"
-                  :class="couponError 
-                    ? 'border-red-500 focus:border-red-500 focus:ring-red-200' 
-                    : appliedCoupon 
-                      ? 'border-green-500 focus:border-green-500 focus:ring-green-200' 
-                      : 'border-gray-300 focus:border-brand-600 focus:ring-brand-600/20'"
+                  class="flex-1 px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border rounded-lg focus:outline-none focus:ring-2 transition-colors placeholder-gray-400"
+                  :class="couponError
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
+                    : appliedCoupon
+                      ? 'border-green-500 focus:border-green-500 focus:ring-green-200'
+                      : 'border-[#e8e2d6] focus:border-brand-600 focus:ring-brand-600/20'"
                   :disabled="appliedCoupon !== null || applyingCoupon"
                   @input="couponError = ''"
                 />
@@ -374,7 +407,7 @@
                   type="button"
                   @click="applyCoupon"
                   :disabled="applyingCoupon"
-                  class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[80px]"
+                  class="px-6 py-2 border-2 border-brand-600 text-brand-600 font-bold rounded-full hover:bg-brand-600 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[90px]"
                 >
                   <svg v-if="applyingCoupon" class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -386,7 +419,7 @@
                   v-else
                   type="button"
                   @click="removeCoupon"
-                  class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                  class="px-6 py-2 border-2 border-red-600 text-red-600 font-bold rounded-full hover:bg-red-600 hover:text-white transition-colors"
                 >
                   Remove
                 </button>
@@ -398,7 +431,7 @@
             </div>
 
             <!-- Price Display -->
-            <div class="bg-gray-50 rounded-lg p-4">
+            <div class="bg-[#faf7f0] border border-[#e8e2d6] rounded-2xl p-5">
               <p class="text-xs text-gray-500 mb-3">
                 *Prices are subject to change. Final price will be confirmed before payment.
               </p>
@@ -419,7 +452,7 @@
             </div>
 
             <!-- Privacy Policy Checkbox -->
-            <div class="flex items-start gap-3 mt-4 p-4 bg-white border-2 border-gray-200 rounded-lg">
+            <div class="flex items-start gap-3 mt-4 p-5 bg-white border border-[#e8e2d6] rounded-2xl">
               <input
                 type="checkbox"
                 id="privacyPolicy"
@@ -438,7 +471,7 @@
           </div>
 
           <!-- Error Message -->
-          <p v-if="error" class="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+          <p v-if="error" class="p-4 bg-red-50 border border-red-300 text-red-700 rounded-xl text-sm font-medium">
             {{ error }}
           </p>
 
@@ -446,7 +479,7 @@
           <button
             type="submit"
             :disabled="loading || form.password !== form.passwordConfirmation || !form.confirmation || !form.privacyPolicy"
-            class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <svg v-if="loading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -459,16 +492,16 @@
           </button>
         </form>
 
-        <div class="p-6 border-t text-center">
-          <p class="text-gray-600 text-sm">
-            Already have an account?
-            <router-link to="/login" class="text-brand-600 hover:text-brand-700 font-semibold">
-              Sign in here
-            </router-link>
-          </p>
+          <div class="px-6 md:px-10 py-6 border-t border-gray-100 bg-gray-50 rounded-b-3xl text-center">
+            <p class="text-gray-600 text-sm">
+              Already have an account?
+              <router-link to="/login" class="text-brand-600 hover:text-brand-700 font-semibold">
+                Sign in here
+              </router-link>
+            </p>
+          </div>
         </div>
       </div>
-
     </div>
     <PublicFooter />
   </div>
@@ -593,7 +626,7 @@ const loadClassTypes = async () => {
     } catch {
       response = await axios.get('/api/admin/class-types')
     }
-    
+
     if (response.data.success) {
       classTypes.value = response.data.data.filter(ct => ct.is_active !== false)
     }
@@ -607,42 +640,42 @@ const loadClassTypes = async () => {
 const applyCoupon = async () => {
   // Clear previous errors
   couponError.value = ''
-  
+
   // Validation checks with user feedback
   if (!couponCode.value || !couponCode.value.trim()) {
     couponError.value = 'Please enter a coupon code'
     toast.error('Please enter a coupon code')
     return
   }
-  
+
   if (!form.value.classTypeId) {
     couponError.value = 'Please select a class type first'
     toast.error('Please select a class type first')
     return
   }
-  
+
   if (subtotal.value === 0) {
     couponError.value = 'Please select a valid class type'
     toast.error('Please select a valid class type')
     return
   }
-  
+
   applyingCoupon.value = true
-  
+
   try {
     const response = await axios.post('/api/utility/validate-coupon', {
       code: couponCode.value.toUpperCase().trim(),
       amount: subtotal.value,
       class_type_id: form.value.classTypeId
     })
-    
+
     if (response.data.success) {
       appliedCoupon.value = {
         code: response.data.data.coupon_code,
         discount_type: response.data.data.discount_type,
         discount_value: response.data.data.discount_value,
-        discount: response.data.data.discount_type === 'percentage' 
-          ? response.data.data.discount_value 
+        discount: response.data.data.discount_type === 'percentage'
+          ? response.data.data.discount_value
           : ((response.data.data.discount_value / subtotal.value) * 100).toFixed(0)
       }
       couponError.value = ''
@@ -714,16 +747,16 @@ const handleRegister = async () => {
       form.value.password,
       form.value.passwordConfirmation
     )
-    
+
     // Wait a moment for auth store to update
     await new Promise(resolve => setTimeout(resolve, 100))
-    
+
     // Get user ID from auth store (should be set after registration)
     const userId = auth.user?.id
     if (!userId) {
       throw new Error('User ID not found. Please try again.')
     }
-    
+
     // Create enrollment record
     const enrollmentResponse = await axios.post('/api/enrollments', {
       user_id: userId,
@@ -798,10 +831,10 @@ const initializeStripeModal = async () => {
   try {
     paymentError.value = ''
     loadingPaymentMessage.value = 'Loading Stripe...'
-    
+
     // Keep loadingPayment false so form stays visible (form is in v-else block)
     loadingPayment.value = false
-    
+
     // Wait for modal to render and form to be visible
     await nextTick()
     await new Promise(resolve => setTimeout(resolve, 400))
@@ -816,7 +849,7 @@ const initializeStripeModal = async () => {
 
     // Load Stripe.js
     const Stripe = await loadStripe()
-    
+
     // Initialize Stripe
     stripe = Stripe(publishableKey)
     elements = stripe.elements()
@@ -825,7 +858,7 @@ const initializeStripeModal = async () => {
     let cardElementContainer = null
     let retries = 0
     const maxRetries = 20
-    
+
     while (!cardElementContainer && retries < maxRetries) {
       await nextTick()
       await new Promise(resolve => setTimeout(resolve, 150))
@@ -836,7 +869,7 @@ const initializeStripeModal = async () => {
     if (!cardElementContainer) {
       throw new Error('Payment form element not found. Please refresh and try again.')
     }
-    
+
     // Create and mount card element (form should be visible now)
     if (cardElement) {
       try {
@@ -948,7 +981,7 @@ const handlePayment = async () => {
       // Show success message
       paymentSuccess.value = true
       redirectCountdown.value = 5
-      
+
       // Countdown timer
       const timer = setInterval(() => {
         redirectCountdown.value--
@@ -995,6 +1028,44 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/* Two-tone page: navy behind the header and the top of the card, then a light
+   body below, so the card reads as lifted rather than sitting on a flat slab. */
+.enroll-page {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #002654 0, #002654 34rem, #edeff2 34rem, #edeff2);
+}
+
+/* Painterly tricolour wash over the navy: soft blue left, white centre, red
+   right. Heavily blurred and masked so it dissolves before the card and never
+   competes with the headline. Purely decorative, so it must not eat clicks. */
+.enroll-page::before {
+  content: '';
+  position: absolute;
+  top: -4rem;
+  left: -3rem;
+  right: -3rem;
+  height: 38rem;
+  pointer-events: none;
+  opacity: 0.5;
+  filter: blur(40px);
+  background:
+    radial-gradient(38% 58% at 14% 34%, rgba(0, 85, 164, 0.85), transparent 70%),
+    radial-gradient(30% 46% at 27% 64%, rgba(0, 85, 164, 0.55), transparent 72%),
+    radial-gradient(34% 56% at 50% 30%, rgba(255, 255, 255, 0.26), transparent 70%),
+    radial-gradient(26% 42% at 46% 66%, rgba(255, 255, 255, 0.16), transparent 72%),
+    radial-gradient(38% 58% at 85% 36%, rgba(239, 65, 53, 0.70), transparent 70%),
+    radial-gradient(28% 44% at 74% 64%, rgba(239, 65, 53, 0.45), transparent 72%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 60%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 60%, transparent 100%);
+}
+
+/* Keep the hero and the card above the wash. */
+.enroll-page > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Scrollbar styling */
 .overflow-y-auto::-webkit-scrollbar {
   width: 8px;
