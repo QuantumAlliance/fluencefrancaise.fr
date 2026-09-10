@@ -26,7 +26,7 @@
         <!-- Header Actions -->
         <div class="mobile-hidden items-center shrink-0 gap-4 w-auto md:w-[200px] justify-end hidden custom-desktop:flex">
           <template v-if="auth.user">
-             <router-link :to="dashboardLink" class="px-7 py-3 bg-[#0055A4] text-white rounded-full transition font-bold text-[11px] uppercase tracking-widest shadow-md hover:scale-105 transform">
+             <router-link :to="dashboardLink" class="px-7 py-3 bg-[#002654] text-white rounded-full transition font-bold text-[11px] uppercase tracking-widest shadow-md hover:scale-105 transform">
                DASHBOARD
              </router-link>
           </template>
@@ -80,12 +80,12 @@
 
           <div class="mt-8 flex flex-col gap-6">
             <template v-if="auth.user">
-               <router-link :to="dashboardLink" class="w-full py-4 bg-[#0055A4] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg shadow-amber-900/10 block">
+               <router-link :to="dashboardLink" class="w-full py-4 bg-[#002654] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg shadow-amber-900/10 block">
                  DASHBOARD
                </router-link>
             </template>
             <template v-else>
-               <router-link to="/register" class="w-full py-4 bg-[#0055A4] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg shadow-amber-900/10 block">
+               <router-link to="/register" class="w-full py-4 bg-[#002654] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg shadow-amber-900/10 block">
                  SIGN UP
                </router-link>
                <router-link to="/login" class="w-full py-2 text-center text-gray-500 font-bold text-sm uppercase tracking-widest hover:text-[#0055A4] transition block">
@@ -171,7 +171,7 @@ const closeMobileMenu = () => {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #0055A4;
+    color: #002654;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
@@ -179,7 +179,7 @@ const closeMobileMenu = () => {
     text-decoration: none;
 }
 .nav-link:hover {
-    color: #111827;
+    color: #0055A4;
 }
 
 .action-btn-login {
@@ -187,19 +187,19 @@ const closeMobileMenu = () => {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #0055A4;
+    color: #002654;
     transition: all 0.2s ease;
     text-decoration: none;
 }
 .action-btn-login:hover {
-    color: #111827;
+    color: #0055A4;
 }
 .action-btn-signup {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    background-color: #0055A4;
+    background-color: #002654;
     color: white;
     padding: 10px 32px;
     border-radius: 9999px;

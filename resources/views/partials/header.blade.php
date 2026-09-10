@@ -40,7 +40,7 @@
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.04em !important;
-        color: #334155 !important;
+        color: #002654 !important;
         transition: all 0.2s ease;
         display: flex !important;
         align-items: center !important;
@@ -60,22 +60,22 @@
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.05em !important;
-        color: #0055A4 !important;
+        color: #002654 !important;
         transition: all 0.2s ease;
         text-decoration: none !important;
     }
-    .action-btn-login:hover { color: #002654 !important; }
+    .action-btn-login:hover { color: #0055A4 !important; }
     .action-btn-signup {
         font-size: 11px !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
-        background-color: #0055A4 !important;
+        background-color: #002654 !important;
         color: white !important;
         padding: 10px 30px !important;
         border-radius: 9999px !important;
         transition: all 0.25s ease !important;
-        box-shadow: 0 8px 20px -8px rgba(0,85,164,0.7) !important;
+        box-shadow: 0 8px 20px -8px rgba(0,38,84,0.7) !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -134,7 +134,7 @@
                     <a href="{{
                         auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                         (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                    }}" class="px-7 py-3 bg-[#0055A4] text-white rounded-full transition font-bold text-[11px] uppercase tracking-widest shadow-md hover:-translate-y-0.5 transform">
+                    }}" class="px-7 py-3 bg-[#002654] text-white rounded-full transition font-bold text-[11px] uppercase tracking-widest shadow-md hover:-translate-y-0.5 transform">
                         DASHBOARD
                     </a>
                 @else
@@ -185,9 +185,9 @@
                     <a href="{{
                         auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                         (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                    }}" class="w-full py-4 bg-[#0055A4] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg block">DASHBOARD</a>
+                    }}" class="w-full py-4 bg-[#002654] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg block">DASHBOARD</a>
                 @else
-                    <a href="/register" class="w-full py-4 bg-[#0055A4] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg block">ENROLL NOW</a>
+                    <a href="/register" class="w-full py-4 bg-[#002654] text-white rounded-full text-center font-bold text-sm uppercase tracking-widest shadow-lg block">ENROLL NOW</a>
                     <a href="/login" class="w-full py-2 text-center text-slate-500 font-bold text-sm uppercase tracking-widest hover:text-[#0055A4] transition block">LOGIN</a>
                 @endauth
             </div>

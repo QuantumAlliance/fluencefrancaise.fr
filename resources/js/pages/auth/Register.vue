@@ -1,18 +1,19 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <PublicHeader />
-    <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-12">
+    <div class="flex-grow enroll-page px-4 pt-24 md:pt-28 pb-12">
       <div class="w-full max-w-4xl mx-auto">
         <!-- Hero -->
-        <div class="text-center mb-9 md:mb-12">
+        <div class="text-center mb-6 md:mb-8">
           <div class="flex items-center justify-center gap-3 mb-5">
             <span class="h-px w-8 md:w-10 bg-[#c9a227]/50"></span>
             <span class="text-[#d8b978] text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em]">Enrollment</span>
             <span class="h-px w-8 md:w-10 bg-[#c9a227]/50"></span>
           </div>
           <h1 class="font-serif text-[2rem] leading-[1.15] md:text-5xl md:leading-[1.12] text-white mb-5">
-            French for the life you&rsquo;re<br class="hidden sm:block" />
-            building <span class="text-[#EF4135]">in France.</span>
+            French for the life<br />
+            you&rsquo;re building<br />
+            <span class="italic text-[#EF4135]">in France.</span>
           </h1>
           <p class="text-gray-200 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             Set up your student account below to reserve your place in the next live cohort.
@@ -39,7 +40,7 @@
                   v-model="form.firstName"
                   type="text"
                   required
-                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Enter your first name"
                 />
               </div>
@@ -51,7 +52,7 @@
                   v-model="form.lastName"
                   type="text"
                   required
-                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Enter your last name"
                 />
               </div>
@@ -66,7 +67,7 @@
                 v-model="form.email"
                 type="email"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Enter an active email address"
               />
             </div>
@@ -80,7 +81,7 @@
                 v-model="form.username"
                 type="text"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Choose a username"
               />
               <small class="text-gray-500 text-xs mt-1 block">
@@ -99,7 +100,7 @@
                   type="password"
                   required
                   minlength="6"
-                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Minimum 6 characters"
                 />
               </div>
@@ -112,7 +113,7 @@
                   type="password"
                   required
                   minlength="6"
-                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                  class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                   placeholder="Confirm password"
                 />
                 <p v-if="form.password && form.passwordConfirmation && form.password !== form.passwordConfirmation" class="text-red-500 text-xs mt-1">
@@ -130,7 +131,7 @@
                 v-model="form.phone"
                 type="tel"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Enter your phone number"
               />
             </div>
@@ -144,7 +145,7 @@
                 v-model="form.city"
                 type="text"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Enter your city"
               />
             </div>
@@ -165,7 +166,7 @@
               <select
                 v-model="form.nativeLanguage"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select Native Language</option>
                 <option value="english">English</option>
@@ -185,7 +186,7 @@
               <select
                 v-model="form.englishLevel"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select English Level</option>
                 <option value="beginner">Beginner</option>
@@ -203,7 +204,7 @@
               <select
                 v-model="form.frenchLevel"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select French Level</option>
                 <option value="complete-beginner">Complete Beginner</option>
@@ -225,7 +226,7 @@
                 v-model="form.coursePurpose"
                 type="text"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="e.g., Hobby, Travel, Immigration"
               />
             </div>
@@ -311,7 +312,7 @@
                 v-model="form.availability"
                 required
                 rows="3"
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="e.g., Monday 5pm-7pm (EST), Saturday mornings..."
               />
             </div>
@@ -351,7 +352,7 @@
               <textarea
                 v-model="form.specialRequest"
                 rows="4"
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
                 placeholder="Any special requests or messages..."
               />
             </div>
@@ -364,7 +365,7 @@
               <select
                 v-model="form.referralSource"
                 required
-                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border border-[#e8e2d6] rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
+                class="w-full px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 placeholder-gray-400"
               >
                 <option value="">Select an option</option>
                 <option value="instagram">Instagram</option>
@@ -393,12 +394,12 @@
                   v-model="couponCode"
                   type="text"
                   placeholder="Enter coupon code"
-                  class="flex-1 px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-[#faf7f0] border rounded-lg focus:outline-none focus:ring-2 transition-colors placeholder-gray-400"
+                  class="flex-1 px-3.5 py-2 text-sm md:px-4 md:py-2.5 md:text-base bg-white border rounded-lg focus:outline-none focus:ring-2 transition-colors placeholder-gray-400"
                   :class="couponError
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
                     : appliedCoupon
                       ? 'border-green-500 focus:border-green-500 focus:ring-green-200'
-                      : 'border-[#e8e2d6] focus:border-brand-600 focus:ring-brand-600/20'"
+                      : 'border-gray-200 focus:border-brand-600 focus:ring-brand-600/20'"
                   :disabled="appliedCoupon !== null || applyingCoupon"
                   @input="couponError = ''"
                 />
@@ -1035,7 +1036,7 @@ onMounted(async () => {
      viewport: on a phone the columns are only ~a third of a narrow screen
      wide, so a fixed 34rem leaves the middle one reading as a long thin
      strip. One variable drives both the band and the overlay below. */
-  --band: 26rem;
+  --band: 22rem;
   position: relative;
   overflow: hidden;
   /* Hard horizontal cut-off partway down the page, as before: navy above,
@@ -1045,41 +1046,56 @@ onMounted(async () => {
 
 @media (min-width: 640px) {
   .enroll-page {
-    --band: 30rem;
+    --band: 26rem;
   }
 }
 
 @media (min-width: 768px) {
   .enroll-page {
-    --band: 34rem;
+    --band: 30rem;
   }
 }
 
-/* French flag over the navy: three straight vertical columns running the full
-   height of the band. Each column resolves to transparent before the next
-   begins, so the navy shows through as a separating gutter rather than the
-   colours blending into one another. Decorative: must not eat clicks. */
+/* A wide, flat wash of light lying low in the navy band,
+   its lower edge running under the card. Aspect ratio is the whole trick: an
+   earlier version at 30rem x 14rem blurred into a round orb reading as a lens
+   flare. It has to be far wider than it is tall -- a band, not a blob -- and
+   both ends must dissolve into the navy so it has no containing edge.
+
+   Blue on both flanks, not blue/white/red: the red flank was rejected as
+   reading like an unintended extra element rather than part of the design.
+   Keep this symmetric. Decorative: must not eat clicks.
+
+   Composited over #002654 a colour only separates from the navy once it is
+   roughly half opaque, and the blur dilutes it further, so the alphas look
+   high for a soft result. Judge the rendered wash, not the source values. */
 .enroll-page::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--band);
+  left: 50%;
+  top: calc(var(--band) - 11rem);
+  width: min(46rem, 92%);
+  height: 14rem;
+  transform: translateX(-50%);
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(0, 85, 164, 0.22) 0,
-    rgba(0, 85, 164, 0.22) 27%,
-    transparent 33.5%,
-    transparent 35%,
-    rgba(255, 255, 255, 0.20) 41%,
-    rgba(255, 255, 255, 0.20) 59%,
-    transparent 65%,
-    transparent 66.5%,
-    rgba(239, 65, 53, 0.13) 73%,
-    rgba(239, 65, 53, 0.13) 100%
+    transparent 0,
+    rgba(0, 85, 164, 0.50) 13%,
+    rgba(0, 85, 164, 0.50) 34%,
+    rgba(255, 255, 255, 0.44) 43%,
+    rgba(255, 255, 255, 0.44) 57%,
+    rgba(0, 85, 164, 0.50) 66%,
+    rgba(0, 85, 164, 0.50) 87%,
+    transparent 100%
   );
+  filter: blur(30px);
+}
+
+@media (min-width: 768px) {
+  .enroll-page::before {
+    filter: blur(40px);
+  }
 }
 
 /* Keep the hero and the card above the flag. */
