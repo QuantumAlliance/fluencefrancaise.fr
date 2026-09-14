@@ -2,6 +2,9 @@
   <div class="flex flex-col min-h-screen">
     <PublicHeader />
     <div class="flex-grow enroll-page px-4 pt-24 md:pt-28 pb-12">
+      <!-- Fixed backdrop: navy band, flag and corner shading. Pinned to the
+           viewport so only the form scrolls. Purely decorative. -->
+      <div class="enroll-bg" aria-hidden="true"></div>
       <div class="w-full max-w-4xl mx-auto">
         <!-- Hero -->
         <div class="text-center mb-6 md:mb-8">
@@ -1039,9 +1042,21 @@ onMounted(async () => {
   --band: 22rem;
   position: relative;
   overflow: hidden;
-  /* Hard horizontal cut-off partway down the page, as before: navy above,
-     light below. The flag fills this band all the way to the cut. */
-  background: linear-gradient(180deg, #002654 0, #002654 var(--band), #edeff2 var(--band), #edeff2);
+}
+
+/* The backdrop is position:fixed rather than painted on .enroll-page, so it
+   stays put while the form scrolls over it. Doing this with
+   background-attachment:fixed instead is a trap: iOS Safari drops it, which
+   would leave the navy scrolling while the fixed flag stayed pinned. Fixed
+   positioning is honoured everywhere. .enroll-page carries overflow:hidden but
+   has no transform or filter, so it is not a containing block and does not clip
+   this. Hard horizontal cut-off: navy above, light below. */
+.enroll-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #001E40 0, #001E40 var(--band), #edeff2 var(--band), #edeff2);
 }
 
 @media (min-width: 640px) {
@@ -1056,50 +1071,162 @@ onMounted(async () => {
   }
 }
 
-/* A wide, flat wash of light lying low in the navy band,
-   its lower edge running under the card. Aspect ratio is the whole trick: an
-   earlier version at 30rem x 14rem blurred into a round orb reading as a lens
-   flare. It has to be far wider than it is tall -- a band, not a blob -- and
-   both ends must dissolve into the navy so it has no containing edge.
+/* Half a French flag: a rectangle of three EQUAL adjacent vertical bands --
+   blue | white | red, each exactly one third -- sitting low in the navy with
+   its lower portion running under the card, so only the top half of the flag
+   is visible. That "half flag" reading is the whole point of the element.
 
-   Blue on both flanks, not blue/white/red: the red flank was rejected as
-   reading like an unintended extra element rather than part of the design.
-   Keep this symmetric. Decorative: must not eat clicks.
+   Three things it must keep, all of which earlier versions broke:
+     - equal thirds, hard divisions, no transparent gaps between the bands.
+       Gapped, unequal stops blur into an amorphous wash and the white stops
+       reading as a rectangle at all.
+     - low blur. At 30-40px the bands round off into a lens-flare blob; the
+       blur here only softens the edges, it must not dissolve the shape.
+     - no fade at the left and right ends. A flag has edges; fading them out
+       turns the rectangle back into a smudge.
+   Blue 0.33, white 0.30, red 0.34.
 
-   Composited over #002654 a colour only separates from the navy once it is
-   roughly half opaque, and the blur dilutes it further, so the alphas look
-   high for a soft result. Judge the rendered wash, not the source values. */
-.enroll-page::before {
+   Red has a hard floor at 0.311 and the reason is not aesthetic. Composited
+   over the navy, red's own blue channel (53) sits below it, so a translucent
+   red DARKENS blue while raising red. On #001E40 the two channels cross at
+   239a = 64 - 11a, i.e. a = 0.256 (it was 0.311 on the older, lighter #002654 --
+   re-derive this if the navy changes again). Below that the flank is literally more
+   blue than red -- 0.18 renders rgb(43,43,78) and reads as navy, which is why
+   an earlier "faint red" build came back as having no red at all. Do not
+   calibrate this against a screenshot's delta: reference captures sit on a
+   darker navy, where the same delta clears the crossover and this one does not.
+   0.48 was rejected as too heavy; 0.34 sits just past the floor.
+   Decorative: must not eat clicks.
+
+   Judge the rendered result, not the source values: every colour here is
+   translucent over navy and composites well away from its nominal hue. */
+.enroll-bg::before {
   content: '';
   position: absolute;
   left: 50%;
-  top: calc(var(--band) - 11rem);
-  width: min(46rem, 92%);
+  top: calc(var(--band) - 13rem);
+  /* Sized against the form card, not by eye. The card is max-w-4xl (896px);
+     at the old 55rem (880px) the flag sat entirely behind it, so once the form
+     scrolled over the flag row it vanished and the fixed backdrop showed bare
+     navy. 70rem (1120px) leaves ~112px proud each side, which is what stays
+     visible while scrolling. Keep this WIDER than the card. */
+  width: min(70rem, 94%);
   height: 14rem;
   transform: translateX(-50%);
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    transparent 0,
-    rgba(0, 85, 164, 0.50) 13%,
-    rgba(0, 85, 164, 0.50) 34%,
-    rgba(255, 255, 255, 0.44) 43%,
-    rgba(255, 255, 255, 0.44) 57%,
-    rgba(0, 85, 164, 0.50) 66%,
-    rgba(0, 85, 164, 0.50) 87%,
-    transparent 100%
+    rgba(0, 85, 164, 0.28) 0,
+    rgba(0, 85, 164, 0.28) 33.333%,
+    rgba(255, 255, 255, 0.26) 33.333%,
+    rgba(255, 255, 255, 0.26) 66.666%,
+    rgba(239, 65, 53, 0.30) 66.666%,
+    rgba(239, 65, 53, 0.30) 100%
   );
-  filter: blur(30px);
+  filter: blur(7px);
+  /* Fade the flag's own top-left and top-right corners. Two radial gradients,
+     each transparent at one top corner and opaque by 78% of its radius,
+     intersected so both corners are cut while the top-centre and the lower
+     body stay solid. It has to be corners specifically, not a left/right edge
+     fade: the visible part of the flag is its top strip (the rest is under the
+     card), so fading whole edges would eat most of what is on screen.
+     The third layer fades the top edge itself, and 16% is a ceiling not a
+     preference: the flag is 224px tall but only its top ~74px clears the card,
+     so a fade of 16% (36px) already consumes half the visible strip. Pushing it
+     to 30% would leave 7px and the flag would effectively vanish.
+     The fourth layer is a hard cut at the bottom of the navy band. The flag is
+     14rem tall but sits only 9rem (4.5rem on phones) above the band's lower
+     edge, so the remainder hangs over the light area below it -- 80px on
+     desktop, 152px on a phone. The card hides that overhang at rest, but iOS
+     rubber-band overscroll shifts the card and exposes the flag over the white.
+     The cut is the bottom of the NAVY BAND, i.e. offset/height: 13/14 = 92.86%
+     here and 6.5/14 = 46.43% on phones. Cutting at the card's top edge instead
+     looks fine dead centre but leaves a band of bare navy either side of the
+     form, between the flag's lower edge and the end of the blue -- the card is
+     narrower than the flag, so that strip is exposed. The flag must reach the
+     bottom of the blue. It must not go past it either: below the band is the
+     light area, and iOS overscroll exposes anything that bleeds there.
+
+     The last layer dissolves the left and right edges. Without it the element's
+     own box edge shows as a straight vertical line against the navy: the red
+     channel fell 41 -> 0 across three pixels on the right side, and blur(9px)
+     is nowhere near wide enough to hide a boundary like that. 7% of the width
+     gives a ~78px ramp -- soft enough to read as a glow rather than a box,
+     while still leaving solid colour in the margin beside the card.
+     mask-composite needs the -webkit- pair for Safari. */
+  -webkit-mask-image:
+    radial-gradient(24% 95% at 0% 0%, transparent 0, #000 78%),
+    radial-gradient(24% 95% at 100% 0%, transparent 0, #000 78%),
+    linear-gradient(180deg, transparent 0, #000 16%),
+    linear-gradient(180deg, #000 0, #000 92.86%, transparent 92.86%),
+    linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(24% 95% at 0% 0%, transparent 0, #000 78%),
+    radial-gradient(24% 95% at 100% 0%, transparent 0, #000 78%),
+    linear-gradient(180deg, transparent 0, #000 16%),
+    linear-gradient(180deg, #000 0, #000 92.86%, transparent 92.86%),
+    linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-composite: intersect;
 }
 
 @media (min-width: 768px) {
-  .enroll-page::before {
-    filter: blur(40px);
+  .enroll-bg::before {
+    filter: blur(9px);
   }
 }
 
-/* Keep the hero and the card above the flag. */
-.enroll-page > * {
+/* Phones: the 94% cap would put the flag at ~366px on a 390px screen, i.e.
+   edge to edge, which turns the contained rectangle back into the full-width
+   stripes that were rejected. Narrow it so navy still frames it on both sides.
+   Only phones are affected -- above ~936px the 55rem cap binds instead, so
+   desktop width is untouched. */
+@media (max-width: 640px) {
+  .enroll-bg::before {
+    width: 74%;
+    /* Offset is 4.5rem here, so the band edge lands at 4.5/14 = 32.14%. */
+    -webkit-mask-image:
+      radial-gradient(24% 95% at 0% 0%, transparent 0, #000 78%),
+      radial-gradient(24% 95% at 100% 0%, transparent 0, #000 78%),
+      linear-gradient(180deg, transparent 0, #000 16%),
+      linear-gradient(180deg, #000 0, #000 46.43%, transparent 46.43%),
+    linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image:
+      radial-gradient(24% 95% at 0% 0%, transparent 0, #000 78%),
+      radial-gradient(24% 95% at 100% 0%, transparent 0, #000 78%),
+      linear-gradient(180deg, transparent 0, #000 16%),
+      linear-gradient(180deg, #000 0, #000 46.43%, transparent 46.43%),
+    linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    /* The offset from the bottom of the band cannot be shared with desktop.
+       The flag is a fixed 14rem, but --band is 30rem on desktop and 22rem
+       here, so the same -9rem left 65% of the flag showing on a phone against
+       33% on desktop -- twice as much, which is why mobile kept reading as
+       too exposed. -4.5rem puts the visible strip back to ~33%, matching
+       desktop. Re-derive this if --band or the flag height changes. */
+    top: calc(var(--band) - 6.5rem);
+  }
+}
+
+/* Shaded top corners. Painted after ::before so it darkens the flag too, which
+   is what keeps the flag from touching the top edge of the band. Sits under the
+   content, which is lifted to z-index 1 below. */
+.enroll-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--band);
+  pointer-events: none;
+  background:
+    radial-gradient(62% 72% at 0% 0%, rgba(0, 0, 0, 0.42) 0, transparent 72%),
+    radial-gradient(62% 72% at 100% 0%, rgba(0, 0, 0, 0.42) 0, transparent 72%);
+}
+
+/* Keep the hero and the card above the flag. The :not() matters: this rule
+   sets position:relative on every child, which would override the backdrop's
+   position:fixed and drop it back into the scroll flow. */
+.enroll-page > *:not(.enroll-bg) {
   position: relative;
   z-index: 1;
 }
