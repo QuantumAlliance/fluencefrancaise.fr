@@ -33,4 +33,4 @@
         ?>
     <?php endif; ?>
 <?php endif; ?>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/partials/custom-scripts-head.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/partials/custom-scripts-head.blade.php ENDPATH**/ ?>

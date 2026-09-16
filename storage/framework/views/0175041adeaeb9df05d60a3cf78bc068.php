@@ -23,4 +23,4 @@
 <?php if(isset($readTime)): ?><meta name="twitter:label1" content="Time to read" />
     <meta name="twitter:data1" content="<?php echo e($readTime); ?>" />
     <?php endif; ?>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/partials/social-meta.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/partials/social-meta.blade.php ENDPATH**/ ?>

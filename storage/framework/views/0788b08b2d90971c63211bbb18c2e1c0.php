@@ -117,4 +117,4 @@
         }
     ?>
 <?php endif; ?>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/partials/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/partials/footer.blade.php ENDPATH**/ ?>

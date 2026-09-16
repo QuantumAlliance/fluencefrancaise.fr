@@ -55,4 +55,4 @@
         </div>
     </body>
 </html>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/app.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/app.blade.php ENDPATH**/ ?>

@@ -171,4 +171,4 @@
         els.forEach(function (e) { io.observe(e); });
     });
 </script>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/partials/theme.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/partials/theme.blade.php ENDPATH**/ ?>

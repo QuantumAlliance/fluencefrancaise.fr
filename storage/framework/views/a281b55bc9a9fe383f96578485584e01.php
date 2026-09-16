@@ -416,4 +416,4 @@
     </script>
 </body>
 </html>
-<?php /**PATH /var/www/fluencefrancaise.fr/resources/views/homepage.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\new\fluencefrancaise.fr\resources\views/homepage.blade.php ENDPATH**/ ?>
