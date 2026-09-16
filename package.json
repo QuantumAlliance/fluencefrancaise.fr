@@ -1,0 +1,33 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "dev:all": "concurrently \"npm run dev\" \"php artisan serve --port=8001\"",
+        "dev:full": "powershell -ExecutionPolicy Bypass -File scripts/dev-all.ps1"
+    },
+    "dependencies": {
+        "@tinymce/tinymce-vue": "^6.3.0",
+        "apexcharts": "^5.3.6",
+        "axios": "^1.6.4",
+        "flatpickr": "^4.6.13",
+        "lucide-vue-next": "^0.555.0",
+        "pinia": "^2.1.6",
+        "tinymce": "^8.3.0",
+        "vue": "^3.3.4",
+        "vue-flatpickr-component": "^12.0.0",
+        "vue-router": "^4.2.4",
+        "vue3-apexcharts": "^1.10.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.7",
+        "autoprefixer": "^10.4.14",
+        "concurrently": "^8.2.2",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.28",
+        "tailwindcss": "^3.3.3",
+        "vite": "^8.1.0",
+        "vite-plugin-static-copy": "^3.1.4"
+    }
+}

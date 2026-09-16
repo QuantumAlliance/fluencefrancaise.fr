@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /student/
+Disallow: /tutor/
+Disallow: /payment/
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password

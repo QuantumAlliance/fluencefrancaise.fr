@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @php
+        $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
+    @endphp
+
+    <!-- SEO Meta Tags -->
+    <title>Our Courses — {{ ($settings['site_name'] ?? 'Fluence Française') }}</title>
+    <meta name="description" content="Structured live French courses from A1 to B2, guiding you level by level into focused DELF, DALF, TCF and TEF exam preparation.">
+    <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
+
+    <!-- Social Media Meta Tags -->
+    @include('partials.social-meta', [
+        'ogType' => 'article',
+        'ogUrl' => url('/our-courses'),
+        'ogTitle' => 'Our Courses — ' . ($settings['site_name'] ?? 'Fluence Française'),
+        'ogDescription' => 'Structured live French courses from A1 to B2 with focused DELF, DALF, TCF and TEF preparation.',
+        'ogSiteName' => $settings['site_name'] ?? 'Fluence Française',
+    ])
+
+    @include('partials.favicon')
+    @include('partials.theme')
+    @include('partials.custom-scripts-head')
+</head>
+<body class="antialiased bg-white">
+    @include('partials.custom-scripts-body')
+    <div class="landing-page">
+        @include('partials.header')
+
+        <!-- ===== HERO ===== -->
+        <section class="relative overflow-hidden bg-white pt-32 md:pt-40 pb-14 md:pb-20">
+            <div class="hero-aurora"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center max-w-3xl">
+                <span class="eyebrow justify-center reveal"><span class="tricolor"><i></i><i></i><i></i></span> Préparation TCF IRN, TEF IRN, DELF & DALF.</span>
+                <h1 class="reveal mt-5 text-[2.6rem] leading-[1.05] md:text-6xl font-semibold text-ink tracking-tight">Structured live classes for <span class="swish text-primary-600">real progress</span></h1>
+                <p class="reveal mt-6 text-lg text-slate-600 leading-relaxed">At Fluence Française, every level has a purpose. We guide you from basic understanding to confident communication, then into exam-specific preparation for TCF IRN, TEF IRN, DELF & DALF — moving level by level, with clarity.</p>
+                <div class="reveal mt-8"><a href="/register" class="btn btn-primary btn-lg">Enroll Now <i class="fas fa-arrow-right text-xs"></i></a></div>
+            </div>
+        </section>
+
+        <!-- ===== LEARNING PATH ===== -->
+        <section class="py-16 md:py-24 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-2xl reveal">
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> Our learning path</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">Four steps, one clear direction</h2>
+                </div>
+                @php $steps = [
+                    ['n'=>'01','t'=>'Build the Base','d'=>'At the beginner levels we focus on the foundations so you can understand and use French in real situations.','items'=>['Pronunciation','Basic grammar','Essential vocabulary','Simple conversations','Daily-life French','Reading & listening basics']],
+                    ['n'=>'02','t'=>'Strengthen All 4 Skills','d'=>'As you progress, every core skill is trained with structure — not guesswork. You won\'t just study French, you\'ll learn how to use it.','items'=>['Speaking','Listening','Reading','Writing']],
+                    ['n'=>'03','t'=>'Level Assessment','d'=>'At the end of each level you complete an assessment before moving forward. We move on when the foundation is strong — not because time has passed.','items'=>['Grammar & vocabulary','Speaking ability','Listening & reading','Writing structure','Readiness for next level']],
+                    ['n'=>'04','t'=>'Exam-Specific Preparation','d'=>'Once you reach B1 or B2, we begin stronger exam preparation: understand the exam, manage the timing, answer with confidence.','items'=>['DELF / DALF practice','TCF / TEF-style questions','Timed exercises','Speaking simulations','Writing correction','Mock tests & strategy']],
+                ]; @endphp
+                <div class="mt-12 grid md:grid-cols-2 gap-6">
+                    @foreach($steps as $i => $s)
+                    <div class="reveal card-glow bg-white rounded-4xl border border-slate-100 p-8 shadow-card" style="transition-delay:{{ $i*70 }}ms">
+                        <div class="flex items-center gap-4">
+                            <span class="text-4xl font-semibold text-primary-600/30" style="font-family:'Urbanist',sans-serif">{{ $s['n'] }}</span>
+                            <h3 class="text-2xl font-bold text-ink">{{ $s['t'] }}</h3>
+                        </div>
+                        <p class="mt-3 text-slate-600 leading-relaxed">{{ $s['d'] }}</p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            @foreach($s['items'] as $it)
+                            <span class="text-sm font-medium text-primary-700 bg-primary-50 px-3 py-1.5 rounded-full">{{ $it }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LEVELS (accordion) ===== -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <div class="text-center mb-12 reveal">
+                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> The levels</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">From your first words to exam-ready</h2>
+                </div>
+                @php $levels = [
+                    ['code'=>'A1','title'=>'Beginner Foundation','url'=>'/beginner','intro'=>'A1 is where students begin building the structure of French.','items'=>['Introduce yourself','Ask & answer simple questions','Use basic verbs','Understand simple conversations','Talk about daily life','Read short texts','Write simple sentences'],'note'=>'A1 is not about speaking perfectly — it is about building the base properly.'],
+                    ['code'=>'A2','title'=>'Practical Everyday French','url'=>'/elementary','intro'=>'A2 moves you from basic French to more useful daily communication.','items'=>['Speak about routine, work, family & travel','Understand simple spoken French','Read short texts and notices','Write short messages & paragraphs','Use past and future structures','Build stronger vocabulary'],'note'=>'An important level for integration and residency-related goals in France.'],
+                    ['code'=>'B1','title'=>'Intermediate French','url'=>'/intermediate','intro'=>'B1 is where French becomes more serious.','items'=>['Explain opinions','Describe experiences','Understand clearer conversations','Write structured paragraphs','Handle common situations','Speak with more confidence','Understand longer reading passages'],'note'=>'Commonly connected to long-term residency goals and a major step toward exam preparation.'],
+                    ['code'=>'B2','title'=>'Upper-Intermediate French','url'=>'/upper-intermediate','intro'=>'B2 is the level where students need stronger control.','items'=>['Clear arguments','Detailed opinions','Formal & informal communication','Longer listening tasks','Complex reading passages','Structured writing','More natural speaking','Exam-level performance'],'note'=>'Often expected for French citizenship, advanced studies and stronger professional communication.'],
+                ]; @endphp
+                <div class="space-y-4 reveal">
+                    @foreach($levels as $lv)
+                    <div class="rounded-3xl border border-slate-100 overflow-hidden bg-mist">
+                        <button class="lvl-toggle w-full px-6 py-5 flex items-center gap-4 text-left">
+                            <span class="w-12 h-12 rounded-2xl bg-primary-600 text-white grid place-content-center font-bold text-lg shrink-0" style="font-family:'Urbanist',sans-serif">{{ $lv['code'] }}</span>
+                            <span class="flex-1">
+                                <span class="block font-bold text-ink text-lg">{{ $lv['title'] }}</span>
+                                <span class="block text-sm text-slate-500">{{ $lv['intro'] }}</span>
+                            </span>
+                            <i class="fas fa-plus text-primary-600 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="lvl-content hidden px-6 pb-6">
+                            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2.5 pt-1">
+                                @foreach($lv['items'] as $it)
+                                <p class="flex items-start gap-2.5 text-slate-600"><i class="fas fa-check text-primary-600 text-xs mt-1.5"></i><span>{{ $it }}</span></p>
+                                @endforeach
+                            </div>
+                            <p class="mt-5 text-sm text-slate-600 border-l-2 border-[#EF4135] pl-4 italic">{{ $lv['note'] }}</p>
+                            <a href="{{ $lv['url'] }}" class="inline-flex items-center gap-2 mt-5 text-primary-600 font-bold text-sm hover:gap-3 transition-all">Explore {{ $lv['code'] }} in detail <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REFERRAL ===== -->
+        <section class="py-16 md:py-24 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal relative overflow-hidden rounded-5xl bg-[#002654] text-white p-8 md:p-14">
+                    <div class="tricolor-bar absolute top-0 left-0 right-0"></div>
+                    <div class="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-[#EF4135]/20 blur-3xl"></div>
+                    <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <span class="eyebrow text-[#8eb8e1]"><span class="tricolor"><i></i><i></i><i></i></span> Referral offer</span>
+                            <h2 class="mt-4 text-3xl md:text-5xl font-semibold leading-tight">€50 off every month for you <span class="text-[#EF4135]">and</span> your friends</h2>
+                            <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-lg">Learning French is easier when you're not doing it alone. Refer a friend and you both get €50 off every month while enrolled.</p>
+                            <a href="/contact-us" class="btn btn-onnavy btn-lg mt-8">Contact us to refer</a>
+                        </div>
+                        <div class="md:justify-self-end w-full max-w-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-4xl p-7">
+                            <p class="text-7xl font-semibold text-white" style="font-family:'Urbanist',sans-serif">€50<span class="text-2xl text-slate-300 align-top">/mo</span></p>
+                            <p class="mt-3 text-slate-300">Off for both of you, every month you're enrolled.</p>
+                            <p class="mt-6 text-xs text-slate-400 border-t border-white/10 pt-4">Applies once per student account and cannot be stacked with other offers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL CTA ===== -->
+        <section class="pb-20 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-semibold text-ink">Not sure where to start?</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-xl mx-auto">We'll help you choose the right starting level based on your current ability and exam goal.</p>
+                <div class="mt-7 flex flex-wrap justify-center gap-4">
+                    <a href="/register" class="btn btn-primary btn-lg">Enroll Now</a>
+                    <a href="/contact-us" class="btn btn-outline btn-lg">Talk to us</a>
+                </div>
+            </div>
+        </section>
+
+        @include('partials.footer')
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-toggle, .lvl-toggle').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var content = this.parentElement.querySelector('.lvl-content') || this.nextElementSibling;
+                var icon = this.querySelector('i.fa-plus, i.fa-chevron-down');
+                var isOpen = !content.classList.contains('hidden');
+                content.classList.toggle('hidden');
+                if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(135deg)';
+            });
+        });
+    </script>
+</body>
+</html>

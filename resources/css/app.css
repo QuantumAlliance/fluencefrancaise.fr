@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: rgb(0, 85, 164);
+  --primary-color-light: rgb(38, 110, 190);
+  --primary-color-dark: rgb(0, 61, 122);
+  /* Brand colors - main theme color (French blue) */
+  --brand-600: #0055A4;
+  --brand-700: #003d7a;
+  --brand-800: #002654;
+  --accent-red: #EF4135;
+}
+
+* {
+  @apply transition-colors duration-200;
+}
+
+html {
+  @apply scroll-smooth;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* Urbanist for headings, buttons and links */
+button,
+[role="button"],
+a[role="button"],
+.btn,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+nav a,
+nav > * > a {
+  font-family: 'Urbanist', system-ui, sans-serif;
+}
+
+/* Ensure global header is hidden on dashboard pages */
+body.dashboard-page .global-header {
+  display: none !important;
+}
+
+/* Remove top padding/margin from dashboard pages since there's no global header */
+body.dashboard-page {
+  padding-top: 0 !important;
+}
+
+/* Footer logo */
+.footer-logo {
+  border-radius: 50px;
+  background-color: #fff;
+  padding: 8px;
+}
+
+/* Footer logo wrapper */
+.footer-logo-wrapper img {
+  border-radius: 50px;
+  height: 34px;
+  padding: 0px;
+}
+
+.footer-logo-wrapper {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 50px;
+}

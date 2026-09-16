@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO Meta Tags -->
+    <title>{{ ($settings['site_name'] ?? 'Fluence Française') }} — Live French Classes for DELF, DALF, TCF & TEF</title>
+    <meta name="description" content="Live online French classes from A1 to B2, with focused preparation for DELF, DALF, TCF and TEF. Structured lessons, small groups, exam-style practice and a full student portal.">
+    <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
+    <!-- Social Media Meta Tags -->
+    @include('partials.social-meta', [
+        'ogType' => 'website',
+        'ogUrl' => url('/'),
+        'ogTitle' => ($settings['site_name'] ?? 'Fluence Française') . ' — Live French Classes for DELF, DALF, TCF & TEF',
+        'ogDescription' => 'Live online French classes from A1 to B2, with focused preparation for DELF, DALF, TCF and TEF.',
+        'ogSiteName' => $settings['site_name'] ?? 'Fluence Française',
+        'ogImage' => isset($settings['site_logo']) ? asset('storage/' . $settings['site_logo']) : null,
+    ])
+    <!-- Schema.org Structured Data for Rich Snippets -->
+    @php
+        $schemaService = new \App\Services\SchemaService();
+
+        $footerSettings = json_decode($settings['footer_settings'] ?? '{}', true);
+        $socialLinks = array_values(array_filter($footerSettings['social'] ?? []));
+
+        $settingsTimestamps = \App\Models\Settings::selectRaw('MIN(created_at) as first_created, MAX(updated_at) as last_updated')->first();
+        $datePublished = $settingsTimestamps && $settingsTimestamps->first_created
+            ? \Carbon\Carbon::parse($settingsTimestamps->first_created)->toIso8601String()
+            : null;
+        $dateModified = $settingsTimestamps && $settingsTimestamps->last_updated
+            ? \Carbon\Carbon::parse($settingsTimestamps->last_updated)->toIso8601String()
+            : null;
+
+        $graphData = $schemaService->generateHomepageGraph([
+            'name' => $settings['site_name'] ?? 'Fluence Française',
+            'description' => 'Live online French classes from A1 to B2, with focused preparation for DELF, DALF, TCF and TEF.',
+            'url' => url('/'),
+            'email' => $settings['contact_email'] ?? null,
+            'phone' => $settings['contact_phone'] ?? null,
+            'socialLinks' => $socialLinks,
+            'logo' => isset($settings['site_logo']) ? asset('storage/' . $settings['site_logo']) : null,
+            'datePublished' => $datePublished,
+            'dateModified' => $dateModified,
+        ]);
+
+        $structuredData = '<script type="application/ld+json">' . json_encode($graphData, JSON_UNESCAPED_SLASHES) . '</script>';
+    @endphp
+    {!! $structuredData !!}
+
+    @include('partials.favicon')
+
+    <!-- Shared tricolor theme (fonts, tailwind config, components) -->
+    @include('partials.theme')
+
+    @if(isset($settings['custom_scripts']))
+        @php
+            $scripts = json_decode($settings['custom_scripts'], true);
+            $hasHeadScripts = false;
+            if (is_array($scripts)) {
+                foreach ($scripts as $script) {
+                    $scriptCode = is_array($script) ? ($script['code'] ?? '') : $script;
+                    $placement = is_array($script) ? ($script['placement'] ?? 'head') : 'head';
+                    if (!empty(trim($scriptCode)) && $placement === 'head') { $hasHeadScripts = true; break; }
+                }
+            }
+        @endphp
+        @if($hasHeadScripts)
+            @php
+                foreach ($scripts as $script) {
+                    $scriptCode = is_array($script) ? ($script['code'] ?? '') : $script;
+                    $placement = is_array($script) ? ($script['placement'] ?? 'head') : 'head';
+                    if (!empty(trim($scriptCode)) && $placement === 'head') {
+                        $trimmedCode = trim($scriptCode);
+                        echo (stripos($trimmedCode, '<script') === 0) ? $scriptCode : '<script>' . "\n" . $scriptCode . "\n" . '</script>';
+                    }
+                }
+            @endphp
+        @endif
+    @endif
+
+    @php
+        // Pricing tiers are built dynamically from the DB (admin → Class Types).
+        $symbols  = ['EUR'=>'€','USD'=>'$','CAD'=>'C$','GBP'=>'£','INR'=>'₹','AUD'=>'A$'];
+        $cadences = ['monthly'=>'/month','weekly'=>'/week','quarterly'=>'/quarter','yearly'=>'/year','annually'=>'/year'];
+        $tiers = collect($classTypes ?? [])->map(function ($c) use ($symbols, $cadences) {
+            $name  = $c->homepage_title ?: $c->class_name;
+            $lname = strtolower($c->class_name . ' ' . $name);
+            $icon  = str_contains($lname, 'group') ? 'fa-users'
+                   : ((str_contains($lname, '2-hr') || str_contains($lname, '2 hr') || str_contains($lname, 'flexible')) ? 'fa-clock' : 'fa-user');
+            return [
+                'name'                => $name,
+                'symbol'              => $symbols[strtoupper($c->currency)] ?? (strtoupper($c->currency) . ' '),
+                'price'               => rtrim(rtrim(number_format((float) $c->price, 2), '0'), '.'),
+                'cadence'             => $cadences[strtolower($c->duration)] ?? '/' . $c->duration,
+                'blurb'               => $c->homepage_description,
+                'features'            => is_array($c->features) ? $c->features : [],
+                'popular'             => (bool) $c->is_popular,
+                'icon'                => $icon,
+                'batch_full'          => (bool) $c->is_batch_full,
+                'batch_full_message'  => $c->batch_full_message,
+            ];
+        })->all();
+        $skills = [
+            ['icon'=>'fa-comments','title'=>'Speaking','fr'=>'Expression orale','desc'=>'Confidence, pronunciation, sentence structure and real fluency.'],
+            ['icon'=>'fa-headphones','title'=>'Listening','fr'=>'Compréhension orale','desc'=>'Real French speed, accents and exam-style audio.'],
+            ['icon'=>'fa-book-open','title'=>'Reading','fr'=>'Compréhension écrite','desc'=>'Comprehension, vocabulary and grammar patterns.'],
+            ['icon'=>'fa-pen-nib','title'=>'Writing','fr'=>'Expression écrite','desc'=>'Clear answers, correct structure and stronger expression.'],
+            ['icon'=>'fa-award','title'=>'Exam Preparation','fr'=>'Préparation aux examens','desc'=>'TCF IRN, TEF IRN, DELF & DALF strategies with mock practice.'],
+        ];
+    @endphp
+</head>
+<body class="antialiased bg-white">
+    @if(isset($settings['custom_scripts']))
+        @php
+            $scripts = json_decode($settings['custom_scripts'], true);
+            $hasBodyScripts = false;
+            if (is_array($scripts)) {
+                foreach ($scripts as $script) {
+                    $scriptCode = is_array($script) ? ($script['code'] ?? '') : $script;
+                    $placement = is_array($script) ? ($script['placement'] ?? 'head') : 'head';
+                    if (!empty(trim($scriptCode)) && $placement === 'body') { $hasBodyScripts = true; break; }
+                }
+            }
+        @endphp
+        @if($hasBodyScripts)
+            @php
+                foreach ($scripts as $script) {
+                    $scriptCode = is_array($script) ? ($script['code'] ?? '') : $script;
+                    $placement = is_array($script) ? ($script['placement'] ?? 'head') : 'head';
+                    if (!empty(trim($scriptCode)) && $placement === 'body') {
+                        $trimmedCode = trim($scriptCode);
+                        echo (stripos($trimmedCode, '<script') === 0) ? $scriptCode : '<script>' . "\n" . $scriptCode . "\n" . '</script>';
+                    }
+                }
+            @endphp
+        @endif
+    @endif
+
+    <div class="landing-page">
+        @include('partials.header')
+
+        <!-- ============ HERO ============ -->
+        <section id="home" class="relative overflow-hidden bg-white pt-32 md:pt-40 pb-16 md:pb-24">
+            <!-- strong brand gradient wash (galaxysites-style) -->
+            <div class="hero-aurora-strong"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="reveal">
+                        <span class="eyebrow justify-center" style="flex-direction:column;gap:.5rem;">
+                            <span>Live Online Classes</span>
+                            <span class="tricolor"><i></i><i></i><i></i></span>
+                            <span>TCF IRN, TEF IRN, DELF & DALF</span>
+                        </span>
+                        <h1 class="mt-5 text-[2.7rem] leading-[1.04] md:text-6xl lg:text-7xl font-semibold text-ink tracking-tight">
+                            French classes for the life you're building in <span class="swish text-primary-600">France</span>.
+                        </h1>
+                        <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                            We take beginner and advanced learners to a confident <strong class="text-ink">B1 / B2</strong> level through live online classes, structured lessons, exam-style practice and guided support.
+                        </p>
+                        <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+                            <a href="/register" class="btn btn-primary btn-lg">Enroll Now <i class="fas fa-arrow-right text-xs"></i></a>
+                            <a href="#pricing" class="btn btn-ghost btn-lg">See pricing</a>
+                        </div>
+                        <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-600">
+                            <span class="inline-flex items-center gap-2"><i class="fas fa-user-group text-primary-600"></i> Small groups of 3–5</span>
+                            <span class="inline-flex items-center gap-2"><i class="fas fa-video text-primary-600"></i> Live on Google Meet</span>
+                            <span class="inline-flex items-center gap-2"><i class="fas fa-route text-primary-600"></i> A1 → B2 + exam prep</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WHAT WE DO ============ -->
+        <section class="py-16 md:py-24 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl reveal">
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> What we do</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">We help you move from basic French to <span class="swish text-primary-600">exam-ready</span> French.</h2>
+                    <p class="mt-5 text-lg text-slate-600 leading-relaxed">Whether you're starting from A1 or already close to B1/B2, every class is built to help you improve step by step.</p>
+                </div>
+
+                <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    @foreach($skills as $i => $s)
+                    <div class="reveal card-glow bg-white rounded-3xl border border-slate-100 p-7 {{ $i === 4 ? 'lg:col-span-1 sm:col-span-2' : '' }}" style="transition-delay:{{ $i * 60 }}ms">
+                        <span class="w-12 h-12 rounded-2xl grid place-content-center {{ $i === 4 ? 'bg-[#EF4135] text-white' : 'bg-primary-50 text-primary-600' }} text-lg"><i class="fas {{ $s['icon'] }}"></i></span>
+                        <h3 class="mt-5 text-xl font-bold text-ink">{{ $s['title'] }}</h3>
+                        @if(!empty($s['fr']))<p class="mt-1 text-sm font-semibold italic text-primary-600">{{ $s['fr'] }}</p>@endif
+                        <p class="mt-2 text-slate-600 leading-relaxed">{{ $s['desc'] }}</p>
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-center reveal">
+                    <p class="text-ink font-semibold"><i class="fas fa-check text-primary-600 mr-2"></i>Every level has structure</p>
+                    <p class="text-ink font-semibold"><i class="fas fa-check text-primary-600 mr-2"></i>Every student gets support</p>
+                    <p class="text-ink font-semibold"><i class="fas fa-check text-primary-600 mr-2"></i>Every step has a purpose</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PRICING ============ -->
+        <section id="pricing" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> Programs &amp; pricing</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">Choose the class format that fits your schedule</h2>
+                </div>
+
+                <!-- Mobile swipe hint -->
+                <div class="lg:hidden flex justify-center mt-6 -mb-4">
+                    <dotlottie-player
+                        src="/images/Swiper-Gesture-Left.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 110px; height: 110px;"
+                        loop
+                        autoplay>
+                    </dotlottie-player>
+                </div>
+
+                <div class="mt-12 flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 -mx-4 pb-4 sm:px-6 sm:-mx-6 lg:grid lg:grid-cols-3 lg:overflow-visible lg:mx-0 lg:px-0 lg:pb-0 items-stretch no-scrollbar">
+                    @forelse($tiers as $i => $t)
+                    <div class="reveal relative flex flex-col rounded-4xl p-8 w-[85%] sm:w-[60%] lg:w-auto lg:min-w-0 snap-center shrink-0 {{ $t['popular'] ? 'bg-[#002654] text-white shadow-lift lg:-mt-4 lg:mb-4' : 'bg-white text-ink border border-slate-100 shadow-card' }}" style="transition-delay:{{ $i*70 }}ms">
+                        @if($t['popular'])
+                            <span class="absolute -top-3 left-8 bg-[#EF4135] text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow">Most popular</span>
+                        @endif
+                        <div class="flex items-center gap-3">
+                            <span class="w-11 h-11 rounded-2xl grid place-content-center {{ $t['popular'] ? 'bg-white/15 text-white' : 'bg-primary-50 text-primary-600' }}"><i class="fas {{ $t['icon'] }}"></i></span>
+                            <h3 class="text-xl font-bold {{ $t['popular'] ? 'text-white' : 'text-ink' }}">{{ $t['name'] }}</h3>
+                        </div>
+                        <div class="mt-6 flex items-end gap-1">
+                            <span class="text-5xl font-semibold {{ $t['popular'] ? 'text-white' : 'text-ink' }}" style="font-family:'Urbanist',sans-serif">{{ $t['symbol'] }}{{ $t['price'] }}</span>
+                            <span class="{{ $t['popular'] ? 'text-slate-300' : 'text-slate-400' }} font-medium mb-2">{{ $t['cadence'] }}</span>
+                        </div>
+                        @if($t['batch_full'])
+                            <p class="mt-2 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#EF4135]"><i class="fas fa-circle-exclamation"></i> Batch full</p>
+                        @endif
+                        <p class="mt-4 text-sm leading-relaxed {{ $t['popular'] ? 'text-slate-300' : 'text-slate-600' }}">{{ $t['blurb'] }}</p>
+
+                        <ul class="mt-6 space-y-3 text-sm flex-1">
+                            @foreach($t['features'] as $f)
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check mt-0.5 {{ $t['popular'] ? 'text-[#EF4135]' : 'text-primary-600' }}"></i>
+                                <span class="{{ $t['popular'] ? 'text-slate-200' : 'text-slate-600' }}">{{ $f }}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+
+                        @if($t['batch_full'])
+                            <span class="btn btn-lg mt-8 w-full cursor-not-allowed opacity-70 {{ $t['popular'] ? 'btn-onnavy' : 'btn-primary' }}">{{ $t['batch_full_message'] ?: 'Batch Full' }}</span>
+                        @else
+                            <a href="/register" class="btn btn-lg mt-8 w-full {{ $t['popular'] ? 'btn-onnavy' : 'btn-primary' }}">Enroll Now</a>
+                        @endif
+                    </div>
+                    @empty
+                    <p class="lg:col-span-3 text-center text-slate-500">Pricing details are being updated. Please check back soon.</p>
+                    @endforelse
+                </div>
+                <p class="mt-6 text-center text-sm text-slate-500">All plans include live teaching, homework feedback and full student-portal access.</p>
+            </div>
+        </section>
+
+        <!-- ============ STUDENT PORTAL ============ -->
+        <section id="portal" class="py-16 md:py-24 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="reveal order-2 lg:order-1">
+                        <div class="grid grid-cols-2 gap-4">
+                            @php $portal = [
+                                ['fa-book','Free ebooks & study materials','Downloadable PDFs for every level'],
+                                ['fa-note-sticky','Class notes','A clear recap after every live session'],
+                                ['fa-headphones','Reading & listening exercises','Native-speed audio and texts'],
+                                ['fa-list-check','Practice tests','Skill-by-skill question banks'],
+                                ['fa-stopwatch','Mock tests','Timed, exam-style simulations'],
+                                ['fa-layer-group','Level resources A1–B2','Structured by CEFR level'],
+                            ]; @endphp
+                            @foreach($portal as $i => $p)
+                            <div class="card-glow group bg-white rounded-2xl border border-slate-100 p-5 hover:border-primary-200" style="transition-delay:{{ $i * 55 }}ms">
+                                <span class="w-11 h-11 rounded-xl grid place-content-center text-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 {{ $i % 2 ? 'bg-accent-soft text-[#EF4135]' : 'bg-primary-50 text-primary-600' }}"><i class="fas {{ $p[0] }}"></i></span>
+                                <p class="mt-3 font-bold text-ink text-sm leading-snug">{{ $p[1] }}</p>
+                                <p class="mt-1 text-xs text-slate-500 leading-snug">{{ $p[2] }}</p>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="reveal order-1 lg:order-2" style="transition-delay:.1s">
+                        <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> Student portal</span>
+                        <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">Everything you need outside the classroom</h2>
+                        <div class="mt-5 rounded-2xl border-l-4 border-primary-600 bg-primary-50/70 p-5 shadow-sm">
+                            <p class="text-lg text-slate-700 leading-relaxed">Learning French properly doesn't stop when the live class ends. Every student gets access to our complete library of learning resources.</p>
+                        </div>
+                        <div class="mt-6 rounded-2xl bg-white border border-primary-100 p-5 flex gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-star"></i></span>
+                            <p class="text-sm text-slate-600"><strong class="text-ink">After 6 months</strong> of study with us, students also receive free access to <strong class="text-ink">PrepMyFuture</strong> for additional official-style exam preparation.</p>
+                        </div>
+                        <a href="/register" class="btn btn-primary btn-lg mt-7">Enroll Now <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ REFERRAL ============ -->
+        <section id="referral" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal relative overflow-hidden rounded-5xl bg-[#002654] text-white p-8 md:p-14">
+                    <div class="tricolor-bar absolute top-0 left-0 right-0"></div>
+                    <div class="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-[#EF4135]/20 blur-3xl"></div>
+                    <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <span class="eyebrow text-[#8eb8e1]"><span class="tricolor"><i></i><i></i><i></i></span> Referral offer</span>
+                            <h2 class="mt-4 text-3xl md:text-5xl font-semibold leading-tight">€50 off every month — for you <span class="text-[#EF4135]">and</span> your friends</h2>
+                            <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-lg">Learning French is easier when you're not doing it alone. Refer a friend and you both get €50 off every month while enrolled.</p>
+                            <a href="/contact-us" class="btn btn-onnavy btn-lg mt-8">Contact us to refer</a>
+                        </div>
+                        <div class="md:justify-self-end w-full max-w-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-4xl p-7">
+                            <p class="text-7xl font-semibold text-white" style="font-family:'Urbanist',sans-serif">€50<span class="text-2xl text-slate-300 align-top">/mo</span></p>
+                            <p class="mt-3 text-slate-300">Off for both of you, every month you're enrolled.</p>
+                            <p class="mt-6 text-xs text-slate-400 border-t border-white/10 pt-4">Applies once per student account and cannot be stacked with other offers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WHO THIS IS FOR ============ -->
+        <section class="py-16 md:py-24 bg-mist">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> Who this is for</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">Fluence Française is for you if…</h2>
+                </div>
+                <div class="mt-12 grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                    @php $who = [
+                        'You live in France or are planning to build a future there.',
+                        'You need French for residency, citizenship, study or work.',
+                        'You want to reach A2, B1 or B2 with proper structure.',
+                        'You are preparing for TCF IRN, TEF IRN, DELF & DALF.',
+                        'You are tired of random tutors, apps and unorganized lessons.',
+                        'You want live classes with real guidance and accountability.',
+                    ]; @endphp
+                    @foreach($who as $i => $w)
+                    <div class="reveal card-glow flex items-start gap-4 bg-white rounded-2xl border border-slate-100 p-5" style="transition-delay:{{ $i*50 }}ms">
+                        <span class="w-8 h-8 rounded-full bg-primary-600 text-white grid place-content-center text-sm font-bold shrink-0">{{ $i+1 }}</span>
+                        <p class="text-ink font-medium leading-snug">{{ $w }}</p>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="mt-10 text-center reveal">
+                    <a href="/register" class="btn btn-primary btn-lg">Enroll Now <i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FAQ ============ -->
+        <section id="faq" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <div class="text-center mb-12 reveal">
+                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> FAQ</span>
+                    <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">Questions, answered</h2>
+                </div>
+                @php $faqs = [
+                    ['Are the classes online?','Yes. All classes are live online through Google Meet.'],
+                    ['What skills do you teach?','We focus on all four core skills — speaking, listening, reading and writing. We also teach grammar, vocabulary, pronunciation, exam strategy and structured answer techniques.'],
+                    ['Do you provide PrepMyFuture access?','Yes. After completing 6 months with Fluence Française, students receive free access to PrepMyFuture.'],
+                    ['How do I know which level I should start from?','We help you choose the right starting level based on your current French ability, learning history and exam goal.'],
+                    ['Do students take assessments?','Yes. At the end of each level, students complete an assessment before moving to the next level — so they move forward because they are ready, not just because time has passed.'],
+                    ['When does exam-specific preparation start?','Once students reach a strong enough level, usually around B1/B2, we begin focused exam preparation with mock tests, timed practice, speaking simulations, writing correction and exam strategy.'],
+                ]; @endphp
+                <div class="space-y-3 reveal">
+                    @foreach($faqs as $q)
+                    <div class="bg-mist rounded-2xl border border-slate-100 overflow-hidden">
+                        <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left gap-4">
+                            <span class="font-bold text-ink">{{ $q[0] }}</span>
+                            <i class="fas fa-plus text-primary-600 text-sm transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed">{{ $q[1] }}</div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FINAL CTA ============ -->
+        <section class="pb-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden">
+                    <div class="absolute inset-x-0 bottom-0 h-1.5" style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
+                    <h2 class="text-3xl md:text-5xl font-semibold leading-tight max-w-2xl mx-auto">Ready to reach your B1 / B2 with structure?</h2>
+                    <p class="mt-4 text-lg text-primary-100 max-w-xl mx-auto">Join live classes built around real guidance, accountability and the French exams that matter.</p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-4">
+                        <a href="/register" class="btn btn-onnavy btn-lg">Enroll Now</a>
+                        <a href="/contact-us" class="btn btn-lg btn-outline" style="box-shadow:inset 0 0 0 2px #fff;color:#fff;background:transparent">Talk to us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @include('partials.footer')
+    </div>
+
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-toggle').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var content = this.nextElementSibling;
+                var icon = this.querySelector('i');
+                var isOpen = !content.classList.contains('hidden');
+                content.classList.toggle('hidden');
+                if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(135deg)';
+            });
+        });
+    </script>
+</body>
+</html>
