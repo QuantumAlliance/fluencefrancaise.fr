@@ -20,7 +20,7 @@
           </p>
         </div>
 
-        <div class="enroll-card bg-white rounded-3xl shadow-2xl">
+        <div class="enroll-card bg-white rounded-t-3xl rounded-b-none shadow-2xl" style="border-radius: 24px 24px 0 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important;">
 
         <form @submit.prevent="handleRegister" class="p-6 md:p-10 space-y-8">
           <!-- Personal Information Section -->
@@ -493,7 +493,7 @@
           </button>
         </form>
 
-          <div class="px-6 md:px-10 py-6 border-t border-gray-100 bg-gray-50 rounded-b-3xl text-center">
+          <div class="px-6 md:px-10 py-6 border-t border-b border-gray-200 bg-gray-50 rounded-b-none text-center" style="border-radius: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important;">
             <p class="text-gray-600 text-sm">
               Already have an account?
               <router-link to="/login" class="text-brand-600 hover:text-brand-700 font-semibold">
@@ -1031,6 +1031,18 @@ onMounted(async () => {
 <style scoped>
 /* Two-tone page: navy behind the header and the top of the card, then a light
    body below, so the card reads as lifted rather than sitting on a flat slab. */
+.enroll-card {
+  border-radius: 24px 24px 0 0 !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.enroll-card > div:last-child {
+  border-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
 .enroll-page {
   /* Height of the navy band, and therefore of the flag. Scales with the
      viewport: on a phone the columns are only ~a third of a narrow screen
@@ -1100,8 +1112,17 @@ onMounted(async () => {
 @media (min-width: 768px) {
   .enroll-page::before {
     top: calc(var(--band) - 18.5rem);
-    width: min(52rem, 68vw);
-    height: 22.5rem;
+    width: min(52rem, 80vw);
+    height: 35.5rem;
+  }
+}
+
+/* Reduced tricolor flag glow size exclusively for lg devices */
+@media (min-width: 1024px) {
+  .enroll-page::before {
+    top: calc(var(--band) - 17rem);
+    width: min(48rem, 100vw);
+    height: 28.5rem;
   }
 }
 
