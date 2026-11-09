@@ -1120,9 +1120,9 @@ onMounted(async () => {
 /* Tricolor flag glow size for lg devices */
 @media (min-width: 1024px) {
   .enroll-page::before {
-      top: calc(var(--band) - 17.5rem);
-      width: min(50rem, 40vw);
-      height: 33rem; 
+    top: calc(var(--band) - 17.5rem);
+    width: min(62rem, 90vw);
+    height: 32rem;
   }
 }
 
