@@ -1,11 +1,11 @@
 @php
     $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
     $siteName = $settings['site_name'] ?? 'Fluence Française';
-    
+
     // Determine language based on current URL prefix
     $isFr = request()->is('fr*');
     $currentPath = request()->path();
-    
+
     // Clean URLs for language toggle
     if ($isFr) {
         $cleanPath = preg_replace('#^fr/?#', '', $currentPath);
@@ -21,47 +21,52 @@
     }
 
     // Determine active menu sections based on current path
-    $isFranceActive = request()->is('*french-citizenship-language-test*') || 
-                     request()->is('*test-francais-naturalisation*') || 
-                     request()->is('*french-residence-permit-language*') || 
-                     request()->is('*titre-de-sejour-niveau-francais*') || 
-                     request()->is('*french-civic-exam*') || 
-                     request()->is('*examen-civique*') || 
-                     (request()->is('*french-citizenship*') && !request()->is('*guide*')) || 
-                     request()->is('*naturalisation-francaise*');
+    $isFranceActive = request()->is('why-french*') ||
+        request()->is('*french-citizenship-language-test*') ||
+        request()->is('*test-francais-naturalisation*') ||
+        request()->is('*french-residence-permit-language*') ||
+        request()->is('*titre-de-sejour-niveau-francais*') ||
+        request()->is('*french-civic-exam*') ||
+        request()->is('*examen-civique*') ||
+        (request()->is('*french-citizenship*') && !request()->is('*guide*')) ||
+        request()->is('*naturalisation-francaise*');
 
-    $isSwissActive = request()->is('*c-permit-switzerland*') || 
-                    request()->is('*permis-c-suisse*') || 
-                    request()->is('*swiss-citizenship*') || 
-                    request()->is('*naturalisation-suisse*') || 
-                    request()->is('*fide-test*') || 
-                    request()->is('*test-fide*');
+    $isSwissActive = request()->is('*c-permit-switzerland*') ||
+        request()->is('*permis-c-suisse*') ||
+        request()->is('*swiss-citizenship*') ||
+        request()->is('*naturalisation-suisse*') ||
+        request()->is('*fide-test*') ||
+        request()->is('*test-fide*');
 
-    $isExamsActive = request()->is('*tcf-irn*') || 
-                    request()->is('*tef-irn*') || 
-                    request()->is('*delf-a2*') || 
-                    request()->is('*delf-b1*') || 
-                    request()->is('*delf-b2*') || 
-                    (request()->is('*delf*') && !request()->is('*guide*')) || 
-                    request()->is('*tcf-vs-tef-vs-delf*') || 
-                    request()->is('*tcf-tef-ou-delf*') || 
-                    request()->is('tef-tcf');
+    $isExamsActive = request()->is('tef-tcf*') ||
+        request()->is('*tcf-irn*') ||
+        request()->is('*tef-irn*') ||
+        request()->is('*delf-a2*') ||
+        request()->is('*delf-b1*') ||
+        request()->is('*delf-b2*') ||
+        (request()->is('*delf*') && !request()->is('*guide*')) ||
+        request()->is('*tcf-vs-tef-vs-delf*') ||
+        request()->is('*tcf-tef-ou-delf*');
 
-    $isCoursesActive = request()->is('*our-courses*') || 
-                      request()->is('*online-french-classes*') || 
-                      request()->is('*cours-de-francais-en-ligne*');
+    $isCoursesActive = request()->is('*our-courses*') ||
+        request()->is('*online-french-classes*') ||
+        request()->is('*cours-de-francais-en-ligne*') ||
+        request()->is('beginner*') ||
+        request()->is('elementary*') ||
+        request()->is('intermediate*') ||
+        request()->is('upper-intermediate*');
 
-    $isGuidesActive = request()->is('*citizenship-guide*') || 
-                     (request()->is('*french-citizenship*') && !request()->is('*test*')) || 
-                     request()->is('*tcf-vs-tef-vs-delf*') || 
-                     request()->is('*tcf-tef-ou-delf*');
+    $isGuidesActive = request()->is('*citizenship-guide*') ||
+        (request()->is('*french-citizenship*') && !request()->is('*test*')) ||
+        request()->is('*tcf-vs-tef-vs-delf*') ||
+        request()->is('*tcf-tef-ou-delf*');
 
-    $isAboutActive = request()->is('about-us') || 
-                    request()->is('*about*') || 
-                    request()->is('*a-propos*');
+    $isAboutActive = request()->is('about-us') ||
+        request()->is('*about*') ||
+        request()->is('*a-propos*');
 
-    $isContactActive = request()->is('contact-us') || 
-                      request()->is('*contact*');
+    $isContactActive = request()->is('contact-us') ||
+        request()->is('*contact*');
 
     $isPortalActive = request()->is('demo*');
 @endphp
@@ -107,26 +112,6 @@
         position: relative;
     }
 
-    .nav-pill-link:hover,
-    .nav-item-btn:hover,
-    .nav-pill-link.active-nav,
-    .nav-item-btn.active-nav {
-        color: #0055A4 !important;
-    }
-
-    .nav-pill-link.active-nav::after,
-    .nav-item-btn.active-nav::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 16px;
-        height: 2px;
-        background-color: #EF4135;
-        border-radius: 2px;
-    }
-
     .nav-item-btn {
         font-family: 'DM Sans', system-ui, sans-serif;
         font-size: 13.5px !important;
@@ -141,6 +126,66 @@
         white-space: nowrap;
         padding: 0;
         position: relative;
+    }
+
+    /* Inner Container for Submenu Section Buttons (Text + Chevron Arrow) */
+    .nav-item-inner {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.2s ease;
+    }
+
+    /* Text Label Container for Direct Links */
+    .nav-label {
+        position: relative;
+        display: inline-block;
+        transition: color 0.2s ease;
+    }
+
+    /* Active, Hover & Dropdown-Open States: Blue text */
+    .nav-pill-link.active-nav,
+    .nav-item-btn.active-nav,
+    .nav-pill-link.active-nav .nav-label,
+    .nav-item-btn.active-nav .nav-item-inner,
+    .nav-item-btn.active-nav .nav-label,
+    .nav-pill-link:hover,
+    .nav-item-btn:hover,
+    .nav-dropdown-group:hover .nav-item-btn,
+    .nav-dropdown-group.is-clicked-open .nav-item-btn,
+    .nav-pill-link:hover .nav-label,
+    .nav-item-btn:hover .nav-item-inner,
+    .nav-item-btn:hover .nav-label,
+    .nav-dropdown-group:hover .nav-item-inner,
+    .nav-dropdown-group.is-clicked-open .nav-item-inner {
+        color: #0055A4 !important;
+    }
+
+    .nav-item-btn.active-nav .chevron-icon,
+    .nav-item-btn:hover .chevron-icon,
+    .nav-dropdown-group:hover .chevron-icon,
+    .nav-dropdown-group.is-clicked-open .chevron-icon {
+        color: #0055A4 !important;
+        transform: rotate(180deg);
+    }
+
+    /* INCREASED ACTIVE BORDER WIDTH: Spans full width of submenu item (text + chevron) + direct links */
+    .nav-pill-link.active-nav .nav-label::after,
+    .nav-item-btn.active-nav .nav-item-inner::after,
+    .nav-item-btn.active-nav .nav-label::after,
+    .nav-pill-link:hover .nav-label::after,
+    .nav-item-btn:hover .nav-item-inner::after,
+    .nav-item-btn:hover .nav-label::after,
+    .nav-dropdown-group:hover .nav-item-inner::after,
+    .nav-dropdown-group.is-clicked-open .nav-item-inner::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 2px;
+        background-color: #EF4135;
+        border-radius: 2px;
     }
 
     .dropdown-card {
@@ -234,6 +279,7 @@
         .navbar-desktop-nav {
             display: flex !important;
         }
+
         .navbar-mobile-toggle {
             display: none !important;
         }
@@ -243,6 +289,7 @@
         .navbar-desktop-nav {
             display: none !important;
         }
+
         .navbar-mobile-toggle {
             display: flex !important;
         }
@@ -252,12 +299,15 @@
         .header-container {
             top: 16px !important;
         }
+
         .header-pill {
             height: 56px !important;
         }
+
         .brand-wordmark {
             font-size: 0.9375rem;
         }
+
         .brand-mark-img {
             height: 30px;
         }
@@ -269,7 +319,8 @@
         <!-- Left: Logo & Wordmark -->
         <div class="flex items-center shrink-0">
             <a href="{{ $isFr ? '/fr' : '/' }}" class="flex items-center gap-2 sm:gap-2.5">
-                <img src="{{ asset('images/brand-mark.png') }}" alt="Fluence Française" class="brand-mark-img w-auto shrink-0">
+                <img src="{{ asset('images/brand-mark.png') }}" alt="Fluence Française"
+                    class="brand-mark-img w-auto shrink-0">
                 <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
             </a>
             <!-- Divider after Logo (Desktop only) -->
@@ -280,57 +331,73 @@
         <nav class="navbar-desktop-nav items-center gap-5 xl:gap-6 mx-auto h-full hidden">
             <!-- 1. France Dropdown -->
             <div class="nav-dropdown-group relative group h-full flex items-center">
-                <button type="button" class="nav-item-btn gap-1 py-4 {{ $isFranceActive ? 'active-nav' : '' }}">
-                    <span>France</span>
-                    <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                <button type="button" class="nav-item-btn py-4 {{ $isFranceActive ? 'active-nav' : '' }}">
+                    <span class="nav-item-inner gap-1">
+                        <span>France</span>
+                        <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </button>
-                <!-- Dropdown Card (Image 2 style) -->
-                <div class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
+                <!-- Dropdown Card -->
+                <div
+                    class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
                     <div class="dropdown-card">
                         <!-- Card Header -->
-                        <div class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
+                        <div
+                            class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
                             <span>France</span>
-                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <!-- Card Items -->
                         <div class="flex flex-col space-y-0.5">
-                            <a href="{{ $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Naturalisation B2' : 'Citizenship B2' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
-                                </svg>
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
+                                    </span>
                             </a>
-                            <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card' }}" 
-                               class="dropdown-item-link group/item {{ request()->is('*resident-card*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*resident-card*') ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Carte de résident B1' : 'Resident card B1' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit' }}" 
-                               class="dropdown-item-link group/item {{ request()->is('*multi-year-permit*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*multi-year-permit*') ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Carte pluriannuelle A2' : 'Multi-year permit A2' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/examen-civique' : '/en/french-civic-exam' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*french-civic-exam*') || request()->is('*examen-civique*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/examen-civique' : '/en/french-civic-exam' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*french-civic-exam*') || request()->is('*examen-civique*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Examen civique' : 'Civic exam' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}" 
-                               class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
+                                class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
                         </div>
@@ -340,43 +407,55 @@
 
             <!-- 2. Switzerland Dropdown -->
             <div class="nav-dropdown-group relative group h-full flex items-center">
-                <button type="button" class="nav-item-btn gap-1 py-4 {{ $isSwissActive ? 'active-nav' : '' }}">
-                    <span>{{ $isFr ? 'Suisse' : 'Switzerland' }}</span>
-                    <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                <button type="button" class="nav-item-btn py-4 {{ $isSwissActive ? 'active-nav' : '' }}">
+                    <span class="nav-item-inner gap-1">
+                        <span>{{ $isFr ? 'Suisse' : 'Switzerland' }}</span>
+                        <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </button>
                 <!-- Dropdown Card -->
-                <div class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
+                <div
+                    class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
                     <div class="dropdown-card">
                         <!-- Card Header -->
-                        <div class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
+                        <div
+                            class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
                             <span>{{ $isFr ? 'Suisse' : 'Switzerland' }}</span>
-                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <!-- Card Items -->
                         <div class="flex flex-col space-y-0.5">
-                            <a href="{{ $isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Permis C (A2 / B1)' : 'C permit (A2 / B1)' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Naturalisation suisse (B1)' : 'Swiss citizenship (B1)' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Test fide' : 'fide test' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
                         </div>
@@ -386,70 +465,100 @@
 
             <!-- 3. Exams Dropdown -->
             <div class="nav-dropdown-group relative group h-full flex items-center">
-                <button type="button" class="nav-item-btn gap-1 py-4 {{ $isExamsActive ? 'active-nav' : '' }}">
-                    <span>{{ $isFr ? 'Examens' : 'Exams' }}</span>
-                    <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                <button type="button" class="nav-item-btn py-4 {{ $isExamsActive ? 'active-nav' : '' }}">
+                    <span class="nav-item-inner gap-1">
+                        <span>{{ $isFr ? 'Examens' : 'Exams' }}</span>
+                        <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </button>
                 <!-- Dropdown Card -->
-                <div class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
+                <div
+                    class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
                     <div class="dropdown-card">
                         <!-- Card Header -->
-                        <div class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
+                        <div
+                            class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
                             <span>{{ $isFr ? 'Examens' : 'Exams' }}</span>
-                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <!-- Card Items -->
                         <div class="flex flex-col space-y-0.5">
-                            <a href="{{ $isFr ? '/fr/tcf-irn' : '/en/tcf-irn' }}" class="dropdown-item-link group/item {{ request()->is('*tcf-irn*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/tcf-irn' : '/en/tcf-irn' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*tcf-irn*') ? 'active-submenu' : '' }}">
                                 <span>TCF IRN</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/tef-irn' : '/en/tef-irn' }}" class="dropdown-item-link group/item {{ request()->is('*tef-irn*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/tef-irn' : '/en/tef-irn' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*tef-irn*') ? 'active-submenu' : '' }}">
                                 <span>TEF IRN</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}" class="dropdown-item-link group/item {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Test fide' : 'fide test' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/delf-a2' : '/en/delf-a2' }}" class="dropdown-item-link group/item {{ request()->is('*delf-a2*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/delf-a2' : '/en/delf-a2' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*delf-a2*') ? 'active-submenu' : '' }}">
                                 <span>DELF A2</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/delf-b1' : '/en/delf-b1' }}" class="dropdown-item-link group/item {{ request()->is('*delf-b1*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/delf-b1' : '/en/delf-b1' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*delf-b1*') ? 'active-submenu' : '' }}">
                                 <span>DELF B1</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/delf-b2' : '/en/delf-b2' }}" class="dropdown-item-link group/item {{ request()->is('*delf-b2*') ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/delf-b2' : '/en/delf-b2' }}"
+                                class="dropdown-item-link group/item {{ request()->is('*delf-b2*') ? 'active-submenu' : '' }}">
                                 <span>DELF B2</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}" class="dropdown-item-link group/item {{ (request()->is('*delf') || request()->is('*/delf/*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*delf') || request()->is('*/delf/*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Tous les niveaux DELF' : 'All DELF levels' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}" class="dropdown-item-link group/item {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
                         </div>
@@ -458,49 +567,62 @@
             </div>
 
             <!-- 4. Courses (Direct Link) -->
-            <a href="{{ $isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses' }}" class="nav-pill-link {{ $isCoursesActive ? 'active-nav' : '' }}">
-                {{ $isFr ? 'Cours' : 'Courses' }}
+            <a href="{{ $isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses' }}"
+                class="nav-pill-link {{ $isCoursesActive ? 'active-nav' : '' }}">
+                <span class="nav-label">{{ $isFr ? 'Cours' : 'Courses' }}</span>
             </a>
 
             <!-- 5. Guides Dropdown -->
             <div class="nav-dropdown-group relative group h-full flex items-center">
-                <button type="button" class="nav-item-btn gap-1 py-4 {{ $isGuidesActive ? 'active-nav' : '' }}">
-                    <span>Guides</span>
-                    <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                <button type="button" class="nav-item-btn py-4 {{ $isGuidesActive ? 'active-nav' : '' }}">
+                    <span class="nav-item-inner gap-1">
+                        <span>Guides</span>
+                        <svg class="chevron-icon w-3 h-3 text-slate-600 transition-transform duration-200" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </button>
                 <!-- Dropdown Card -->
-                <div class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
+                <div
+                    class="dropdown-menu-wrapper absolute top-full left-0 pt-2 z-50 opacity-0 invisible translate-y-1.5 transition-all duration-200 ease-out">
                     <div class="dropdown-card">
                         <!-- Card Header -->
-                        <div class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
+                        <div
+                            class="flex items-center justify-between pb-2.5 mb-1.5 border-b border-slate-100 text-slate-900 font-bold text-[14px]">
                             <span>Guides</span>
-                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <!-- Card Items -->
                         <div class="flex flex-col space-y-0.5">
-                            <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}" 
-                               class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
+                                class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
-                            <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}" 
-                               class="dropdown-item-link group/item {{ (request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'active-submenu' : '' }}">
+                            <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}"
+                                class="dropdown-item-link group/item {{ (request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'active-submenu' : '' }}">
                                 <span>{{ $isFr ? 'Guide DELF' : 'DELF guide' }}</span>
-                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
                         </div>
@@ -509,8 +631,9 @@
             </div>
 
             <!-- 6. About (Direct Link) -->
-            <a href="{{ $isFr ? '/fr/a-propos' : '/about-us' }}" class="nav-pill-link {{ $isAboutActive ? 'active-nav' : '' }}">
-                {{ $isFr ? 'À propos' : 'About' }}
+            <a href="{{ $isFr ? '/fr/a-propos' : '/about-us' }}"
+                class="nav-pill-link {{ $isAboutActive ? 'active-nav' : '' }}">
+                <span class="nav-label">{{ $isFr ? 'À propos' : 'About' }}</span>
             </a>
         </nav>
 
@@ -520,26 +643,34 @@
             <div class="h-5 w-[1px] bg-slate-200 mr-1 hidden xl:block"></div>
 
             <!-- Contact Link -->
-            <a href="{{ $isFr ? '/fr/contact' : '/contact-us' }}" class="nav-pill-link {{ $isContactActive ? 'active-nav' : '' }}">Contact</a>
+            <a href="{{ $isFr ? '/fr/contact' : '/contact-us' }}"
+                class="nav-pill-link {{ $isContactActive ? 'active-nav' : '' }}">
+                <span class="nav-label">Contact</span>
+            </a>
 
             <!-- FR | EN Language Switcher (Desktop) -->
             <div class="text-[13px] font-bold text-[#002654] flex items-center gap-1 select-none">
-                <a href="{{ $frUrl }}" class="{{ $isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">FR</a>
+                <a href="{{ $frUrl }}"
+                    class="{{ $isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">FR</a>
                 <span class="text-slate-300 font-normal">|</span>
-                <a href="{{ $enUrl }}" class="{{ !$isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">EN</a>
+                <a href="{{ $enUrl }}"
+                    class="{{ !$isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">EN</a>
             </div>
 
             <!-- Student Portal Link -->
-            <a href="/demo" class="nav-pill-link whitespace-nowrap {{ $isPortalActive ? 'active-nav' : '' }}">{{ $isFr ? 'Espace élève' : 'Student portal' }}</a>
+            <a href="/demo" class="nav-pill-link whitespace-nowrap {{ $isPortalActive ? 'active-nav' : '' }}">
+                <span class="nav-label">{{ $isFr ? 'Espace élève' : 'Student portal' }}</span>
+            </a>
 
             <!-- Enroll Now / Dashboard CTA Button -->
             @auth
-                <a href="{{
-                    auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
-                    (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                }}" class="btn-enroll-pill">
-                    DASHBOARD
-                </a>
+                    <a href="{{
+                auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
+                (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
+                                                                                                                                                                }}"
+                        class="btn-enroll-pill">
+                        DASHBOARD
+                    </a>
             @else
                 <a href="/register" class="btn-enroll-pill">
                     {{ $isFr ? 'S\'inscrire' : 'Enroll now' }}
@@ -550,14 +681,19 @@
         <!-- Right: Mobile View (FR | EN and 3-line Hamburger Button matching Image 3) -->
         <div class="navbar-mobile-toggle flex items-center gap-3.5 sm:gap-4 shrink-0">
             <!-- FR | EN on Mobile Header Bar -->
-            <div class="text-[14px] sm:text-[15px] font-bold text-[#002654] flex items-center gap-1.5 select-none tracking-tight">
-                <a href="{{ $frUrl }}" class="{{ $isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">FR</a>
+            <div
+                class="text-[14px] sm:text-[15px] font-bold text-[#002654] flex items-center gap-1.5 select-none tracking-tight">
+                <a href="{{ $frUrl }}"
+                    class="{{ $isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">FR</a>
                 <span class="text-slate-300 font-normal">|</span>
-                <a href="{{ $enUrl }}" class="{{ !$isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">EN</a>
+                <a href="{{ $enUrl }}"
+                    class="{{ !$isFr ? 'text-[#002654]' : 'text-slate-400 hover:text-[#0055A4]' }}">EN</a>
             </div>
 
             <!-- Sleek 3-line Hamburger Button -->
-            <button id="mobileMenuBtn" class="flex flex-col justify-center items-center gap-[4.5px] w-8 h-8 p-1 text-[#002654] hover:text-[#0055A4] transition cursor-pointer" aria-label="Toggle menu">
+            <button id="mobileMenuBtn"
+                class="flex flex-col justify-center items-center gap-[4.5px] w-8 h-8 p-1 text-[#002654] hover:text-[#0055A4] transition cursor-pointer"
+                aria-label="Toggle menu">
                 <span class="w-5 h-[2px] bg-[#002654] rounded-full transition-transform"></span>
                 <span class="w-5 h-[2px] bg-[#002654] rounded-full transition-opacity"></span>
                 <span class="w-5 h-[2px] bg-[#002654] rounded-full transition-transform"></span>
@@ -574,15 +710,18 @@
     <!-- Drawer Content -->
     <div class="relative w-full h-full flex flex-col p-6 sm:p-8 bg-white overflow-y-auto" id="mobileMenuContent">
         <!-- Top French Tricolor Ribbon -->
-        <div class="h-1.5 absolute top-0 left-0 right-0" style="background:linear-gradient(90deg,#0055A4 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
+        <div class="h-1.5 absolute top-0 left-0 right-0"
+            style="background:linear-gradient(90deg,#0055A4 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
 
         <!-- Header: Logo & Close Button -->
         <div class="flex justify-between items-center mb-8 mt-2">
             <a href="{{ $isFr ? '/fr' : '/' }}" class="flex items-center gap-2.5 shrink-0">
-                <img src="{{ asset('images/brand-mark.png') }}" alt="Fluence Française" class="brand-mark-img w-auto shrink-0">
+                <img src="{{ asset('images/brand-mark.png') }}" alt="Fluence Française"
+                    class="brand-mark-img w-auto shrink-0">
                 <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
             </a>
-            <button id="closeMobileMenu" class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#002654] transition">
+            <button id="closeMobileMenu"
+                class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#002654] transition">
                 <i class="fas fa-times text-2xl"></i>
             </button>
         </div>
@@ -591,33 +730,36 @@
         <nav class="flex flex-col flex-1 divide-y divide-slate-100">
             <!-- Accordion: France -->
             <div class="py-3">
-                <button type="button" class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isFranceActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
+                <button type="button"
+                    class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isFranceActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
                     <span>France</span>
-                    <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isFranceActive ? 'rotate-180' : '' }}"></i>
+                    <i
+                        class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isFranceActive ? 'rotate-180' : '' }}"></i>
                 </button>
-                <div class="mobile-acc-content {{ $isFranceActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
-                    <a href="{{ $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                <div
+                    class="mobile-acc-content {{ $isFranceActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
+                    <a href="{{ $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Naturalisation B2' : 'Citizenship B2' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*resident-card*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*resident-card*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Carte de résident B1' : 'Resident card B1' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*multi-year-permit*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*multi-year-permit*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Carte pluriannuelle A2' : 'Multi-year permit A2' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/examen-civique' : '/en/french-civic-exam' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*french-civic-exam*') || request()->is('*examen-civique*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/examen-civique' : '/en/french-civic-exam' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*french-civic-exam*') || request()->is('*examen-civique*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Examen civique' : 'Civic exam' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
@@ -626,23 +768,26 @@
 
             <!-- Accordion: Switzerland -->
             <div class="py-3">
-                <button type="button" class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isSwissActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
+                <button type="button"
+                    class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isSwissActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
                     <span>{{ $isFr ? 'Suisse' : 'Switzerland' }}</span>
-                    <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isSwissActive ? 'rotate-180' : '' }}"></i>
+                    <i
+                        class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isSwissActive ? 'rotate-180' : '' }}"></i>
                 </button>
-                <div class="mobile-acc-content {{ $isSwissActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
-                    <a href="{{ $isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                <div
+                    class="mobile-acc-content {{ $isSwissActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
+                    <a href="{{ $isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Permis C (A2 / B1)' : 'C permit (A2 / B1)' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Naturalisation suisse (B1)' : 'Swiss citizenship (B1)' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Test fide' : 'fide test' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
@@ -651,40 +796,51 @@
 
             <!-- Accordion: Exams -->
             <div class="py-3">
-                <button type="button" class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isExamsActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
+                <button type="button"
+                    class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isExamsActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
                     <span>{{ $isFr ? 'Examens' : 'Exams' }}</span>
-                    <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isExamsActive ? 'rotate-180' : '' }}"></i>
+                    <i
+                        class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isExamsActive ? 'rotate-180' : '' }}"></i>
                 </button>
-                <div class="mobile-acc-content {{ $isExamsActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
-                    <a href="{{ $isFr ? '/fr/tcf-irn' : '/en/tcf-irn' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*tcf-irn*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                <div
+                    class="mobile-acc-content {{ $isExamsActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
+                    <a href="{{ $isFr ? '/fr/tcf-irn' : '/en/tcf-irn' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*tcf-irn*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>TCF IRN</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/tef-irn' : '/en/tef-irn' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*tef-irn*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/tef-irn' : '/en/tef-irn' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*tef-irn*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>TEF IRN</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/test-fide' : '/en/fide-test' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*fide-test*') || request()->is('*test-fide*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Test fide' : 'fide test' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/delf-a2' : '/en/delf-a2' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-a2*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/delf-a2' : '/en/delf-a2' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-a2*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>DELF A2</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/delf-b1' : '/en/delf-b1' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-b1*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/delf-b1' : '/en/delf-b1' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-b1*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>DELF B1</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/delf-b2' : '/en/delf-b2' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-b2*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/delf-b2' : '/en/delf-b2' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ request()->is('*delf-b2*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>DELF B2</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*delf') || request()->is('*/delf/*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*delf') || request()->is('*/delf/*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Tous les niveaux DELF' : 'All DELF levels' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}" class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
@@ -693,31 +849,34 @@
 
             <!-- Courses -->
             <div class="py-3">
-                <a href="{{ $isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses' }}" 
-                   class="block text-base font-bold {{ $isCoursesActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
+                <a href="{{ $isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses' }}"
+                    class="block text-base font-bold {{ $isCoursesActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
                     {{ $isFr ? 'Cours' : 'Courses' }}
                 </a>
             </div>
 
             <!-- Accordion: Guides -->
             <div class="py-3">
-                <button type="button" class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isGuidesActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
+                <button type="button"
+                    class="mobile-acc-btn w-full flex items-center justify-between text-base font-bold {{ $isGuidesActive ? 'text-[#0055A4]' : 'text-[#002654]' }} text-left">
                     <span>Guides</span>
-                    <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isGuidesActive ? 'rotate-180' : '' }}"></i>
+                    <i
+                        class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200 {{ $isGuidesActive ? 'rotate-180' : '' }}"></i>
                 </button>
-                <div class="mobile-acc-content {{ $isGuidesActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
-                    <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                <div
+                    class="mobile-acc-content {{ $isGuidesActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
+                    <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
-                    <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}" 
-                       class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
+                    <a href="{{ $isFr ? '/fr/delf' : '/en/delf' }}"
+                        class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ (request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
                         <span>{{ $isFr ? 'Guide DELF' : 'DELF guide' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
@@ -726,24 +885,24 @@
 
             <!-- About -->
             <div class="py-3">
-                <a href="{{ $isFr ? '/fr/a-propos' : '/about-us' }}" 
-                   class="block text-base font-bold {{ $isAboutActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
+                <a href="{{ $isFr ? '/fr/a-propos' : '/about-us' }}"
+                    class="block text-base font-bold {{ $isAboutActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
                     {{ $isFr ? 'À propos' : 'About' }}
                 </a>
             </div>
 
             <!-- Contact -->
             <div class="py-3">
-                <a href="{{ $isFr ? '/fr/contact' : '/contact-us' }}" 
-                   class="block text-base font-bold {{ $isContactActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
+                <a href="{{ $isFr ? '/fr/contact' : '/contact-us' }}"
+                    class="block text-base font-bold {{ $isContactActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
                     Contact
                 </a>
             </div>
 
             <!-- Student Portal -->
             <div class="py-3">
-                <a href="/demo" 
-                   class="block text-base font-bold {{ $isPortalActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
+                <a href="/demo"
+                    class="block text-base font-bold {{ $isPortalActive ? 'text-[#0055A4]' : 'text-[#002654]' }} hover:text-[#0055A4]">
                     {{ $isFr ? 'Espace élève' : 'Student portal' }}
                 </a>
             </div>
@@ -752,17 +911,20 @@
         <!-- Bottom Actions (Enroll Button & Login) -->
         <div class="mt-6 pt-6 border-t border-slate-100 flex flex-col gap-3">
             @auth
-                <a href="{{
-                    auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
-                    (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                }}" class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
-                    DASHBOARD
-                </a>
+                    <a href="{{
+                auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
+                (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
+                                                                                                                                                                }}"
+                        class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
+                        DASHBOARD
+                    </a>
             @else
-                <a href="/register" class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
+                <a href="/register"
+                    class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
                     {{ $isFr ? 'S\'inscrire' : 'Enroll now' }}
                 </a>
-                <a href="/login" class="w-full py-2 text-center text-slate-500 font-bold text-sm tracking-wide hover:text-[#0055A4] transition">
+                <a href="/login"
+                    class="w-full py-2 text-center text-slate-500 font-bold text-sm tracking-wide hover:text-[#0055A4] transition">
                     LOGIN
                 </a>
             @endauth
@@ -803,7 +965,7 @@
         // Mobile accordion toggles
         const accBtns = document.querySelectorAll('.mobile-acc-btn');
         accBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const content = this.nextElementSibling;
                 const icon = this.querySelector('i');
                 if (content.classList.contains('hidden')) {
@@ -821,7 +983,7 @@
         dropdownGroups.forEach(group => {
             const btn = group.querySelector('.nav-item-btn');
             if (btn) {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const isOpen = group.classList.contains('is-clicked-open');
                     dropdownGroups.forEach(g => g.classList.remove('is-clicked-open'));
@@ -833,13 +995,13 @@
         });
 
         // Close dropdowns on outside click
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             dropdownGroups.forEach(g => g.classList.remove('is-clicked-open'));
         });
 
         // Prevent click inside dropdown card from closing it
         document.querySelectorAll('.dropdown-card').forEach(card => {
-            card.addEventListener('click', function(e) {
+            card.addEventListener('click', function (e) {
                 e.stopPropagation();
             });
         });

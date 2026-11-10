@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body { background: #f0f4f8; font-family: 'DM Sans', sans-serif; padding: 40px; }
+.header-pill {
+    height: 60px;
+    background: #fff;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.nav-item-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0055A4;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    position: relative;
+}
+/* OPTION 1: text only */
+.option1 .nav-label {
+    position: relative;
+}
+.option1 .nav-label::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2px;
+    background: #EF4135;
+}
+
+/* OPTION 2: text + chevron (full button content) */
+.option2 {
+    position: relative;
+}
+.option2::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2.5px;
+    background: #EF4135;
+    border-radius: 2px;
+}
+
+/* OPTION 3: full width with extra breathing room (left: -4px, right: -4px) */
+.option3 {
+    position: relative;
+}
+.option3::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px; bottom: -4px;
+    height: 2.5px;
+    background: #EF4135;
+    border-radius: 2px;
+}
+</style>
+</head>
+<body>
+<div class="header-pill">
+    <div style="font-weight:bold; color:#002654;">Option 1 (Previous: text only 43px):</div>
+    <button class="nav-item-btn option1">
+        <span class="nav-label">France</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+    </button>
+</div>
+<br><br>
+<div class="header-pill">
+    <div style="font-weight:bold; color:#002654;">Option 2 (Increased: text + chevron 60px):</div>
+    <button class="nav-item-btn option2">
+        <span>France</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+    </button>
+</div>
+<br><br>
+<div class="header-pill">
+    <div style="font-weight:bold; color:#002654;">Option 3 (Increased + padding 68px):</div>
+    <button class="nav-item-btn option3">
+        <span>France</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+    </button>
+</div>
+<br><br>
+<div class="header-pill">
+    <div style="font-weight:bold; color:#002654;">Switzerland Option 2 (text + chevron 92px):</div>
+    <button class="nav-item-btn option2">
+        <span>Switzerland</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 15l7-7 7 7"/></svg>
+    </button>
+</div>
+</body>
+</html>
