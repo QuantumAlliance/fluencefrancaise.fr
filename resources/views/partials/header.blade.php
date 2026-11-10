@@ -78,6 +78,8 @@
         box-shadow: 0 4px 20px -2px rgba(0, 38, 84, 0.08) !important;
         border: 1px solid #f1f5f9 !important;
         border-radius: 9999px !important;
+        pointer-events: auto;
+        transition: background-color 0.25s ease, backdrop-filter 0.25s ease, -webkit-backdrop-filter 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     .brand-wordmark {
@@ -248,7 +250,7 @@
 
     .btn-enroll-pill {
         font-family: 'DM Sans', system-ui, sans-serif;
-        font-size: 13px !important;
+        font-size: 14px !important;
         font-weight: 700 !important;
         background-color: #002654 !important;
         color: #ffffff !important;
@@ -270,9 +272,31 @@
     }
 
     .header-container {
-        position: absolute !important;
+        position: fixed !important;
         top: 24px !important;
+        left: 0 !important;
+        right: 0 !important;
         width: 100% !important;
+        z-index: 50 !important;
+        pointer-events: none;
+        transition: top 0.25s ease;
+    }
+
+    /* Sticky on scroll with blur background */
+    .header-container.is-scrolled {
+        top: 12px !important;
+    }
+
+    .header-container.is-scrolled .header-pill {
+        background-color: rgba(255, 255, 255, 0.82) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        box-shadow: 0 10px 30px -4px rgba(0, 38, 84, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+        border-color: rgba(241, 245, 249, 0.75) !important;
+    }
+
+    .dropdown-menu-wrapper {
+        pointer-events: auto;
     }
 
     @media (min-width: 1200px) {
@@ -300,6 +324,10 @@
             top: 16px !important;
         }
 
+        .header-container.is-scrolled {
+            top: 10px !important;
+        }
+
         .header-pill {
             height: 56px !important;
         }
@@ -314,7 +342,7 @@
     }
 </style>
 
-<div class="header-container global-header absolute w-full z-50 px-4 sm:px-6 lg:px-8">
+<div class="header-container global-header w-full z-50 px-4 sm:px-6 lg:px-8">
     <header class="header-pill max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <!-- Left: Logo & Wordmark -->
         <div class="flex items-center shrink-0">
@@ -667,7 +695,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                                                        }}"
+                                                                                                                                                                                                                                                }}"
                         class="btn-enroll-pill">
                         DASHBOARD
                     </a>
@@ -914,7 +942,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                                                        }}"
+                                                                                                                                                                                                                                                }}"
                         class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
                         DASHBOARD
                     </a>
@@ -1013,6 +1041,19 @@
                 e.stopPropagation();
             });
         });
+
+        // Sticky navbar with blur on scroll
+        const headerEl = document.querySelector('.header-container');
+        const updateHeaderScroll = () => {
+            if (!headerEl) return;
+            if (window.scrollY > 20) {
+                headerEl.classList.add('is-scrolled');
+            } else {
+                headerEl.classList.remove('is-scrolled');
+            }
+        };
+        window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+        updateHeaderScroll();
 
         // Auth Sync Check: If PHP says logged in but localStorage says no token, force sync
         const phpAuthState = {{ auth()->check() ? 'true' : 'false' }};

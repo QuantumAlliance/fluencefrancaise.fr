@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container global-header absolute w-full z-50 px-4 sm:px-6 lg:px-8">
+  <div :class="['header-container global-header w-full z-50 px-4 sm:px-6 lg:px-8', isScrolled ? 'is-scrolled' : '']">
     <header class="header-pill max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
       <!-- Left: Logo & Wordmark -->
       <div class="flex items-center shrink-0">
@@ -551,14 +551,22 @@ const settingsStore = useSettingsStore()
 const isMobileMenuOpen = ref(false)
 const activeAccordion = ref(null)
 const openDropdown = ref(null)
+const isScrolled = ref(false)
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 20
+}
 
 onMounted(() => {
   settingsStore.fetchSettings()
   document.addEventListener('click', closeAllDropdowns)
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  handleScroll()
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', closeAllDropdowns)
+  window.removeEventListener('scroll', handleScroll)
 })
 
 const currentPath = computed(() => route?.path || window.location.pathname)
@@ -653,6 +661,8 @@ const toggleAccordion = (name) => {
     box-shadow: 0 4px 20px -2px rgba(0, 38, 84, 0.08) !important;
     border: 1px solid #f1f5f9 !important;
     border-radius: 9999px !important;
+    pointer-events: auto;
+    transition: background-color 0.25s ease, backdrop-filter 0.25s ease, -webkit-backdrop-filter 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .brand-wordmark {
@@ -823,7 +833,7 @@ const toggleAccordion = (name) => {
 
 .btn-enroll-pill {
     font-family: 'DM Sans', system-ui, sans-serif;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
     background-color: #002654 !important;
     color: #ffffff !important;
@@ -845,9 +855,31 @@ const toggleAccordion = (name) => {
 }
 
 .header-container {
-    position: absolute !important;
+    position: fixed !important;
     top: 24px !important;
+    left: 0 !important;
+    right: 0 !important;
     width: 100% !important;
+    z-index: 50 !important;
+    pointer-events: none;
+    transition: top 0.25s ease;
+}
+
+/* Sticky on scroll with blur background */
+.header-container.is-scrolled {
+    top: 12px !important;
+}
+
+.header-container.is-scrolled .header-pill {
+    background-color: rgba(255, 255, 255, 0.82) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    box-shadow: 0 10px 30px -4px rgba(0, 38, 84, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(241, 245, 249, 0.75) !important;
+}
+
+.dropdown-menu-wrapper {
+    pointer-events: auto;
 }
 
 @media (min-width: 1200px) {
@@ -871,6 +903,9 @@ const toggleAccordion = (name) => {
 @media (max-width: 768px) {
     .header-container {
         top: 16px !important;
+    }
+    .header-container.is-scrolled {
+        top: 10px !important;
     }
     .header-pill {
         height: 56px !important;
