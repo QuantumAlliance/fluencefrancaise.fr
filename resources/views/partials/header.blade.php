@@ -667,7 +667,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                }}"
+                                                                                                                                                                                                        }}"
                         class="btn-enroll-pill">
                         DASHBOARD
                     </a>
@@ -914,7 +914,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                }}"
+                                                                                                                                                                                                        }}"
                         class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
                         DASHBOARD
                     </a>
@@ -962,18 +962,26 @@
         if (closeMobileMenu) closeMobileMenu.addEventListener('click', closeMenu);
         if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', closeMenu);
 
-        // Mobile accordion toggles
+        // Mobile accordion toggles (mutually exclusive: opening one closes all other open items)
         const accBtns = document.querySelectorAll('.mobile-acc-btn');
         accBtns.forEach(btn => {
             btn.addEventListener('click', function () {
                 const content = this.nextElementSibling;
                 const icon = this.querySelector('i');
-                if (content.classList.contains('hidden')) {
+                const isCurrentlyOpen = content && !content.classList.contains('hidden');
+
+                // Close all other accordions first
+                accBtns.forEach(otherBtn => {
+                    const otherContent = otherBtn.nextElementSibling;
+                    const otherIcon = otherBtn.querySelector('i');
+                    if (otherContent) otherContent.classList.add('hidden');
+                    if (otherIcon) otherIcon.classList.remove('rotate-180');
+                });
+
+                // If this accordion was not open, open it now (if it was open, it remains closed)
+                if (!isCurrentlyOpen && content) {
                     content.classList.remove('hidden');
                     if (icon) icon.classList.add('rotate-180');
-                } else {
-                    content.classList.add('hidden');
-                    if (icon) icon.classList.remove('rotate-180');
                 }
             });
         });
