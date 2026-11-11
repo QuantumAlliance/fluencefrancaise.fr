@@ -230,13 +230,13 @@
         ];
 
         $resourceCards = [
-            ['fa-book', 'Free ebooks & study materials', 'PDFs for every level'],
-            ['fa-note-sticky', 'Class notes', 'A recap after every session'],
+            ['fa-book-open', 'Free ebooks & study materials', 'PDFs for every level'],
+            ['fa-pencil', 'Class notes', 'A recap after every session'],
             ['fa-headphones', 'Reading & listening', 'Texts and audio at native speed'],
-            ['fa-list-check', 'Practice banks', 'Questions sorted by skill'],
-            ['fa-stopwatch', 'Mock exams', 'TCF, TEF, DELF and fide format, timed'],
-            ['fa-layer-group', 'A1–B2 resources', 'Sorted by CEFR level'],
-            ['fa-laptop', 'Student portal', 'All your materials in one place'],
+            ['fa-layer-group', 'Practice banks', 'Questions sorted by skill'],
+            ['fa-clock', 'Mock exams', 'TCF, TEF, DELF and fide format, timed'],
+            ['fa-globe', 'A1–B2 resources', 'Sorted by CEFR level'],
+            ['fa-desktop', 'Student portal', 'All your materials in one place'],
         ];
     ?>
 </head>
@@ -277,10 +277,11 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="max-w-3xl mx-auto text-center">
                     <div class="reveal">
-                        <span class="eyebrow justify-center" style="flex-direction:column;gap:.5rem;">
-                            <span>Live online classes · TCF IRN · TEF IRN · DELF · fide test · Civic exam</span>
-                            <span class="tricolor"><i></i><i></i><i></i></span>
-                        </span>
+                        <div class="inline-flex flex-col items-center justify-center gap-1.5 mb-2">
+                            <span class="text-xs sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary-600">LIVE ONLINE CLASSES</span>
+                            <span class="tricolor my-1" style="height:3.5px;width:48px;"><i></i><i></i><i></i></span>
+                            <span class="text-xs sm:text-sm font-semibold tracking-wide text-primary-700/85">TCF IRN · TEF IRN · DELF · fide test · Civic exam</span>
+                        </div>
                         <h1 class="mt-5 text-[2.7rem] leading-[1.04] md:text-6xl lg:text-7xl font-semibold text-ink tracking-tight">
                             French classes for the life you're building in <span class="swish text-primary-600">France or Switzerland</span>.
                         </h1>
@@ -378,9 +379,12 @@
                         </ul>
 
                         <?php if($t['batch_full']): ?>
-                            <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col gap-2">
-                                <p class="text-xs font-semibold text-slate-500">This batch is full.</p>
-                                <a href="<?php echo e($t['batch_full_url'] ?? '/en/contact/'); ?>" class="btn btn-lg w-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 font-semibold text-sm text-center">Get notified about the next batch <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            <div class="mt-8 pt-4 flex flex-col gap-2">
+                                <p class="text-sm text-slate-500 font-normal">This batch is full.</p>
+                                <a href="<?php echo e($t['batch_full_url'] ?? '/en/contact/'); ?>" class="flex items-center justify-between text-primary-600 hover:text-primary-700 font-semibold text-sm group transition-colors py-1">
+                                    <span>Get notified about the next batch</span>
+                                    <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                                </a>
                             </div>
                         <?php else: ?>
                             <a href="<?php echo e($t['enroll_url'] ?? '/register'); ?>" class="btn btn-lg mt-8 w-full <?php echo e($t['popular'] ? 'btn-onnavy' : 'btn-primary'); ?>">Enroll now</a>
@@ -399,11 +403,25 @@
                     <div class="reveal order-2 lg:order-1">
                         <div class="grid grid-cols-2 gap-4">
                             <?php $__currentLoopData = $resourceCards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="card-glow group bg-white rounded-2xl border border-slate-100 p-5 hover:border-primary-200 <?php echo e($loop->last ? 'col-span-2 sm:col-span-1' : ''); ?>" style="transition-delay:<?php echo e($i * 55); ?>ms">
-                                <span class="w-11 h-11 rounded-xl grid place-content-center text-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 <?php echo e($i % 2 ? 'bg-accent-soft text-[#EF4135]' : 'bg-primary-50 text-primary-600'); ?>"><i class="fas <?php echo e($p[0]); ?>"></i></span>
+                            <?php if($loop->last): ?>
+                            <div class="card-glow group bg-white rounded-2xl border border-slate-100 p-5 hover:border-primary-200 col-span-2 flex items-center gap-4" style="transition-delay:<?php echo e($i * 55); ?>ms">
+                                <span class="w-11 h-11 rounded-xl grid place-content-center text-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 bg-primary-50 text-primary-600 shrink-0">
+                                    <i class="fas <?php echo e($p[0]); ?>"></i>
+                                </span>
+                                <div>
+                                    <p class="font-bold text-ink text-sm leading-snug"><?php echo e($p[1]); ?></p>
+                                    <p class="mt-0.5 text-xs text-slate-500 leading-snug"><?php echo e($p[2]); ?></p>
+                                </div>
+                            </div>
+                            <?php else: ?>
+                            <div class="card-glow group bg-white rounded-2xl border border-slate-100 p-5 hover:border-primary-200" style="transition-delay:<?php echo e($i * 55); ?>ms">
+                                <span class="w-11 h-11 rounded-xl grid place-content-center text-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 <?php echo e($i % 2 ? 'bg-accent-soft text-[#EF4135]' : 'bg-primary-50 text-primary-600'); ?>">
+                                    <i class="fas <?php echo e($p[0]); ?>"></i>
+                                </span>
                                 <p class="mt-3 font-bold text-ink text-sm leading-snug"><?php echo e($p[1]); ?></p>
                                 <p class="mt-1 text-xs text-slate-500 leading-snug"><?php echo e($p[2]); ?></p>
                             </div>
+                            <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
