@@ -207,6 +207,10 @@ Route::get('/en/tcf-irn', function () { return view('tcf-irn'); });
 Route::get('/fr/tcf-irn', function () { return view('tcf-irn'); });
 Route::get('/tcf-irn', function () { return view('tcf-irn'); });
 
+// Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
+Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
+Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });
+
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });
 
