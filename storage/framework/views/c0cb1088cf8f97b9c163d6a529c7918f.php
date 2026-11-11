@@ -200,27 +200,25 @@
                             </span>
                         </div>
 
-                        <!-- H1 Title -->
-                        <h1 class="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#002654] tracking-tight leading-[1.12]">
+                        <!-- H1 Title with Attached French Tricolor Underline (Exact Image 1 Match) -->
+                        <h1 class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.30] sm:leading-[1.32]">
                             <?php if($isFr): ?>
                                 TCF IRN : préparez exactement<br class="hidden sm:inline" />
-                                <span class="text-[#0055a4]">le niveau exigé</span>
+                                <span class="relative inline-block text-[#0055a4] mt-1 sm:mt-1.5 pb-2.5 sm:pb-3.5">
+                                    le niveau exigé
+                                    <span class="absolute left-0 right-0 bottom-0 h-[2.5px] sm:h-[3px] rounded-full" style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
+                                </span>
                             <?php else: ?>
                                 TCF IRN: Prepare for the<br class="hidden sm:inline" />
-                                <span class="text-[#0055a4]">Exact Level You Need</span>
+                                <span class="relative inline-block text-[#0055a4] mt-1 sm:mt-1.5 pb-2.5 sm:pb-3.5">
+                                    Exact Level You Need
+                                    <span class="absolute left-0 right-0 bottom-0 h-[2.5px] sm:h-[3px] rounded-full" style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
+                                </span>
                             <?php endif; ?>
                         </h1>
 
-                        <!-- French Tricolor Underline Bar (Centered under title, Image 1 Style) -->
-                        <div class="flex items-center justify-center my-5">
-                            <div class="flex items-center gap-2 w-64 sm:w-80">
-                                <span class="flex-1 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="flex-1 h-[2.5px] bg-[#EF4135] rounded-full"></span>
-                            </div>
-                        </div>
-
                         <!-- Subhead -->
-                        <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+                        <p class="mt-5 sm:mt-6 text-sm sm:text-base md:text-[17px] text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
                             <?php echo e($isFr 
                                 ? 'Le TCF IRN mesure chaque compétence séparément : nous travaillons celles qui vous séparent du niveau exigé par votre dossier.' 
                                 : 'The TCF IRN scores each skill separately, so we train the skills standing between you and the level your application requires.'); ?>
@@ -1024,62 +1022,29 @@
             ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
-            <section class="py-16 sm:py-24 bg-[#f8fafc]">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <!-- Large Blue Gradient CTA Card -->
-                    <div class="bg-gradient-to-br from-[#0055a4] via-[#004382] to-[#002654] rounded-3xl p-8 sm:p-14 text-white shadow-2xl shadow-blue-900/20 text-center relative overflow-hidden">
-                        <!-- Background glow effect -->
-                        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-400/20 blur-3xl pointer-events-none"></div>
-                        <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-red-400/10 blur-3xl pointer-events-none"></div>
-
-                        <div class="relative z-10 max-w-2xl mx-auto">
-                            <!-- Tricolor bar -->
-                            <div class="inline-flex items-center justify-center mb-4">
-                                <span class="tricolor" style="height:3.5px;width:44px;"><i></i><i></i><i></i></span>
-                            </div>
-
-                            <!-- H2 Title -->
-                            <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                                <?php echo e($isFr 
-                                    ? "Votre niveau. Le niveau exigé. Nous comblons l'écart."
-                                    : 'Your level. The required level. We close the gap.'); ?>
-
-                            </h2>
-
-                            <!-- Text -->
-                            <p class="mt-4 text-sm sm:text-base text-blue-100/90 leading-relaxed font-normal">
-                                <?php echo e($isFr 
-                                    ? 'Votre premier cours fixe votre niveau dans chaque épreuve et le plan pour atteindre celui de votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                                    : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.'); ?>
-
-                            </p>
-
-                            <!-- CTA Button -->
-                            <div class="mt-8 flex flex-col items-center gap-3">
-                                <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-[#002654] bg-white hover:bg-slate-100 shadow-xl transition-all transform hover:-translate-y-0.5">
-                                    <?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?>
-
-                                    <i class="fas fa-arrow-right text-xs ml-2.5 text-[#0055a4]"></i>
-                                </a>
-                                <p class="text-xs text-blue-200/80 font-medium">
-                                    <?php echo e($isFr 
-                                        ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                        : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
-
-                                </p>
-                            </div>
-
-                            <!-- Referral Note -->
-                            <div class="mt-8 pt-6 border-t border-white/15 text-xs text-blue-100">
-                                <?php echo e($isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.'); ?>
-
-                                <a href="<?php echo e($isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral'); ?>" class="underline font-semibold text-white hover:text-blue-200 ml-1">
-                                    <?php echo e($isFr ? 'Contactez-nous' : 'Contact us'); ?>
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <section class="py-16 sm:py-20 bg-[#f8fafc]">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <?php echo $__env->make('partials.cta-banner', [
+                        'sectionClass' => '',
+                        'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
+                        'title' => $isFr 
+                            ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart." 
+                            : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
+                        'description' => $isFr 
+                            ? 'Votre premier cours fixe votre niveau dans chaque épreuve et le plan pour atteindre celui de votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                            : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.',
+                        'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
+                        'primaryButtonUrl' => '/register',
+                        'showSecondaryButton' => true,
+                        'secondaryButtonText' => $isFr ? 'Contactez-nous' : 'Talk to us',
+                        'secondaryButtonUrl' => $isFr ? '/fr/contact/' : '/en/contact/',
+                        'helperText' => $isFr 
+                            ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
+                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included',
+                        'referralNote' => $isFr 
+                            ? "Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami. <a href='/fr/contact/#parrainage' class='underline font-semibold text-white hover:text-blue-200 ml-1'>Contactez-nous</a>"
+                            : "Coming with a friend? €50 off per month, for you and for them. <a href='/en/contact/#referral' class='underline font-semibold text-white hover:text-blue-200 ml-1'>Contact us</a>"
+                    ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- Sources Line -->
                     <div class="mt-10 text-center text-xs text-slate-400 space-x-1">
