@@ -11,6 +11,7 @@
         ? "Test fide : épreuves, niveaux A1-B1 et préparation en ligne"
         : "fide Test: Modules, A1–B1 Levels and Online Preparation";
 
+
     $metaDesc = $isFr
         ? "Test fide suisse : épreuves orale (40 min) et écrite (60 min), niveaux A1 à B1 pour permis B, permis C et naturalisation. Préparation en ligne en direct."
         : "Swiss fide test: oral (40 min) and written (60 min) modules, A1 to B1 levels for B permit, C permit, and Swiss citizenship. Live online preparation.";
@@ -119,9 +120,9 @@
         <div>
             @include('partials.header')
 
-            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <!-- ============ HERO BANNER ============ -->
             <section
-                class="relative pt-8 pb-12 sm:pt-14 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
+                class="relative pt-28 sm:pt-36 md:pt-40 pb-16 md:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
 
                     <nav class="flex items-center justify-center gap-1.5 text-xs text-slate-500 mb-6 font-medium">

@@ -218,6 +218,17 @@ Route::get('/fr/test-fide', function () { return view('fide-test'); });
 Route::get('/fr/fide-test', function () { return view('fide-test'); });
 Route::get('/fide-test', function () { return view('fide-test'); });
 
+// C Permit Switzerland (English /en/c-permit-switzerland, French /fr/permis-c-suisse and /fr/c-permit-switzerland)
+Route::get('/en/c-permit-switzerland', function () { return view('c-permit-switzerland'); });
+Route::get('/fr/permis-c-suisse', function () { return view('c-permit-switzerland'); });
+Route::get('/fr/c-permit-switzerland', function () { return view('c-permit-switzerland'); });
+Route::get('/c-permit-switzerland', function () { return view('c-permit-switzerland'); });
+
+// Page 14: DELF A2 (English /en/delf-a2/, French /fr/delf-a2/)
+Route::get('/en/delf-a2', function () { return view('delf-a2'); });
+Route::get('/fr/delf-a2', function () { return view('delf-a2'); });
+Route::get('/delf-a2', function () { return view('delf-a2'); });
+
 // Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
 Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
 Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });

@@ -11,6 +11,7 @@
         ? "Test fide : épreuves, niveaux A1-B1 et préparation en ligne"
         : "fide Test: Modules, A1–B1 Levels and Online Preparation";
 
+
     $metaDesc = $isFr
         ? "Test fide suisse : épreuves orale (40 min) et écrite (60 min), niveaux A1 à B1 pour permis B, permis C et naturalisation. Préparation en ligne en direct."
         : "Swiss fide test: oral (40 min) and written (60 min) modules, A1 to B1 levels for B permit, C permit, and Swiss citizenship. Live online preparation.";
@@ -119,9 +120,9 @@
         <div>
             <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <!-- ============ HERO BANNER ============ -->
             <section
-                class="relative pt-8 pb-12 sm:pt-14 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
+                class="relative pt-28 sm:pt-36 md:pt-40 pb-16 md:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
 
                     <nav class="flex items-center justify-center gap-1.5 text-xs text-slate-500 mb-6 font-medium">
@@ -137,8 +138,7 @@
                     <div class="inline-flex items-center gap-1.5 mb-5">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                             <?php echo e($isFr ? 'PASSEPORT DES LANGUES SUISSE POUR PERMIS & NATURALISATION' : 'SWISS LANGUAGE PASSPORT FOR PERMITS & NATURALISATION'); ?>
 
                         </span>
@@ -162,11 +162,10 @@
                         </div>
                     </div>
 
-                    <p
-                        class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
+                    <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                         <?php echo e($isFr
-                            ? 'Le test fide évalue le français oral et écrit pour les permis de séjour et la naturalisation suisse. Nous vous préparons au niveau exact exigé par votre canton.'
-                            : 'The fide test measures oral and written French for Swiss residence and naturalisation. We train you for the exact grade your canton asks for.'); ?>
+    ? 'Le test fide évalue le français oral et écrit pour les permis de séjour et la naturalisation suisse. Nous vous préparons au niveau exact exigé par votre canton.'
+    : 'The fide test measures oral and written French for Swiss residence and naturalisation. We train you for the exact grade your canton asks for.'); ?>
 
                     </p>
 
@@ -179,13 +178,14 @@
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
                             <?php echo e($isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                         </p>
                     </div>
 
-                    <div class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-600">
+                    <div
+                        class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-600">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-comments text-[#0055a4]"></i>
                             <span><?php echo e($isFr ? '40 min épreuve orale' : '40 min oral module'); ?></span>
@@ -210,7 +210,8 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                     <?php echo e($isFr ? "DÉCOUVREZ L'EXAMEN" : 'KNOW YOUR EXAM'); ?>
 
                                 </span>
@@ -222,8 +223,8 @@
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? "Le test fide (Français, Italiano, Deutsch in der Schweiz) est l'évaluation officielle reconnue par le Secrétariat d'État aux migrations (SEM). Vos compétences sont certifiées dans un Passeport des langues valable à vie."
-                                    : "The fide test (Français, Italiano, Deutsch in der Schweiz) is the official language assessment recognized by the Swiss State Secretariat for Migration (SEM). Your results are certified in a lifelong Language Passport."); ?>
+    ? "Le test fide (Français, Italiano, Deutsch in der Schweiz) est l'évaluation officielle reconnue par le Secrétariat d'État aux migrations (SEM). Vos compétences sont certifiées dans un Passeport des langues valable à vie."
+    : "The fide test (Français, Italiano, Deutsch in der Schweiz) is the official language assessment recognized by the Swiss State Secretariat for Migration (SEM). Your results are certified in a lifelong Language Passport."); ?>
 
                             </p>
                             <div class="mt-6 flex items-center gap-2 text-xs sm:text-sm text-[#0055A4] font-semibold">
@@ -285,8 +286,8 @@
                                 </span>
                                 <span class="md:col-span-8 text-slate-600 font-normal">
                                     <?php echo e($isFr
-                                        ? 'Toute personne demandant un permis B (séjour), permis C (établissement) ou la nationalité suisse'
-                                        : 'Anyone applying for a Swiss B permit (residence), C permit (settlement), or Swiss citizenship'); ?>
+    ? 'Toute personne demandant un permis B (séjour), permis C (établissement) ou la nationalité suisse'
+    : 'Anyone applying for a Swiss B permit (residence), C permit (settlement), or Swiss citizenship'); ?>
 
                                 </span>
                             </div>
@@ -297,8 +298,8 @@
                                 </span>
                                 <span class="md:col-span-8 text-slate-600 font-normal">
                                     <?php echo e($isFr
-                                        ? 'A1 à B1 (évaluation continue et progressive, sans seuil éliminatoire)'
-                                        : 'A1 to B1 (continuous evaluation, no pass/fail barrier)'); ?>
+    ? 'A1 à B1 (évaluation continue et progressive, sans seuil éliminatoire)'
+    : 'A1 to B1 (continuous evaluation, no pass/fail barrier)'); ?>
 
                                 </span>
                             </div>
@@ -309,8 +310,8 @@
                                 </span>
                                 <span class="md:col-span-8 text-slate-600 font-normal">
                                     <?php echo e($isFr
-                                        ? 'Oral (parler et comprendre, 40 min) et Écrit (lire et écrire, 60 min) — à passer ensemble ou séparément'
-                                        : 'Oral (speaking & listening, 40 min) and Written (reading & writing, 60 min) — take together or separately'); ?>
+    ? 'Oral (parler et comprendre, 40 min) et Écrit (lire et écrire, 60 min) — à passer ensemble ou séparément'
+    : 'Oral (speaking & listening, 40 min) and Written (reading & writing, 60 min) — take together or separately'); ?>
 
                                 </span>
                             </div>
@@ -331,8 +332,8 @@
                                 </span>
                                 <span class="md:col-span-8 text-slate-600 font-normal">
                                     <?php echo e($isFr
-                                        ? 'À vie — le passeport des langues fide ne comporte aucune date d\'expiration'
-                                        : 'Lifelong — the fide Language Passport has no expiry date'); ?>
+    ? 'À vie — le passeport des langues fide ne comporte aucune date d\'expiration'
+    : 'Lifelong — the fide Language Passport has no expiry date'); ?>
 
                                 </span>
                             </div>
@@ -360,8 +361,8 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Les exigences fédérales du SEM (Secrétariat d\'État aux migrations) varient selon le type de permis et peuvent être adaptées par votre canton.'
-                                : 'Federal requirements set by the SEM vary by permit type and may be adjusted by your Swiss canton.'); ?>
+    ? 'Les exigences fédérales du SEM (Secrétariat d\'État aux migrations) varient selon le type de permis et peuvent être adaptées par votre canton.'
+    : 'Federal requirements set by the SEM vary by permit type and may be adjusted by your Swiss canton.'); ?>
 
                         </p>
                     </div>
@@ -371,9 +372,18 @@
                             <table class="w-full text-left text-sm border-collapse">
                                 <thead>
                                     <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold"><?php echo e($isFr ? 'Permis / Démarche' : 'Permit / Application'); ?></th>
-                                        <th class="py-4 px-6 font-semibold text-center"><?php echo e($isFr ? 'Oral (Parler & Comprendre)' : 'Oral (Speaking & Listening)'); ?></th>
-                                        <th class="py-4 px-6 font-semibold text-center"><?php echo e($isFr ? 'Écrit (Lire & Écrire)' : 'Written (Reading & Writing)'); ?></th>
+                                        <th class="py-4 px-6 font-semibold">
+                                            <?php echo e($isFr ? 'Permis / Démarche' : 'Permit / Application'); ?>
+
+                                        </th>
+                                        <th class="py-4 px-6 font-semibold text-center">
+                                            <?php echo e($isFr ? 'Oral (Parler & Comprendre)' : 'Oral (Speaking & Listening)'); ?>
+
+                                        </th>
+                                        <th class="py-4 px-6 font-semibold text-center">
+                                            <?php echo e($isFr ? 'Écrit (Lire & Écrire)' : 'Written (Reading & Writing)'); ?>
+
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
@@ -383,7 +393,8 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
                                         </td>
                                         <td class="py-4 px-6 text-center text-slate-400 font-medium">—</td>
                                     </tr>
@@ -393,10 +404,12 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
@@ -405,10 +418,12 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
@@ -417,10 +432,12 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -432,8 +449,8 @@
                         <i class="fas fa-circle-info text-[#0055a4]"></i>
                         <span>
                             <?php echo e($isFr
-                                ? 'Exigences cantonales : vérifiez toujours auprès de votre service cantonal de la population (ex. OCPM à Genève, SPOP dans le canton de Vaud).'
-                                : 'Cantonal variations: always verify requirements with your local migration office (e.g. OCPM Geneva, SPOP Vaud).'); ?>
+    ? 'Exigences cantonales : vérifiez toujours auprès de votre service cantonal de la population (ex. OCPM à Genève, SPOP dans le canton de Vaud).'
+    : 'Cantonal variations: always verify requirements with your local migration office (e.g. OCPM Geneva, SPOP Vaud).'); ?>
 
                         </span>
                     </div>
@@ -459,20 +476,23 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Le test évalue le français à travers deux modules indépendants axés sur la vie quotidienne en Suisse.'
-                                : 'The test assesses your French through two independent modules grounded in everyday Swiss life.'); ?>
+    ? 'Le test évalue le français à travers deux modules indépendants axés sur la vie quotidienne en Suisse.'
+    : 'The test assesses your French through two independent modules grounded in everyday Swiss life.'); ?>
 
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between">
+                        <div
+                            class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-lg">
+                                    <span
+                                        class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-lg">
                                         <i class="fas fa-comments"></i>
                                     </span>
-                                    <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-[#f0f6fc] text-[#0055a4] border border-blue-100">
+                                    <span
+                                        class="px-3.5 py-1 rounded-full text-xs font-bold bg-[#f0f6fc] text-[#0055a4] border border-blue-100">
                                         40 min
                                     </span>
                                 </div>
@@ -482,8 +502,8 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
                                     <?php echo e($isFr
-                                        ? 'Évalue votre capacité à interagir spontanément avec un interlocuteur suisse dans des situations courantes.'
-                                        : 'Evaluates your ability to communicate spontaneously in standard daily Swiss situations.'); ?>
+    ? 'Évalue votre capacité à interagir spontanément avec un interlocuteur suisse dans des situations courantes.'
+    : 'Evaluates your ability to communicate spontaneously in standard daily Swiss situations.'); ?>
 
                                 </p>
                                 <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
@@ -501,19 +521,23 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <div
+                                class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                                 <span><?php echo e($isFr ? 'Niveaux attestés :' : 'Assessed levels:'); ?></span>
                                 <span class="font-bold text-[#0055a4]">A1 · A2 · B1</span>
                             </div>
                         </div>
 
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between">
+                        <div
+                            class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-lg">
+                                    <span
+                                        class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-lg">
                                         <i class="fas fa-pen-nib"></i>
                                     </span>
-                                    <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-[#f0f6fc] text-[#0055a4] border border-blue-100">
+                                    <span
+                                        class="px-3.5 py-1 rounded-full text-xs font-bold bg-[#f0f6fc] text-[#0055a4] border border-blue-100">
                                         60 min
                                     </span>
                                 </div>
@@ -523,8 +547,8 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 font-normal">
                                     <?php echo e($isFr
-                                        ? 'Évalue la compréhension de documents suisses authentiques et la rédaction de messages pratiques.'
-                                        : 'Evaluates reading comprehension of authentic Swiss notices and practical written correspondence.'); ?>
+    ? 'Évalue la compréhension de documents suisses authentiques et la rédaction de messages pratiques.'
+    : 'Evaluates reading comprehension of authentic Swiss notices and practical written correspondence.'); ?>
 
                                 </p>
                                 <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
@@ -542,17 +566,19 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <div
+                                class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                                 <span><?php echo e($isFr ? 'Niveaux attestés :' : 'Assessed levels:'); ?></span>
                                 <span class="font-bold text-[#0055a4]">A1 · A2 · B1</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-8 text-center bg-[#f0f6fc] rounded-2xl p-4 border border-blue-100/70 text-xs sm:text-sm text-slate-600">
+                    <div
+                        class="mt-8 text-center bg-[#f0f6fc] rounded-2xl p-4 border border-blue-100/70 text-xs sm:text-sm text-slate-600">
                         <?php echo e($isFr
-                            ? 'Vous pouvez passer les deux modules le même jour ou séparément. Le passeport des langues certifie chaque épreuve de façon indépendante.'
-                            : 'You can take both modules on the same day or separately. Your Language Passport certificates each skill independently.'); ?>
+    ? 'Vous pouvez passer les deux modules le même jour ou séparément. Le passeport des langues certifie chaque épreuve de façon indépendante.'
+    : 'You can take both modules on the same day or separately. Your Language Passport certificates each skill independently.'); ?>
 
                     </div>
                 </div>
@@ -577,8 +603,8 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Le test fide ne sanctionne pas la grammaire théorique : il évalue votre efficacité communicative dans la vie réelle en Suisse.'
-                                : 'The fide test does not penalize theoretical grammar: it evaluates communicative effectiveness in real-life Swiss situations.'); ?>
+    ? 'Le test fide ne sanctionne pas la grammaire théorique : il évalue votre efficacité communicative dans la vie réelle en Suisse.'
+    : 'The fide test does not penalize theoretical grammar: it evaluates communicative effectiveness in real-life Swiss situations.'); ?>
 
                         </p>
                     </div>
@@ -593,25 +619,58 @@
                                 <thead>
                                     <tr class="border-b border-slate-100 text-slate-400 font-semibold">
                                         <th class="py-3 px-4"><?php echo e($isFr ? 'Critère' : 'Criteria'); ?></th>
-                                        <th class="py-3 px-4"><?php echo e($isFr ? 'Examens académiques (DELF / TCF)' : 'Academic tests (DELF / TCF)'); ?></th>
-                                        <th class="py-3 px-4 text-[#0055a4]"><?php echo e($isFr ? 'Test fide suisse' : 'Swiss fide test'); ?></th>
+                                        <th class="py-3 px-4">
+                                            <?php echo e($isFr ? 'Examens académiques (DELF / TCF)' : 'Academic tests (DELF / TCF)'); ?>
+
+                                        </th>
+                                        <th class="py-3 px-4 text-[#0055a4]">
+                                            <?php echo e($isFr ? 'Test fide suisse' : 'Swiss fide test'); ?>
+
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
                                     <tr>
-                                        <td class="py-3.5 px-4 font-bold text-[#10233e]"><?php echo e($isFr ? 'Objectif' : 'Main focus'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-500"><?php echo e($isFr ? 'Règles de grammaire, syntaxe et orthographe académiques' : 'Grammar rules, formal structure, and academic syntax'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-700 font-medium"><?php echo e($isFr ? 'Se faire comprendre dans la vie quotidienne suisse' : 'Getting things done in daily Swiss life (work, commune, doctor)'); ?></td>
+                                        <td class="py-3.5 px-4 font-bold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Objectif' : 'Main focus'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-500">
+                                            <?php echo e($isFr ? 'Règles de grammaire, syntaxe et orthographe académiques' : 'Grammar rules, formal structure, and academic syntax'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-700 font-medium">
+                                            <?php echo e($isFr ? 'Se faire comprendre dans la vie quotidienne suisse' : 'Getting things done in daily Swiss life (work, commune, doctor)'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="py-3.5 px-4 font-bold text-[#10233e]"><?php echo e($isFr ? 'Notation' : 'Scoring'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-500"><?php echo e($isFr ? 'Réussite ou échec sur un niveau fixe pré-choisi' : 'Pass or fail for one fixed pre-selected level'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-700 font-medium"><?php echo e($isFr ? 'Évaluation progressive : vos points fixent votre palier (A1, A2 ou B1)' : 'Progressive scale: your score determines your level (A1, A2, or B1)'); ?></td>
+                                        <td class="py-3.5 px-4 font-bold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Notation' : 'Scoring'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-500">
+                                            <?php echo e($isFr ? 'Réussite ou échec sur un niveau fixe pré-choisi' : 'Pass or fail for one fixed pre-selected level'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-700 font-medium">
+                                            <?php echo e($isFr ? 'Évaluation progressive : vos points fixent votre palier (A1, A2 ou B1)' : 'Progressive scale: your score determines your level (A1, A2, or B1)'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="py-3.5 px-4 font-bold text-[#10233e]"><?php echo e($isFr ? 'Épreuve orale' : 'Speaking style'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-500"><?php echo e($isFr ? 'Exposé formel, monologue et questions académiques' : 'Formal monologue, abstract presentation, structured thesis'); ?></td>
-                                        <td class="py-3.5 px-4 text-slate-700 font-medium"><?php echo e($isFr ? 'Jeu de rôle interactif avec l\'examinateur jouant un rôle suisse' : 'Spontaneous interactive dialogue with examiner acting as Swiss interlocutor'); ?></td>
+                                        <td class="py-3.5 px-4 font-bold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Épreuve orale' : 'Speaking style'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-500">
+                                            <?php echo e($isFr ? 'Exposé formel, monologue et questions académiques' : 'Formal monologue, abstract presentation, structured thesis'); ?>
+
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slate-700 font-medium">
+                                            <?php echo e($isFr ? 'Jeu de rôle interactif avec l\'examinateur jouant un rôle suisse' : 'Spontaneous interactive dialogue with examiner acting as Swiss interlocutor'); ?>
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -621,7 +680,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
                             <div class="space-y-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
+                                <span
+                                    class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
                                     <i class="fas fa-triangle-exclamation text-[10px]"></i>
                                     <span><?php echo e($isFr ? 'Piège 1' : 'Trap 1'); ?></span>
                                 </span>
@@ -631,20 +691,21 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Mémoriser des règles de subjonctif au lieu de s\'entraîner à réagir avec spontanéité dans des situations pratiques.'
-                                        : 'Memorizing grammar tables instead of practicing spontaneous spoken reactions in everyday Swiss situations.'); ?>
+    ? 'Mémoriser des règles de subjonctif au lieu de s\'entraîner à réagir avec spontanéité dans des situations pratiques.'
+    : 'Memorizing grammar tables instead of practicing spontaneous spoken reactions in everyday Swiss situations.'); ?>
 
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 bg-[#f2f7fc] rounded-2xl p-4 border border-blue-100/70">
-                                <div class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <div
+                                    class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
                                     <i class="fas fa-check text-xs"></i>
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Jeux de rôle en direct : commune, médecin, régie immobilière, employeur.'
-                                        : 'Live role-play simulations: communal office, doctor, rental agency, workplace.'); ?>
+    ? 'Jeux de rôle en direct : commune, médecin, régie immobilière, employeur.'
+    : 'Live role-play simulations: communal office, doctor, rental agency, workplace.'); ?>
 
                                 </p>
                             </div>
@@ -652,7 +713,8 @@
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
                             <div class="space-y-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
+                                <span
+                                    class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
                                     <i class="fas fa-triangle-exclamation text-[10px]"></i>
                                     <span><?php echo e($isFr ? 'Piège 2' : 'Trap 2'); ?></span>
                                 </span>
@@ -662,20 +724,21 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? "Chercher le mot parfait et se taire coûte cher. L'examinateur fide valorise la fluidité et les stratégies de relance."
-                                        : 'Hunting for the "perfect" word and staying silent hurts your score. Examiners reward communicative repair strategies.'); ?>
+    ? "Chercher le mot parfait et se taire coûte cher. L'examinateur fide valorise la fluidité et les stratégies de relance."
+    : 'Hunting for the "perfect" word and staying silent hurts your score. Examiners reward communicative repair strategies.'); ?>
 
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 bg-[#f2f7fc] rounded-2xl p-4 border border-blue-100/70">
-                                <div class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <div
+                                    class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
                                     <i class="fas fa-check text-xs"></i>
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Phrases d\'accroche et automatismes conversationnels pour maintenir le dialogue sans blocage.'
-                                        : 'Conversation starters and conversational maintenance phrases drilled until fluent.'); ?>
+    ? 'Phrases d\'accroche et automatismes conversationnels pour maintenir le dialogue sans blocage.'
+    : 'Conversation starters and conversational maintenance phrases drilled until fluent.'); ?>
 
                                 </p>
                             </div>
@@ -683,7 +746,8 @@
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
                             <div class="space-y-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
+                                <span
+                                    class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/60 inline-flex items-center gap-1.5">
                                     <i class="fas fa-triangle-exclamation text-[10px]"></i>
                                     <span><?php echo e($isFr ? 'Piège 3' : 'Trap 3'); ?></span>
                                 </span>
@@ -693,20 +757,21 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Beaucoup réussissent le B1 à l\'oral mais manquent le A2 à l\'écrit faute de connaître les formats de courriers suisses.'
-                                        : 'Many score B1 oral but fall short of A2 writing due to unfamiliarity with standard Swiss official formats.'); ?>
+    ? 'Beaucoup réussissent le B1 à l\'oral mais manquent le A2 à l\'écrit faute de connaître les formats de courriers suisses.'
+    : 'Many score B1 oral but fall short of A2 writing due to unfamiliarity with standard Swiss official formats.'); ?>
 
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 bg-[#f2f7fc] rounded-2xl p-4 border border-blue-100/70">
-                                <div class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <div
+                                    class="text-xs font-bold text-[#0055a4] uppercase tracking-wider mb-1 flex items-center gap-1.5">
                                     <i class="fas fa-check text-xs"></i>
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Entraînement ciblé sur formulaires administratifs, courriels de réclamation et modèles types.'
-                                        : 'Targeted practice on authentic Swiss administrative forms, email notices, and standard templates.'); ?>
+    ? 'Entraînement ciblé sur formulaires administratifs, courriels de réclamation et modèles types.'
+    : 'Targeted practice on authentic Swiss administrative forms, email notices, and standard templates.'); ?>
 
                                 </p>
                             </div>
@@ -725,20 +790,22 @@
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                             <div class="lg:col-span-7">
-                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 mb-4">
+                                <span
+                                    class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 mb-4">
                                     <?php echo e($isFr ? 'COURS 100% EN LIGNE PARTOUT EN SUISSE' : '100% ONLINE CLASSES ACROSS SWITZERLAND'); ?>
 
                                 </span>
-                                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+                                <h2
+                                    class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
                                     <?php echo e($isFr
-                                        ? 'Préparation au test fide à Genève, Lausanne, Fribourg, Neuchâtel ou Nyon'
-                                        : 'Preparing for the fide test in Geneva, Lausanne, Fribourg, Neuchâtel or Nyon'); ?>
+    ? 'Préparation au test fide à Genève, Lausanne, Fribourg, Neuchâtel ou Nyon'
+    : 'Preparing for the fide test in Geneva, Lausanne, Fribourg, Neuchâtel or Nyon'); ?>
 
                                 </h2>
                                 <p class="mt-4 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Nos cours ont lieu en direct sur Google Meet avec votre professeur particulier dédié. Où que vous résidiez en Suisse romande, vos séances s\'adaptent à votre planning professionnel.'
-                                        : 'Our classes take place live on Google Meet with your dedicated private tutor. Wherever you live across Switzerland, your sessions adapt to your work and family schedule.'); ?>
+    ? 'Nos cours ont lieu en direct sur Google Meet avec votre professeur particulier dédié. Où que vous résidiez en Suisse romande, vos séances s\'adaptent à votre planning professionnel.'
+    : 'Our classes take place live on Google Meet with your dedicated private tutor. Wherever you live across Switzerland, your sessions adapt to your work and family schedule.'); ?>
 
                                 </p>
                             </div>
@@ -758,8 +825,8 @@
                                     </div>
                                     <p class="text-xs text-slate-300 leading-relaxed font-normal">
                                         <?php echo e($isFr
-                                            ? 'Préparez-vous à distance avec nous, puis passez l\'épreuve officielle dans le centre le plus proche de votre domicile.'
-                                            : 'Prepare online from home with us, then sit the official test at your local accredited cantonal centre.'); ?>
+    ? 'Préparez-vous à distance avec nous, puis passez l\'épreuve officielle dans le centre le plus proche de votre domicile.'
+    : 'Prepare online from home with us, then sit the official test at your local accredited cantonal centre.'); ?>
 
                                     </p>
                                 </div>
@@ -789,8 +856,8 @@
                         <p
                             class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                             <?php echo e($isFr
-                                ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. De vrais scénarios suisses. Pas de programme générique.'
-                                : 'Focused support from your first class to test day. Real Swiss scenarios. No generic syllabus.'); ?>
+    ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. De vrais scénarios suisses. Pas de programme générique.'
+    : 'Focused support from your first class to test day. Real Swiss scenarios. No generic syllabus.'); ?>
 
                         </p>
                     </div>
@@ -810,8 +877,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Dès le premier cours, votre tuteur évalue votre oral et votre écrit directement face aux critères du SEM.'
-                                    : 'In your first class, your tutor benchmarks your oral and written skills directly against the Swiss SEM criteria.'); ?>
+    ? 'Dès le premier cours, votre tuteur évalue votre oral et votre écrit directement face aux critères du SEM.'
+    : 'In your first class, your tutor benchmarks your oral and written skills directly against the Swiss SEM criteria.'); ?>
 
                             </p>
                         </div>
@@ -830,8 +897,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Les heures ciblent votre niveau visé (A1, A2 ou B1) sans perdre de temps sur les acquis.'
-                                    : 'Hours focus on your target level (A1, A2, or B1) without spending time on what you\'ve already mastered.'); ?>
+    ? 'Les heures ciblent votre niveau visé (A1, A2 ou B1) sans perdre de temps sur les acquis.'
+    : 'Hours focus on your target level (A1, A2, or B1) without spending time on what you\'ve already mastered.'); ?>
 
                             </p>
                         </div>
@@ -850,8 +917,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet, avec vos notes après chaque séance.'
-                                    : '1:1 or in a group of 2–5 on Google Meet, with notes after every session.'); ?>
+    ? 'En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet, avec vos notes après chaque séance.'
+    : '1:1 or in a group of 2–5 on Google Meet, with notes after every session.'); ?>
 
                             </p>
                         </div>
@@ -869,8 +936,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Simulations des épreuves orales et écrites en conditions d\'examen, avec retour détaillé.'
-                                    : 'Simulations of both oral and written parts under timed test conditions, with detailed feedback.'); ?>
+    ? 'Simulations des épreuves orales et écrites en conditions d\'examen, avec retour détaillé.'
+    : 'Simulations of both oral and written parts under timed test conditions, with detailed feedback.'); ?>
 
                             </p>
                         </div>
@@ -885,8 +952,8 @@
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
                             <?php echo e($isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                         </p>
                     </div>
@@ -933,7 +1000,8 @@
                     <div class="border-t border-slate-200/80 my-8"></div>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-                        <span class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
+                        <span
+                            class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
                         <a href="https://fide-service.ch" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>fide-service.ch</span>
@@ -967,5 +1035,4 @@
 
 </body>
 
-</html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/fide-test.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/fide-test.blade.php ENDPATH**/ ?>
