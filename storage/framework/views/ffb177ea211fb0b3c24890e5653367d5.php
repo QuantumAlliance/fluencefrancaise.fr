@@ -545,19 +545,16 @@
         </section>
 
         <!-- ============ SECTION 8: FINAL CTA ============ -->
-        <section class="pb-20 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden">
-                    <div class="absolute inset-x-0 bottom-0 h-1.5" style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
-                    <h2 class="text-3xl md:text-5xl font-semibold leading-tight max-w-2xl mx-auto">Your level. The required level. We close the gap.</h2>
-                    <p class="mt-4 text-lg text-primary-100 max-w-xl mx-auto">Your first class sets your level and your plan. You choose the pace: 2 or 4 hours a week.</p>
-                    <div class="mt-8 flex flex-wrap justify-center gap-4">
-                        <a href="/register" class="btn btn-onnavy btn-lg">Enroll now</a>
-                        <a href="/en/contact/" class="btn btn-lg btn-outline" style="box-shadow:inset 0 0 0 2px #fff;color:#fff;background:transparent">Talk to us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php echo $__env->make('partials.cta-banner', [
+            'eyebrow' => "LET'S GET YOU THERE",
+            'title' => "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
+            'description' => "Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.",
+            'primaryButtonText' => 'Enroll now',
+            'primaryButtonUrl' => '/register',
+            'secondaryButtonText' => 'Talk to us',
+            'secondaryButtonUrl' => '/en/contact/',
+            'helperText' => 'Live classes on Google Meet · 1:1 or small group · Student portal included'
+        ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
