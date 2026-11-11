@@ -16,18 +16,12 @@ app.use(router)
 app.use(toastPlugin) // Global toast plugin
 app.component('Toggle', Toggle) // Register Toggle globally
 
-// Load settings and initialize auth in parallel BEFORE mounting the app
+// Mount immediately so the UI appears instantly
+app.mount('#app')
+
 const settingsStore = useSettingsStore()
 const authStore = useAuthStore()
 
-// Run both initializations concurrently to reduce blank screen time
-Promise.all([
-  settingsStore.fetchSettings(),
-  authStore.initializeAuth()
-]).then(() => {
-  app.mount('#app')
-}).catch(err => {
-  console.error('Failed to initialize app:', err)
-  // Mount anyway to show fallback UI or login page
-  app.mount('#app')
-})
+// Initialize settings and auth in the background (non-blocking)
+settingsStore.fetchSettings()
+authStore.initializeAuth()

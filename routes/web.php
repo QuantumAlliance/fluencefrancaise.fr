@@ -186,6 +186,48 @@ Route::prefix('demo')->group(function () {
 
 Route::get('/books', function () { return view('app'); });
 
+// Multi-language spec routes & aliases (Developer Guide)
+$examRoutes = ['tcf-irn', 'tef-irn', 'test-fide', 'fide-test', 'delf-a2', 'delf-b1', 'delf-b2', 'delf', 'tcf-vs-tef-vs-delf', 'tcf-tef-ou-delf'];
+foreach ($examRoutes as $slug) {
+    Route::get('/en/' . $slug, function () { return view('tef-tcf'); });
+    Route::get('/fr/' . $slug, function () { return view('tef-tcf'); });
+    Route::get('/' . $slug, function () { return view('tef-tcf'); });
+}
+
+$goalRoutes = [
+    'french-citizenship-language-test', 'test-francais-naturalisation',
+    'french-civic-exam', 'examen-civique',
+    'french-residence-permit-language', 'titre-de-sejour-niveau-francais',
+    'c-permit-switzerland', 'permis-c-suisse',
+    'swiss-citizenship', 'naturalisation-suisse',
+    'french-citizenship', 'naturalisation-francaise'
+];
+foreach ($goalRoutes as $slug) {
+    Route::get('/en/' . $slug, function () { return view('why-french'); });
+    Route::get('/fr/' . $slug, function () { return view('why-french'); });
+}
+
+Route::get('/en/online-french-classes', function () { return view('our-courses'); });
+Route::get('/fr/cours-de-francais-en-ligne', function () { return view('our-courses'); });
+
+Route::get('/en/about', function () { return view('about-us'); });
+Route::get('/fr/a-propos', function () { return view('about-us'); });
+
+Route::get('/en/contact', function () { return view('contact-us'); });
+Route::get('/fr/contact', function () { return view('contact-us'); });
+
+Route::get('/en', function () {
+    $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
+    $classTypes = \App\Models\ClassType::where('is_active', true)->orderBy('display_order', 'asc')->get();
+    return view('homepage', compact('settings', 'classTypes'));
+});
+
+Route::get('/fr', function () {
+    $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
+    $classTypes = \App\Models\ClassType::where('is_active', true)->orderBy('display_order', 'asc')->get();
+    return view('homepage', compact('settings', 'classTypes'));
+});
+
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });
 
