@@ -957,61 +957,15 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 8: FAQ (SPLIT 2-COLUMN) ============ -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100" id="faq">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
-                        <!-- Left Column: FAQ Header -->
-                        <div class="lg:col-span-4 space-y-4">
-                            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600">
-                                <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
-                                FAQ
-                            </div>
-                            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
-                                {{ $isFr ? 'Questions fréquentes sur le TCF IRN' : 'TCF IRN FAQ' }}
-                            </h2>
-                            <p class="text-sm text-slate-600 leading-relaxed">
-                                {{ $isFr 
-                                    ? "Tout ce qu'il faut savoir sur l'examen, sa durée, sa validité et notre préparation personnalisée."
-                                    : 'Everything you need to know about test format, rules, validity and our live online tutoring.'
-                                }}
-                            </p>
-                            <div class="pt-2">
-                                <a href="{{ $isFr ? '/fr/contact/' : '/en/contact/' }}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0055a4] hover:text-[#002654] group">
-                                    <span>{{ $isFr ? 'Une question sur votre dossier ? Contactez-nous' : 'Have a specific question? Contact us' }}</span>
-                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Right Column: Accordion List -->
-                        <div class="lg:col-span-8 space-y-3">
-                            @foreach($faqs as $index => $faq)
-                                <div class="border border-slate-200/90 rounded-2xl overflow-hidden bg-white hover:border-slate-300 transition-colors">
-                                    <button 
-                                        type="button"
-                                        onclick="toggleFaq({{ $index }})"
-                                        class="w-full py-4 px-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#002654] focus:outline-none"
-                                        aria-expanded="false"
-                                        id="faq-btn-{{ $index }}"
-                                    >
-                                        <span>{{ $faq['q'] }}</span>
-                                        <span class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 transition-transform duration-200" id="faq-icon-{{ $index }}">
-                                            <i class="fas fa-chevron-down text-xs"></i>
-                                        </span>
-                                    </button>
-                                    <div 
-                                        id="faq-content-{{ $index }}" 
-                                        class="hidden px-6 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3"
-                                    >
-                                        {{ $faq['a'] }}
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- ============ SECTION 8: FAQ (REUSABLE COMPONENT) ============ -->
+            @include('partials.faq-section', [
+                'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
+                'title' => 'TCF IRN<br>FAQ',
+                'description' => $isFr ? "Des réponses claires avant de passer à l'étape suivante." : 'Clear answers before you take your next step.',
+                'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
+                'contactUrl' => $isFr ? '/fr/contact/' : '/en/contact/',
+                'faqs' => $faqs
+            ])
 
             <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
             <section class="py-16 sm:py-24 bg-[#f8fafc]">
@@ -1090,24 +1044,5 @@
         <!-- FOOTER: Standard Unified Component -->
         @include('partials.footer')
     </div>
-
-    <!-- Interactive FAQ Script -->
-    <script>
-        function toggleFaq(index) {
-            const content = document.getElementById('faq-content-' + index);
-            const icon = document.getElementById('faq-icon-' + index);
-            const btn = document.getElementById('faq-btn-' + index);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-                btn.setAttribute('aria-expanded', 'true');
-            } else {
-                content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-                btn.setAttribute('aria-expanded', 'false');
-            }
-        }
-    </script>
 </body>
 </html>

@@ -93,7 +93,7 @@
             </div> 
             <!-- Bottom French Tricolor Stripe -->
             <div class="absolute inset-x-0 bottom-0 h-1.5 flex">
-                <div class="w-1/3 h-full bg-[#0055A4]"></div>
+                <div class="w-1/3 h-full bg-[#003D7A]"></div>
                 <div class="w-1/3 h-full bg-white"></div>
                 <div class="w-1/3 h-full bg-[#ef4135]"></div>
             </div>
