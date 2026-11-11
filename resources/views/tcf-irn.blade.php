@@ -6,7 +6,7 @@
     // Determine language based on current URL prefix
     $isFr = request()->is('fr*');
     
-    // Page metadata
+    // Page metadata according to Spec Page 02
     $title = $isFr 
         ? "TCF IRN 2026 : format, notation et préparation en ligne"
         : "TCF IRN 2026: Format, Scoring and Online Preparation";
@@ -27,7 +27,7 @@
         ],
         [
             'q' => "Combien de temps l'attestation est-elle valable ?",
-            'a' => "2 ans à compter de la délivrance de votre attestation. Si votre calendrier est incertain, regardez aussi le <a href=\"/fr/delf-b2\" class=\"text-primary-600 underline font-semibold\">DELF B2</a> : c'est un diplôme, et il n'expire jamais."
+            'a' => "2 ans à compter de la délivrance de votre attestation. Si votre calendrier est incertain, regardez aussi le DELF B2 : c'est un diplôme, et il n'expire jamais."
         ],
         [
             'q' => "Quelle différence entre le TCF IRN et le TCF tout public ?",
@@ -56,7 +56,7 @@
         ],
         [
             'q' => "How long are TCF IRN results valid?",
-            'a' => "2 years from the date your attestation is issued. If your timeline is uncertain, look at the <a href=\"/en/delf-b2\" class=\"text-primary-600 underline font-semibold\">DELF B2</a> too: it's a diploma, and it never expires."
+            'a' => "2 years from the date your attestation is issued. If your timeline is uncertain, look at the DELF B2 too: it's a diploma, and it never expires."
         ],
         [
             'q' => "What's the difference between the TCF IRN and the TCF Tout Public?",
@@ -79,192 +79,250 @@
             'a' => "No. We prepare you for it. You register with a test centre approved by France Éducation international."
         ]
     ];
-
-    // Structured Data JSON-LD
-    $breadcrumbSchema = [
-        '@type' => 'BreadcrumbList',
-        'itemListElement' => [
-            [
-                '@type' => 'ListItem',
-                'position' => 1,
-                'name' => $isFr ? 'Accueil' : 'Home',
-                'item' => $isFr ? 'https://fluencefrancaise.fr/fr/' : 'https://fluencefrancaise.fr/en/'
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 2,
-                'name' => $isFr ? 'Examens' : 'Exams',
-                'item' => $canonicalUrl
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 3,
-                'name' => 'TCF IRN',
-                'item' => $canonicalUrl
-            ]
-        ]
-    ];
-
-    $courseSchema = [
-        '@type' => 'Course',
-        'name' => $title,
-        'description' => $metaDesc,
-        'courseMode' => 'online',
-        'provider' => [
-            '@type' => 'EducationalOrganization',
-            'name' => $siteName,
-            'url' => $canonicalUrl
-        ]
-    ];
-
-    $faqSchema = [
-        '@type' => 'FAQPage',
-        'mainEntity' => array_map(function($f) {
-            return [
-                '@type' => 'Question',
-                'name' => $f['q'],
-                'acceptedAnswer' => [
-                    '@type' => 'Answer',
-                    'text' => strip_tags($f['a'])
-                ]
-            ];
-        }, $faqs)
-    ];
-
-    $jsonLd = [
-        '@context' => 'https://schema.org',
-        '@graph' => [
-            $breadcrumbSchema,
-            $courseSchema,
-            $faqSchema
-        ]
-    ];
 @endphp
-<html lang="{{ $isFr ? 'fr' : 'en' }}">
+<html lang="{{ $isFr ? 'fr' : 'en' }}" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $metaDesc }}">
-    <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
-
-    @include('partials.social-meta', [
-        'ogType' => 'website',
-        'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title,
-        'ogDescription' => $metaDesc,
-        'ogSiteName' => $siteName,
-        'ogImage' => isset($settings['site_logo']) ? asset('storage/' . $settings['site_logo']) : null,
-    ])
-
-    <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $metaDesc }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ $siteName }}">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Course",
+          "name": "{{ $isFr ? 'Préparation au TCF IRN en ligne' : 'TCF IRN Online Preparation' }}",
+          "description": "{{ $metaDesc }}",
+          "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Fluence Française",
+            "url": "https://fluencefrancaise.fr"
+          },
+          "courseMode": "online",
+          "inLanguage": ["fr", "en"]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "{{ $isFr ? 'Accueil' : 'Home' }}",
+              "item": "{{ $isFr ? 'https://fluencefrancaise.fr/fr/' : 'https://fluencefrancaise.fr/en/' }}"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{ $isFr ? 'Examens' : 'Exams' }}",
+              "item": "{{ $isFr ? 'https://fluencefrancaise.fr/fr/#exams' : 'https://fluencefrancaise.fr/en/#exams' }}"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "TCF IRN",
+              "item": "{{ $canonicalUrl }}"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            @foreach($faqs as $index => $faq)
+            {
+              "@type": "Question",
+              "name": "{{ addslashes($faq['q']) }}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ addslashes($faq['a']) }}"
+              }
+            }{{ $index < count($faqs) - 1 ? ',' : '' }}
+            @endforeach
+          ]
+        }
+      ]
+    }
+    </script>
 
     @include('partials.favicon')
+
+    <!-- Shared tricolor theme (fonts, tailwind config, components, aurora) -->
     @include('partials.theme')
+
     @include('partials.custom-scripts-head')
 </head>
 <body class="antialiased bg-white text-ink">
     @include('partials.custom-scripts-body')
 
-    <div class="landing-page">
+    <div class="landing-page min-h-screen flex flex-col">
+        <!-- Top Site Header (Floating pill navbar) -->
         @include('partials.header')
 
-        <!-- BREADCRUMB -->
-        <div class="pt-28 md:pt-36 pb-3 bg-white border-b border-slate-100">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <nav aria-label="Breadcrumb" class="text-xs text-slate-500 font-medium flex items-center gap-2">
-                    <a href="{{ $isFr ? '/fr' : '/en' }}" class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
-                    <span class="text-slate-300">›</span>
-                    <span class="text-slate-600">{{ $isFr ? 'Examens' : 'Exams' }}</span>
-                    <span class="text-slate-300">›</span>
-                    <span class="text-primary-600 font-semibold">TCF IRN</span>
-                </nav>
-            </div>
-        </div>
+        <main class="flex-grow">
+            <!-- ============ SECTION 1: HERO (HOMEPAGE AURORA STYLE) ============ -->
+            <section class="relative overflow-hidden bg-white pt-28 sm:pt-36 md:pt-40 pb-16 md:pb-20 border-b border-slate-100">
+                <div class="hero-aurora-strong"></div>
 
-        <!-- ============ SECTION 1: HERO ============ -->
-        <section class="relative overflow-hidden bg-white pt-10 md:pt-16 pb-16 md:pb-24">
-            <div class="hero-aurora-strong"></div>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="max-w-3xl mx-auto text-center reveal">
-                    <div class="inline-flex flex-col items-center justify-center gap-1.5 mb-3">
-                        <span class="text-xs sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary-600">{{ $isFr ? 'EXAMEN OFFICIEL' : 'OFFICIAL EXAM' }}</span>
-                        <span class="tricolor my-1" style="height:3.5px;width:48px;"><i></i><i></i><i></i></span>
-                    </div>
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="max-w-3xl mx-auto text-center reveal">
+                        <!-- Centered Breadcrumb (Inside hero banner, no awkward top gap) -->
+                        <div class="mb-5 flex justify-center">
+                            <nav aria-label="Breadcrumb" class="text-xs text-slate-400 font-medium flex items-center gap-2">
+                                <a href="{{ $isFr ? '/fr' : '/en' }}" class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
+                                <span class="text-slate-300">›</span>
+                                <a href="{{ $isFr ? '/fr#exams' : '/en#exams' }}" class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Examens' : 'Exams' }}</a>
+                                <span class="text-slate-300">›</span>
+                                <span class="text-slate-700 font-semibold">TCF IRN</span>
+                            </nav>
+                        </div>
 
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-semibold text-ink tracking-tight leading-tight">
-                        {{ $isFr ? 'TCF IRN : préparez exactement le niveau exigé' : 'TCF IRN: Prepare for the Exact Level You Need' }}
-                    </h1>
+                        <!-- Centered Eyebrow with Blue & Red Dashes (Image 1 Style) -->
+                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
+                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
+                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                {{ $isFr ? 'VOTRE PROCHAIN CHAPITRE COMMENCE PAR LA BONNE PRÉPARATION' : 'YOUR NEXT CHAPTER STARTS WITH THE RIGHT PREPARATION' }}
+                            </span>
+                        </div>
 
-                    <p class="mt-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                        {{ $isFr ? 'Mis à jour le 6 octobre 2026' : 'Updated 6 October 2026' }}
-                    </p>
+                        <!-- H1 Title -->
+                        <h1 class="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#002654] tracking-tight leading-[1.12]">
+                            @if($isFr)
+                                TCF IRN : préparez exactement<br class="hidden sm:inline" />
+                                <span class="text-[#0055a4]">le niveau exigé</span>
+                            @else
+                                TCF IRN: Prepare for the<br class="hidden sm:inline" />
+                                <span class="text-[#0055a4]">Exact Level You Need</span>
+                            @endif
+                        </h1>
 
-                    <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                        {{ $isFr 
-                            ? 'Le TCF IRN mesure chaque compétence séparément : nous travaillons celles qui vous séparent du niveau exigé par votre dossier.' 
-                            : 'The TCF IRN scores each skill separately, so we train the skills standing between you and the level your application requires.' 
-                        }}
-                    </p>
+                        <!-- French Tricolor Underline Bar (Centered under title, Image 1 Style) -->
+                        <div class="flex items-center justify-center my-5">
+                            <div class="flex items-center gap-2 w-64 sm:w-80">
+                                <span class="flex-1 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                                <span class="flex-1 h-[2.5px] bg-[#EF4135] rounded-full"></span>
+                            </div>
+                        </div>
 
-                    <div class="mt-8 flex flex-col items-center gap-3">
-                        <a href="/register" class="btn btn-primary btn-lg">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }} <i class="fas fa-arrow-right text-xs ml-1"></i>
-                        </a>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium">
+                        <!-- Subhead -->
+                        <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
                             {{ $isFr 
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
+                                ? 'Le TCF IRN mesure chaque compétence séparément : nous travaillons celles qui vous séparent du niveau exigé par votre dossier.' 
+                                : 'The TCF IRN scores each skill separately, so we train the skills standing between you and the level your application requires.' 
                             }}
                         </p>
-                    </div>
 
-                    <!-- 3 FACTS STRIP -->
-                    <div class="mt-12 grid sm:grid-cols-3 gap-4 pt-8 border-t border-slate-100 text-left">
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-check"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? '4 compétences travaillées' : 'All 4 skills covered' }}</span>
+                        <!-- CTA Button & Under-button text -->
+                        <div class="mt-8 flex flex-col items-center gap-3">
+                            <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+                                {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                                <i class="fas fa-arrow-right text-xs ml-2.5"></i>
+                            </a>
+                            <p class="text-xs sm:text-[13px] text-slate-500 font-medium">
+                                {{ $isFr 
+                                    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
+                                    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
+                                }}
+                            </p>
                         </div>
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-laptop"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? 'Examens blancs dans votre espace élève' : 'Mock exams in your student portal' }}</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-pen-nib"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? 'Notes de cours après chaque séance' : 'Class notes after every session' }}</span>
+
+                        <!-- 2026 requirements / Updated date tag (Image 1 Style) -->
+                        <div class="mt-6 flex items-center justify-center gap-2 text-xs font-semibold text-slate-400">
+                            <span class="text-slate-400 text-[9px]">●</span>
+                            <span>{{ $isFr ? 'Exigences 2026' : '2026 requirements' }}</span>
+                            <span class="text-slate-300">/</span>
+                            <span>{{ $isFr ? 'Mis à jour le 11 novembre 2026' : 'Updated 11 November 2026' }}</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ============ SECTION 2: AT A GLANCE ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Vue d\'ensemble' : 'Overview' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Le TCF IRN en bref' : 'The TCF IRN at a glance' }}
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        {{ $isFr 
-                            ? 'Le TCF IRN (Test de connaissance du français – Intégration, Résidence et Nationalité) est accepté pour la carte de séjour pluriannuelle, la carte de résident et la naturalisation. Il dure 1 h 35 et compte 4 épreuves. Son attestation est valable 2 ans.'
-                            : 'The TCF IRN (Test de connaissance du français – Intégration, Résidence et Nationalité) is a French test accepted for a multi-year residence permit, a 10-year resident card and French citizenship. It takes 1 h 35 and has 4 sections. Your results are valid for 2 years.'
-                        }}
-                    </p>
+            <!-- ============ SECTION 2: THE TCF IRN AT A GLANCE ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        <!-- Left Column: Title & Intro -->
+                        <div class="lg:col-span-6 space-y-4">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600">
+                                <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                                {{ $isFr ? "Vue d'ensemble" : 'Exam Overview' }}
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                                {{ $isFr ? 'Le TCF IRN en bref' : 'The TCF IRN at a glance' }}
+                            </h2>
+                            <p class="text-base text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'Le TCF IRN (Test de connaissance du français – Intégration, Résidence et Nationalité) est accepté pour la carte de séjour pluriannuelle, la carte de résident et la naturalisation. Il dure 1 h 35 et compte 4 épreuves. Son attestation est valable 2 ans.'
+                                    : 'The TCF IRN (Test de connaissance du français – Intégration, Résidence et Nationalité) is a French test accepted for a multi-year residence permit, a 10-year resident card and French citizenship. It takes 1 h 35 and has 4 sections. Your results are valid for 2 years.'
+                                }}
+                            </p>
+                            <div class="pt-2">
+                                <a href="https://www.france-education-international.fr/article/tcf-integration-residence-et-nationalite" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-[#0055a4] hover:text-[#002654] group transition-colors">
+                                    <span>{{ $isFr ? 'Règlement officiel France Éducation international' : 'Official France Éducation international guidelines' }}</span>
+                                    <i class="fas fa-arrow-up-right-from-square text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
 
-                    <!-- Summary Table (no header row) -->
-                    <div class="mt-8 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card">
-                        <table class="w-full text-left text-sm">
-                            <tbody class="divide-y divide-slate-100">
+                        <!-- Right Column: 2x2 Dark Navy Stats Card Grid -->
+                        <div class="lg:col-span-6">
+                            <div class="bg-[#002654] text-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-navy-900/10 border border-navy-800">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <!-- Stat 1 -->
+                                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">4</div>
+                                        <div class="mt-1 text-xs sm:text-sm font-medium text-blue-200">
+                                            {{ $isFr ? 'épreuves obligatoires' : 'compulsory sections' }}
+                                        </div>
+                                    </div>
+                                    <!-- Stat 2 -->
+                                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">1 h 35</div>
+                                        <div class="mt-1 text-xs sm:text-sm font-medium text-blue-200">
+                                            {{ $isFr ? 'durée totale' : 'total duration' }}
+                                        </div>
+                                    </div>
+                                    <!-- Stat 3 -->
+                                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">A1–B2</div>
+                                        <div class="mt-1 text-xs sm:text-sm font-medium text-blue-200">
+                                            {{ $isFr ? 'niveaux évalués' : 'levels evaluated' }}
+                                        </div>
+                                    </div>
+                                    <!-- Stat 4 -->
+                                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">2 {{ $isFr ? 'ans' : 'years' }}</div>
+                                        <div class="mt-1 text-xs sm:text-sm font-medium text-blue-200">
+                                            {{ $isFr ? "validité attestation" : 'attestation validity' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clean Summary Table (no header row) -->
+                    <div class="mt-12 bg-slate-50/70 border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm">
+                        <table class="w-full text-left text-xs sm:text-sm">
+                            <tbody class="divide-y divide-slate-200/80">
                                 <tr>
-                                    <td class="py-4 px-6 font-bold text-ink bg-slate-50/70 w-1/3">{{ $isFr ? 'Pour qui' : "Who it's for" }}</td>
-                                    <td class="py-4 px-6 text-slate-700">
+                                    <td class="py-4 px-6 font-bold text-[#002654] bg-slate-100/60 w-1/4 sm:w-1/3">
+                                        {{ $isFr ? 'Pour qui' : "Who it's for" }}
+                                    </td>
+                                    <td class="py-4 px-6 text-slate-700 leading-relaxed">
                                         {{ $isFr 
                                             ? "Demandeurs d'une carte pluriannuelle, d'une carte de résident ou de la nationalité française"
                                             : "Anyone applying for a carte de séjour pluriannuelle (multi-year permit), a carte de résident (10-year card) or French citizenship"
@@ -272,11 +330,17 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="py-4 px-6 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Niveaux évalués' : 'Levels tested' }}</td>
-                                    <td class="py-4 px-6 font-semibold text-primary-600">A1 {{ $isFr ? 'à' : 'to' }} B2</td>
+                                    <td class="py-4 px-6 font-bold text-[#002654] bg-slate-100/60">
+                                        {{ $isFr ? 'Niveaux évalués' : 'Levels tested' }}
+                                    </td>
+                                    <td class="py-4 px-6 font-semibold text-[#0055a4]">
+                                        A1 {{ $isFr ? 'à' : 'to' }} B2
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="py-4 px-6 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Épreuves' : 'Sections' }}</td>
+                                    <td class="py-4 px-6 font-bold text-[#002654] bg-slate-100/60">
+                                        {{ $isFr ? 'Épreuves' : 'Sections' }}
+                                    </td>
                                     <td class="py-4 px-6 text-slate-700">
                                         {{ $isFr 
                                             ? 'Compréhension orale, compréhension écrite, expression écrite, expression orale'
@@ -285,14 +349,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="py-4 px-6 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Durée' : 'Duration' }}</td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold">{{ $isFr ? '1 h 35 au total' : '1 h 35 in total' }}</td>
+                                    <td class="py-4 px-6 font-bold text-[#002654] bg-slate-100/60">
+                                        {{ $isFr ? 'Durée' : 'Duration' }}
+                                    </td>
+                                    <td class="py-4 px-6 text-slate-700 font-semibold">
+                                        {{ $isFr ? '1 h 35 au total' : '1 h 35 in total' }}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="py-4 px-6 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Validité' : 'Validity' }}</td>
+                                    <td class="py-4 px-6 font-bold text-[#002654] bg-slate-100/60">
+                                        {{ $isFr ? 'Validité' : 'Validity' }}
+                                    </td>
                                     <td class="py-4 px-6 text-slate-700">
                                         {{ $isFr 
-                                            ? '2 ans à compter de la délivrance de l\'attestation'
+                                            ? "2 ans à compter de la délivrance de l'attestation"
                                             : '2 years from the date the attestation is issued'
                                         }}
                                     </td>
@@ -301,409 +371,743 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ============ SECTION 3: GAP ANALYSIS ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Stratégie' : 'Strategy' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Votre écart n\'est jamais le même partout' : 'Your gap is never the same in every skill' }}
-                    </h2>
-                    
-                    <div class="mt-6 space-y-5 text-lg text-slate-600 leading-relaxed">
-                        <p>
+            <!-- ============ SECTION 3: YOUR GAP IS NEVER THE SAME ============ -->
+            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        <!-- Left Column: Strategy & Gap explanation -->
+                        <div class="lg:col-span-6 space-y-5">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600">
+                                <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                                {{ $isFr ? 'Diagnostic personnalisé' : 'Diagnostic Strategy' }}
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                                {{ $isFr ? "Votre écart n'est jamais le même partout" : 'Your gap is never the same in every skill' }}
+                            </h2>
+                            <p class="text-base text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr
+                                    ? "Votre attestation donne un niveau pour chaque compétence. Pour la naturalisation, l'attestation doit indiquer un niveau global B2, calculé à partir des 4 compétences selon les règles de notation du TCF IRN."
+                                    : "Your results show a level for each skill. For citizenship, the attestation must show an overall B2 level, calculated from all 4 skills under the TCF IRN scoring rules."
+                                }}
+                            </p>
+                            <p class="text-base text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr
+                                    ? "Or l'écart est rarement uniforme. On peut lire au niveau B2 et parler au niveau B1. On peut tout comprendre à l'oral et perdre ses moyens devant une page blanche."
+                                    : "And the gap is rarely even. Plenty of people read at B2 and speak at B1. Others understand everything they hear, then freeze in front of a blank page."
+                                }}
+                            </p>
+                            <div class="bg-white rounded-2xl p-5 border-l-4 border-[#0055a4] border border-slate-200/80 shadow-sm text-sm text-[#002654] font-medium leading-relaxed">
+                                {{ $isFr
+                                    ? "Repasser le test, c'est repayer l'inscription et attendre une nouvelle session. Notre préparation commence donc par mesurer votre niveau dans chacune des 4 épreuves. Les heures vont ensuite là où l'écart est le plus grand."
+                                    : "A retake means paying the fee again and waiting for another session. So we start by measuring your level in each of the 4 sections. Then your hours go where the gap is widest."
+                                }}
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Diagnostic Score Card Graphic -->
+                        <div class="lg:col-span-6">
+                            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
+                                <div class="flex items-center justify-between pb-5 border-b border-slate-100 mb-6">
+                                    <div>
+                                        <div class="text-[11px] font-bold uppercase tracking-wider text-primary-600">
+                                            {{ $isFr ? 'Évaluation diagnostique initiale' : 'Initial Diagnostic Evaluation' }}
+                                        </div>
+                                        <h4 class="text-base font-bold text-[#002654]">
+                                            {{ $isFr ? 'Profil type candidat' : 'Candidate Diagnostic Profile' }}
+                                        </h4>
+                                    </div>
+                                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4] border border-blue-100">
+                                        {{ $isFr ? 'Objectif B2' : 'Target: B2' }}
+                                    </span>
+                                </div>
+
+                                <!-- Skill Bars -->
+                                <div class="space-y-4">
+                                    <!-- Listening -->
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                                            <span class="text-slate-700 flex items-center gap-2">
+                                                <i class="fas fa-headphones text-primary-600 w-4"></i>
+                                                {{ $isFr ? 'Compréhension orale' : 'Listening' }}
+                                            </span>
+                                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">B2 (510/699)</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                            <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 82%"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Reading -->
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                                            <span class="text-slate-700 flex items-center gap-2">
+                                                <i class="fas fa-book-open text-primary-600 w-4"></i>
+                                                {{ $isFr ? 'Compréhension écrite' : 'Reading' }}
+                                            </span>
+                                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">B2 (495/699)</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                            <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Writing (Gap) -->
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                                            <span class="text-slate-700 flex items-center gap-2">
+                                                <i class="fas fa-pen-nib text-amber-600 w-4"></i>
+                                                {{ $isFr ? 'Expression écrite' : 'Writing' }}
+                                            </span>
+                                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">B1 (360/699) · {{ $isFr ? 'Écart' : 'Gap' }}</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                            <div class="bg-amber-500 h-2.5 rounded-full" style="width: 50%"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Speaking (Gap) -->
+                                    <div>
+                                        <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                                            <span class="text-slate-700 flex items-center gap-2">
+                                                <i class="fas fa-comments text-amber-600 w-4"></i>
+                                                {{ $isFr ? 'Expression orale' : 'Speaking' }}
+                                            </span>
+                                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">B1 (380/699) · {{ $isFr ? 'Écart' : 'Gap' }}</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                            <div class="bg-amber-500 h-2.5 rounded-full" style="width: 54%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Diagnostic note -->
+                                <div class="mt-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-xs text-amber-900 flex items-start gap-3">
+                                    <i class="fas fa-bullseye text-amber-600 text-sm mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <strong>{{ $isFr ? 'Plan de cours personnalisé :' : 'Targeted Study Plan:' }}</strong>
+                                        {{ $isFr 
+                                            ? "70% du temps concentré sur l'expression écrite et orale pour sécuriser le B2 global sans perdre de temps sur les acquis."
+                                            : "70% of tutoring hours focused on Writing & Speaking to bridge the gap to B2, with zero wasted time on skills you've already mastered."
+                                        }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 4: TCF IRN FORMAT (THE 4 SECTIONS) ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <!-- Centered Heading -->
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                            {{ $isFr ? 'Structure des épreuves' : 'Exam Structure' }}
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                            {{ $isFr ? 'Format du TCF IRN : les 4 épreuves' : 'TCF IRN format: the 4 sections' }}
+                        </h2>
+                        <p class="mt-4 text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
                             {{ $isFr
-                                ? "Votre attestation donne un niveau pour chaque compétence. Pour la naturalisation, l'attestation doit indiquer un niveau global B2, calculé à partir des 4 compétences selon les règles de notation du TCF IRN."
-                                : "Your results show a level for each skill. For citizenship, the attestation must show an overall B2 level, calculated from all 4 skills under the TCF IRN scoring rules."
-                            }}
-                        </p>
-                        <p>
-                            {{ $isFr
-                                ? "Or l'écart est rarement uniforme. On peut lire au niveau B2 et parler au niveau B1. On peut tout comprendre à l'oral et perdre ses moyens devant une page blanche."
-                                : "And the gap is rarely even. Plenty of people read at B2 and speak at B1. Others understand everything they hear, then freeze in front of a blank page."
-                            }}
-                        </p>
-                        <div class="bg-primary-50/70 border-l-4 border-primary-600 rounded-2xl p-6 text-ink font-medium">
-                            {{ $isFr
-                                ? "Repasser le test, c'est repayer l'inscription et attendre une nouvelle session. Notre préparation commence donc par mesurer votre niveau dans chacune des 4 épreuves. Les heures vont ensuite là où l'écart est le plus grand."
-                                : "A retake means paying the fee again and waiting for another session. So we start by measuring your level in each of the 4 sections. Then your hours go where the gap is widest."
-                            }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 4: THE 4 SECTIONS ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Structure' : 'Structure' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Format du TCF IRN : les 4 épreuves' : 'TCF IRN format: the 4 sections' }}
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        {{ $isFr
-                            ? "Le TCF IRN comprend 4 épreuves obligatoires, passées le même jour. Les 2 épreuves de compréhension sont des questionnaires à choix multiple. Les 2 épreuves d'expression sont évaluées par des correcteurs et des examinateurs. Ce format, en vigueur depuis le 12 mai 2025, évalue jusqu'au niveau B2."
-                            : "The TCF IRN has 4 compulsory sections, all taken on the same day. Listening and reading are multiple choice. Writing and speaking are marked by examiners. This format has applied since 12 May 2025 and tests up to B2."
-                        }}
-                    </p>
-
-                    <!-- Table Format -->
-                    <div class="mt-8 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card">
-                        <table class="w-full text-left text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200">
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Épreuve' : 'Section' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Format' : 'Format' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink text-right">{{ $isFr ? 'Durée' : 'Time' }}</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink flex items-center gap-3">
-                                        <i class="fas fa-headphones text-primary-600"></i>
-                                        <span>{{ $isFr ? 'Compréhension orale' : 'Listening' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-600">{{ $isFr ? '25 questions à choix multiple' : '25 multiple-choice questions' }}</td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold text-right">20 min</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink flex items-center gap-3">
-                                        <i class="fas fa-book-open text-primary-600"></i>
-                                        <span>{{ $isFr ? 'Compréhension écrite' : 'Reading' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-600">{{ $isFr ? '25 questions à choix multiple' : '25 multiple-choice questions' }}</td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold text-right">35 min</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink flex items-center gap-3">
-                                        <i class="fas fa-pen-nib text-[#EF4135]"></i>
-                                        <span>{{ $isFr ? 'Expression écrite' : 'Writing' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-600">{{ $isFr ? '3 exercices' : '3 tasks' }}</td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold text-right">30 min</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink flex items-center gap-3">
-                                        <i class="fas fa-comments text-[#EF4135]"></i>
-                                        <span>{{ $isFr ? 'Expression orale' : 'Speaking' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-600">{{ $isFr ? 'Entretien individuel avec un examinateur' : '1-to-1 interview with an examiner' }}</td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold text-right">10 min</td>
-                                </tr>
-                                <tr class="bg-primary-50/50 font-bold">
-                                    <td class="py-4 px-6 text-primary-900" colspan="2">{{ $isFr ? 'Total' : 'Total' }}</td>
-                                    <td class="py-4 px-6 text-primary-900 text-right">1 h 35</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 5: TRAPS & POINTS LOSS ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto text-center reveal mb-12">
-                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Pièges d\'examen' : 'Common Traps' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Où les candidats perdent des points au TCF IRN' : 'Where TCF IRN candidates lose points' }}
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- Trap 1 -->
-                    <div class="card-glow bg-white rounded-3xl border border-slate-100 p-7 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-clock"></i></span>
-                            <h3 class="text-xl font-bold text-ink">{{ $isFr ? 'Le chrono, plus que la grammaire' : 'The clock, more than the grammar' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $isFr 
-                                ? "En compréhension écrite, vous avez 35 minutes pour 25 questions. Cela fait 84 secondes par question, lecture comprise. Bloquer 3 minutes sur une question, c'est utiliser le temps de 2."
-                                : "Reading gives you 35 minutes for 25 questions. That's 84 seconds a question, reading included. Spend 3 minutes stuck on 1 question, and you've used the time of 2."
-                            }}
-                        </p>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-sm text-primary-700 font-medium">
-                            <i class="fas fa-circle-check mt-1 text-primary-600 shrink-0"></i>
-                            <span><strong>{{ $isFr ? 'Ce que nous faisons :' : 'What we do:' }}</strong> {{ $isFr ? 'des séries chronométrées, jusqu\'à ce que le rythme devienne automatique.' : 'timed drills until the pace is automatic.' }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Trap 2 -->
-                    <div class="card-glow bg-white rounded-3xl border border-slate-100 p-7 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-volume-high"></i></span>
-                            <h3 class="text-xl font-bold text-ink">{{ $isFr ? 'L\'oreille habituée au français lent' : 'Ears trained on slow French' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $isFr 
-                                ? "Les documents audio du test sont courts et parlés à vitesse naturelle. Les méthodes d'apprentissage, elles, parlent souvent lentement. L'écart se découvre le jour J."
-                                : "The audio is short and spoken at natural speed. Most courses speak slowly. People find out the difference on exam day."
-                            }}
-                        </p>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-sm text-primary-700 font-medium">
-                            <i class="fas fa-circle-check mt-1 text-primary-600 shrink-0"></i>
-                            <span><strong>{{ $isFr ? 'Ce que nous faisons :' : 'What we do:' }}</strong> {{ $isFr ? 'des exercices d\'écoute à vitesse native dans votre espace élève, dès la première semaine.' : 'native-speed listening practice in your student portal from week 1.' }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Trap 3 -->
-                    <div class="card-glow bg-white rounded-3xl border border-slate-100 p-7 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-file-lines"></i></span>
-                            <h3 class="text-xl font-bold text-ink">{{ $isFr ? '3 textes en 30 minutes' : '3 texts in 30 minutes' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $isFr 
-                                ? "L'expression écrite demande 3 productions en 30 minutes. Le piège classique : soigner la première et bâcler la dernière. Le correcteur, lui, lit les 3."
-                                : "The writing section asks for 3 pieces in 30 minutes. The classic trap: polishing the first and rushing the last. The examiner reads all 3."
-                            }}
-                        </p>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-sm text-primary-700 font-medium">
-                            <i class="fas fa-circle-check mt-1 text-primary-600 shrink-0"></i>
-                            <span><strong>{{ $isFr ? 'Ce que nous faisons :' : 'What we do:' }}</strong> {{ $isFr ? 'un plan de temps par exercice et des structures de phrases à adapter, pas à réciter.' : 'a time plan for each task and sentence structures you adapt rather than memorise.' }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Trap 4 -->
-                    <div class="card-glow bg-white rounded-3xl border border-slate-100 p-7 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-comment-slash"></i></span>
-                            <h3 class="text-xl font-bold text-ink">{{ $isFr ? 'Des réponses trop courtes à l\'oral' : 'Answers that are too short' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $isFr 
-                                ? "En 10 minutes, l'examinateur doit entendre ce qui fait un B2 : argumenter, nuancer, illustrer. Une réponse de 2 phrases ne lui en laisse pas l'occasion."
-                                : "In 10 minutes, the examiner needs to hear B2 skills: arguing, nuancing, giving examples. A 2-sentence answer gives them nothing to mark."
-                            }}
-                        </p>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-sm text-primary-700 font-medium">
-                            <i class="fas fa-circle-check mt-1 text-primary-600 shrink-0"></i>
-                            <span><strong>{{ $isFr ? 'Ce que nous faisons :' : 'What we do:' }}</strong> {{ $isFr ? 'une méthode simple pour chaque réponse — une idée, un exemple, une nuance.' : 'a simple pattern for every answer — 1 idea, 1 example, 1 nuance.' }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 6: HOW WE PREPARE YOU ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Méthode' : 'Methodology' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Notre préparation au TCF IRN' : 'How we prepare you for the TCF IRN' }}
-                    </h2>
-
-                    @php
-                        $prepSteps = $isFr ? [
-                            "<strong>Votre niveau, épreuve par épreuve.</strong> Dès le premier cours, votre tuteur situe chaque compétence face au niveau exigé par votre démarche.",
-                            "<strong>Un plan construit sur votre écart.</strong> Les heures vont aux épreuves où vous êtes le plus loin du but. Pas de programme générique.",
-                            "<strong>Des cours en direct, 2 ou 4 h par semaine.</strong> En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet. Vous recevez les notes après chaque séance.",
-                            "<strong>Des examens blancs au chrono.</strong> Votre espace élève contient des tests au format de l'examen et des banques d'exercices par compétence. Chaque devoir reçoit un retour."
-                        ] : [
-                            "<strong>Your level, section by section.</strong> In your first class, your tutor places each skill against the level your application needs.",
-                            "<strong>A plan built on your gap.</strong> Your hours go to the sections where you're furthest from the target. No generic syllabus.",
-                            "<strong>Live classes, 2 or 4 hours a week.</strong> 1:1 or in a group of 2–5, on Google Meet. You get the class notes after every session.",
-                            "<strong>Timed mock exams.</strong> Your student portal has exam-format tests and practice banks for each skill. Every piece of homework gets feedback."
-                        ];
-                    @endphp
-
-                    <div class="mt-8 space-y-4">
-                        @foreach($prepSteps as $idx => $step)
-                        <div class="flex items-start gap-4 bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                            <span class="w-8 h-8 rounded-full bg-primary-600 text-white grid place-content-center text-sm font-bold shrink-0 mt-0.5">{{ $idx + 1 }}</span>
-                            <p class="text-slate-700 leading-relaxed">{!! $step !!}</p>
-                        </div>
-                        @endforeach
-                    </div>
-
-                    <div class="mt-10 text-center flex flex-col items-center gap-2">
-                        <a href="/register" class="btn btn-primary btn-lg">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }} <i class="fas fa-arrow-right text-xs ml-1"></i>
-                        </a>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium">
-                            {{ $isFr 
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
+                                ? "Le TCF IRN comprend 4 épreuves obligatoires, passées le même jour. Les 2 épreuves de compréhension sont des questionnaires à choix multiple. Les 2 épreuves d'expression sont évaluées par des correcteurs et des examinateurs. Ce format, en vigueur depuis le 12 mai 2025, évalue jusqu'au niveau B2."
+                                : "The TCF IRN has 4 compulsory sections, all taken on the same day. Listening and reading are multiple choice. Writing and speaking are marked by examiners. This format has applied since 12 May 2025 and tests up to B2."
                             }}
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ============ SECTION 7: REQUIRED LEVELS ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Exigences officielles' : 'Requirements' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Quel niveau viser au TCF IRN ?' : 'What TCF IRN level do you need?' }}
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        {{ $isFr
-                            ? "Tout dépend de votre démarche : A2 pour une première carte de séjour pluriannuelle, B1 pour la carte de résident, B2 pour la naturalisation. Ces niveaux s'appliquent depuis le 1er janvier 2026. Vérifiez celui de votre dossier avant de vous inscrire au test."
-                            : "It depends on your application: A2 for a first multi-year residence permit, B1 for the 10-year resident card, B2 for citizenship. These levels have applied since 1 January 2026. Check which one applies to you before you book the test."
-                        }}
-                    </p>
+                    <!-- 4 Cards Grid (4 columns) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Card 1: Listening -->
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="w-11 h-11 rounded-2xl bg-blue-50 text-[#0055a4] grid place-content-center text-lg">
+                                        <i class="fas fa-headphones"></i>
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-[#002654]">
+                                        20 min
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Compréhension orale' : 'Listening' }}
+                                </h3>
+                                <p class="mt-2 text-xs font-semibold text-[#0055a4]">
+                                    {{ $isFr ? '25 questions à choix multiple' : '25 multiple-choice questions' }}
+                                </p>
+                                <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? 'Extraits audio courts parlés à vitesse naturelle de locuteurs natifs.'
+                                        : 'Short audio clips recorded at natural native French speaking speed.'
+                                    }}
+                                </p>
+                            </div>
+                        </div>
 
-                    <!-- Table -->
-                    <div class="mt-8 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card">
-                        <table class="w-full text-left text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200">
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Démarche' : 'Application' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Niveau exigé' : 'Level required' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink text-right">{{ $isFr ? 'En savoir plus' : 'Read more' }}</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Carte de séjour pluriannuelle' : 'Multi-year residence permit' }}</td>
-                                    <td class="py-4 px-6 font-bold text-primary-600">A2</td>
-                                    <td class="py-4 px-6 text-right">
-                                        <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais' : '/en/french-residence-permit-language' }}" class="text-primary-600 underline font-semibold hover:text-primary-700 inline-flex items-center gap-1">
-                                            <span>{{ $isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits' }}</span>
-                                            <i class="fas fa-arrow-right text-xs"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Carte de résident' : '10-year resident card' }}</td>
-                                    <td class="py-4 px-6 font-bold text-primary-600">B1</td>
-                                    <td class="py-4 px-6 text-right">
-                                        <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais' : '/en/french-residence-permit-language' }}" class="text-primary-600 underline font-semibold hover:text-primary-700 inline-flex items-center gap-1">
-                                            <span>{{ $isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits' }}</span>
-                                            <i class="fas fa-arrow-right text-xs"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Naturalisation' : 'French citizenship' }}</td>
-                                    <td class="py-4 px-6 font-bold text-[#EF4135]">B2</td>
-                                    <td class="py-4 px-6 text-right">
-                                        <a href="{{ $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test' }}" class="text-primary-600 underline font-semibold hover:text-primary-700 inline-flex items-center gap-1">
-                                            <span>{{ $isFr ? 'Test de français pour la naturalisation' : 'The French citizenship language test' }}</span>
-                                            <i class="fas fa-arrow-right text-xs"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <!-- Card 2: Reading -->
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="w-11 h-11 rounded-2xl bg-blue-50 text-[#0055a4] grid place-content-center text-lg">
+                                        <i class="fas fa-book-open"></i>
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-[#002654]">
+                                        35 min
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Compréhension écrite' : 'Reading' }}
+                                </h3>
+                                <p class="mt-2 text-xs font-semibold text-[#0055a4]">
+                                    {{ $isFr ? '25 questions à choix multiple' : '25 multiple-choice questions' }}
+                                </p>
+                                <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? '84 secondes par question en moyenne, temps de lecture compris.'
+                                        : '84 seconds per question on average, text reading time included.'
+                                    }}
+                                </p>
+                            </div>
+                        </div>
 
-                    <p class="mt-6 text-sm text-slate-600 leading-relaxed">
-                        @if($isFr)
-                            Depuis 2026, un <a href="/fr/examen-civique" class="text-primary-600 underline font-semibold hover:text-primary-700">examen civique</a> est aussi exigé pour la naturalisation par décret et pour les titres de séjour concernés par les règles de 2026. Vous hésitez encore sur le test ? <a href="/fr/tcf-tef-ou-delf" class="text-primary-600 underline font-semibold hover:text-primary-700">Comparez le TCF, le TEF et le DELF</a>.
-                        @else
-                            Citizenship by decree and the residence permit applications covered by the 2026 rules also need the <a href="/en/french-civic-exam" class="text-primary-600 underline font-semibold hover:text-primary-700">French civic exam</a>. Not sure which test to take? <a href="/en/tcf-vs-tef-vs-delf" class="text-primary-600 underline font-semibold hover:text-primary-700">Compare the TCF, TEF and DELF</a>.
-                        @endif
-                    </p>
-                </div>
-            </div>
-        </section>
+                        <!-- Card 3: Writing -->
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="w-11 h-11 rounded-2xl bg-blue-50 text-[#0055a4] grid place-content-center text-lg">
+                                        <i class="fas fa-pen-nib"></i>
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-[#002654]">
+                                        30 min
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Expression écrite' : 'Writing' }}
+                                </h3>
+                                <p class="mt-2 text-xs font-semibold text-[#0055a4]">
+                                    {{ $isFr ? '3 exercices' : '3 tasks' }}
+                                </p>
+                                <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? 'Message court, lettre personnelle et texte argumentatif nuancé.'
+                                        : 'Short message, personal letter, and structured opinion essay.'
+                                    }}
+                                </p>
+                            </div>
+                        </div>
 
-        <!-- ============ SECTION 8: FAQ ============ -->
-        <section id="faq" class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <div class="text-center mb-12 reveal">
-                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> FAQ</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Questions fréquentes sur le TCF IRN' : 'TCF IRN FAQ' }}
-                    </h2>
-                </div>
-
-                <div class="space-y-3 reveal">
-                    @foreach($faqs as $item)
-                    <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                        <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left gap-4 cursor-pointer">
-                            <span class="font-bold text-ink text-base">{{ $item['q'] }}</span>
-                            <i class="fas fa-plus text-primary-600 text-sm transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed text-sm">
-                            {!! $item['a'] !!}
+                        <!-- Card 4: Speaking -->
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="w-11 h-11 rounded-2xl bg-blue-50 text-[#0055a4] grid place-content-center text-lg">
+                                        <i class="fas fa-comments"></i>
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-[#002654]">
+                                        10 min
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Expression orale' : 'Speaking' }}
+                                </h3>
+                                <p class="mt-2 text-xs font-semibold text-[#0055a4]">
+                                    {{ $isFr ? 'Entretien individuel' : '1-to-1 interview' }}
+                                </p>
+                                <p class="mt-2 text-xs text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? 'Face-à-face avec un examinateur certifié en 3 parties progressives.'
+                                        : 'Face-to-face with a certified examiner in 3 progressive parts.'
+                                    }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
+
+                    <!-- Bottom Total Duration Bar -->
+                    <div class="mt-8 max-w-xl mx-auto">
+                        <div class="flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-semibold text-[#002654] text-center shadow-sm">
+                            <i class="fas fa-clock text-[#0055a4]"></i>
+                            <span>{{ $isFr ? 'Total : 1 h 35 · Les 4 épreuves sont obligatoires et passées le même jour' : 'Total: 1 h 35 · All 4 compulsory sections are taken on the same day' }}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden max-w-4xl mx-auto shadow-lift">
-                    <div class="absolute inset-x-0 bottom-0 h-1.5" style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
+            <!-- ============ SECTION 5: WHERE CANDIDATES LOSE POINTS ============ -->
+            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <!-- Centered Heading -->
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                            {{ $isFr ? 'Pièges fréquents' : 'Common Pitfalls' }}
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                            {{ $isFr ? 'Où les candidats perdent des points au TCF IRN' : 'Where TCF IRN candidates lose points' }}
+                        </h2>
+                    </div>
 
-                    <h2 class="text-3xl md:text-5xl font-semibold leading-tight max-w-2xl mx-auto">
-                        {{ $isFr ? 'Votre niveau. Le niveau exigé. Nous comblons l\'écart.' : 'Your level. The required level. We close the gap.' }}
-                    </h2>
+                    <!-- 2x2 Traps Grid -->
+                    <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+                        <!-- Trap 1 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <div class="w-9 h-9 rounded-xl bg-red-50 text-[#ef4135] grid place-content-center text-sm font-bold">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-bold text-[#002654]">
+                                    {{ $isFr ? 'Le chrono, plus que la grammaire' : 'The clock, more than the grammar' }}
+                                </h3>
+                                <p class="text-sm text-slate-600 leading-relaxed font-normal">
+                                    {{ $isFr 
+                                        ? "En compréhension écrite, vous avez 35 minutes pour 25 questions. Cela fait 84 secondes par question, lecture comprise. Bloquer 3 minutes sur une question, c'est utiliser le temps de 2."
+                                        : "Reading gives you 35 minutes for 25 questions. That's 84 seconds a question, reading included. Spend 3 minutes stuck on 1 question, and you've used the time of 2."
+                                    }}
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/70 text-xs sm:text-sm font-semibold text-[#003f7a] flex items-center gap-2.5">
+                                <i class="fas fa-check-circle text-[#0055a4] shrink-0"></i>
+                                <span>{{ $isFr ? 'Ce que nous faisons : des séries chronométrées, jusqu\'à ce que le rythme devienne automatique.' : 'What we do: timed drills until the pace is automatic.' }}</span>
+                            </div>
+                        </div>
 
-                    <p class="mt-4 text-lg text-primary-100 max-w-xl mx-auto">
-                        {{ $isFr 
-                            ? 'Votre premier cours fixe votre niveau dans chaque épreuve et le plan pour atteindre celui de votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.' 
-                            : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.' 
-                        }}
-                    </p>
+                        <!-- Trap 2 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <div class="w-9 h-9 rounded-xl bg-red-50 text-[#ef4135] grid place-content-center text-sm font-bold">
+                                    <i class="fas fa-volume-high"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-bold text-[#002654]">
+                                    {{ $isFr ? "L'oreille habituée au français lent" : 'Ears trained on slow French' }}
+                                </h3>
+                                <p class="text-sm text-slate-600 leading-relaxed font-normal">
+                                    {{ $isFr 
+                                        ? "Les documents audio du test sont courts et parlés à vitesse naturelle. Les méthodes d'apprentissage, elles, parlent souvent lentement. L'écart se découvre le jour J."
+                                        : "The audio is short and spoken at natural speed. Most courses speak slowly. People find out the difference on exam day."
+                                    }}
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/70 text-xs sm:text-sm font-semibold text-[#003f7a] flex items-center gap-2.5">
+                                <i class="fas fa-check-circle text-[#0055a4] shrink-0"></i>
+                                <span>{{ $isFr ? "Ce que nous faisons : des exercices d'écoute à vitesse native dans votre espace élève, dès la première semaine." : 'What we do: native-speed listening practice in your student portal from week 1.' }}</span>
+                            </div>
+                        </div>
 
-                    <div class="mt-8 flex flex-col items-center gap-3">
-                        <a href="/register" class="btn btn-onnavy btn-lg">
+                        <!-- Trap 3 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <div class="w-9 h-9 rounded-xl bg-red-50 text-[#ef4135] grid place-content-center text-sm font-bold">
+                                    <i class="fas fa-pen-ruler"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-bold text-[#002654]">
+                                    {{ $isFr ? '3 textes en 30 minutes' : '3 texts in 30 minutes' }}
+                                </h3>
+                                <p class="text-sm text-slate-600 leading-relaxed font-normal">
+                                    {{ $isFr 
+                                        ? "L'expression écrite demande 3 productions en 30 minutes. Le piège classique : soigner la première et bâcler la dernière. Le correcteur, lui, lit les 3."
+                                        : "The writing section asks for 3 pieces in 30 minutes. The classic trap: polishing the first and rushing the last. The examiner reads all 3."
+                                    }}
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/70 text-xs sm:text-sm font-semibold text-[#003f7a] flex items-center gap-2.5">
+                                <i class="fas fa-check-circle text-[#0055a4] shrink-0"></i>
+                                <span>{{ $isFr ? 'Ce que nous faisons : un plan de temps par exercice et des structures de phrases à adapter, pas à réciter.' : 'What we do: a time plan for each task and sentence structures you adapt rather than memorise.' }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Trap 4 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <div class="w-9 h-9 rounded-xl bg-red-50 text-[#ef4135] grid place-content-center text-sm font-bold">
+                                    <i class="fas fa-comment-dots"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-bold text-[#002654]">
+                                    {{ $isFr ? 'Des réponses trop courtes à l\'oral' : 'Answers that are too short' }}
+                                </h3>
+                                <p class="text-sm text-slate-600 leading-relaxed font-normal">
+                                    {{ $isFr 
+                                        ? "En 10 minutes, l'examinateur doit entendre ce qui fait un B2 : argumenter, nuancer, illustrer. Une réponse de 2 phrases ne lui en laisse pas l'occasion."
+                                        : "In 10 minutes, the examiner needs to hear B2 skills: arguing, nuancing, giving examples. A 2-sentence answer gives them nothing to mark."
+                                    }}
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/70 text-xs sm:text-sm font-semibold text-[#003f7a] flex items-center gap-2.5">
+                                <i class="fas fa-check-circle text-[#0055a4] shrink-0"></i>
+                                <span>{{ $isFr ? 'Ce que nous faisons : une méthode simple pour chaque réponse — une idée, un exemple, une nuance.' : 'What we do: a simple pattern for every answer — 1 idea, 1 example, 1 nuance.' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 6: HOW WE PREPARE YOU ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <!-- Centered Heading -->
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                            {{ $isFr ? 'Méthodologie' : 'Methodology' }}
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                            {{ $isFr ? 'Notre préparation au TCF IRN' : 'How we prepare you for the TCF IRN' }}
+                        </h2>
+                    </div>
+
+                    <!-- 4 Numbered Step Cards Side-by-Side -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Step 1 -->
+                        <div class="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-start space-y-4">
+                            <div class="w-10 h-10 rounded-full bg-[#0055a4] text-white font-extrabold text-sm grid place-content-center shadow-md shadow-blue-500/20">
+                                1
+                            </div>
+                            <h3 class="text-base font-bold text-[#002654] leading-snug">
+                                {{ $isFr ? 'Votre niveau, épreuve par épreuve' : 'Your level, section by section' }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'Dès le premier cours, votre tuteur situe chaque compétence face au niveau exigé par votre démarche.'
+                                    : 'In your first class, your tutor places each skill against the level your application needs.'
+                                }}
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-start space-y-4">
+                            <div class="w-10 h-10 rounded-full bg-[#0055a4] text-white font-extrabold text-sm grid place-content-center shadow-md shadow-blue-500/20">
+                                2
+                            </div>
+                            <h3 class="text-base font-bold text-[#002654] leading-snug">
+                                {{ $isFr ? 'Un plan construit sur votre écart' : 'A plan built on your gap' }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'Les heures vont aux épreuves où vous êtes le plus loin du but. Pas de programme générique.'
+                                    : "Your hours go to the sections where you're furthest from the target. No generic syllabus."
+                                }}
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-start space-y-4">
+                            <div class="w-10 h-10 rounded-full bg-[#0055a4] text-white font-extrabold text-sm grid place-content-center shadow-md shadow-blue-500/20">
+                                3
+                            </div>
+                            <h3 class="text-base font-bold text-[#002654] leading-snug">
+                                {{ $isFr ? 'Des cours en direct, 2 ou 4 h par semaine' : 'Live classes, 2 or 4 hours a week' }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet. Vous recevez les notes après chaque séance.'
+                                    : '1:1 or in a group of 2–5, on Google Meet. You get the class notes after every session.'
+                                }}
+                            </p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-start space-y-4">
+                            <div class="w-10 h-10 rounded-full bg-[#0055a4] text-white font-extrabold text-sm grid place-content-center shadow-md shadow-blue-500/20">
+                                4
+                            </div>
+                            <h3 class="text-base font-bold text-[#002654] leading-snug">
+                                {{ $isFr ? 'Des examens blancs au chrono' : 'Timed mock exams' }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'Votre espace élève contient des tests au format de l\'examen et des banques d\'exercices par compétence. Chaque devoir reçoit un retour.'
+                                    : 'Your student portal has exam-format tests and practice banks for each skill. Every piece of homework gets feedback.'
+                                }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Centered CTA Button -->
+                    <div class="mt-12 flex flex-col items-center gap-3 text-center">
+                        <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
                             {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
-                        <p class="text-xs sm:text-sm text-primary-100 font-medium">
+                        <p class="text-xs sm:text-[13px] text-slate-500 font-medium">
                             {{ $isFr 
                                 ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
                                 : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
                             }}
                         </p>
                     </div>
+                </div>
+            </section>
 
-                    <!-- Referral note -->
-                    <div class="mt-8 pt-6 border-t border-white/20 text-xs sm:text-sm text-primary-100">
-                        @if($isFr)
-                            Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami. <a href="/fr/contact#parrainage" class="text-white underline font-bold hover:text-accent">Contactez-nous</a>
-                        @else
-                            Coming with a friend? €50 off per month, for you and for them. <a href="/en/contact#referral" class="text-white underline font-bold hover:text-accent">Contact us</a>
-                        @endif
+            <!-- ============ SECTION 7: WHAT TCF IRN LEVEL DO YOU NEED? ============ -->
+            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <!-- Centered Heading -->
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                            {{ $isFr ? 'Niveaux requis 2026' : '2026 Legal Requirements' }}
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                            {{ $isFr ? 'Quel niveau viser au TCF IRN ?' : 'What TCF IRN level do you need?' }}
+                        </h2>
+                        <p class="mt-4 text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                            {{ $isFr 
+                                ? "Tout dépend de votre démarche : A2 pour une première carte de séjour pluriannuelle, B1 pour la carte de résident, B2 pour la naturalisation. Ces niveaux s'appliquent depuis le 1er janvier 2026. Vérifiez celui de votre dossier avant de vous inscrire au test."
+                                : 'It depends on your application: A2 for a first multi-year residence permit, B1 for the 10-year resident card, B2 for citizenship. These levels have applied since 1 January 2026. Check which one applies to you before you book the test.'
+                            }}
+                        </p>
+                    </div>
+
+                    <!-- 3 Level Cards Side-by-Side (A2, B1, and Highlighted B2) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+                        <!-- Card 1: A2 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
+                            <div>
+                                <div class="text-4xl sm:text-5xl font-black text-[#0055a4] tracking-tight mb-3">
+                                    A2
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Carte de séjour pluriannuelle' : 'Multi-year residence permit' }}
+                                </h3>
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? 'Pour le premier renouvellement pluriannuel de titre de séjour en France.'
+                                        : 'Required for first multi-year renewal of French residence cards.'
+                                    }}
+                                </p>
+                            </div>
+                            <div class="pt-6 border-t border-slate-100 mt-6">
+                                <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais/' : '/en/french-residence-permit-language/' }}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0055a4] hover:text-[#002654] group">
+                                    <span>{{ $isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits' }}</span>
+                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: B1 -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
+                            <div>
+                                <div class="text-4xl sm:text-5xl font-black text-[#0055a4] tracking-tight mb-3">
+                                    B1
+                                </div>
+                                <h3 class="text-lg font-bold text-[#002654]">
+                                    {{ $isFr ? 'Carte de résident (10 ans)' : '10-year resident card' }}
+                                </h3>
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+                                    {{ $isFr 
+                                        ? "Exigé pour l'obtention de la carte de résident de longue durée en France."
+                                        : 'Required for the long-term 10-year resident card in France.'
+                                    }}
+                                </p>
+                            </div>
+                            <div class="pt-6 border-t border-slate-100 mt-6">
+                                <a href="{{ $isFr ? '/fr/titre-de-sejour-niveau-francais/' : '/en/french-residence-permit-language/' }}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0055a4] hover:text-[#002654] group">
+                                    <span>{{ $isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits' }}</span>
+                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: B2 (DARK NAVY HIGHLIGHT CARD) -->
+                        <div class="bg-[#002654] text-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-navy-900/15 border border-navy-800 flex flex-col justify-between transform md:-translate-y-2">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                                        B2
+                                    </div>
+                                    <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#0055a4] text-white border border-blue-400/30">
+                                        {{ $isFr ? 'Loi 2026' : '2026 Law' }}
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">
+                                    {{ $isFr ? 'Naturalisation française' : 'French citizenship' }}
+                                </h3>
+                                <p class="mt-2 text-xs sm:text-sm text-blue-200/90 leading-relaxed">
+                                    {{ $isFr 
+                                        ? 'Niveau B2 obligatoire pour les demandes de nationalité déposées depuis le 1er janvier 2026.'
+                                        : 'B2 overall level mandatory for all citizenship files submitted since 1 January 2026.'
+                                    }}
+                                </p>
+                            </div>
+                            <div class="pt-6 border-t border-white/10 mt-6">
+                                <a href="{{ $isFr ? '/fr/test-francais-naturalisation/' : '/en/french-citizenship-language-test/' }}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-blue-200 group">
+                                    <span>{{ $isFr ? 'Test de français pour la naturalisation' : 'The French citizenship language test' }}</span>
+                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Text with Links -->
+                    <div class="mt-12 text-center text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                        {{ $isFr 
+                            ? 'Depuis 2026, un examen civique est aussi exigé pour la naturalisation par décret et pour les titres de séjour concernés par les règles de 2026.'
+                            : 'Citizenship by decree and the residence permit applications covered by the 2026 rules also need the French civic exam.'
+                        }}
+                        <a href="{{ $isFr ? '/fr/examen-civique/' : '/en/french-civic-exam/' }}" class="font-semibold text-[#0055a4] underline hover:text-[#002654]">
+                            {{ $isFr ? "En savoir plus sur l'examen civique" : 'French civic exam' }}
+                        </a>.
+                        {{ $isFr ? 'Vous hésitez encore sur le test ?' : 'Not sure which test to take?' }}
+                        <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf/' : '/en/tcf-vs-tef-vs-delf/' }}" class="font-semibold text-[#0055a4] underline hover:text-[#002654]">
+                            {{ $isFr ? 'Comparez le TCF, le TEF et le DELF' : 'Compare the TCF, TEF and DELF' }}
+                        </a>.
                     </div>
                 </div>
+            </section>
 
-                <!-- Official Sources Line -->
-                <div class="mt-12 text-center text-xs text-slate-400 max-w-3xl mx-auto">
-                    <p>
-                        <strong>{{ $isFr ? 'Sources :' : 'Sources:' }}</strong>
-                        <a href="https://www.france-education-international.fr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">France Éducation international – TCF IRN</a>
-                        ·
-                        <a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }}</a>
-                        ·
-                        <a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">Service-public.fr – {{ $isFr ? 'cartes de séjour' : 'residence cards' }}</a>
-                    </p>
+            <!-- ============ SECTION 8: FAQ (SPLIT 2-COLUMN) ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100" id="faq">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                        <!-- Left Column: FAQ Header -->
+                        <div class="lg:col-span-4 space-y-4">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary-600">
+                                <span class="w-2 h-2 rounded-full bg-[#0055a4]"></span>
+                                FAQ
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#002654] tracking-tight">
+                                {{ $isFr ? 'Questions fréquentes sur le TCF IRN' : 'TCF IRN FAQ' }}
+                            </h2>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                {{ $isFr 
+                                    ? "Tout ce qu'il faut savoir sur l'examen, sa durée, sa validité et notre préparation personnalisée."
+                                    : 'Everything you need to know about test format, rules, validity and our live online tutoring.'
+                                }}
+                            </p>
+                            <div class="pt-2">
+                                <a href="{{ $isFr ? '/fr/contact/' : '/en/contact/' }}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0055a4] hover:text-[#002654] group">
+                                    <span>{{ $isFr ? 'Une question sur votre dossier ? Contactez-nous' : 'Have a specific question? Contact us' }}</span>
+                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Accordion List -->
+                        <div class="lg:col-span-8 space-y-3">
+                            @foreach($faqs as $index => $faq)
+                                <div class="border border-slate-200/90 rounded-2xl overflow-hidden bg-white hover:border-slate-300 transition-colors">
+                                    <button 
+                                        type="button"
+                                        onclick="toggleFaq({{ $index }})"
+                                        class="w-full py-4 px-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#002654] focus:outline-none"
+                                        aria-expanded="false"
+                                        id="faq-btn-{{ $index }}"
+                                    >
+                                        <span>{{ $faq['q'] }}</span>
+                                        <span class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 transition-transform duration-200" id="faq-icon-{{ $index }}">
+                                            <i class="fas fa-chevron-down text-xs"></i>
+                                        </span>
+                                    </button>
+                                    <div 
+                                        id="faq-content-{{ $index }}" 
+                                        class="hidden px-6 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3"
+                                    >
+                                        {{ $faq['a'] }}
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
+            <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
+            <section class="py-16 sm:py-24 bg-[#f8fafc]">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                    <!-- Large Blue Gradient CTA Card -->
+                    <div class="bg-gradient-to-br from-[#0055a4] via-[#004382] to-[#002654] rounded-3xl p-8 sm:p-14 text-white shadow-2xl shadow-blue-900/20 text-center relative overflow-hidden">
+                        <!-- Background glow effect -->
+                        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-400/20 blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-red-400/10 blur-3xl pointer-events-none"></div>
+
+                        <div class="relative z-10 max-w-2xl mx-auto">
+                            <!-- Tricolor bar -->
+                            <div class="inline-flex items-center justify-center mb-4">
+                                <span class="tricolor" style="height:3.5px;width:44px;"><i></i><i></i><i></i></span>
+                            </div>
+
+                            <!-- H2 Title -->
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                                {{ $isFr 
+                                    ? "Votre niveau. Le niveau exigé. Nous comblons l'écart."
+                                    : 'Your level. The required level. We close the gap.'
+                                }}
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="mt-4 text-sm sm:text-base text-blue-100/90 leading-relaxed font-normal">
+                                {{ $isFr 
+                                    ? 'Votre premier cours fixe votre niveau dans chaque épreuve et le plan pour atteindre celui de votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                                    : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.'
+                                }}
+                            </p>
+
+                            <!-- CTA Button -->
+                            <div class="mt-8 flex flex-col items-center gap-3">
+                                <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-[#002654] bg-white hover:bg-slate-100 shadow-xl transition-all transform hover:-translate-y-0.5">
+                                    {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                                    <i class="fas fa-arrow-right text-xs ml-2.5 text-[#0055a4]"></i>
+                                </a>
+                                <p class="text-xs text-blue-200/80 font-medium">
+                                    {{ $isFr 
+                                        ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
+                                        : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
+                                    }}
+                                </p>
+                            </div>
+
+                            <!-- Referral Note -->
+                            <div class="mt-8 pt-6 border-t border-white/15 text-xs text-blue-100">
+                                {{ $isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.' }}
+                                <a href="{{ $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral' }}" class="underline font-semibold text-white hover:text-blue-200 ml-1">
+                                    {{ $isFr ? 'Contactez-nous' : 'Contact us' }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sources Line -->
+                    <div class="mt-10 text-center text-xs text-slate-400 space-x-1">
+                        <span>{{ $isFr ? 'Sources :' : 'Sources:' }}</span>
+                        <a href="https://www.france-education-international.fr/article/tcf-integration-residence-et-nationalite" target="_blank" rel="noopener" class="underline hover:text-slate-600">
+                            France Éducation international – TCF IRN
+                        </a>
+                        <span>·</span>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener" class="underline hover:text-slate-600">
+                            Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }}
+                        </a>
+                        <span>·</span>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank" rel="noopener" class="underline hover:text-slate-600">
+                            Service-public.fr – {{ $isFr ? 'cartes de séjour' : 'residence cards' }}
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER: Standard Unified Component -->
         @include('partials.footer')
     </div>
 
+    <!-- Interactive FAQ Script -->
     <script>
-        // FAQ accordion
-        document.querySelectorAll('.faq-toggle').forEach(function (button) {
-            button.addEventListener('click', function () {
-                var content = this.nextElementSibling;
-                var icon = this.querySelector('i');
-                var isOpen = !content.classList.contains('hidden');
-                content.classList.toggle('hidden');
-                if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
-            });
-        });
+        function toggleFaq(index) {
+            const content = document.getElementById('faq-content-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            const btn = document.getElementById('faq-btn-' + index);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
     </script>
 </body>
 </html>
-
