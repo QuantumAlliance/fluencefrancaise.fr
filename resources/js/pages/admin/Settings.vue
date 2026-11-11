@@ -1123,11 +1123,10 @@ const showGoogleSecret = ref(false) // Toggle to show/hide Google client secret
 // Google OAuth authentication in progress flag
 const authenticatingGoogle = ref(false)
 
-// Google OAuth Redirect URI - uses port 8001 (backend) for local development
+// Google OAuth Redirect URI - uses API URL or current origin
 const googleRedirectUri = computed(() => {
-  // If we're on localhost, always use 8001 for the OAuth redirect to hit the backend
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return `http://localhost:8001/api/admin/google-oauth/callback`
+  if (import.meta.env.VITE_API_URL) {
+    return `${import.meta.env.VITE_API_URL}/api/admin/google-oauth/callback`
   }
   return `${window.location.origin}/api/admin/google-oauth/callback`
 })

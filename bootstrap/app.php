@@ -15,6 +15,22 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+$app->afterLoadingEnvironment(function () {
+    $port = env('SERVER_PORT') ?: env('APP_PORT') ?: env('PORT');
+    if (! $port && env('APP_URL')) {
+        $parsedPort = parse_url(env('APP_URL'), PHP_URL_PORT);
+        if ($parsedPort) {
+            $port = $parsedPort;
+        }
+    }
+    if ($port) {
+        if (! isset($_ENV['SERVER_PORT']) || empty($_ENV['SERVER_PORT'])) {
+            $_ENV['SERVER_PORT'] = (string) $port;
+            putenv('SERVER_PORT=' . $port);
+        }
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

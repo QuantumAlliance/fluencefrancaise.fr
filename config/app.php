@@ -70,6 +70,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'port' => (int) env('APP_PORT', env('SERVER_PORT', 8010)),
+
     'asset_url' => env('ASSET_URL'),
 
     /*

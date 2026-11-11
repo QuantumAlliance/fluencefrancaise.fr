@@ -116,7 +116,9 @@ APP_NAME="Fluence Française"
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
-APP_URL=http://localhost:8001
+APP_PORT=8010
+SERVER_PORT=8010
+APP_URL=http://localhost:8010
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -162,9 +164,9 @@ npm run dev:all
 
 **Terminal 1 — Backend Server:**
 ```bash
-php artisan serve --port=8001
+php artisan serve
 ```
-*Backend runs at: `http://127.0.0.1:8001`*
+*Backend runs at: `http://127.0.0.1:8010` (configured via `APP_PORT` / `SERVER_PORT` in `.env`)*
 
 **Terminal 2 — Frontend Dev Server (Vite):**
 ```bash
