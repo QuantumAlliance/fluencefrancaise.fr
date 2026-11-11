@@ -207,6 +207,11 @@ Route::get('/en/tcf-irn', function () { return view('tcf-irn'); });
 Route::get('/fr/tcf-irn', function () { return view('tcf-irn'); });
 Route::get('/tcf-irn', function () { return view('tcf-irn'); });
 
+// Page 06: TEF IRN (English /en/tef-irn/, French /fr/tef-irn/)
+Route::get('/en/tef-irn', function () { return view('tef-irn'); });
+Route::get('/fr/tef-irn', function () { return view('tef-irn'); });
+Route::get('/tef-irn', function () { return view('tef-irn'); });
+
 // Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
 Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
 Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });
