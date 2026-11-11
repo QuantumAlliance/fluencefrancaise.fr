@@ -362,155 +362,155 @@
 
                         <div class="lg:col-span-5">
                             <div
-                                class="rounded-3xl bg-[#002654] text-white overflow-hidden border border-[#001f3f] relative">
-                                <div class="h-[3px] w-full flex">
-                                    <span class="w-1/3 h-full bg-[#0055A4]"></span>
-                                    <span class="w-1/3 h-full bg-white"></span>
-                                    <span class="w-1/3 h-full bg-[#EF4135]"></span>
-                                </div>
-
-                                <div class="grid grid-cols-2 divide-x divide-white/10">
-                                    <div class="divide-y divide-white/10">
-                                        <div class="p-6 sm:p-7 space-y-2">
-                                            <div class="text-blue-200/70">
-                                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="1.75"
-                                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                                </svg>
-                                            </div>
-                                            <div
-                                                class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                                                4</div>
-                                            <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
-                                                {{ $isFr ? 'Épreuves obligatoires' : 'Compulsory sections' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="p-6 sm:p-7 space-y-2">
-                                            <div class="text-blue-200/70">
-                                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="1.75"
-                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </div>
-                                            <div
-                                                class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                                                1–10 {{ $isFr ? 'j' : 'days' }}</div>
-                                            <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
-                                                {{ $isFr ? 'Résultats rapides' : 'Fast results delay' }}
-                                            </div>
-                                        </div>
+                                class="rounded-3xl bg-[#002654] text-white overflow-hidden relative">
+                                    <div class="h-[3px] w-full flex">
+                                        <span class="w-1/3 h-full bg-[#0055A4]"></span>
+                                        <span class="w-1/3 h-full bg-white"></span>
+                                        <span class="w-1/3 h-full bg-[#EF4135]"></span>
                                     </div>
 
-                                    <div class="divide-y divide-white/10">
-                                        <div class="p-6 sm:p-7 space-y-2">
-                                            <div class="text-blue-200/70">
-                                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="1.75"
-                                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                </svg>
+                                    <div class="grid grid-cols-2 divide-x divide-white/10">
+                                        <div class="divide-y divide-white/10">
+                                            <div class="p-6 sm:p-7 space-y-2">
+                                                <div class="text-blue-200/70">
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.75"
+                                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                    </svg>
+                                                </div>
+                                                <div
+                                                    class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+                                                    4</div>
+                                                <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
+                                                    {{ $isFr ? 'Épreuves obligatoires' : 'Compulsory sections' }}
+                                                </div>
                                             </div>
-                                            <div
-                                                class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                                                1 {{ $isFr ? 'session' : 'session' }}</div>
-                                            <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
-                                                {{ $isFr ? 'Toutes les 4 épreuves' : '1 complete session' }}
+
+                                            <div class="p-6 sm:p-7 space-y-2">
+                                                <div class="text-blue-200/70">
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.75"
+                                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </div>
+                                                <div
+                                                    class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+                                                    1–10 {{ $isFr ? 'j' : 'days' }}</div>
+                                                <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
+                                                    {{ $isFr ? 'Résultats rapides' : 'Fast results delay' }}
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="p-6 sm:p-7 space-y-2">
-                                            <div class="text-blue-200/70">
-                                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="1.75"
-                                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                                </svg>
+                                        <div class="divide-y divide-white/10">
+                                            <div class="p-6 sm:p-7 space-y-2">
+                                                <div class="text-blue-200/70">
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.75"
+                                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                    </svg>
+                                                </div>
+                                                <div
+                                                    class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+                                                    1 {{ $isFr ? 'session' : 'session' }}</div>
+                                                <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
+                                                    {{ $isFr ? 'Toutes les 4 épreuves' : '1 complete session' }}
+                                                </div>
                                             </div>
-                                            <div
-                                                class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                                                2 {{ $isFr ? 'ans' : 'years' }}</div>
-                                            <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
-                                                {{ $isFr ? 'Validité des résultats' : 'Results validity' }}
+
+                                            <div class="p-6 sm:p-7 space-y-2">
+                                                <div class="text-blue-200/70">
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.75"
+                                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                                    </svg>
+                                                </div>
+                                                <div
+                                                    class="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+                                                    2 {{ $isFr ? 'ans' : 'years' }}</div>
+                                                <div class="text-xs sm:text-[13px] text-blue-200/80 font-normal">
+                                                    {{ $isFr ? 'Validité des résultats' : 'Results validity' }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div
-                        class="mt-10 sm:mt-12 bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl overflow-hidden">
-                        <div class="divide-y divide-slate-100">
-                            <div
-                                class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
-                                <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                    {{ $isFr ? 'Pour qui' : "Who it's for" }}
-                                </div>
+                        <div
+                            class="mt-10 sm:mt-12 bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl overflow-hidden">
+                            <div class="divide-y divide-slate-100">
                                 <div
-                                    class="sm:col-span-9 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                                    {{ $isFr
+                                    class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
+                                    <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
+                                        {{ $isFr ? 'Pour qui' : "Who it's for" }}
+                                    </div>
+                                    <div
+                                        class="sm:col-span-9 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                                        {{ $isFr
     ? "Demandeurs d'une carte de séjour pluriannuelle, d'une carte de résident ou de la nationalité française"
     : "Anyone applying for a multi-year permit, a 10-year resident card or French citizenship"
                                     }}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div
-                                class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-white items-center gap-2 sm:gap-4">
-                                <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                    {{ $isFr ? 'Organisateur' : 'Run by' }}
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-white items-center gap-2 sm:gap-4">
+                                    <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
+                                        {{ $isFr ? 'Organisateur' : 'Run by' }}
+                                    </div>
+                                    <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
+                                        Le français des affaires (CCI Paris Île-de-France)
+                                    </div>
                                 </div>
-                                <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                    Le français des affaires (CCI Paris Île-de-France)
-                                </div>
-                            </div>
 
-                            <div
-                                class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
-                                <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                    {{ $isFr ? 'Épreuves' : 'Sections' }}
-                                </div>
-                                <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                    {{ $isFr
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
+                                    <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
+                                        {{ $isFr ? 'Épreuves' : 'Sections' }}
+                                    </div>
+                                    <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
+                                        {{ $isFr
     ? 'Compréhension écrite, compréhension orale, expression écrite, expression orale'
     : 'Reading, listening, writing, speaking'
                                     }}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div
-                                class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-white items-center gap-2 sm:gap-4">
-                                <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                    {{ $isFr ? 'Résultats' : 'Results' }}
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-white items-center gap-2 sm:gap-4">
+                                    <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
+                                        {{ $isFr ? 'Résultats' : 'Results' }}
+                                    </div>
+                                    <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
+                                        {{ $isFr ? 'Sous 1 à 10 jours ouvrés après la session' : 'Within 1 to 10 working days after the test' }}
+                                    </div>
                                 </div>
-                                <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                    {{ $isFr ? 'Sous 1 à 10 jours ouvrés après la session' : 'Within 1 to 10 working days after the test' }}
-                                </div>
-                            </div>
 
-                            <div
-                                class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
-                                <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                    {{ $isFr ? 'Validité' : 'Validity' }}
-                                </div>
-                                <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                    {{ $isFr
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-[#f8fafc] items-center gap-2 sm:gap-4">
+                                    <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
+                                        {{ $isFr ? 'Validité' : 'Validity' }}
+                                    </div>
+                                    <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
+                                        {{ $isFr
     ? "2 ans à compter de la délivrance de l'attestation"
     : '2 years from the date the certificate is issued'
                                     }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- ============ SECTION 3: THE RULE MANY CANDIDATES LEARN TOO LATE ============ -->
@@ -556,87 +556,87 @@
                         </div>
 
                         <div class="lg:col-span-6">
-                            <div
-                                class="bg-[#002654] text-white rounded-3xl border border-[#001f3f] p-7 sm:p-8 relative overflow-hidden">
-                                <div class="absolute inset-x-0 top-0 h-1 flex">
-                                    <span class="w-1/3 bg-[#0055A4]"></span>
-                                    <span class="w-1/3 bg-white"></span>
-                                    <span class="w-1/3 bg-[#EF4135]"></span>
-                                </div>
-
-                                <div class="flex items-center gap-3.5 pb-6 border-b border-white/10">
-                                    <div
-                                        class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center shrink-0">
-                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
-                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                        </svg>
+                                <div class="bg-[#002654] text-white rounded-3xl  p-7 sm:p-8 relative overflow-hidden">
+                                    <div class="absolute inset-x-0 top-0 h-1 flex">
+                                        <span class="w-1/3 bg-[#0055A4]"></span>
+                                        <span class="w-1/3 bg-white"></span>
+                                        <span class="w-1/3 bg-[#EF4135]"></span>
                                     </div>
-                                    <div>
-                                        <h3 class="font-bold text-white text-base sm:text-[17px] leading-snug">
-                                            {{ $isFr ? '4 épreuves : 1 seule session complète.' : '4 sections: 1 complete session.' }}
-                                        </h3>
-                                        <p class="text-xs text-blue-200/80 font-normal">
-                                            {{ $isFr ? '1 épreuve abandonnée = 0 attestation.' : 'Leave 1 section = 0 results.' }}
-                                        </p>
-                                    </div>
-                                </div>
 
-                                <div class="py-6 grid grid-cols-2 gap-3.5">
+                                    <div class="flex items-center gap-3.5 pb-6 border-b border-white/10">
+                                        <div
+                                            class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center shrink-0">
+                                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold text-white text-base sm:text-[17px] leading-snug">
+                                                {{ $isFr ? '4 épreuves : 1 seule session complète.' : '4 sections: 1 complete session.' }}
+                                            </h3>
+                                            <p class="text-xs text-blue-200/80 font-normal">
+                                                {{ $isFr ? '1 épreuve abandonnée = 0 attestation.' : 'Leave 1 section = 0 results.' }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="py-6 grid grid-cols-2 gap-3.5">
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                                            <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                            </svg>
+                                            <span
+                                                class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Compréhension écrite' : 'Reading' }}</span>
+                                        </div>
+
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                                            <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                                                    d="M3 18v-6a9 9 0 0118 0v6M3 15h3a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-4zm18 0h-3a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-4z" />
+                                            </svg>
+                                            <span
+                                                class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Compréhension orale' : 'Listening' }}</span>
+                                        </div>
+
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                                            <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                            <span
+                                                class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Expression écrite' : 'Writing' }}</span>
+                                        </div>
+
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                                            <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                                                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
+                                            </svg>
+                                            <span
+                                                class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Expression orale' : 'Speaking' }}</span>
+                                        </div>
+                                    </div>
+
                                     <div
-                                        class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                                        <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
+                                        class="pt-5 border-t border-white/10 flex items-center gap-2 text-xs text-blue-200/90 font-medium">
                                         <span
-                                            class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Compréhension écrite' : 'Reading' }}</span>
+                                            class="inline-block w-1.5 h-1.5 rounded-full bg-[#EF4135] shrink-0"></span>
+                                        <span>{{ $isFr ? 'Les 4 épreuves doivent obligatoirement être passées ensemble.' : 'All 4 sections must be completed in the same session.' }}</span>
                                     </div>
-
-                                    <div
-                                        class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                                        <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
-                                                d="M3 18v-6a9 9 0 0118 0v6M3 15h3a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-4zm18 0h-3a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-4z" />
-                                        </svg>
-                                        <span
-                                            class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Compréhension orale' : 'Listening' }}</span>
-                                    </div>
-
-                                    <div
-                                        class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                                        <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
-                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg>
-                                        <span
-                                            class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Expression écrite' : 'Writing' }}</span>
-                                    </div>
-
-                                    <div
-                                        class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                                        <svg class="w-4 h-4 text-blue-300 shrink-0" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
-                                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
-                                        </svg>
-                                        <span
-                                            class="text-xs sm:text-sm font-semibold text-white">{{ $isFr ? 'Expression orale' : 'Speaking' }}</span>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="pt-5 border-t border-white/10 flex items-center gap-2 text-xs text-blue-200/90 font-medium">
-                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#EF4135] shrink-0"></span>
-                                    <span>{{ $isFr ? 'Les 4 épreuves doivent obligatoirement être passées ensemble.' : 'All 4 sections must be completed in the same session.' }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- ============ SECTION 4: THE 4 SECTIONS OF THE TEF IRN ============ -->
@@ -960,7 +960,7 @@
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
                             <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'NOTRE MÉTHODE' : 'OUR METHOD' }}
+                                {{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}
                             </span>
                         </div>
                         <h2
@@ -970,100 +970,117 @@
                         <p
                             class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                             {{ $isFr
-    ? 'Un accompagnement structuré, conçu autour de vos 4 compétences réelles.'
-    : 'Live 1:1 or small-group training focused entirely on your gap across all 4 sections.'
+    ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. Pas de programme générique. Pas d’apprentissage seul.'
+    : 'Focused support from your first class to exam day. No generic syllabus. No learning alone.'
                             }}
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] text-sm font-bold flex items-center justify-center mb-5">
-                                    01
-                                </span>
-                                <h3 class="font-bold text-[#10233e] text-base sm:text-lg mb-2">
-                                    {{ $isFr ? 'Vos 4 compétences, mesurées' : 'Your 4 skills, measured' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    <div class="flex flex-col items-start">
+                                        <div class="relative flex items-center w-full mb-4">
+                                            <span
+                                                class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm
+                                                font-semibold flex items-center justify-center border border-blue-100
+                                                flex-shrink-0">
+                                                01
+                                            </span>
+                                            <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4"></div>
+                                        </div>
+                                        <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                            {{ $isFr ? 'Vos 4 compétences, mesurées' : 'Your 4 skills, measured' }}
+                                        </h3>
+                                        <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                            {{ $isFr
     ? 'Dès le premier cours, votre tuteur situe chaque épreuve face au niveau de votre dossier.'
     : 'In your first class, your tutor places each section against the level your application needs.'
                                     }}
-                                </p>
-                            </div>
-                        </div>
+                                    </p>
+                                </div>
 
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] text-sm font-bold flex items-center justify-center mb-5">
-                                    02
-                                </span>
-                                <h3 class="font-bold text-[#10233e] text-base sm:text-lg mb-2">
-                                    {{ $isFr ? 'Un plan construit sur votre écart' : 'A plan built on your gap' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
+                                        <div class="flex flex-col items-start">
+                                            <div class="relative flex items-center w-full mb-4">
+                                                <span
+                                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm
+                                                    font-semibold flex items-center justify-center border
+                                                    border-blue-100 flex-shrink-0">
+                                                    02
+                                                </span>
+                                                <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4">
+                                                </div>
+                                            </div>
+                                            <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                                {{ $isFr ? 'Un plan construit sur votre écart' : 'A plan built on your gap' }}
+                                            </h3>
+                                            <p
+                                                class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                                {{ $isFr
     ? "Les heures vont à l'épreuve la plus faible, sans négliger les autres."
-    : "Your hours go to your weakest section, without neglecting the others."
-                                    }}
-                                </p>
-                            </div>
-                        </div>
+    : 'Your hours go to your weakest section, without dropping the others.'
+                                        }}
+                                        </p>
+                                    </div>
 
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] text-sm font-bold flex items-center justify-center mb-5">
-                                    03
-                                </span>
-                                <h3 class="font-bold text-[#10233e] text-base sm:text-lg mb-2">
-                                    {{ $isFr ? 'Des cours en direct, 2 ou 4 h par semaine' : 'Live classes, 2 or 4 h a week' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
+                                            <div class="flex flex-col items-start">
+                                                <div class="relative flex items-center w-full mb-4">
+                                                    <span
+                                                        class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4]
+                                                        text-sm font-semibold flex items-center justify-center border
+                                                        border-blue-100 flex-shrink-0">
+                                                        03
+                                                    </span>
+                                                    <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4">
+                                                    </div>
+                                                </div>
+                                                <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                                    {{ $isFr ? 'Des cours en direct, 2 ou 4 h par semaine' : 'Live classes, 2 or 4 hours a week' }}
+                                                </h3>
+                                                <p
+                                                    class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                                    {{ $isFr
     ? 'En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet, avec vos notes après chaque séance.'
     : '1:1 or in a group of 2–5 on Google Meet, with notes after every session.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
+                                            }}
+                                            </p>
+                                        </div>
 
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] text-sm font-bold flex items-center justify-center mb-5">
-                                    04
-                                </span>
-                                <h3 class="font-bold text-[#10233e] text-base sm:text-lg mb-2">
-                                    {{ $isFr ? 'Des examens blancs complets' : 'Full mock exams' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
+                                                <div class="flex flex-col items-start">
+                                                    <div class="relative flex items-center w-full mb-4">
+                                                        <span
+                                                            class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4]
+                                                            text-sm font-semibold flex items-center justify-center
+                                                            border border-blue-100 flex-shrink-0">
+                                                            04
+                                                        </span>
+                                                    </div>
+                                                    <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                                        {{ $isFr ? 'Des examens blancs complets' : 'Full mock exams' }}
+                                                    </h3>
+                                                    <p
+                                                        class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                                        {{ $isFr
     ? "Les 4 épreuves d'affilée, au chrono, dans votre espace élève. Chaque devoir reçoit un retour."
-    : 'All 4 sections back-to-back under timed conditions in your student portal. Feedback on every assignment.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+    : 'All 4 sections back to back, timed, in your student portal. Every
+                                                assignment gets feedback.'
+                                                }}
+                                                </p>
+                                            </div>
+                                        </div>
 
-                    <div class="mt-12 text-center">
-                        <a href="/register"
-                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }}
-                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
-                        </a>
-                        <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
-                            {{ $isFr
+                                        <div class="mt-12 text-center">
+                                            <a href="/register"
+                                                class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+                                                {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                                                <i class="fas fa-arrow-right text-xs ml-2.5"></i>
+                                            </a>
+                                            <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
+                                                {{ $isFr
     ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
     : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
                             }}
-                        </p>
-                    </div>
-                </div>
+                                            </p>
+                                        </div>
+                                    </div>
             </section>
 
             <!-- ============ SECTION 7: WHAT TEF IRN LEVEL DO YOU NEED? ============ -->
@@ -1130,7 +1147,7 @@
                         </div>
 
                         <div
-                            class="bg-[#002654] text-white rounded-3xl border border-[#001f3f] p-7 flex flex-col justify-between relative overflow-hidden">
+                            class="bg-[#002654] text-white rounded-3xl p-7 flex flex-col justify-between relative overflow-hidden">
                             <div class="absolute inset-x-0 top-0 h-1 flex">
                                 <span class="w-1/3 bg-[#0055A4]"></span>
                                 <span class="w-1/3 bg-white"></span>
@@ -1172,7 +1189,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 8: FAQ (REUSABLE COMPONENT) ============ -->
+            <!-- ============ FAQ (REUSABLE COMPONENT) ============ -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => 'TEF IRN<br>FAQ',
@@ -1182,7 +1199,7 @@
                 'faqs' => $faqs
             ])
 
-            <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
+            <!-- ============ FINAL CTA & SOURCES ============ -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     @include('partials.cta-banner', [
