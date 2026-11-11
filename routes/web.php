@@ -212,6 +212,12 @@ Route::get('/en/tef-irn', function () { return view('tef-irn'); });
 Route::get('/fr/tef-irn', function () { return view('tef-irn'); });
 Route::get('/tef-irn', function () { return view('tef-irn'); });
 
+// Fide test (English /en/fide-test, French /fr/test-fide and /fr/fide-test)
+Route::get('/en/fide-test', function () { return view('fide-test'); });
+Route::get('/fr/test-fide', function () { return view('fide-test'); });
+Route::get('/fr/fide-test', function () { return view('fide-test'); });
+Route::get('/fide-test', function () { return view('fide-test'); });
+
 // Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
 Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
 Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });
