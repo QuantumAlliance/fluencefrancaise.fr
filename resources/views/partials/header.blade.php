@@ -44,9 +44,7 @@
         request()->is('*delf-a2*') ||
         request()->is('*delf-b1*') ||
         request()->is('*delf-b2*') ||
-        (request()->is('*delf*') && !request()->is('*guide*')) ||
-        request()->is('*tcf-vs-tef-vs-delf*') ||
-        request()->is('*tcf-tef-ou-delf*');
+        (request()->is('*delf*') && !request()->is('*guide*') && !request()->is('*tcf-vs-tef-vs-delf*') && !request()->is('*tcf-tef-ou-delf*'));
 
     $isCoursesActive = request()->is('*our-courses*') ||
         request()->is('*online-french-classes*') ||
