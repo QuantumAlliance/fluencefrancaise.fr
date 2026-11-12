@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 use App\Http\Controllers\InstallerController;
 use App\Http\Controllers\PageController;
 
@@ -283,9 +285,64 @@ Route::get('/fr/about', function () { return view('about-us'); });
 Route::get('/about', function () { return view('about-us'); });
 
 // Page 18: Contact (English /en/contact/, French /fr/contact/)
+$submitContact = function (Request $request) {
+    $goals = [
+        'multi-year-permit' => 'Multi-year permit (A2)',
+        'resident-card' => 'Resident card (B1)',
+        'french-citizenship' => 'French citizenship (B2)',
+        'civic-exam' => 'Civic exam',
+        'c-permit' => 'C permit (Switzerland)',
+        'swiss-citizenship' => 'Swiss citizenship',
+        'exam' => 'An exam (TCF, TEF, DELF, fide)',
+        'other' => 'Other',
+    ];
+
+    $data = $request->validate([
+        'name' => ['required', 'string', 'max:120'],
+        'email' => ['required', 'email', 'max:180'],
+        'phone' => ['nullable', 'string', 'max:40'],
+        'goal' => ['required', 'in:' . implode(',', array_keys($goals))],
+        'with_friend' => ['nullable', 'boolean'],
+        'friend_name' => ['nullable', 'string', 'max:120', 'required_if:with_friend,1'],
+        'message' => ['nullable', 'string', 'max:4000'],
+    ]);
+
+    $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
+    $footerData = isset($settings['footer_settings']) ? json_decode($settings['footer_settings'], true) : null;
+    $to = !empty($settings['contact_email'])
+        ? $settings['contact_email']
+        : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
+
+    $lines = [
+        'Name: ' . $data['name'],
+        'Email: ' . $data['email'],
+        'Phone or WhatsApp: ' . ($data['phone'] ?? ''),
+        'Goal: ' . ($goals[$data['goal']] ?? $data['goal']),
+        'Coming with a friend: ' . (!empty($data['with_friend']) ? 'Yes' : 'No'),
+        'Friend name: ' . ($data['friend_name'] ?? ''),
+        'Message:',
+        $data['message'] ?? '',
+    ];
+
+    try {
+        Mail::raw(implode("\n", $lines), function ($message) use ($to, $data) {
+            $message->to($to)
+                ->replyTo($data['email'], $data['name'])
+                ->subject('Contact — ' . $data['name']);
+        });
+    } catch (\Throwable $e) {
+        return back()->withInput()->with('contact_error', true);
+    }
+
+    return back()->with('contact_sent', true);
+};
+
 Route::get('/en/contact', function () { return view('contact-us'); });
 Route::get('/fr/contact', function () { return view('contact-us'); });
 Route::get('/contact', function () { return view('contact-us'); });
+Route::post('/en/contact', $submitContact);
+Route::post('/fr/contact', $submitContact);
+Route::post('/contact', $submitContact);
 
 // Page 13: DELF guide / all levels (English /en/delf/, French /fr/delf/)
 Route::get('/en/delf', function () { return view('delf'); });
