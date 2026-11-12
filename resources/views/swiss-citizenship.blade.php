@@ -8,60 +8,101 @@
 
     // Page metadata
     $title = $isFr
-        ? "Naturalisation suisse : exigences de langue B1/A2 et préparation"
-        : "Swiss Citizenship: Language Requirements & Online Prep (B1/A2)";
+        ? 'Naturalisation suisse : conditions et niveau de français'
+        : 'Swiss Citizenship 2026: Requirements and Language Level';
 
     $metaDesc = $isFr
-        ? "Exigences linguistiques pour la nationalité suisse : B1 oral et A2 écrit en français pour permis C et naturalisation ordinaire ou facilitée. Préparation en direct."
-        : "Swiss citizenship language requirements: B1 oral and A2 written in French for ordinary and simplified naturalisation. Live online preparation.";
+        ? 'Naturalisation suisse ordinaire : permis C, 10 ans de séjour, B1 à l\'oral et A2 à l\'écrit. Conditions, preuves de langue et préparation en ligne.'
+        : 'Swiss citizenship by ordinary naturalisation: a C permit, 10 years of residence, B1 spoken and A2 written. Requirements, language proof and online prep.';
 
     $canonicalUrl = $isFr ? 'https://fluencefrancaise.fr/fr/naturalisation-suisse/' : 'https://fluencefrancaise.fr/en/swiss-citizenship/';
     $frUrl = 'https://fluencefrancaise.fr/fr/naturalisation-suisse/';
     $enUrl = 'https://fluencefrancaise.fr/en/swiss-citizenship/';
 
-    // FAQ Data
+    $cPermitUrl = $isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland';
+    $fideUrl = $isFr ? '/fr/test-fide' : '/en/fide-test';
+    $delfUrl = $isFr ? '/fr/delf' : '/en/delf';
+    $delfB1Url = $isFr ? '/fr/delf-b1' : '/en/delf-b1';
+    $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
+    $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
+    $genevaSource = 'https://www.ge.ch/devenir-suisse';
+    $richmondSource = 'https://www.richmondchambers.ch/swiss-settlement-citizenship/swiss-citizenship-by-naturalisation';
+    $link = 'class="font-semibold text-[#0055A4] hover:underline"';
+
     $faqs = $isFr ? [
-        [
-            'q' => "Quel niveau de français est exigé pour la nationalité suisse ?",
-            'a' => "La loi fédérale sur la nationalité suisse (LN) exige d'attester d'un niveau minimum B1 à l'oral (parler et comprendre) et A2 à l'écrit (lire et écrire) dans la langue officielle du canton de résidence."
-        ],
-        [
-            'q' => "Test fide ou DELF : lequel est préférable pour la naturalisation ?",
-            'a' => "Le test fide est spécifiquement conçu pour les situations de la vie en Suisse et constitue souvent la solution la plus rapide. Néanmoins, les diplômes DELF (DELF B1 pour l'oral et A2 pour l'écrit) sont reconnus par tous les cantons et ont une validité illimitée à vie."
-        ],
-        [
-            'q' => "Peut-on être dispensé du test de langue pour la naturalisation ?",
-            'a' => "Oui. Vous pouvez être dispensé si le français est votre langue maternelle, si vous avez suivi au moins 3 années d'école obligatoire en français en Suisse, ou si vous êtes titulaire d'un diplôme du degré secondaire II ou tertiaire obtenu en français."
-        ],
-        [
-            'q' => "Que demande-t-on lors de l'entretien d'intégration cantonal ?",
-            'a' => "Les commissions communales et cantonales vous interrogent sur les institutions politiques suisses, l'histoire, la géographie, l'actualité locale, et évaluent votre aisance conversationnelle spontanée en français."
-        ],
-        [
-            'q' => "Combien de temps faut-il pour atteindre le niveau B1 oral et A2 écrit ?",
-            'a' => "À partir d'un niveau A2 de départ, la plupart de nos apprenants atteignent le niveau B1 oral et A2 écrit requis en 8 à 12 semaines avec 2 à 4 heures de cours en direct par semaine."
-        ]
+        ['q' => 'Combien d\'années faut-il pour demander la nationalité suisse ?', 'a' => 'Au moins 10 ans de séjour en Suisse, dont 3 dans les 5 ans avant la demande. Les années passées en Suisse entre 8 et 18 ans comptent double, mais vous devez y avoir réellement vécu au moins 6 ans. Le canton fixe en plus une durée minimale chez lui.'],
+        ['q' => 'Faut-il un permis C pour la naturalisation ?', 'a' => 'Pour la naturalisation ordinaire, oui. Le permis C est obligatoire et doit rester valable pendant toute la procédure. La naturalisation facilitée n\'exige pas forcément de permis C.'],
+        ['q' => 'Le test fide est-il obligatoire ?', 'a' => 'Il faut prouver votre niveau. Le test fide est un moyen de le faire. Un DELF ou un DALF, votre langue maternelle ou votre scolarité peuvent aussi être acceptés.'],
+        ['q' => 'Quel est le canton le plus facile pour la naturalisation ?', 'a' => 'Aucun classement officiel n\'existe. Les cantons diffèrent sur la durée de séjour sur place, le niveau de langue et la forme de l\'examen de connaissances. Ce qui compte, ce sont les règles du canton où vous vivez.'],
+        ['q' => 'Le niveau A2 à l\'oral suffit-il ?', 'a' => 'Non. Le minimum fédéral est B1 à l\'oral. L\'A2 à l\'oral correspond au <a href="' . $cPermitUrl . '" class="font-semibold text-[#0055A4] hover:underline">permis C ordinaire</a>, pas à la naturalisation.'],
     ] : [
-        [
-            'q' => "What level of French is required for Swiss citizenship?",
-            'a' => "Under the Swiss Federal Act on Citizenship (LN), you must demonstrate certified language proficiency of at least level B1 spoken (speaking & comprehension) and A2 written (reading & writing) in the local national language."
+        ['q' => 'How many years does it take to get Swiss citizenship?', 'a' => 'At least 10 years of residence in Switzerland, including 3 of the 5 years before you apply. Years spent in Switzerland between ages 8 and 18 count double, but you must have actually lived there for at least 6 years. Your canton also sets its own minimum residence.'],
+        ['q' => 'Do you need a C permit for Swiss citizenship?', 'a' => 'For ordinary naturalisation, yes. The C permit is required and must stay valid throughout the procedure. Facilitated naturalisation does not necessarily require a C permit.'],
+        ['q' => 'Is the fide test compulsory?', 'a' => 'You have to prove your level. The fide test is one way to do it. A DELF or DALF, your mother tongue or your schooling may also be accepted.'],
+        ['q' => 'What\'s the easiest canton to get Swiss citizenship?', 'a' => 'There\'s no official ranking. Cantons differ on local residence periods, language level and the format of the knowledge check. What matters is the rules of the canton you live in.'],
+        ['q' => 'Is A2 speaking enough?', 'a' => 'No. The federal minimum is B1 spoken. A2 spoken is the level for an ordinary <a href="' . $cPermitUrl . '" class="font-semibold text-[#0055A4] hover:underline">C permit</a>, not for citizenship.'],
+    ];
+
+    $requirements = $isFr ? [
+        ['Permis', 'cpermit', 'Permis C', ', valable pendant toute la procédure'],
+        ['Séjour en Suisse', 'text', '10 ans au moins, dont 3 dans les 5 ans avant la demande. Les années entre 8 et 18 ans comptent double, mais vous devez avoir réellement vécu en Suisse au moins 6 ans'],
+        ['Séjour dans le canton', 'text', 'Fixé par chaque canton, en général de 2 à 5 ans'],
+        ['Intégration', 'text', 'Respect de l\'ordre public et des valeurs de la Constitution, participation à la vie économique ou à une formation'],
+        ['Langue', 'text', 'B1 à l\'oral et A2 à l\'écrit au minimum, dans la langue de votre canton'],
+        ['Connaissances', 'text', 'Bonne connaissance de la vie en Suisse : géographie, histoire, politique, société'],
+    ] : [
+        ['Permit', 'cpermit', 'A C permit', ', valid throughout the procedure'],
+        ['Residence in Switzerland', 'text', 'At least 10 years, including 3 of the 5 years before you apply. Years between ages 8 and 18 count double, but you must have actually lived in Switzerland for at least 6 years'],
+        ['Residence in your canton', 'text', 'Set by each canton, usually 2 to 5 years'],
+        ['Integration', 'text', 'Respect for public order and constitutional values, taking part in working life or education'],
+        ['Language', 'text', 'At least B1 spoken and A2 written, in your canton\'s language'],
+        ['Knowledge', 'text', 'Familiarity with life in Switzerland: geography, history, politics, society'],
+    ];
+
+    $steps = $isFr ? [
+        ['01', 'La cible de votre canton', 'Nous vérifions le niveau exigé à l\'oral et à l\'écrit là où vous vivez.'],
+        ['02', 'Votre oral, mesuré au premier cours', 'Votre tuteur situe votre expression et votre compréhension face au B1.'],
+        ['03', 'Le test, puis l\'entretien', null],
+        ['04', 'Des cours en direct, 2 ou 4 h par semaine', 'En particulier ou en mini-groupe de 2 à 5 personnes, avec notes et exercices dans votre espace élève.'],
+    ] : [
+        ['01', 'Your canton\'s target', 'We check the spoken and written level required where you live.'],
+        ['02', 'Your speaking, measured in your first class', 'Your tutor places your speaking and listening against B1.'],
+        ['03', 'The test, then the interview', null],
+        ['04', 'Live classes, 2 or 4 hours a week', '1:1 or in a group of 2–5, with notes and practice in your student portal.'],
+    ];
+
+    $faqSchema = [];
+    foreach ($faqs as $faq) {
+        $faqSchema[] = [
+            '@type' => 'Question',
+            'name' => $faq['q'],
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => trim(preg_replace('/\s+/', ' ', strip_tags($faq['a']))),
+            ],
+        ];
+    }
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'WebPage',
+                'name' => $title,
+                'description' => $metaDesc,
+                'url' => $canonicalUrl,
+                'inLanguage' => $isFr ? 'fr' : 'en',
+                'publisher' => ['@type' => 'Organization', 'name' => $siteName, 'url' => 'https://fluencefrancaise.fr'],
+            ],
+            [
+                '@type' => 'BreadcrumbList',
+                'itemListElement' => [
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => $isFr ? 'Accueil' : 'Home', 'item' => $isFr ? 'https://fluencefrancaise.fr/fr' : 'https://fluencefrancaise.fr/en'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => $isFr ? 'Suisse' : 'Switzerland', 'item' => $isFr ? 'https://fluencefrancaise.fr/fr' : 'https://fluencefrancaise.fr/en'],
+                    ['@type' => 'ListItem', 'position' => 3, 'name' => $isFr ? 'Naturalisation' : 'Citizenship', 'item' => $canonicalUrl],
+                ],
+            ],
+            ['@type' => 'FAQPage', 'mainEntity' => $faqSchema],
         ],
-        [
-            'q' => "fide or DELF: which is better for Swiss naturalisation?",
-            'a' => "The fide test is designed specifically for daily Swiss life and is usually the quickest option. However, a DELF B1 diploma is also fully accepted by all cantons and has lifelong validity."
-        ],
-        [
-            'q' => "Can I be exempt from the language test?",
-            'a' => "Yes. You may be exempt if French is your native language, if you completed at least 3 years of compulsory schooling in French in Switzerland, or if you hold an upper secondary or tertiary degree taught in French."
-        ],
-        [
-            'q' => "What is asked in the cantonal naturalisation interview?",
-            'a' => "The communal and cantonal commissions ask about Swiss federal and cantonal institutions, history, geography, current affairs, and evaluate your ability to converse spontaneously and comfortably in French."
-        ],
-        [
-            'q' => "How long does it take to prepare for B1 oral and A2 written?",
-            'a' => "From an A2 base, most candidates reach the required B1 oral standard in 8 to 12 weeks with 2 to 4 hours of live instruction per week and targeted practice."
-        ]
     ];
 @endphp
 <html lang="{{ $isFr ? 'fr' : 'en' }}" class="scroll-smooth">
@@ -83,6 +124,9 @@
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
+
+    <script
+        type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,18 +183,14 @@
                                     {{ $isFr ? 'Atteignez le niveau de langue' : 'the Language Level' }}
                                 </span>
                                 <br>
-                                <span class="relative inline-block">
+                                <span class="swish relative inline-block">
                                     {{ $isFr ? 'exigé' : 'Required' }}
-                                    <span
-                                        class="absolute bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#0055A4] to-[#EF4135] rounded-full"></span>
-                                </span>
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
                                 {{ $isFr
-    ? 'La naturalisation suisse exige un niveau certifié B1 oral et A2 écrit (ainsi que l\'entretien d\'intégration cantonal). Nous vous préparons au niveau exact exigé dans votre canton.'
-    : 'Swiss naturalisation requires certified French level B1 oral and A2 written (plus cantonal interview). We prepare you for the exact level, spoken in your canton.'
-                                }}
+    ? 'Pour devenir Suisse, il faut le B1 à l\'oral et l\'A2 à l\'écrit au minimum : nous vous préparons à ce niveau, et à l\'entretien.'
+    : 'Becoming Swiss takes at least B1 spoken and A2 written French, and we prepare you for that level and for the interview.' }}
                             </p>
 
                             <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -168,7 +208,7 @@
 
                             <div class="mt-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
                                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-                                <span>{{ $isFr ? 'Cours particuliers sur Google Meet · Préparation entretien cantonal · Garantie conformité SEM' : 'Live classes on Google Meet · Cantonal interview prep · SEM compliant training' }}</span>
+                                <span>{{ $isFr ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}</span>
                             </div>
                         </div>
 
@@ -231,10 +271,7 @@
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Naturalisation ordinaire (10 ans)' : 'Standard naturalisation (10 years)' }}
-                                    </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? 'Exige B1 oral + A2 écrit' : 'Requires B1 oral + A2 written' }}
+                                        {{ $isFr ? 'Préparation au test fide et au DELF' : 'fide test and DELF prep' }}
                                     </div>
                                 </div>
                             </div>
@@ -242,10 +279,7 @@
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Naturalisation facilitée (mariage)' : 'Simplified naturalisation (marriage)' }}
-                                    </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? '5 ans de séjour en Suisse' : '5 years in Switzerland' }}
+                                        {{ $isFr ? 'Oral B1 ciblé' : 'Focused B1 speaking' }}
                                     </div>
                                 </div>
                             </div>
@@ -253,10 +287,7 @@
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Examens officiels reconnus' : 'Official tests recognized' }}
-                                    </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? 'fide, DELF, TCF, TEF' : 'fide, DELF, TCF, TEF' }}
+                                        {{ $isFr ? 'En ligne, partout en Suisse romande' : 'Online, anywhere in French-speaking Switzerland' }}
                                     </div>
                                 </div>
                             </div>
@@ -276,352 +307,224 @@
                             <span>·</span>
                             <span>JURA</span>
                         </div>
+                        <p class="mt-5 text-center text-xs font-semibold text-slate-400">
+                            <span class="text-[#0055A4] text-[8px] align-middle mr-1">●</span>
+                            {{ $isFr ? 'Mis à jour le 12 novembre 2026' : 'Updated 12 November 2026' }}
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- swiss citizenship requirements -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-10">
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'CONDITIONS D\'ÉLIGIBILITÉ' : 'ELIGIBILITY CRITERIA' }}
-                            </span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CONDITIONS' : 'REQUIREMENTS' }}</span>
                         </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Conditions pour la nationalité suisse' : 'Swiss citizenship requirements' }}
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            {{ $isFr ? 'Les conditions de la naturalisation suisse' : 'Swiss citizenship requirements' }}
                         </h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             {{ $isFr
-    ? 'Pour obtenir la nationalité suisse par voie ordinaire, la loi fédérale sur la nationalité suisse (LN) fixe des critères stricts. Les cantons et communes peuvent y ajouter des règles spécifiques.'
-    : 'To obtain Swiss citizenship through ordinary naturalisation, federal law sets strict conditions. Cantons and communes may add further requirements.'
-                            }}
+    ? 'Pour une naturalisation ordinaire, il faut un permis C, au moins 10 ans de séjour en Suisse dont 3 dans les 5 dernières années, et une intégration réussie. Le niveau de langue minimum est B1 à l\'oral et A2 à l\'écrit. Votre canton et votre commune ajoutent leurs propres conditions.'
+    : 'For ordinary naturalisation, you need a C permit, at least 10 years of residence in Switzerland including 3 of the last 5, and successful integration. The minimum language level is B1 spoken and A2 written. Your canton and commune add their own conditions.' }}
                         </p>
                     </div>
 
-                    <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm border-collapse">
-                                <thead>
-                                    <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold w-1/3">
-                                            {{ $isFr ? 'Critère fédéral' : 'Requirement' }}
-                                        </th>
-                                        <th class="py-4 px-6 font-semibold">
-                                            {{ $isFr ? 'Règle fédérale et cantonale' : 'Federal and cantonal rule' }}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100">
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Durée de séjour' : 'Residency' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? '10 ans de résidence en Suisse (les années vécues entre 8 et 18 ans comptent double, sous réserve d\'au moins 6 ans réels).'
-    : '10 years of permanent residence in Switzerland (years between ages 8 and 18 count double, with a minimum of 6 actual years).'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Titre de séjour requis' : 'Permit type' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Être titulaire d\'un permis d\'établissement C en cours de validité au moment du dépôt de la demande.'
-    : 'Must hold a valid C settlement permit (Permis C) at the time of application.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Séjour cantonal et communal' : 'Cantonal & communal residency' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? '2 à 5 ans selon le canton de domicile (par ex. 2 ans dans le canton de Genève, 2 ans dans le canton de Vaud).'
-    : '2 to 5 years depending on the canton (e.g. 2 years in Geneva, 2 years in Vaud).'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Compétences linguistiques' : 'Language level' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Niveau B1 à l\'oral (parler et comprendre) et A2 à l\'écrit (lire et écrire) dans la langue du canton.'
-    : 'B1 spoken (oral) and A2 written (reading & writing) in the local official language.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Autonomie financière' : 'Financial independence' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Aucune aide sociale perçue sur les 3 dernières années, impôts à jour et absence d\'actes de défaut de biens.'
-    : 'No social assistance in the last 3 years, up to date on taxes, and no debt enforcement certificates.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Intégration civique et sécurité' : 'Civic integration & security' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Casier judiciaire vierge, respect de l\'ordre constitutionnel suisse et participation à la vie sociale locale.'
-    : 'No criminal record, respect for Swiss legal order, and active integration into local community life.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
+                        <div
+                            class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
+                            <div class="col-span-4">{{ $isFr ? 'Condition' : 'Requirement' }}</div>
+                            <div class="col-span-8">{{ $isFr ? 'Ce qui est demandé' : 'What\'s asked' }}</div>
                         </div>
+                        @foreach($requirements as $index => $row)
+                            <div
+                                class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-4 text-sm {{ $index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white' }} {{ $index < count($requirements) - 1 ? 'border-b border-slate-100' : '' }}">
+                                <div class="col-span-4 font-semibold text-[#10233e]">{{ $row[0] }}</div>
+                                <div class="col-span-8 text-slate-600">
+                                    @if($row[1] === 'cpermit')
+                                        <a href="{{ $cPermitUrl }}" {!! $link !!}>{{ $row[2] }}</a>{{ $row[3] }}
+                                    @else
+                                        {{ $row[2] }}
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </section>
 
-            <!-- swiss citizenship language requirements -->
-            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+            <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            {{ $isFr ? 'NORMES LINGUISTIQUES' : 'LANGUAGE STANDARDS (LN & LEI)' }}
-                        </span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'NIVEAU DE LANGUE' : 'LANGUAGE LEVEL' }}</span>
                     </div>
-                    <h2
-                        class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                        {{ $isFr ? 'Exigences linguistiques pour la naturalisation suisse' : 'Swiss citizenship language requirements' }}
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        {{ $isFr ? 'Quel niveau de français pour la naturalisation suisse ?' : 'Swiss citizenship language requirements' }}
                     </h2>
-                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'La loi fédérale exige un niveau de langue attesté B1 à l\'oral (parler et comprendre) et A2 à l\'écrit (lire et écrire) dans la langue officielle du canton de domicile (le français en Suisse romande).'
-    : 'Federal law requires language level B1 spoken (speaking and comprehension) and A2 written (reading and writing) in the language spoken in your canton of residence (French in Romandie).'
-                        }}
+    ? 'Le minimum fédéral est B1 à l\'oral, en expression comme en compréhension, et A2 à l\'écrit. Certains cantons demandent davantage ; Genève applique le minimum fédéral. Vérifiez la règle de votre canton avant de réserver un test.'
+    : 'The federal minimum is B1 spoken (speaking and listening) and A2 written. Some cantons ask for more; Geneva applies the federal minimum. Check your canton\'s rule before you book a test.' }}
                     </p>
-                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+                        @if($isFr)
+                            Le niveau se mesure dans la langue officielle de votre canton : le français en Suisse romande.
+                            Vous le prouvez avec le <a href="{{ $fideUrl }}" {!! $link !!}>test fide</a>, un diplôme <a
+                                href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a> ou plus, votre langue maternelle ou votre
+                            parcours scolaire.
+                        @else
+                            Your level is measured in your canton's official language, which is French in Romandie. You
+                            prove it with the <a href="{{ $fideUrl }}" {!! $link !!}>fide test</a>, a <a
+                                href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a> diploma or higher, your mother tongue or
+                            your schooling.
+                        @endif
+                    </p>
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'L\'ensemble des cantons romands (Genève, Vaud, Fribourg, Neuchâtel, Valais, Jura) appliquent ce socle fédéral. Les attestations officielles reconnues sont le passeport des langues fide, les diplômes DELF (B1 oral / A2 écrit), ainsi que les tests TCF et TEF de moins de 2 ans.'
-    : 'All French-speaking cantons (Geneva, Vaud, Fribourg, Neuchâtel, Valais, Jura) follow the federal standard: B1 oral + A2 written. Officially recognized proof includes the fide Language Passport, DELF diplomas, or accredited TCF/TEF certificates under 2 years old.'
-                        }}
+    ? 'L\'écart clé se trouve à l\'oral. Le B1, c\'est raconter, expliquer, donner son avis et le défendre. C\'est aussi ce dont vous aurez besoin le jour de l\'entretien.'
+    : 'The key gap is speaking. B1 means telling a story, explaining, and giving and defending your opinion. It\'s also what you\'ll need on interview day.' }}
                     </p>
                 </div>
             </section>
 
-            <!-- language counts twice: test and interview -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            {{ $isFr ? 'LA DOUBLE ÉVALUATION' : 'THE DUAL EVALUATION' }}
-                        </span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'TEST ET ENTRETIEN' : 'TEST AND INTERVIEW' }}</span>
                     </div>
-                    <h2
-                        class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                        {{ $isFr ? 'La langue compte deux fois : le test et l\'entretien' : 'Language counts twice: test and interview' }}
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        {{ $isFr ? 'La langue compte 2 fois : test et entretien' : 'Language counts twice: test and interview' }}
                     </h2>
-                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'Réussir votre test fide ou votre diplôme DELF n\'est que la première étape. Lors de l\'instruction de votre dossier, vous êtes convoqué à un entretien d\'intégration en préfecture ou auprès de la commission communale.'
-    : 'Passing your fide test or DELF exam is only the first step. When you submit your dossier, your cantonal and communal authorities invite you to an in-person integration interview.'
-                        }}
+    ? 'Les cantons vérifient aussi vos connaissances sur la Suisse et sur votre canton : géographie, histoire, politique, vie sociale. Selon le canton, cela passe par un entretien, un test, ou les 2.'
+    : 'Cantons also check what you know about Switzerland and your canton: geography, history, politics, social life. Depending on the canton, that means an interview, a test, or both.' }}
                     </p>
-                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'Durant cet échange, la commission évalue vos connaissances de la Suisse mais aussi votre aisance à vous exprimer spontanément en français. Notre programme associe préparation au test B1 et simulations de l\'entretien d\'assimilation cantonal.'
-    : 'During this interview, the commission evaluates not only your Swiss knowledge (geography, history, institutions) but also how naturally and confidently you express yourself in French. Our training combines B1 test prep with cantonal interview simulation.'
-                        }}
+    ? 'Tout se déroule en français. Un candidat qui connaît les réponses mais peine à s\'exprimer part avec un handicap. Votre oral sert donc 2 fois : pour prouver votre niveau, puis pour montrer votre intégration.'
+    : 'It all happens in French. A candidate who knows the answers but struggles to express them starts at a disadvantage. So your speaking does 2 jobs: proving your level, then showing your integration.' }}
                     </p>
                 </div>
             </section>
 
-            <!-- swiss citizenship by marriage -->
-            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+            <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            {{ $isFr ? 'NATURALISATION FACILITÉE (5 ANS)' : 'SIMPLIFIED NATURALISATION (5 YEARS)' }}
-                        </span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CONJOINTS' : 'BY MARRIAGE' }}</span>
                     </div>
-                    <h2
-                        class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                        {{ $isFr ? 'Naturalisation suisse par mariage' : 'Swiss citizenship by marriage' }}
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        {{ $isFr ? 'Naturalisation facilitée pour les conjoints' : 'Swiss citizenship by marriage' }}
                     </h2>
-                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'Si vous êtes marié à un citoyen suisse, vous pouvez demander la naturalisation facilitée sous la compétence directe du Secrétariat d\'État aux migrations (SEM) à Berne.'
-    : 'If you are married to a Swiss citizen, you can apply through simplified naturalisation under direct federal jurisdiction (SEM in Bern).'
-                        }}
-                    </p>
-                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
-                        {{ $isFr
-    ? 'Les conditions sont allégées : 3 ans de mariage et 5 ans de résidence totale en Suisse (dont l\'année précédant le dépôt). L\'exigence linguistique reste toutefois identique : niveau B1 oral et A2 écrit obligatoire.'
-    : 'Key requirements: 3 years of marriage and a total of 5 years of residence in Switzerland (including the 12 months immediately preceding the application). The language standard remains identical: B1 spoken and A2 written.'
-                        }}
+    ? 'Si vous êtes marié à une personne de nationalité suisse, une procédure facilitée existe. Si vous vivez en Suisse, elle demande notamment 3 ans de mariage et 5 ans de séjour en Suisse, dont l\'année qui précède la demande. Si vous vivez à l\'étranger avec votre conjoint suisse, vous pouvez y avoir droit après 6 ans de mariage, si vous avez des liens étroits avec la Suisse. Votre intégration, langue comprise, est aussi examinée : renseignez-vous sur ce qui s\'applique à votre dossier.'
+    : 'If you\'re married to a Swiss citizen, a facilitated procedure exists. For applicants living in Switzerland, it requires, among other things, 3 years of marriage and 5 years of residence in Switzerland, including the year before you apply. Spouses of Swiss citizens living abroad may qualify after 6 years of marriage if they have close ties with Switzerland. Your integration, language included, is still assessed, so check what applies to your case.' }}
                     </p>
                 </div>
             </section>
 
-            <!-- how we prepare you -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'NOTRE MÉTHODE' : 'OUR METHOD' }}
-                            </span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}</span>
                         </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Comment nous vous préparons' : 'How we prepare you' }}
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            {{ $isFr ? 'Notre préparation' : 'How we prepare you' }}
                         </h2>
                     </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Diagnostic ciblé' : 'Targeted diagnostic' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Votre tuteur évalue précisément votre écart face aux critères suisses B1/A2 dès la première séance.'
-    : 'We benchmark your oral and written skills against the Swiss B1/A2 criteria in your first session.'
-                                    }}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        @foreach($steps as $step)
+                            <div class="p-6 rounded-3xl bg-[#f8fafc] border border-slate-200/80">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055A4] text-sm font-semibold flex items-center justify-center border border-blue-100">{{ $step[0] }}</span>
+                                <h3 class="font-bold text-[#10233e] text-base mt-4 mb-2">{{ $step[1] }}</h3>
+                                <p class="text-[13px] text-slate-500 leading-relaxed">
+                                    @if($step[0] === '03')
+                                        @if($isFr)
+                                            Nous préparons le <a href="{{ $fideUrl }}" {!! $link !!}>test fide</a> ou le <a
+                                                href="{{ $delfUrl }}" {!! $link !!}>DELF</a>, puis l'entretien en français : parler
+                                            de votre parcours, de votre commune, de la Suisse.
+                                        @else
+                                            We prepare you for the <a href="{{ $fideUrl }}" {!! $link !!}>fide test</a> or <a
+                                                href="{{ $delfUrl }}" {!! $link !!}>DELF</a>, then for the interview in French: your
+                                            background, your commune, Switzerland.
+                                        @endif
+                                    @else
+                                        {{ $step[2] }}
+                                    @endif
                                 </p>
                             </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Un plan personnalisé' : 'A personalized plan' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Vos heures se concentrent sur l\'expression orale et la fluidité pour garantir votre réussite au test et à l\'entretien.'
-    : 'Your hours focus directly on your gap, balancing exam preparation with conversational fluency.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? '100 % en direct sur Google Meet' : '100% live online' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Séances en direct avec votre professeur dédié, programmées selon vos disponibilités professionnelles.'
-    : '1:1 sessions on Google Meet with your dedicated Swiss-fluent tutor, at times that suit your workday.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Préparation à l\'entretien cantonal' : 'Interview preparation' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Simulations d\'examen officiel (fide / DELF) et répétition des questions types de l\'entretien de naturalisation.'
-    : 'Simulations of both the official language exam (fide/DELF) and typical cantonal assimilation questions.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-
-                    <div
-                        class="rounded-3xl bg-[#002654] text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div>
-                            <div class="text-base sm:text-lg font-bold text-white">
-                                {{ $isFr ? 'Prêt à évaluer votre niveau ?' : 'Ready to test your level?' }}
-                            </div>
-                            <div class="text-xs sm:text-sm text-slate-300 font-normal mt-0.5">
-                                {{ $isFr
-    ? 'Réservez votre séance d\'évaluation et mesurez votre écart dès aujourd\'hui.'
-    : 'Book your introductory session and measure your gap today.'
-                                }}
-                            </div>
-                        </div>
+                    <div class="mt-12 text-center">
                         <a href="/register"
-                            class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-semibold text-[#002654] bg-white hover:bg-slate-100 transition-all flex-shrink-0">
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] transition-all">
                             {{ $isFr ? "S'inscrire" : 'Enroll now' }}
-                            <i class="fas fa-arrow-right text-xs ml-2"></i>
+                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
+                        <p class="mt-3 text-xs sm:text-[13px] text-slate-500">
+                            {{ $isFr
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <!-- swiss citizenship faq -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Naturalisation<br>suisse<br>FAQ' : 'Swiss<br>Citizenship<br>FAQ',
-                'subtitle' => $isFr
-                    ? 'Tout ce que vous devez savoir sur les exigences linguistiques pour la nationalité suisse.'
-                    : 'Everything you need to know about Swiss citizenship language requirements and exams.',
-                'faqs' => $faqs
+                'title' => $isFr ? 'Questions fréquentes<br>sur la naturalisation suisse' : 'Swiss citizenship<br>FAQ',
+                'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
+                'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
+                'contactUrl' => $contactUrl,
+                'faqs' => $faqs,
+                'sectionClass' => 'py-16 sm:py-20 bg-white border-b border-slate-100',
             ])
 
-            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     @include('partials.cta-banner', [
-                        'eyebrow' => $isFr ? 'ATTEIGNEZ VOTRE OBJECTIF' : "LET'S GET YOU THERE",
-                        'title' => $isFr ? "Votre niveau. Le niveau exigé.<br>Nous comblons l'écart." : 'Your level. The required level.<br>We close the gap.',
+                        'sectionClass' => 'pt-4 pb-6 bg-white',
+                        'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
+                        'title' => $isFr
+                            ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
+                            : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
                         'description' => $isFr
-                            ? 'Votre premier cours définit votre niveau dans chaque compétence et le plan pour atteindre le niveau B1/A2 exigé par votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                            : 'Your first class sets your level in each section and the plan to reach B1/A2 for your naturalisation dossier. You choose the pace: 2 or 4 hours a week.',
-                        'primaryBtnText' => $isFr ? "S'inscrire" : 'Enroll now',
-                        'primaryBtnUrl' => '/register',
-                        'secondaryBtnText' => $isFr ? 'Découvrir nos cours' : 'Explore our courses',
-                        'secondaryBtnUrl' => '/courses',
+                            ? 'Votre premier cours mesure votre oral et votre écrit face au niveau de votre canton. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                            : 'Your first class measures your speaking and writing against your canton\'s level. You choose the pace: 2 or 4 hours a week.',
+                        'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
+                        'primaryButtonUrl' => '/register',
+                        'showSecondaryButton' => true,
+                        'secondaryButtonText' => $isFr ? 'Contactez-nous' : 'Talk to us',
+                        'secondaryButtonUrl' => $contactUrl,
                         'helperText' => $isFr
                             ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
+                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included',
                     ])
 
                     <div class="mt-8 text-center text-xs sm:text-sm text-slate-500 font-normal">
-                        <span>{{ $isFr ? 'Vous venez à deux ? 50 CHF de réduction par mois, pour vous et votre proche.' : 'Coming with a friend? CHF 50 off per month, for you and for them.' }}</span>
-                        <a href="{{ $isFr ? '/fr/contact' : '/en/contact' }}"
-                            class="text-[#0055a4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
+                        <span>{{ $isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.' }}</span>
+                        <a href="{{ $referralUrl }}"
+                            class="text-[#0055A4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
                             <span>{{ $isFr ? 'Contactez-nous' : 'Contact us' }}</span>
                             <i class="fas fa-arrow-right text-[10px]"></i>
                         </a>
@@ -630,38 +533,24 @@
                     <div class="border-t border-slate-200/80 my-8"></div>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-                        <span
-                            class="font-bold uppercase tracking-wider text-slate-500">{{ $isFr ? 'SOURCES' : 'SOURCES' }}</span>
-                        <a href="https://www.sem.admin.ch" target="_blank" rel="noopener noreferrer"
+                        <span class="font-bold uppercase tracking-wider text-slate-500">SOURCES</span>
+                        <a href="{{ $genevaSource }}" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>SEM — Secrétariat d'État aux migrations</span>
+                            <span>{{ $isFr ? 'République et canton de Genève – Devenir Suisse' : 'Republic and Canton of Geneva – Becoming Swiss' }}</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                         <span class="text-slate-300">·</span>
-                        <a href="https://www.ge.ch/ocpm" target="_blank" rel="noopener noreferrer"
+                        <a href="{{ $richmondSource }}" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>Canton de Genève — OCPM</span>
-                            <span class="text-[10px]">↗</span>
-                        </a>
-                        <span class="text-slate-300">·</span>
-                        <a href="https://www.vd.ch/population" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>Canton de Vaud — SPOP</span>
-                            <span class="text-[10px]">↗</span>
-                        </a>
-                        <span class="text-slate-300">·</span>
-                        <a href="https://fide-service.ch" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>fide-service.ch</span>
+                            <span>{{ $isFr ? 'Richmond Chambers – naturalisation ordinaire' : 'Richmond Chambers – ordinary naturalisation' }}</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                     </div>
                 </div>
             </section>
-        </div>
 
-        @include('partials.footer')
-    </div>
+            @include('partials.footer')
+        </div>
 
 </body>
 
