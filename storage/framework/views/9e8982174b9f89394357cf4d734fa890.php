@@ -252,8 +252,10 @@ unset($__errorArgs, $__bag); ?>
                     <div>
                         <label class="flex items-start gap-3 text-sm font-bold text-ink cursor-pointer select-none">
                             <input id="with_friend" name="with_friend" type="checkbox" value="1"
-                                class="mt-1 h-4 w-4 rounded border-slate-300 text-primary-600 cursor-pointer" style="cursor: pointer" <?php echo e(old('with_friend') ? 'checked' : ''); ?>>
-                            <span class="cursor-pointer"><?php echo e($isFr ? 'Je viens avec un ami (parrainage)' : 'I\'m coming with a friend (referral)'); ?></span>
+                                class="mt-1 h-4 w-4 rounded border-slate-300 text-primary-600 cursor-pointer"
+                                style="cursor: pointer" <?php echo e(old('with_friend') ? 'checked' : ''); ?>>
+                            <span
+                                class="cursor-pointer"><?php echo e($isFr ? 'Je viens avec un ami (parrainage)' : 'I\'m coming with a friend (referral)'); ?></span>
                         </label>
                         <div id="friend_name_wrap" class="mt-4" <?php if(!old('with_friend')): ?> hidden <?php endif; ?>>
                             <label for="friend_name"

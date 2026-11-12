@@ -275,9 +275,10 @@
                             <h1
                                 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl">
                                 <?php if($isFr): ?>
-                                    DELF A2 : validez l'A2 pour votre carte de séjour
+                                    DELF A2 : validez l'A2 pour votre carte de <span class="swish text-primary-600 inline">séjour</span>
                                 <?php else: ?>
-                                    DELF A2: Prove A2 for Your <span class="swish text-primary-600 inline">Residence </span>Permit
+                                    DELF A2: Prove A2 for Your <span class="swish text-primary-600 inline">Residence
+                                    </span>Permit
                                 <?php endif; ?>
                             </h1>
 

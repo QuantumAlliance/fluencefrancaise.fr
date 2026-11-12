@@ -506,7 +506,8 @@
 
             <section class="py-6 sm:py-10 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="relative rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 overflow-hidden">
+                    <div
+                        class="relative rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 overflow-hidden">
                         <div class="max-w-3xl">
 
                             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
