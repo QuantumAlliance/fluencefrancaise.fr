@@ -114,6 +114,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">

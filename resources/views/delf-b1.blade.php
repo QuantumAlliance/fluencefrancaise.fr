@@ -108,12 +108,12 @@
         ['fa-headphones', 'Compréhension orale', 'Vous répondez à des questions sur des documents audio', '25 min environ'],
         ['fa-book-open', 'Compréhension écrite', 'Vous répondez à des questions sur des textes', '45 min'],
         ['fa-pen', 'Production écrite', 'Vous écrivez un texte de 160 mots minimum, en suivant la consigne', '45 min'],
-        ['fa-microphone', 'Production orale', 'Entretien sur vous, jeu de rôle, puis point de vue sur un document', '15 min environ'],
+        ['fa-microphone', 'Production orale', 'Entretien sur vous, jeu de rôle, puis point de vue sur un document', '15 min environ, après 10 min de préparation'],
     ] : [
         ['fa-headphones', 'Listening', 'Answer questions on audio documents', 'About 25 min'],
         ['fa-book-open', 'Reading', 'Answer questions on texts', '45 min'],
         ['fa-pen', 'Writing', 'Write at least 160 words, following the task instructions', '45 min'],
-        ['fa-microphone', 'Speaking', 'An interview about you, a role play, then your view on a document', 'About 15 min'],
+        ['fa-microphone', 'Speaking', 'An interview about you, a role play, then your view on a document', 'About 15 min, after 10 min of prep'],
     ];
 
     $traps = $isFr ? [
@@ -651,9 +651,9 @@
                         <span class="font-bold tracking-[0.18em] uppercase mr-3">SOURCES</span>
                         <a href="https://www.france-education-international.fr/delf-dalf" target="_blank" rel="noopener" class="hover:text-slate-600">France Éducation international – DELF B1 ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }} ↗</a>
-                        <span class="mx-2.5 text-slate-300">·</span>
                         <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'cartes de séjour' : 'residence cards' }} ↗</a>
+                        <span class="mx-2.5 text-slate-300">·</span>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }} ↗</a>
                     </div>
                 </div>
             </div>
