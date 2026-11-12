@@ -293,11 +293,13 @@ Route::get('/fr/delf', function () { return view('delf-b2'); });
 Route::get('/delf', function () { return view('delf-b2'); });
 
 // Page 09: French residence permits (English /en/french-residence-permit-language/, French /fr/titre-de-sejour-niveau-francais/)
-Route::get('/en/french-residence-permit-language', function () { return view('french-residence-permit'); });
-Route::get('/fr/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit'); });
-Route::get('/fr/french-residence-permit-language', function () { return view('french-residence-permit'); });
-Route::get('/en/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit'); });
-Route::get('/french-residence-permit-language', function () { return view('french-residence-permit'); });
+Route::get('/en/french-residence-permit-language', function () { return view('french-residence-permit-language'); });
+Route::get('/fr/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit-language'); });
+Route::get('/fr/french-residence-permit-language', function () { return view('french-residence-permit-language'); });
+Route::get('/en/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit-language'); });
+Route::get('/french-residence-permit-language', function () { return view('french-residence-permit-language'); });
+Route::get('/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit-language'); });
+Route::get('/french-residence-permit', function () { return view('french-residence-permit-language'); });
 
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });

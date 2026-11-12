@@ -21,16 +21,16 @@
     $homeUrl = $isFr ? '/fr' : '/en';
     $a2Id = $isFr ? 'carte-pluriannuelle' : 'multi-year-permit';
     $b1Id = $isFr ? 'carte-de-resident' : 'resident-card';
-    $langUrl = $isFr ? '/fr/test-francais-naturalisation/' : '/en/french-citizenship-language-test/';
-    $civicUrl = $isFr ? '/fr/examen-civique/' : '/en/french-civic-exam/';
-    $tcfUrl = $isFr ? '/fr/tcf-irn/' : '/en/tcf-irn/';
-    $tefUrl = $isFr ? '/fr/tef-irn/' : '/en/tef-irn/';
-    $delfA2Url = $isFr ? '/fr/delf-a2/' : '/en/delf-a2/';
-    $delfB1Url = $isFr ? '/fr/delf-b1/' : '/en/delf-b1/';
-    $delfUrl = $isFr ? '/fr/delf/' : '/en/delf/';
-    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf/' : '/en/tcf-vs-tef-vs-delf/';
-    $contactUrl = $isFr ? '/fr/contact/' : '/en/contact/';
-    $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
+    $langUrl = $isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test';
+    $civicUrl = $isFr ? '/fr/examen-civique' : '/en/french-civic-exam';
+    $tcfUrl = $isFr ? '/fr/tcf-irn' : '/en/tcf-irn';
+    $tefUrl = $isFr ? '/fr/tef-irn' : '/en/tef-irn';
+    $delfA2Url = $isFr ? '/fr/delf-a2' : '/en/delf-a2';
+    $delfB1Url = $isFr ? '/fr/delf-b1' : '/en/delf-b1';
+    $delfUrl = $isFr ? '/fr/delf' : '/en/delf';
+    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
+    $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
+    $referralUrl = $isFr ? '/fr/contact#parrainage' : '/en/contact#referral';
     $spCards = 'https://www.service-public.fr/particuliers/vosdroits/N110';
 
     $link = 'class="font-semibold text-[#0055A4] hover:underline"';
@@ -162,21 +162,18 @@
     }
     </script>
 
-    <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('partials.theme', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->make('partials.custom-scripts-head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
 
-<body class="antialiased bg-white text-ink">
-    <?php echo $__env->make('partials.custom-scripts-body', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<body class="antialiased bg-white text-slate-800 font-sans selection:bg-[#0055A4] selection:text-white">
 
-    <div class="landing-page min-h-screen flex flex-col">
-        <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <div class="landing-page min-h-screen flex flex-col justify-between">
+        <div>
+            <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-        <main class="flex-grow">
-            <section class="relative overflow-hidden bg-white pt-28 sm:pt-36 md:pt-40 pb-12 border-b border-slate-100">
-                <div class="hero-aurora"></div>
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white pt-28 sm:pt-36 md:pt-40 pb-12 border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
                     <div class="max-w-3xl mx-auto text-center">
                         <nav aria-label="Breadcrumb"
                             class="mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
@@ -190,8 +187,8 @@
                         </nav>
 
                         <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
                             <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                 <?php echo e($isFr ? 'TITRE DE SÉJOUR · 2026' : 'RESIDENCE PERMITS · 2026'); ?>
 
@@ -202,7 +199,7 @@
                             class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Titre de séjour :' : 'French Residence Permits:'); ?>
 
-                            <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
+                            <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1 relative">
                                 <?php echo e($isFr ? 'atteignez l\'A2 ou le B1 exigé' : 'Reach the A2 or B1 Required'); ?>
 
                                 <span class="block h-[3px] mt-2 rounded-full"
@@ -213,13 +210,13 @@
                         <p class="mt-6 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
                             <?php echo e($isFr
                                 ? 'Depuis le 1er janvier 2026, la plupart des premières cartes pluriannuelles demandent l\'A2 et la carte de résident le B1. Nous vous préparons au niveau de votre carte.'
-                                : 'Since 1 January 2026, most first multi-year permits require A2 French and the 10-year resident card B1. We prepare you for the level your card needs.'); ?>
+                               : 'Since 1 January 2026, most first multi-year permits require A2 French and the 10-year resident card B1. We prepare you for the level your card needs.'); ?>
 
                         </p>
 
-                        <div class="mt-8">
+                        <div class="mt-8 flex flex-col items-center">
                             <a href="/register"
-                                class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                                class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] transition-all">
                                 <?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?>
 
                                 <i class="fas fa-arrow-right text-xs ml-2.5"></i>
@@ -265,7 +262,8 @@
                 </div>
             </section>
 
-            <section id="<?php echo e($levelsId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-white">
+            <!-- ============ SECTION 2: 2026 REQUIREMENTS & COMPARISON ============ -->
+            <section id="<?php echo e($levelsId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
@@ -287,7 +285,7 @@
                             </p>
                         </div>
                         <div class="lg:col-span-5">
-                            <div class="rounded-3xl bg-[#002654] text-white overflow-hidden">
+                            <div class="rounded-3xl bg-[#002654] text-white overflow-hidden border border-slate-800">
                                 <div class="h-[3px] w-full flex">
                                     <span class="w-1/3 bg-[#0055A4]"></span>
                                     <span class="w-1/3 bg-white"></span>
@@ -295,14 +293,14 @@
                                 </div>
                                 <div class="grid grid-cols-2 divide-x divide-white/10">
                                     <div class="p-6 sm:p-7">
-                                        <div class="text-4xl font-extrabold">A2</div>
+                                        <div class="text-4xl font-extrabold text-white">A2</div>
                                         <div class="text-xs text-blue-100/80 mt-2 leading-relaxed">
                                             <?php echo e($isFr ? 'Carte de séjour pluriannuelle' : 'Multi-year residence permit'); ?>
 
                                         </div>
                                     </div>
                                     <div class="p-6 sm:p-7">
-                                        <div class="text-4xl font-extrabold">B1</div>
+                                        <div class="text-4xl font-extrabold text-white">B1</div>
                                         <div class="text-xs text-blue-100/80 mt-2 leading-relaxed">
                                             <?php echo e($isFr ? 'Carte de résident, 10 ans' : '10-year resident card'); ?>
 
@@ -353,7 +351,8 @@
                 </div>
             </section>
 
-            <section class="py-16 sm:py-20 bg-[#f4f7fb]">
+            <!-- ============ SECTION 3: PERMIT CARDS (A2 & B1) ============ -->
+            <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
                         <div class="inline-flex items-center gap-1.5 mb-3">
@@ -363,8 +362,10 @@
                                 class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'A2 ET B1' : 'A2 AND B1'); ?></span>
                         </div>
                     </div>
-                    <div class="grid lg:grid-cols-2 gap-5">
-                        <article id="<?php echo e($a2Id); ?>" class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8">
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <article id="<?php echo e($a2Id); ?>" class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 relative">
+                            <span id="multi-year-permit" class="absolute -top-28 left-0"></span>
+                            <span id="carte-pluriannuelle" class="absolute -top-28 left-0"></span>
                             <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0f6fc] text-[#0055A4] text-xs font-bold tracking-wide">A2</span>
                             <h2 class="mt-4 text-2xl sm:text-[28px] font-bold text-[#10233e] tracking-tight leading-snug">
                                 <?php echo e($isFr ? 'Carte de séjour pluriannuelle : le niveau A2' : 'Multi-year residence permit: the A2 level'); ?>
@@ -385,7 +386,9 @@
                             </p>
                         </article>
 
-                        <article id="<?php echo e($b1Id); ?>" class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8">
+                        <article id="<?php echo e($b1Id); ?>" class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 relative">
+                            <span id="resident-card" class="absolute -top-28 left-0"></span>
+                            <span id="carte-de-resident" class="absolute -top-28 left-0"></span>
                             <div class="flex items-center gap-2">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#002654] text-white text-xs font-bold tracking-wide">B1</span>
                                 <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#fff1ef] text-[#EF4135] text-xs font-bold tracking-wide"><?php echo e($isFr ? 'Depuis 2026' : 'Since 2026'); ?></span>
@@ -412,7 +415,8 @@
                 </div>
             </section>
 
-            <section class="py-16 sm:py-20 bg-white">
+            <!-- ============ SECTION 4: REAL LIFE COMPARISON ============ -->
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
                         <div class="inline-flex items-center gap-1.5 mb-3">
@@ -453,7 +457,8 @@
                 </div>
             </section>
 
-            <section id="<?php echo e($proofId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
+            <!-- ============ SECTION 5: ACCEPTED PROOF ============ -->
+            <section id="<?php echo e($proofId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                         <div class="lg:col-span-5">
@@ -524,12 +529,13 @@
                 </div>
             </section>
 
-            <section class="py-6 sm:py-10 bg-white">
+            <!-- ============ SECTION 6: CIVIC EXAM ============ -->
+            <section class="py-12 sm:py-16 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12">
+                    <div class="rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 border border-slate-800">
                         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div class="lg:col-span-7">
-                                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+                                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                                     <?php echo e($isFr ? 'Le test de langue ne suffit plus : l\'examen civique' : 'The language test isn\'t enough: the civic exam'); ?>
 
                                 </h2>
@@ -542,17 +548,17 @@
                                 </p>
                             </div>
                             <div class="lg:col-span-5">
-                                <div class="rounded-3xl bg-white/10 p-6 sm:p-7 grid grid-cols-3 gap-4 text-center">
+                                <div class="rounded-3xl bg-white/10 p-6 sm:p-7 grid grid-cols-3 gap-4 text-center border border-white/10">
                                     <div>
-                                        <p class="text-3xl font-extrabold">40</p>
+                                        <p class="text-3xl font-extrabold text-white">40</p>
                                         <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Questions' : 'Questions'); ?></p>
                                     </div>
                                     <div>
-                                        <p class="text-3xl font-extrabold">45</p>
+                                        <p class="text-3xl font-extrabold text-white">45</p>
                                         <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Minutes' : 'Minutes'); ?></p>
                                     </div>
                                     <div>
-                                        <p class="text-3xl font-extrabold">32</p>
+                                        <p class="text-3xl font-extrabold text-white">32</p>
                                         <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Bonnes réponses' : 'To pass'); ?></p>
                                     </div>
                                 </div>
@@ -562,7 +568,8 @@
                 </div>
             </section>
 
-            <section id="<?php echo e($prepareId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-white">
+            <!-- ============ SECTION 7: HOW WE PREPARE YOU ============ -->
+            <section id="<?php echo e($prepareId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
                         <div class="inline-flex items-center gap-1.5 mb-3">
@@ -578,13 +585,10 @@
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <?php $__currentLoopData = $plan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $step): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div>
+                            <div class="p-6 rounded-3xl bg-white border border-slate-200/80">
                                 <div class="flex items-center mb-4">
                                     <span
                                         class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055A4] text-sm font-semibold flex items-center justify-center border border-blue-100 shrink-0"><?php echo e($step[0]); ?></span>
-                                    <?php if($index < 3): ?>
-                                        <div class="hidden lg:block flex-1 h-px bg-[#e1eaf2] ml-4"></div>
-                                    <?php endif; ?>
                                 </div>
                                 <h3 class="font-bold text-[#10233e] text-base mb-2"><?php echo e($step[1]); ?></h3>
                                 <p class="text-[13px] text-slate-500 leading-relaxed"><?php echo e($step[2]); ?></p>
@@ -593,7 +597,7 @@
                     </div>
                     <div class="mt-12 text-center">
                         <a href="/register"
-                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] transition-all">
                             <?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?>
 
                             <i class="fas fa-arrow-right text-xs ml-2.5"></i>
@@ -608,6 +612,7 @@
                 </div>
             </section>
 
+            <!-- ============ SECTION 8: RESIDENCE PERMIT FAQ ============ -->
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => $isFr ? 'Questions fréquentes<br>sur le titre de séjour' : 'Residence permit<br>FAQ',
@@ -615,57 +620,60 @@
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,
                 'faqs' => $faqs,
-                'sectionClass' => 'py-16 sm:py-20 bg-[#f4f7fb]',
+                'sectionClass' => 'py-16 sm:py-20 bg-white border-b border-slate-100',
             ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <div id="enroll" class="scroll-mt-28">
-                <?php echo $__env->make('partials.cta-banner', [
-                    'sectionClass' => 'pt-4 pb-6 bg-white',
-                    'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
-                    'title' => $isFr
-                        ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
-                        : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
-                    'description' => $isFr
-                        ? 'Votre premier cours situe votre niveau face à celui de votre carte. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                        : 'Your first class places your level against the one your card needs. You choose the pace: 2 or 4 hours a week.',
-                    'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
-                    'primaryButtonUrl' => '/register',
-                    'showSecondaryButton' => true,
-                    'secondaryButtonText' => $isFr ? 'Contactez-nous' : 'Talk to us',
-                    'secondaryButtonUrl' => $contactUrl,
-                    'helperText' => $isFr
-                        ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                        : 'Live classes on Google Meet · 1:1 or small group · Student portal included',
-                ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            </div>
+            <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
+            <section class="py-16 sm:py-20 bg-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div id="enroll" class="scroll-mt-28">
+                        <?php echo $__env->make('partials.cta-banner', [
+                            'sectionClass' => 'pt-4 pb-6 bg-white',
+                            'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
+                            'title' => $isFr
+                                ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
+                                : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
+                            'description' => $isFr
+                                ? 'Votre premier cours situe votre niveau face à celui de votre carte. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                                : 'Your first class places your level against the one your card needs. You choose the pace: 2 or 4 hours a week.',
+                            'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
+                            'primaryButtonUrl' => '/register',
+                            'showSecondaryButton' => true,
+                            'secondaryButtonText' => $isFr ? 'Contactez-nous' : 'Talk to us',
+                            'secondaryButtonUrl' => $contactUrl,
+                            'helperText' => $isFr
+                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included',
+                        ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    </div>
 
-            <div class="bg-white pb-16">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center">
-                    <p class="text-sm text-slate-500">
-                        <?php echo e($isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.'); ?>
-
+                    <div class="mt-8 text-center text-xs sm:text-sm text-slate-500 font-normal">
+                        <span><?php echo e($isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.'); ?></span>
                         <a href="<?php echo e($referralUrl); ?>"
-                            class="text-[#0055A4] font-semibold hover:underline ml-1"><?php echo e($isFr ? 'Contactez-nous' : 'Contact us'); ?>
+                            class="text-[#0055A4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
+                            <span><?php echo e($isFr ? 'Contactez-nous' : 'Contact us'); ?></span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
 
-                            →</a>
-                    </p>
-                    <div class="my-6 border-t border-slate-100"></div>
-                    <div
-                        class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
-                        <span class="font-bold tracking-[0.18em] uppercase mr-3">SOURCES</span>
-                        <a href="<?php echo e($spCards); ?>" target="_blank" rel="noopener"
-                            class="hover:text-slate-600">Service-public.fr –
-                            <?php echo e($isFr ? 'carte de résident et carte pluriannuelle : justifier de votre connaissance du français' : 'proving your French for the resident card and multi-year permit'); ?>
+                    <div class="border-t border-slate-200/80 my-8"></div>
 
-                            ↗</a>
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
+                        <span class="font-bold uppercase tracking-wider text-slate-500">SOURCES</span>
+                        <a href="<?php echo e($spCards); ?>" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
+                            <span>Service-public.fr – <?php echo e($isFr ? 'carte de résident et carte pluriannuelle : justifier de votre connaissance du français' : 'proving your French for the resident card and multi-year permit'); ?></span>
+                            <span class="text-[10px]">↗</span>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </main>
+            </section>
+        </div>
 
         <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 </body>
 
 </html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/french-residence-permit.blade.php ENDPATH**/ ?>
+
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/french-residence-permit-language.blade.php ENDPATH**/ ?>
