@@ -137,8 +137,7 @@
                     <div class="inline-flex items-center gap-1.5 mb-5">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                             <?php echo e($isFr ? 'NATURALISATION FRANÇAISE · NOUVELLE EXIGENCE 2026' : 'FRENCH CITIZENSHIP · NEW 2026 LANGUAGE REQUIREMENT'); ?>
 
                         </span>
@@ -163,11 +162,10 @@
                         </div>
                     </div>
 
-                    <p
-                        class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
+                    <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                         <?php echo e($isFr
-                            ? 'Depuis le 1er janvier 2026, la naturalisation exige le niveau B2 sur les 4 compétences. Nous vous préparons à l\'examen de votre choix, du diagnostic initial au jour de l\'épreuve.'
-                            : 'Since 1 January 2026, French citizenship requires level B2 in French across all 4 skills. We train you for the exact test you choose, from your first class to exam day.'); ?>
+    ? 'Depuis le 1er janvier 2026, la naturalisation exige le niveau B2 sur les 4 compétences. Nous vous préparons à l\'examen de votre choix, du diagnostic initial au jour de l\'épreuve.'
+    : 'Since 1 January 2026, French citizenship requires level B2 in French across all 4 skills. We train you for the exact test you choose, from your first class to exam day.'); ?>
 
                     </p>
 
@@ -180,13 +178,14 @@
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
                             <?php echo e($isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                         </p>
                     </div>
 
-                    <div class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-600">
+                    <div
+                        class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-600">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-certificate text-[#0055a4]"></i>
                             <span><?php echo e($isFr ? 'Niveau B2 obligatoire en 2026' : 'B2 required since 1 Jan 2026'); ?></span>
@@ -211,7 +210,8 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                     <?php echo e($isFr ? 'RÉFORME 2026' : '2026 LANGUAGE REFORM'); ?>
 
                                 </span>
@@ -223,8 +223,8 @@
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? "L'article 21-24 du Code civil exige désormais le niveau B2 du CECRL pour la nationalité française (décret applicable depuis le 1er janvier 2026). Il s'applique à la naturalisation par décret et par déclaration (mariage)."
-                                    : "Article 21-24 of the French Civil Code now requires level B2 of the CEFR for French nationality (decree effective 1 January 2026). It applies to naturalisation by decree and marriage."); ?>
+    ? "L'article 21-24 du Code civil exige désormais le niveau B2 du CECRL pour la nationalité française (décret applicable depuis le 1er janvier 2026). Il s'applique à la naturalisation par décret et par déclaration (mariage)."
+    : "Article 21-24 of the French Civil Code now requires level B2 of the CEFR for French nationality (decree effective 1 January 2026). It applies to naturalisation by decree and marriage."); ?>
 
                             </p>
                             <div class="mt-6 flex items-center gap-2 text-xs sm:text-sm text-[#0055A4] font-semibold">
@@ -337,7 +337,8 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                     <?php echo e($isFr ? 'DIFFÉRENCE FONDAMENTALE' : 'KEY DIFFERENCE'); ?>
 
                                 </span>
@@ -349,30 +350,35 @@
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Le niveau B1 validait une autonomie pratique : comprendre l’essentiel, faire face aux situations courantes et donner un avis simple.'
-                                    : 'Level B1 demonstrated basic independence: handling everyday transactions, explaining problems simply, and giving personal opinions.'); ?>
+    ? 'Le niveau B1 validait une autonomie pratique : comprendre l’essentiel, faire face aux situations courantes et donner un avis simple.'
+    : 'Level B1 demonstrated basic independence: handling everyday transactions, explaining problems simply, and giving personal opinions.'); ?>
 
                             </p>
                             <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Le niveau B2 exige une réelle argumentation : défendre un point de vue nuancé, comprendre des discours complexes et rédiger un texte structuré sans répétitions syntaxiques.'
-                                    : 'Level B2 requires genuine argument, nuance, and structural control: you must be able to defend an opinion, synthesize complex viewpoints, and write clear, structured arguments.'); ?>
+    ? 'Le niveau B2 exige une réelle argumentation : défendre un point de vue nuancé, comprendre des discours complexes et rédiger un texte structuré sans répétitions syntaxiques.'
+    : 'Level B2 requires genuine argument, nuance, and structural control: you must be able to defend an opinion, synthesize complex viewpoints, and write clear, structured arguments.'); ?>
 
                             </p>
                         </div>
 
                         <div class="lg:col-span-5">
-                            <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 flex items-center justify-around gap-4">
+                            <div
+                                class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 flex items-center justify-around gap-4">
                                 <div class="text-center">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-slate-300">B1</div>
-                                    <div class="text-xs text-slate-400 mt-1"><?php echo e($isFr ? 'Jusqu\'en 2025' : 'Until Dec 2025'); ?></div>
-                                    <div class="text-[11px] text-slate-400 font-medium"><?php echo e($isFr ? 'Utilisateur seuil' : 'Threshold user'); ?></div>
+                                    <div class="text-xs text-slate-400 mt-1">
+                                        <?php echo e($isFr ? 'Jusqu\'en 2025' : 'Until Dec 2025'); ?></div>
+                                    <div class="text-[11px] text-slate-400 font-medium">
+                                        <?php echo e($isFr ? 'Utilisateur seuil' : 'Threshold user'); ?></div>
                                 </div>
                                 <div class="text-slate-300 text-2xl font-bold">→</div>
                                 <div class="text-center p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-[#0055a4]">B2</div>
-                                    <div class="text-xs text-[#0055a4] font-bold mt-1"><?php echo e($isFr ? 'Depuis 2026' : 'Since Jan 2026'); ?></div>
-                                    <div class="text-[11px] text-slate-600 font-semibold"><?php echo e($isFr ? 'Obligatoire' : 'Mandatory'); ?></div>
+                                    <div class="text-xs text-[#0055a4] font-bold mt-1">
+                                        <?php echo e($isFr ? 'Depuis 2026' : 'Since Jan 2026'); ?></div>
+                                    <div class="text-[11px] text-slate-600 font-semibold">
+                                        <?php echo e($isFr ? 'Obligatoire' : 'Mandatory'); ?></div>
                                 </div>
                             </div>
                         </div>
@@ -382,8 +388,8 @@
                         <i class="fas fa-circle-info text-[#0055a4]"></i>
                         <span>
                             <?php echo e($isFr
-                                ? 'Les dossiers déposés avant le 1er janvier 2026 sont instruits selon l’ancienne règle (B1). Tout nouveau dossier exige le B2.'
-                                : 'Applications filed before 1 January 2026 remain processed under the former B1 rule. All applications filed since must show B2.'); ?>
+    ? 'Les dossiers déposés avant le 1er janvier 2026 sont instruits selon l’ancienne règle (B1). Tout nouveau dossier exige le B2.'
+    : 'Applications filed before 1 January 2026 remain processed under the former B1 rule. All applications filed since must show B2.'); ?>
 
                         </span>
                     </div>
@@ -409,8 +415,8 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Trois tests officiels sont acceptés par le ministère de l’Intérieur pour justifier du niveau B2. Voici leurs caractéristiques comparées :'
-                                : 'The Ministry of the Interior accepts 3 official standardized tests for French nationality. Here is how they compare:'); ?>
+    ? 'Trois tests officiels sont acceptés par le ministère de l’Intérieur pour justifier du niveau B2. Voici leurs caractéristiques comparées :'
+    : 'The Ministry of the Interior accepts 3 official standardized tests for French nationality. Here is how they compare:'); ?>
 
                         </p>
                     </div>
@@ -428,34 +434,54 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
                                     <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Format' : 'Format'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '1 h 35 · 4 épreuves' : '1 h 35 · 4 sections'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '1 h 40 · 4 épreuves' : '1 h 40 · 4 sections'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 h 30 écrit + 20 min oral' : '2 h 30 written + 20 min oral'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Format' : 'Format'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '1 h 35 · 4 épreuves' : '1 h 35 · 4 sections'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '1 h 40 · 4 épreuves' : '1 h 40 · 4 sections'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '2 h 30 écrit + 20 min oral' : '2 h 30 written + 20 min oral'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Évaluation' : 'Scoring scale'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Admis / Non admis (50/100)' : 'Pass/Fail (50/100 min)'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Évaluation' : 'Scoring scale'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Admis / Non admis (50/100)' : 'Pass/Fail (50/100 min)'); ?></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Délais des résultats' : 'Results turnaround'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '15 à 20 jours ouvrés' : '15 to 20 working days'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '1 à 10 jours ouvrés' : '1 to 10 working days'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '4 à 6 semaines' : '4 to 6 weeks'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Délais des résultats' : 'Results turnaround'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '15 à 20 jours ouvrés' : '15 to 20 working days'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '1 à 10 jours ouvrés' : '1 to 10 working days'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '4 à 6 semaines' : '4 to 6 weeks'); ?></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Validité' : 'Validity'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Validité' : 'Validity'); ?></td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600 font-bold text-[#0055a4]"><?php echo e($isFr ? 'À vie (Diplôme)' : 'Lifelong (Diploma)'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600 font-bold text-[#0055a4]">
+                                            <?php echo e($isFr ? 'À vie (Diplôme)' : 'Lifelong (Diploma)'); ?></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Idéal pour' : 'Best for'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Évaluation multi-niveaux' : 'Multi-level scoring'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Délais rapides' : 'Fast turnaround'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Certificat définitif' : 'Permanent diploma'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Idéal pour' : 'Best for'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Évaluation multi-niveaux' : 'Multi-level scoring'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Délais rapides' : 'Fast turnaround'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Certificat définitif' : 'Permanent diploma'); ?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -475,18 +501,20 @@
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                             <div class="lg:col-span-7">
-                                <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 mb-4">
+                                <span
+                                    class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 mb-4">
                                     <?php echo e($isFr ? 'EXAMEN CIVIQUE' : 'THE CIVIC KNOWLEDGE REQUIREMENT'); ?>
 
                                 </span>
-                                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+                                <h3
+                                    class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
                                     <?php echo e($isFr ? 'La langue ne suffit plus : l\'examen civique' : 'Language isn\'t the only test: the civic exam'); ?>
 
                                 </h3>
                                 <p class="mt-4 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'En plus de l\'attestation B2, la naturalisation par décret impose la réussite d\'un examen civique portant sur l\'histoire, les institutions et les valeurs de la République française.'
-                                        : 'Along with the B2 language requirement, candidates for naturalisation by decree must pass an official civic exam testing knowledge of French history, institutions, and Republican values.'); ?>
+    ? 'En plus de l\'attestation B2, la naturalisation par décret impose la réussite d\'un examen civique portant sur l\'histoire, les institutions et les valeurs de la République française.'
+    : 'Along with the B2 language requirement, candidates for naturalisation by decree must pass an official civic exam testing knowledge of French history, institutions, and Republican values.'); ?>
 
                                 </p>
                             </div>
@@ -498,8 +526,8 @@
                                     </div>
                                     <p class="text-xs text-slate-200 leading-relaxed font-normal">
                                         <?php echo e($isFr
-                                            ? 'Nous vous entraînons à la fois sur les 4 épreuves du B2 et sur les questions types de l\'entretien d\'assimilation en préfecture.'
-                                            : 'We train you for both the B2 language test and the prefecture assimilation interview questions.'); ?>
+    ? 'Nous vous entraînons à la fois sur les 4 épreuves du B2 et sur les questions types de l\'entretien d\'assimilation en préfecture.'
+    : 'We train you for both the B2 language test and the prefecture assimilation interview questions.'); ?>
 
                                     </p>
                                 </div>
@@ -529,8 +557,8 @@
                         <p
                             class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                             <?php echo e($isFr
-                                ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. De vraies simulations. Pas de programme générique.'
-                                : 'Targeted 1:1 or small-group live coaching from your initial benchmark to exam day.'); ?>
+    ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. De vraies simulations. Pas de programme générique.'
+    : 'Targeted 1:1 or small-group live coaching from your initial benchmark to exam day.'); ?>
 
                         </p>
                     </div>
@@ -550,8 +578,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Votre première séance situe vos 4 compétences face aux exigences du B2.'
-                                    : 'Your first session benchmarks all 4 skills against the official B2 descriptors.'); ?>
+    ? 'Votre première séance situe vos 4 compétences face aux exigences du B2.'
+    : 'Your first session benchmarks all 4 skills against the official B2 descriptors.'); ?>
 
                             </p>
                         </div>
@@ -570,8 +598,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Nous planifions les heures nécessaires pour atteindre le B2 avant votre dépôt en préfecture.'
-                                    : 'We calculate the exact hours needed to reach B2 before your prefecture submission date.'); ?>
+    ? 'Nous planifions les heures nécessaires pour atteindre le B2 avant votre dépôt en préfecture.'
+    : 'We calculate the exact hours needed to reach B2 before your prefecture submission date.'); ?>
 
                             </p>
                         </div>
@@ -590,8 +618,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'En particulier ou mini-groupe sur Google Meet, avec notes et devoirs après chaque séance.'
-                                    : '1:1 or in mini-groups on Google Meet, with structured notes and homework after every class.'); ?>
+    ? 'En particulier ou mini-groupe sur Google Meet, avec notes et devoirs après chaque séance.'
+    : '1:1 or in mini-groups on Google Meet, with structured notes and homework after every class.'); ?>
 
                             </p>
                         </div>
@@ -609,8 +637,8 @@
                             </h3>
                             <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-                                    ? 'Simulations complètes en conditions réelles du test choisi (TCF, TEF ou DELF B2).'
-                                    : 'Full simulations under real exam conditions for your chosen test (TCF, TEF or DELF B2).'); ?>
+    ? 'Simulations complètes en conditions réelles du test choisi (TCF, TEF ou DELF B2).'
+    : 'Full simulations under real exam conditions for your chosen test (TCF, TEF or DELF B2).'); ?>
 
                             </p>
                         </div>
@@ -625,8 +653,8 @@
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
                             <?php echo e($isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                         </p>
                     </div>
@@ -673,20 +701,24 @@
                     <div class="border-t border-slate-200/80 my-8"></div>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-                        <span class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
-                        <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener noreferrer"
+                        <span
+                            class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
+                        <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2213" target="_blank"
+                            rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>Service-public.fr — Naturalisation</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                         <span class="text-slate-300">·</span>
-                        <a href="https://www.france-education-international.fr/test/tcf-irn" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.france-education-international.fr/test/tcf-irn" target="_blank"
+                            rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>France Éducation international — TCF IRN</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                         <span class="text-slate-300">·</span>
-                        <a href="https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/tef-irn/" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/tef-irn/"
+                            target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>Le français des affaires — TEF IRN</span>
                             <span class="text-[10px]">↗</span>
@@ -701,5 +733,4 @@
 
 </body>
 
-</html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/citizenship-language-test.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/citizenship-language-test.blade.php ENDPATH**/ ?>

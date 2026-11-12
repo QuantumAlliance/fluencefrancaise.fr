@@ -234,13 +234,21 @@ Route::get('/en/delf-b1', function () { return view('delf-b1'); });
 Route::get('/fr/delf-b1', function () { return view('delf-b1'); });
 Route::get('/delf-b1', function () { return view('delf-b1'); });
 
+// Page 07: DELF B2 (English /en/delf-b2/, French /fr/delf-b2/)
+Route::get('/en/delf-b2', function () { return view('delf-b2'); });
+Route::get('/fr/delf-b2', function () { return view('delf-b2'); });
+Route::get('/delf-b2', function () { return view('delf-b2'); });
+
 // Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
 Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
 Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });
-Route::get('/en/swiss-citizenship', function () { return view('citizenship-language-test'); });
-Route::get('/fr/naturalisation-suisse', function () { return view('citizenship-language-test'); });
-Route::get('/swiss-citizenship', function () { return view('citizenship-language-test'); });
 Route::get('/citizenship-language-test', function () { return view('citizenship-language-test'); });
+
+// Swiss citizenship (English /en/swiss-citizenship, French /fr/naturalisation-suisse)
+Route::get('/en/swiss-citizenship', function () { return view('swiss-citizenship'); });
+Route::get('/fr/naturalisation-suisse', function () { return view('swiss-citizenship'); });
+Route::get('/fr/swiss-citizenship', function () { return view('swiss-citizenship'); });
+Route::get('/swiss-citizenship', function () { return view('swiss-citizenship'); });
 
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });
