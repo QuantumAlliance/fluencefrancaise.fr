@@ -12,12 +12,19 @@
         : "TEF IRN 2026: Sections, Rules and Online Preparation";
 
     $metaDesc = $isFr
-        ? "TEF IRN 2026 : 4 épreuves obligatoires, attestation valable 2 ans, A2, B1 ou B2 selon votre dossier. Pièges fréquents et préparation en ligne en direct."
+        ? "TEF IRN 2026 : 4 épreuves obligatoires, attestation valable 2 ans, A2, B1 ou B2 selon votre dossier. Pièges à éviter et préparation en ligne."
         : "TEF IRN in 2026: 4 compulsory sections, results valid 2 years, A2, B1 or B2 depending on your application. Common traps and live online prep.";
 
     $canonicalUrl = $isFr ? 'https://fluencefrancaise.fr/fr/tef-irn/' : 'https://fluencefrancaise.fr/en/tef-irn/';
     $frUrl = 'https://fluencefrancaise.fr/fr/tef-irn/';
     $enUrl = 'https://fluencefrancaise.fr/en/tef-irn/';
+    $tcfUrl = $isFr ? '/fr/tcf-irn/' : '/en/tcf-irn/';
+    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf/' : '/en/tcf-vs-tef-vs-delf/';
+    $permitUrl = $isFr ? '/fr/titre-de-sejour-niveau-francais/' : '/en/french-residence-permit-language/';
+    $langUrl = $isFr ? '/fr/test-francais-naturalisation/' : '/en/french-citizenship-language-test/';
+    $civicUrl = $isFr ? '/fr/examen-civique/' : '/en/french-civic-exam/';
+    $delfB2Url = $isFr ? '/fr/delf-b2/' : '/en/delf-b2/';
+    $linkClass = 'text-[#0055A4] font-semibold hover:underline';
 
     // FAQ Data
     $faqs = $isFr ? [
@@ -27,15 +34,15 @@
         ],
         [
             'q' => "TEF IRN ou TCF IRN : lequel choisir ?",
-            'a' => "Les 2 sont acceptés pour les mêmes démarches, avec la même validité de 2 ans. Choisissez selon les dates et les centres près de chez vous. Voir aussi notre page TCF IRN et notre comparatif TCF, TEF ou DELF."
+            'a' => 'Les 2 sont acceptés pour les mêmes démarches, avec la même validité de 2 ans. Choisissez selon les dates et les centres près de chez vous. Voir aussi le <a href="' . $tcfUrl . '" class="' . $linkClass . '">TCF IRN</a> et notre comparatif <a href="' . $compareUrl . '" class="' . $linkClass . '">TCF, TEF ou DELF</a>.'
         ],
         [
             'q' => "Que se passe-t-il si j'abandonne une épreuve ?",
-            'a' => "Vous ne recevez pas d'attestation. Les 4 épreuves du TEF IRN sont indissociables : il faut obligatoirement toutes les passer lors de la même session."
+            'a' => "Vous ne recevez pas d'attestation. Les 4 épreuves du TEF IRN sont indissociables : il faut toutes les passer."
         ],
         [
             'q' => "Quand reçoit-on les résultats ?",
-            'a' => "Sous 1 à 10 jours ouvrés après le test, selon Le français des affaires (CCI Paris Île-de-France)."
+            'a' => "Sous 1 à 10 jours ouvrés après le test, selon Le français des affaires."
         ],
         [
             'q' => "Existe-t-il un TEF IRN en ligne gratuit ?",
@@ -43,7 +50,7 @@
         ],
         [
             'q' => "Le TEF IRN est-il plus facile que le TCF IRN ?",
-            'a' => "Aucun des 2 n'est « plus facile » : ils mesurent les mêmes niveaux du CECRL. Ce qui change, c'est le format. Un candidat à l'aise avec l'un peut l'être moins avec l'autre, d'où l'intérêt de s'entraîner sur le bon."
+            'a' => "Aucun des 2 n'est « plus facile » : ils mesurent les mêmes niveaux. Ce qui change, c'est le format. Un candidat à l'aise avec l'un peut l'être moins avec l'autre, d'où l'intérêt de s'entraîner sur le bon."
         ],
         [
             'q' => "Fluence Française fait-elle passer le TEF IRN ?",
@@ -56,27 +63,27 @@
         ],
         [
             'q' => "TEF IRN or TCF IRN: which should I take?",
-            'a' => "Both are accepted for the same applications, with the same 2-year validity. Choose based on dates and test centres near you. See our TCF IRN page and our TCF vs TEF vs DELF guide."
+            'a' => 'Both are accepted for the same applications, with the same 2-year validity. Choose based on dates and test centres near you. See the <a href="' . $tcfUrl . '" class="' . $linkClass . '">TCF IRN</a> and our <a href="' . $compareUrl . '" class="' . $linkClass . '">TCF vs TEF vs DELF comparison</a>.'
         ],
         [
-            'q' => "What happens if I leave 1 section?",
-            'a' => "You get no results at all. The 4 sections of the TEF IRN cannot be separated: you must complete all 4 in the same sitting."
+            'q' => "What happens if I leave a section?",
+            'a' => "You get no results. The TEF IRN's 4 sections can't be separated: you have to sit them all."
         ],
         [
             'q' => "When do I get my results?",
-            'a' => "Within 1 to 10 working days after the test, according to Le français des affaires (Paris Chamber of Commerce)."
+            'a' => "Within 1 to 10 working days after the test, according to Le français des affaires."
         ],
         [
-            'q' => "Is there a free online TEF IRN?",
-            'a' => "No. The official exam is taken in an approved test centre and has a fee. Free online practice tests give you an idea of your level, but have no official value. Your first class diagnoses your 4 skills."
+            'q' => "Is there a free TEF IRN practice test online?",
+            'a' => "The real test is taken at an approved centre, and it's paid. Free online practice tells you where you stand but has no value in an application. To see where you stand, your first class measures all 4 skills."
         ],
         [
             'q' => "Is the TEF IRN easier than the TCF IRN?",
-            'a' => "Neither is 'easier': both test the same CEFR levels. What differs is the exam format and task types. Some students prefer one over the other, which is why practicing the exact format matters."
+            'a' => "Neither is “easier”: they measure the same levels. What differs is the format. Someone comfortable with one can struggle with the other, which is why you train for the one you'll take."
         ],
         [
             'q' => "Does Fluence Française run the TEF IRN?",
-            'a' => "No. We prepare candidates for the test; registration is completed through an approved centre certified by Le français des affaires."
+            'a' => "No. We prepare you for it. You register with a centre approved by Le français des affaires."
         ]
     ];
 ?>
@@ -144,10 +151,11 @@
                     <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $faq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         {
                             "@type": "Question",
-                            "name": "<?php echo e($faq['q']); ?>",
+                            "name": <?php echo json_encode($faq['q'], JSON_UNESCAPED_UNICODE); ?>,
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "<?php echo e($faq['a']); ?>"
+                                "text": <?php echo json_encode(trim(preg_replace('/\s+/', ' ', strip_tags($faq['a']))), JSON_UNESCAPED_UNICODE); ?>
+
                             }
                         }<?php if(!$loop->last): ?>,<?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -293,7 +301,7 @@
                             <span class="text-slate-400 text-[9px]">●</span>
                             <span><?php echo e($isFr ? 'Exigences 2026' : '2026 requirements'); ?></span>
                             <span class="text-slate-300">/</span>
-                            <span><?php echo e($isFr ? 'Mis à jour le 6 octobre 2026' : 'Updated 6 October 2026'); ?></span>
+                            <span><?php echo e($isFr ? 'Mis à jour le 12 novembre 2026' : 'Updated 12 November 2026'); ?></span>
                         </div>
 
                         <div
@@ -338,7 +346,7 @@
 
                             <p class="text-sm sm:text-[15px] md:text-base text-slate-500 leading-relaxed font-normal">
                                 <?php echo e($isFr
-    ? "Le TEF IRN (Test d'évaluation de français – Intégration, Résidence et Nationalité) est délivré par Le français des affaires, rattaché à la CCI Paris Île-de-France. Il est accepté pour la carte de séjour pluriannuelle, la carte de résident et la naturalisation. Les 4 épreuves se passent en une seule session, et les résultats sont valables 2 ans."
+    ? "Le TEF IRN (Test d'évaluation de français – Intégration, Résidence et Nationalité) est proposé par Le français des affaires, rattaché à la CCI Paris Île-de-France. Il est accepté pour la carte de séjour pluriannuelle, la carte de résident et la naturalisation. Ses 4 épreuves se passent dans la même session, et l'attestation est valable 2 ans."
     : "The TEF IRN (Test d'évaluation de français – Intégration, Résidence et Nationalité) is run by Le français des affaires, part of the Paris Chamber of Commerce. It's accepted for the multi-year residence permit, the 10-year resident card and French citizenship. All 4 sections are taken in 1 session, and results are valid for 2 years."); ?>
 
                             </p>
@@ -466,7 +474,7 @@
                                     <div
                                         class="sm:col-span-9 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                                         <?php echo e($isFr
-    ? "Demandeurs d'une carte de séjour pluriannuelle, d'une carte de résident ou de la nationalité française"
+    ? "Demandeurs d'une carte pluriannuelle, d'une carte de résident ou de la nationalité française"
     : "Anyone applying for a multi-year permit, a 10-year resident card or French citizenship"); ?>
 
                                     </div>
@@ -475,11 +483,12 @@
                                 <div
                                     class="grid grid-cols-1 sm:grid-cols-12 py-4 sm:py-5 px-6 sm:px-8 bg-white items-center gap-2 sm:gap-4">
                                     <div class="sm:col-span-3 font-bold text-xs sm:text-sm text-[#10233e]">
-                                        <?php echo e($isFr ? 'Organisateur' : 'Run by'); ?>
+                                        <?php echo e($isFr ? 'Organisme' : 'Run by'); ?>
 
                                     </div>
                                     <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                        Le français des affaires (CCI Paris Île-de-France)
+                                        <?php echo e($isFr ? 'Le français des affaires (CCI Paris Île-de-France)' : 'Le français des affaires (Paris Chamber of Commerce)'); ?>
+
                                     </div>
                                 </div>
 
@@ -504,7 +513,7 @@
 
                                     </div>
                                     <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                        <?php echo e($isFr ? 'Sous 1 à 10 jours ouvrés après la session' : 'Within 1 to 10 working days after the test'); ?>
+                                        <?php echo e($isFr ? 'Sous 1 à 10 jours ouvrés après le test' : 'Within 1 to 10 working days after the test'); ?>
 
                                     </div>
                                 </div>
@@ -516,9 +525,7 @@
 
                                     </div>
                                     <div class="sm:col-span-9 text-xs sm:text-sm text-slate-600 font-normal">
-                                        <?php echo e($isFr
-    ? "2 ans à compter de la délivrance de l'attestation"
-    : '2 years from the date the certificate is issued'); ?>
+                                        <?php echo e($isFr ? '2 ans' : '2 years'); ?>
 
                                     </div>
                                 </div>
@@ -544,7 +551,7 @@
 
                             <h2
                                 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                                <?php echo e($isFr ? 'La règle que beaucoup apprennent trop tard' : 'The rule many candidates learn too late'); ?>
+                                <?php echo e($isFr ? 'La règle que beaucoup découvrent trop tard' : 'The rule many candidates learn too late'); ?>
 
                             </h2>
 
@@ -552,19 +559,19 @@
                                 class="space-y-4 text-sm sm:text-[15px] text-slate-500 font-normal leading-relaxed pt-1">
                                 <p>
                                     <?php echo e($isFr
-    ? "Les 4 épreuves du TEF IRN sont indissociables. Si vous abandonnez une seule épreuve, vous ne recevez aucune attestation, même pour les épreuves réussies."
+    ? "Les 4 épreuves du TEF IRN sont indissociables. Si vous abandonnez l'une d'elles, vous ne recevez aucune attestation, même pour celles que vous avez réussies."
     : "The TEF IRN's 4 sections can't be separated. Leave 1 of them, and you get no results at all, not even for the sections you passed."); ?>
 
                                 </p>
                                 <p>
                                     <?php echo e($isFr
-    ? "Impossible donc de faire l'impasse sur l'oral par timidité ou stress. De plus, chaque compétence a son propre niveau : pour la naturalisation, votre score global au TEF IRN doit atteindre le niveau B2 selon le barème officiel."
+    ? "Impossible donc de « sauter » l'oral parce que le stress monte. Et chaque compétence reçoit son propre niveau : pour la naturalisation, le résultat global du TEF IRN doit atteindre le B2 selon les règles officielles de calcul."
     : "So you can't skip the speaking test because your nerves kick in. And each skill gets its own level: for citizenship, your overall TEF IRN result must reach B2 under the official scoring rules."); ?>
 
                                 </p>
                                 <p>
                                     <?php echo e($isFr
-    ? "Votre préparation doit impérativement porter sur les 4 épreuves, et sur votre endurance tout au long de la session. C'est exactement ce que nous travaillons lors de nos examens blancs complets."
+    ? "Votre préparation doit donc couvrir les 4 épreuves, et votre endurance sur toute la session. C'est exactement ce que font nos examens blancs."
     : "Your prep has to cover all 4 sections, and your stamina across the whole session. That's exactly what our mock exams train."); ?>
 
                                 </p>
@@ -702,12 +709,8 @@
                                     <?php echo e($isFr ? 'Compréhension écrite' : 'Reading'); ?>
 
                                 </h3>
-                                <p class="mt-1 text-xs font-semibold text-[#0055a4]">
-                                    <?php echo e($isFr ? 'QCM sur documents écrits' : 'Multiple-choice questions'); ?>
-
-                                </p>
-                                <p class="mt-2 text-xs text-slate-500 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Textes, annonces et messages du quotidien.' : 'Daily life texts, adverts and messages.'); ?>
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                                    <?php echo e($isFr ? 'Questions à choix multiple sur des documents écrits (30 min)' : 'Multiple-choice questions on written documents (30 min)'); ?>
 
                                 </p>
                             </div>
@@ -723,20 +726,13 @@
                                                 d="M3 18v-6a9 9 0 0118 0v6M3 15h3a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-4zm18 0h-3a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-4z" />
                                         </svg>
                                     </div>
-                                    <span
-                                        class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#10233e]">40
-                                        min</span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-[#10233e]">
                                     <?php echo e($isFr ? 'Compréhension orale' : 'Listening'); ?>
 
                                 </h3>
-                                <p class="mt-1 text-xs font-semibold text-[#0055a4]">
-                                    <?php echo e($isFr ? 'QCM sur documents audio' : 'Multiple-choice on audio'); ?>
-
-                                </p>
-                                <p class="mt-2 text-xs text-slate-500 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Extraits sonores et conversations courantes.' : 'Short audio recordings of daily speech.'); ?>
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                                    <?php echo e($isFr ? 'Questions à choix multiple sur des documents audio' : 'Multiple-choice questions on audio documents'); ?>
 
                                 </p>
                             </div>
@@ -760,12 +756,8 @@
                                     <?php echo e($isFr ? 'Expression écrite' : 'Writing'); ?>
 
                                 </h3>
-                                <p class="mt-1 text-xs font-semibold text-[#0055a4]">
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr ? '2 sujets en 30 minutes' : '2 tasks in 30 minutes'); ?>
-
-                                </p>
-                                <p class="mt-2 text-xs text-slate-500 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Rédiger une courte lettre et un avis argumenté.' : 'Short letter and reasoned opinion text.'); ?>
 
                                 </p>
                             </div>
@@ -789,12 +781,8 @@
                                     <?php echo e($isFr ? 'Expression orale' : 'Speaking'); ?>
 
                                 </h3>
-                                <p class="mt-1 text-xs font-semibold text-[#0055a4]">
-                                    <?php echo e($isFr ? '2 sujets face à un examinateur' : '2 tasks with examiner'); ?>
-
-                                </p>
-                                <p class="mt-2 text-xs text-slate-500 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Mise en situation et échange d\'arguments.' : 'Roleplay and discussion of opinions.'); ?>
+                                <p class="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                                    <?php echo e($isFr ? '2 sujets en 10 minutes, avec un examinateur' : '2 tasks in 10 minutes, with an examiner'); ?>
 
                                 </p>
                             </div>
@@ -809,7 +797,7 @@
                         </svg>
                         <a href="https://www.lefrancaisdesaffaires.fr/" target="_blank" rel="noopener"
                             class="hover:underline">
-                            <span><?php echo e($isFr ? 'Format détaillé publié par Le français des affaires' : 'Full format published by Le français des affaires'); ?></span>
+                            <span><?php echo e($isFr ? 'Le format détaillé de chaque épreuve est publié par Le français des affaires' : 'The full format for each section is published by Le français des affaires'); ?></span>
                             <span class="ml-1 text-[11px]">&rarr;</span>
                         </a>
                     </div>
@@ -858,7 +846,7 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-    ? "Tenir son niveau sur une épreuve est une chose. Le maintenir jusqu'à la quatrième, quand la fatigue s'installe, en est une autre. La dernière épreuve compte autant que la première."
+    ? "Tenir son niveau sur 1 épreuve est une chose. Le tenir jusqu'à la quatrième, quand la fatigue arrive, en est une autre. Or la dernière épreuve compte autant que la première."
     : "Holding your level for 1 section is one thing. Holding it through the fourth, when fatigue sets in, is another. The last section counts as much as the first."); ?>
 
                                 </p>
@@ -874,7 +862,7 @@
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? "Des examens blancs complets d'une traite, exactement dans les conditions réelles." : 'Full mock exams in a single sitting, just like test day.'); ?>
+                                    <?php echo e($isFr ? 'Des examens blancs complets, en une seule séance, comme le jour J.' : 'Full mock exams in a single sitting, just like test day.'); ?>
 
                                 </p>
                             </div>
@@ -895,7 +883,7 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-    ? "Cela fait 15 minutes par texte, relecture comprise. Le piège classique : passer 20 minutes sur le premier et bâcler le second."
+    ? "Cela laisse 15 minutes par texte, relecture comprise. Le piège : passer 20 minutes sur le premier et bâcler le second."
     : "That's 15 minutes a text, rereading included. The trap: spending 20 minutes on the first and rushing the second."); ?>
 
                                 </p>
@@ -911,7 +899,7 @@
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Un plan de temps strict et des structures de texte prêtes à adapter sur le moment.' : 'A strict time plan and text structures you can adapt on the spot.'); ?>
+                                    <?php echo e($isFr ? 'Un plan de temps strict et des structures de texte prêtes à adapter.' : 'A strict time plan and text structures you can adapt on the spot.'); ?>
 
                                 </p>
                             </div>
@@ -985,7 +973,7 @@
                                     <span><?php echo e($isFr ? 'Ce que nous faisons :' : 'What we do:'); ?></span>
                                 </div>
                                 <p class="text-xs text-slate-600 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Nous mesurons chaque compétence dès le premier cours, et les heures vont à la plus faible.' : 'We measure every skill in your first class, and your hours go to the weakest.'); ?>
+                                    <?php echo e($isFr ? 'Nous mesurons chaque compétence au premier cours, et les heures vont à la plus faible.' : 'We measure every skill in your first class, and your hours go to the weakest.'); ?>
 
                                 </p>
                             </div>
@@ -1011,13 +999,6 @@
                             <?php echo e($isFr ? 'Notre préparation au TEF IRN' : 'How we prepare you for the TEF IRN'); ?>
 
                         </h2>
-                        <p
-                            class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
-                            <?php echo e($isFr
-    ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. Pas de programme générique. Pas d’apprentissage seul.'
-    : 'Focused support from your first class to exam day. No generic syllabus. No learning alone.'); ?>
-
-                        </p>
                     </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -1152,8 +1133,8 @@
                         <p
                             class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                             <?php echo e($isFr
-    ? 'A2 pour une première carte de séjour pluriannuelle, B1 pour la carte de résident, B2 pour la naturalisation. Ces niveaux s\'appliquent depuis le 1er janvier 2026.'
-    : 'A2 for a first multi-year residence permit, B1 for the 10-year resident card, B2 for French citizenship. These levels have applied since 1 January 2026.'); ?>
+    ? 'A2 pour une première carte de séjour pluriannuelle, B1 pour la carte de résident, B2 pour la naturalisation. Ces niveaux s\'appliquent depuis le 1er janvier 2026. Un examen civique est aussi exigé pour la naturalisation par décret et pour les titres de séjour concernés par les règles de 2026.'
+    : 'A2 for a first multi-year residence permit, B1 for the 10-year resident card, B2 for citizenship. These levels have applied since 1 January 2026. The civic exam is also required for citizenship by decree and for the residence permit applications covered by the 2026 rules.'); ?>
 
                         </p>
                     </div>
@@ -1166,15 +1147,11 @@
                                     <?php echo e($isFr ? 'Carte de séjour pluriannuelle' : 'Multi-year residence permit'); ?>
 
                                 </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Exigé depuis les règles 2026 pour la première délivrance ou le renouvellement.' : 'Required under 2026 rules for first issue or renewal.'); ?>
-
-                                </p>
                             </div>
                             <div class="pt-6">
-                                <a href="/en/french-residence-permit-language"
+                                <a href="<?php echo e($permitUrl); ?>"
                                     class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0055a4] hover:underline">
-                                    <span><?php echo e($isFr ? 'Guide carte de séjour' : 'Residence permit rules'); ?></span>
+                                    <span><?php echo e($isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits'); ?></span>
                                     <span>&rarr;</span>
                                 </a>
                             </div>
@@ -1184,18 +1161,14 @@
                             <div>
                                 <span class="text-3xl font-extrabold text-[#0055a4]">B1</span>
                                 <h3 class="font-bold text-[#10233e] text-lg mt-2">
-                                    <?php echo e($isFr ? 'Carte de résident (10 ans)' : '10-year resident card'); ?>
+                                    <?php echo e($isFr ? 'Carte de résident' : '10-year resident card'); ?>
 
                                 </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Le niveau B1 est requis pour obtenir la carte de résident de 10 ans.' : 'B1 is required to qualify for the 10-year resident card.'); ?>
-
-                                </p>
                             </div>
                             <div class="pt-6">
-                                <a href="/en/french-residence-permit-language"
+                                <a href="<?php echo e($permitUrl); ?>"
                                     class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0055a4] hover:underline">
-                                    <span><?php echo e($isFr ? 'Guide carte de résident' : 'Resident card rules'); ?></span>
+                                    <span><?php echo e($isFr ? 'Niveau de français pour un titre de séjour' : 'French level for residence permits'); ?></span>
                                     <span>&rarr;</span>
                                 </a>
                             </div>
@@ -1211,18 +1184,14 @@
                             <div>
                                 <span class="text-3xl font-extrabold text-white">B2</span>
                                 <h3 class="font-bold text-white text-lg mt-2">
-                                    <?php echo e($isFr ? 'Naturalisation française' : 'French citizenship'); ?>
+                                    <?php echo e($isFr ? 'Naturalisation' : 'French citizenship'); ?>
 
                                 </h3>
-                                <p class="text-xs sm:text-sm text-blue-100/90 mt-2 leading-relaxed font-normal">
-                                    <?php echo e($isFr ? 'Depuis le 1er janvier 2026, la nationalité française exige le niveau B2 à l\'oral et à l\'écrit.' : 'Since 1 January 2026, citizenship requires B2 French, spoken and written.'); ?>
-
-                                </p>
                             </div>
                             <div class="pt-6">
-                                <a href="/en/french-citizenship-language-test"
+                                <a href="<?php echo e($langUrl); ?>"
                                     class="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:underline">
-                                    <span><?php echo e($isFr ? 'Guide naturalisation B2' : 'Citizenship language test'); ?></span>
+                                    <span><?php echo e($isFr ? 'Test de français pour la naturalisation' : 'The French citizenship language test'); ?></span>
                                     <span>&rarr;</span>
                                 </a>
                             </div>
@@ -1231,17 +1200,13 @@
 
                     <div
                         class="mt-8 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
-                        <div class="text-slate-600 font-normal">
-                            <?php echo e($isFr
-    ? 'Pour la naturalisation par décret et les titres de séjour concernés, pensez aussi à l\'examen civique.'
-    : 'Citizenship by decree and residence permits under 2026 rules also require the French civic exam.'); ?>
-
+                        <div class="text-slate-600 font-normal text-center sm:text-left">
+                            <?php if($isFr): ?>
+                                Pour la naturalisation par décret et les titres de séjour concernés, pensez aussi à l'<a href="<?php echo e($civicUrl); ?>" class="<?php echo e($linkClass); ?>">examen civique</a>.
+                            <?php else: ?>
+                                Citizenship by decree and the residence permits covered by the 2026 rules also need the <a href="<?php echo e($civicUrl); ?>" class="<?php echo e($linkClass); ?>">French civic exam</a>.
+                            <?php endif; ?>
                         </div>
-                        <a href="<?php echo e($isFr ? '/fr/examen-civique/' : '/en/french-civic-exam/'); ?>"
-                            class="text-[#0055a4] font-semibold hover:underline inline-flex items-center gap-1 shrink-0">
-                            <span><?php echo e($isFr ? "Guide examen civique" : 'French civic exam guide'); ?></span>
-                            <span>&rarr;</span>
-                        </a>
                     </div>
                 </div>
             </section>
@@ -1249,7 +1214,7 @@
             <!-- faq -->
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => 'TEF IRN<br>FAQ',
+                'title' => $isFr ? 'Questions fréquentes<br>sur le TEF IRN' : 'TEF IRN<br>FAQ',
                 'description' => $isFr ? "Des réponses claires avant de passer à l'étape suivante." : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $isFr ? '/fr/contact/' : '/en/contact/',
@@ -1267,7 +1232,7 @@
                             : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
                         'description' => $isFr
                             ? 'Votre premier cours situe vos 4 compétences face au niveau de votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                            : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.',
+                            : 'Your first class places your 4 skills against the level your application needs. You choose the pace: 2 or 4 hours a week.',
                         'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
                         'primaryButtonUrl' => '/register',
                         'showSecondaryButton' => true,
@@ -1288,12 +1253,11 @@
                     </div>
 
                     <div class="mt-2 text-center text-xs text-slate-400">
-                        <span><?php echo e($isFr ? 'Votre calendrier est incertain ?' : 'Unsure of your timeline?'); ?></span>
-                        <a href="<?php echo e($isFr ? '/fr/delf-b2/' : '/en/delf-b2/'); ?>"
-                            class="text-[#0055a4] hover:underline ml-1 font-medium">
-                            <?php echo e($isFr ? 'Le DELF B2 est un diplôme qui n\'expire jamais.' : 'The DELF B2 is a diploma that never expires.'); ?>
-
-                        </a>
+                        <?php if($isFr): ?>
+                            Votre calendrier est incertain ? Le <a href="<?php echo e($delfB2Url); ?>" class="<?php echo e($linkClass); ?>">DELF B2</a> est un diplôme qui n'expire jamais.
+                        <?php else: ?>
+                            Unsure of your timeline? The <a href="<?php echo e($delfB2Url); ?>" class="<?php echo e($linkClass); ?>">DELF B2</a> is a diploma that never expires.
+                        <?php endif; ?>
                     </div>
 
                     <div class="my-6 sm:my-8 border-t border-[#edf1f5] max-w-5xl mx-auto"></div>
@@ -1313,7 +1277,7 @@
                         <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank"
                             rel="noopener"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1 group">
-                            <span>Service-public – <?php echo e($isFr ? 'naturalisation' : 'citizenship'); ?></span>
+                            <span>Service-public.fr – <?php echo e($isFr ? 'naturalisation' : 'citizenship'); ?></span>
                             <span
                                 class="text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
                         </a>
@@ -1321,7 +1285,7 @@
                         <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank"
                             rel="noopener"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1 group">
-                            <span>Service-public – <?php echo e($isFr ? 'cartes de séjour' : 'residence cards'); ?></span>
+                            <span>Service-public.fr – <?php echo e($isFr ? 'cartes de séjour' : 'residence cards'); ?></span>
                             <span
                                 class="text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&#8599;</span>
                         </a>

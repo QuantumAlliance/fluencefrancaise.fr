@@ -27,7 +27,7 @@
     $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
     $spNaturalisation = 'https://www.service-public.fr/particuliers/vosdroits/F2213';
     $spMarriage = 'https://www.service-public.fr/particuliers/vosdroits/F2726';
-    $spLevel = 'https://www.service-public.fr/particuliers/vosdroits/F34717';
+    $spLevel = 'https://www.service-public.fr/particuliers/vosdroits/F11926';
 
     $faqs = $isFr ? [
         [
@@ -185,12 +185,12 @@
                 "name": "{{ $isFr ? 'La naturalisation en 7 étapes' : 'French naturalisation in 7 steps' }}",
                 "step": [
                     @foreach($steps as $index => $step)
-                    {
-                        "@type": "HowToStep",
-                        "position": {{ $index + 1 }},
-                        "name": "{{ $step[0] }}",
-                        "text": "{{ trim(preg_replace('/\s+/', ' ', $step[1])) }}"
-                    }@if(!$loop->last),@endif
+                        {
+                            "@type": "HowToStep",
+                            "position": {{ $index + 1 }},
+                            "name": "{{ $step[0] }}",
+                            "text": "{{ trim(preg_replace('/\s+/', ' ', $step[1])) }}"
+                        }@if(!$loop->last),@endif
                     @endforeach
                 ]
             },
@@ -234,8 +234,10 @@
                 <div class="hero-aurora"></div>
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="max-w-3xl mx-auto text-center">
-                        <nav aria-label="Breadcrumb" class="mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
-                            <a href="{{ $homeUrl }}" class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
+                        <nav aria-label="Breadcrumb"
+                            class="mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
+                            <a href="{{ $homeUrl }}"
+                                class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
                             <span class="text-slate-300">›</span>
                             <span>Guides</span>
                             <span class="text-slate-300">›</span>
@@ -250,26 +252,30 @@
                             </span>
                         </div>
 
-                        <h1 class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                        <h1
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
                             {{ $isFr ? 'Naturalisation française :' : 'French Citizenship:' }}
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
                                 {{ $isFr ? 'les conditions, étape par étape' : 'The Requirements, Step by Step' }}
-                                <span class="block h-[3px] mt-2 rounded-full" style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
+                                <span class="block h-[3px] mt-2 rounded-full"
+                                    style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
                             </span>
                         </h1>
 
                         <p class="mt-6 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
                             {{ $isFr
-                                ? 'Résidence, langue, examen civique, entretien : voici tout ce que demande la nationalité française en 2026, dans l\'ordre où vous le ferez.'
-                                : "Residence, language, the civic exam, the interview: everything French citizenship asks of you in 2026, in the order you'll do it." }}
+    ? 'Résidence, langue, examen civique, entretien : voici tout ce que demande la nationalité française en 2026, dans l\'ordre où vous le ferez.'
+    : "Residence, language, the civic exam, the interview: everything French citizenship asks of you in 2026, in the order you'll do it." }}
                         </p>
 
                         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                            <a href="#steps" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                            <a href="#steps"
+                                class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                                 {{ $isFr ? 'Voir les étapes' : 'Check the steps' }}
                                 <i class="fas fa-arrow-down text-xs ml-2.5"></i>
                             </a>
-                            <a href="{{ $langUrl }}" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-[#0055A4] bg-white border border-[#0055A4]/30 hover:bg-blue-50 transition-all">
+                            <a href="{{ $langUrl }}"
+                                class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-[#0055A4] bg-white border border-[#0055A4]/30 hover:bg-blue-50 transition-all">
                                 {{ $isFr ? 'Voir le niveau de langue' : 'See the language level' }}
                             </a>
                         </div>
@@ -284,7 +290,8 @@
 
                     <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5">
                         @foreach($jumps as $jump)
-                            <a href="{{ $jump[0] }}" class="inline-flex items-center px-4 py-2 rounded-full border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-600 hover:text-[#0055A4] hover:border-[#0055A4]/30 transition-colors">
+                            <a href="{{ $jump[0] }}"
+                                class="inline-flex items-center px-4 py-2 rounded-full border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-600 hover:text-[#0055A4] hover:border-[#0055A4]/30 transition-colors">
                                 {{ $jump[1] }}
                             </a>
                         @endforeach
@@ -299,15 +306,16 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'DEUX VOIES' : 'TWO ROUTES' }}</span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'DEUX VOIES' : 'TWO ROUTES' }}</span>
                             </div>
                             <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
                                 {{ $isFr ? 'Comment obtenir la nationalité française ?' : 'How do you get French citizenship?' }}
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                                 {{ $isFr
-                                    ? 'Un adulte étranger devient français de 2 façons principales. La naturalisation par décret demande en général 5 ans de résidence en France. La déclaration par mariage demande au moins 4 ans de mariage avec une personne française. Dans les 2 cas, il faut prouver votre niveau de français.'
-                                    : 'An adult foreigner becomes French in 2 main ways. Naturalisation by decree usually requires 5 years of residence in France. Declaration by marriage requires at least 4 years of marriage to a French citizen. Either way, you have to prove your level of French.' }}
+    ? 'Un adulte étranger devient français de 2 façons principales. La naturalisation par décret demande en général 5 ans de résidence en France. La déclaration par mariage demande au moins 4 ans de mariage avec une personne française. Dans les 2 cas, il faut prouver votre niveau de français.'
+    : 'An adult foreigner becomes French in 2 main ways. Naturalisation by decree usually requires 5 years of residence in France. Declaration by marriage requires at least 4 years of marriage to a French citizen. Either way, you have to prove your level of French.' }}
                             </p>
                         </div>
                         <div class="lg:col-span-5">
@@ -320,19 +328,27 @@
                                 <div class="grid grid-cols-2 divide-x divide-y divide-white/10">
                                     <div class="p-6">
                                         <div class="text-3xl font-extrabold">5 {{ $isFr ? 'ans' : 'years' }}</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Résidence habituelle' : 'Usual residence' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Résidence habituelle' : 'Usual residence' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <div class="text-3xl font-extrabold">B2</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Oral et écrit depuis 2026' : 'Spoken and written since 2026' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Oral et écrit depuis 2026' : 'Spoken and written since 2026' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <div class="text-3xl font-extrabold">2026</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Le niveau est passé de B1 à B2' : 'The level rose from B1 to B2' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Le niveau est passé de B1 à B2' : 'The level rose from B1 to B2' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <div class="text-3xl font-extrabold">7</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Étapes, dans l\'ordre' : 'Steps, in order' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Étapes, dans l\'ordre' : 'Steps, in order' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -345,18 +361,26 @@
                                 <thead>
                                     <tr class="bg-[#0055A4] text-white">
                                         <th class="px-5 py-3.5 font-semibold">{{ $isFr ? 'Voie' : 'Route' }}</th>
-                                        <th class="px-5 py-3.5 font-semibold">{{ $isFr ? 'Condition principale' : 'Main condition' }}</th>
+                                        <th class="px-5 py-3.5 font-semibold">
+                                            {{ $isFr ? 'Condition principale' : 'Main condition' }}
+                                        </th>
                                         <th class="px-5 py-3.5 font-semibold">{{ $isFr ? 'Langue' : 'Language' }}</th>
-                                        <th class="px-5 py-3.5 font-semibold">{{ $isFr ? 'Examen civique' : 'Civic exam' }}</th>
+                                        <th class="px-5 py-3.5 font-semibold">
+                                            {{ $isFr ? 'Examen civique' : 'Civic exam' }}
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($routes as $index => $route)
-                                        <tr class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]' }} border-t border-slate-100">
+                                        <tr
+                                            class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]' }} border-t border-slate-100">
                                             <th class="px-5 py-4 font-semibold text-[#10233e]">{{ $route[0] }}</th>
                                             <td class="px-5 py-4 text-slate-600">{{ $route[1] }}</td>
                                             <td class="px-5 py-4 font-semibold text-[#0055A4]">{{ $route[2] }}</td>
-                                            <td class="px-5 py-4 font-semibold {{ $route[4] ? 'text-emerald-600' : 'text-slate-600' }}">{{ $route[3] }}</td>
+                                            <td
+                                                class="px-5 py-4 font-semibold {{ $route[4] ? 'text-emerald-600' : 'text-slate-600' }}">
+                                                {{ $route[3] }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -372,7 +396,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED" }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED" }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'Les conditions de la naturalisation par décret' : 'Requirements for naturalisation by decree' }}
@@ -394,8 +419,8 @@
                     </div>
                     <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-3xl">
                         {{ $isFr
-                            ? 'Certaines de ces conditions ne dépendent pas de vous aujourd\'hui. 2 d\'entre elles, si : la langue et l\'examen civique. Ce sont aussi les 2 qui se préparent.'
-                            : "Some of these conditions aren't in your hands today. 2 of them are: the language and the civic exam. They're also the 2 you can prepare for." }}
+    ? 'Certaines de ces conditions ne dépendent pas de vous aujourd\'hui. 2 d\'entre elles, si : la langue et l\'examen civique. Ce sont aussi les 2 qui se préparent.'
+    : "Some of these conditions aren't in your hands today. 2 of them are: the language and the civic exam. They're also the 2 you can prepare for." }}
                     </p>
                 </div>
             </section>
@@ -406,29 +431,45 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT" }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT" }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'La naturalisation en 7 étapes' : 'French naturalisation in 7 steps' }}
                         </h2>
                     </div>
-                    <ol class="relative space-y-8 before:absolute before:left-5 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
+                    <ol
+                        class="relative space-y-8 before:absolute before:left-5 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
                         @foreach($steps as $index => $step)
                             <li class="relative pl-16">
-                                <span class="absolute left-0 top-0 w-10 h-10 rounded-full bg-white border border-blue-100 text-[#0055A4] text-sm font-bold flex items-center justify-center">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                <span
+                                    class="absolute left-0 top-0 w-10 h-10 rounded-full bg-white border border-blue-100 text-[#0055A4] text-sm font-bold flex items-center justify-center">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
                                 <h3 class="font-bold text-[#10233e] text-lg">{{ $step[0] }}</h3>
                                 <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">
                                     @if($step[2] === 'sp')
                                         @if($isFr)
-                                            Durée de résidence, titre de séjour, revenus : relisez les conditions ci-dessus sur <a href="{{ $spNaturalisation }}" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.
+                                            Durée de résidence, titre de séjour, revenus : relisez les conditions ci-dessus sur <a
+                                                href="{{ $spNaturalisation }}" target="_blank" rel="noopener"
+                                                class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.
                                         @else
-                                            Residence, permit, income: go through the conditions above on <a href="{{ $spNaturalisation }}" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.
+                                            Residence, permit, income: go through the conditions above on <a
+                                                href="{{ $spNaturalisation }}" target="_blank" rel="noopener"
+                                                class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.
                                         @endif
                                     @elseif($step[2] === 'tests')
                                         @if($isFr)
-                                            Avec le <a href="{{ $tcfUrl }}" class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a>, le <a href="{{ $tefUrl }}" class="font-semibold text-[#0055A4] hover:underline">TEF IRN</a> ou le <a href="{{ $delfB2Url }}" class="font-semibold text-[#0055A4] hover:underline">DELF B2</a>. Le TCF et le TEF sont valables 2 ans ; le DELF, à vie.
+                                            Avec le <a href="{{ $tcfUrl }}" class="font-semibold text-[#0055A4] hover:underline">TCF
+                                                IRN</a>, le <a href="{{ $tefUrl }}"
+                                                class="font-semibold text-[#0055A4] hover:underline">TEF IRN</a> ou le <a
+                                                href="{{ $delfB2Url }}" class="font-semibold text-[#0055A4] hover:underline">DELF
+                                                B2</a>. Le TCF et le TEF sont valables 2 ans ; le DELF, à vie.
                                         @else
-                                            With the <a href="{{ $tcfUrl }}" class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a>, the <a href="{{ $tefUrl }}" class="font-semibold text-[#0055A4] hover:underline">TEF IRN</a> or the <a href="{{ $delfB2Url }}" class="font-semibold text-[#0055A4] hover:underline">DELF B2</a>. TCF and TEF results last 2 years; the DELF lasts for life.
+                                            With the <a href="{{ $tcfUrl }}"
+                                                class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a>, the <a
+                                                href="{{ $tefUrl }}" class="font-semibold text-[#0055A4] hover:underline">TEF
+                                                IRN</a> or the <a href="{{ $delfB2Url }}"
+                                                class="font-semibold text-[#0055A4] hover:underline">DELF B2</a>. TCF and TEF
+                                            results last 2 years; the DELF lasts for life.
                                         @endif
                                     @else
                                         {{ $step[1] }}
@@ -442,30 +483,34 @@
 
             <section class="py-6 sm:py-10 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12">
+                    <div
+                        class="relative rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 overflow-hidden">
                         <div class="max-w-3xl">
+
                             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
                                 {{ $isFr ? 'Le français, au cœur de 3 étapes sur 7' : 'French sits at the heart of 3 of the 7 steps' }}
                             </h2>
                             <div class="mt-4 space-y-3 text-sm sm:text-base text-blue-100/90 leading-relaxed">
                                 <p>
                                     {{ $isFr
-                                        ? 'Le test de langue, l\'examen civique et l\'entretien se déroulent tous en français. Un niveau B2 solide ne sert donc pas qu\'à cocher une case. Il vous aide à lire vite les 40 questions civiques, puis à répondre avec aisance pendant l\'entretien.'
-                                        : "The language test, the civic exam and the interview all happen in French. So solid B2 French isn't just a box to tick. It helps you read the 40 civic questions fast, then answer comfortably at the interview." }}
+    ? 'Le test de langue, l\'examen civique et l\'entretien se déroulent tous en français. Un niveau B2 solide ne sert donc pas qu\'à cocher une case. Il vous aide à lire vite les 40 questions civiques, puis à répondre avec aisance pendant l\'entretien.'
+    : "The language test, the civic exam and the interview all happen in French. So solid B2 French isn't just a box to tick. It helps you read the 40 civic questions fast, then answer comfortably at the interview." }}
                                 </p>
                                 <p>
                                     {{ $isFr
-                                        ? 'Depuis 2026, le niveau exigé est passé du B1 au B2. Si vous lisez encore « B1 » ailleurs, l\'information date d\'avant la réforme.'
-                                        : 'Since 2026, the required level has risen from B1 to B2. If you still see “B1” elsewhere, that information predates the reform.' }}
+    ? 'Depuis 2026, le niveau exigé est passé du B1 au B2. Si vous lisez encore « B1 » ailleurs, l\'information date d\'avant la réforme.'
+    : 'Since 2026, the required level has risen from B1 to B2. If you still see “B1” elsewhere, that information predates the reform.' }}
                                 </p>
                             </div>
                         </div>
                         <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <a href="{{ $langUrl }}" class="rounded-2xl bg-white/10 hover:bg-white/15 px-5 py-4 transition-colors">
+                            <a href="{{ $langUrl }}"
+                                class="rounded-2xl bg-white/10 hover:bg-white/15 px-5 py-4 transition-colors">
                                 <p class="text-[11px] font-bold tracking-[0.16em] uppercase text-blue-200/80">01</p>
                                 <p class="mt-1 font-semibold">{{ $isFr ? 'Test de langue B2' : 'B2 language test' }}</p>
                             </a>
-                            <a href="{{ $civicUrl }}" class="rounded-2xl bg-white/10 hover:bg-white/15 px-5 py-4 transition-colors">
+                            <a href="{{ $civicUrl }}"
+                                class="rounded-2xl bg-white/10 hover:bg-white/15 px-5 py-4 transition-colors">
                                 <p class="text-[11px] font-bold tracking-[0.16em] uppercase text-blue-200/80">02</p>
                                 <p class="mt-1 font-semibold">{{ $isFr ? 'Examen civique' : 'Civic exam' }}</p>
                             </a>
@@ -473,6 +518,11 @@
                                 <p class="text-[11px] font-bold tracking-[0.16em] uppercase text-blue-200/80">03</p>
                                 <p class="mt-1 font-semibold">{{ $isFr ? 'Entretien' : 'Interview' }}</p>
                             </div>
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 h-[3px] flex">
+                            <span class="w-1/3 bg-[#0055A4]"></span>
+                            <span class="w-1/3 bg-white"></span>
+                            <span class="w-1/3 bg-[#EF4135]"></span>
                         </div>
                     </div>
                 </div>
@@ -484,15 +534,20 @@
                         <div class="lg:col-span-4">
                             <div class="bg-white rounded-3xl border border-slate-200/80 p-8 text-center">
                                 <p class="text-7xl font-extrabold text-[#0055A4] leading-none">4</p>
-                                <p class="mt-3 text-sm font-semibold text-[#10233e]">{{ $isFr ? 'ans de mariage' : 'years of marriage' }}</p>
-                                <p class="mt-1 text-xs text-slate-500">{{ $isFr ? '5 ans dans certains cas' : '5 in some cases' }}</p>
+                                <p class="mt-3 text-sm font-semibold text-[#10233e]">
+                                    {{ $isFr ? 'ans de mariage' : 'years of marriage' }}
+                                </p>
+                                <p class="mt-1 text-xs text-slate-500">
+                                    {{ $isFr ? '5 ans dans certains cas' : '5 in some cases' }}
+                                </p>
                             </div>
                         </div>
                         <div class="lg:col-span-8">
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE' }}</span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE' }}</span>
                             </div>
                             <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                                 {{ $isFr ? 'Nationalité française par mariage' : 'French citizenship by marriage' }}
@@ -500,13 +555,13 @@
                             <div class="mt-4 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                                 <p>
                                     {{ $isFr
-                                        ? 'Vous pouvez demander la nationalité par déclaration après 4 ans de mariage avec une personne française, si vous avez résidé en France de façon régulière et ininterrompue pendant au moins 3 ans depuis le mariage, ou si votre conjoint français était inscrit au registre des Français établis hors de France pendant votre résidence à l\'étranger. Sinon, il faut en général 5 ans de mariage. La communauté de vie doit être continue depuis le mariage.'
-                                        : "You can apply for citizenship by declaration after 4 years of marriage to a French citizen, if you've lived legally and continuously in France for at least 3 years since the marriage, or if your French spouse was registered with the French consulate while you lived abroad. Otherwise, it generally takes 5 years of marriage. You must have lived together continuously since the wedding." }}
+    ? 'Vous pouvez demander la nationalité par déclaration après 4 ans de mariage avec une personne française, si vous avez résidé en France de façon régulière et ininterrompue pendant au moins 3 ans depuis le mariage, ou si votre conjoint français était inscrit au registre des Français établis hors de France pendant votre résidence à l\'étranger. Sinon, il faut en général 5 ans de mariage. La communauté de vie doit être continue depuis le mariage.'
+    : "You can apply for citizenship by declaration after 4 years of marriage to a French citizen, if you've lived legally and continuously in France for at least 3 years since the marriage, or if your French spouse was registered with the French consulate while you lived abroad. Otherwise, it generally takes 5 years of marriage. You must have lived together continuously since the wedding." }}
                                 </p>
                                 <p>
                                     {{ $isFr
-                                        ? 'Depuis le 1er janvier 2026, vous devez aussi prouver le niveau B2 à l\'oral et à l\'écrit, par un diplôme ou une attestation de test reconnus. L\'examen civique n\'est pas exigé, mais un entretien vérifie votre assimilation.'
-                                        : "Since 1 January 2026, you also need to prove B2 French, spoken and written, with an accepted diploma or test certificate. The civic exam isn't required, but an interview checks your assimilation." }}
+    ? 'Depuis le 1er janvier 2026, vous devez aussi prouver le niveau B2 à l\'oral et à l\'écrit, par un diplôme ou une attestation de test reconnus. L\'examen civique n\'est pas exigé, mais un entretien vérifie votre assimilation.'
+    : "Since 1 January 2026, you also need to prove B2 French, spoken and written, with an accepted diploma or test certificate. The civic exam isn't required, but an interview checks your assimilation." }}
                                 </p>
                             </div>
                         </div>
@@ -520,23 +575,33 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS' }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS' }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'Comment nous vous préparons' : 'How we prepare you' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             @if($isFr)
-                                Pour la naturalisation par décret, nous préparons les 3 étapes en français de votre dossier : le <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">test de langue</a> au niveau B2, l'examen civique, et l'aisance à l'oral pour l'entretien. Dès le premier cours, votre tuteur mesure vos 4 compétences face au B2 et construit votre plan. Cours en direct, 2 ou 4 heures par semaine.
+                                Pour la naturalisation par décret, nous préparons les 3 étapes en français de votre dossier
+                                : le <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">test
+                                    de langue</a> au niveau B2, l'examen civique, et l'aisance à l'oral pour l'entretien.
+                                Dès le premier cours, votre tuteur mesure vos 4 compétences face au B2 et construit votre
+                                plan. Cours en direct, 2 ou 4 heures par semaine.
                             @else
-                                For naturalisation by decree, we prepare the 3 French-language steps of your application: the <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">B2 language test</a>, the civic exam, and confident speaking for the interview. In your first class, your tutor measures your 4 skills against B2 and builds your plan. Live classes, 2 or 4 hours a week.
+                                For naturalisation by decree, we prepare the 3 French-language steps of your application:
+                                the <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">B2
+                                    language test</a>, the civic exam, and confident speaking for the interview. In your
+                                first class, your tutor measures your 4 skills against B2 and builds your plan. Live
+                                classes, 2 or 4 hours a week.
                             @endif
                         </p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         @foreach($prep as $item)
                             <article class="rounded-2xl border border-slate-200/80 bg-white p-5">
-                                <span class="w-10 h-10 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center">
                                     <i class="fas {{ $item[0] }} text-sm"></i>
                                 </span>
                                 <h3 class="mt-4 font-bold text-[#10233e]">{{ $item[1] }}</h3>
@@ -545,14 +610,15 @@
                         @endforeach
                     </div>
                     <div class="mt-10 text-center">
-                        <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                             {{ $isFr ? "S'inscrire" : 'Enroll now' }}
                             <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500">
                             {{ $isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
                         </p>
                     </div>
                 </div>
@@ -593,21 +659,30 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center">
                     <p class="text-sm text-slate-500">
                         {{ $isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.' }}
-                        <a href="{{ $referralUrl }}" class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Contactez-nous' : 'Contact us' }} →</a>
+                        <a href="{{ $referralUrl }}"
+                            class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Contactez-nous' : 'Contact us' }}
+                            →</a>
                     </p>
                     <p class="mt-3 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
                         {{ $isFr
-                            ? 'Cette page donne une information générale. Pour une situation particulière, consultez service-public.fr ou un professionnel du droit.'
-                            : 'This page gives general information. For a specific situation, check service-public.fr or speak to a legal professional.' }}
+    ? 'Cette page donne une information générale. Pour une situation particulière, consultez service-public.fr ou un professionnel du droit.'
+    : 'This page gives general information. For a specific situation, check service-public.fr or speak to a legal professional.' }}
                     </p>
                     <div class="my-6 border-t border-slate-100"></div>
-                    <div class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
+                    <div
+                        class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
                         <span class="font-bold tracking-[0.18em] uppercase mr-3">SOURCES</span>
-                        <a href="{{ $spNaturalisation }}" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'naturalisation' }} ↗</a>
+                        <a href="{{ $spNaturalisation }}" target="_blank" rel="noopener"
+                            class="hover:text-slate-600">Service-public.fr –
+                            {{ $isFr ? 'naturalisation' : 'naturalisation' }} ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="{{ $spMarriage }}" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'nationalité par mariage' : 'citizenship by marriage' }} ↗</a>
+                        <a href="{{ $spMarriage }}" target="_blank" rel="noopener"
+                            class="hover:text-slate-600">Service-public.fr –
+                            {{ $isFr ? 'nationalité par mariage' : 'citizenship by marriage' }} ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="{{ $spLevel }}" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'niveau de français' : 'French level' }} ↗</a>
+                        <a href="{{ $spLevel }}" target="_blank" rel="noopener"
+                            class="hover:text-slate-600">Service-public.fr –
+                            {{ $isFr ? 'niveau de français' : 'French level' }} ↗</a>
                     </div>
                 </div>
             </div>

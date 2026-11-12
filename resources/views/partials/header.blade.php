@@ -100,7 +100,7 @@
         request()->is('upper-intermediate*');
 
     $isGuidesActive = request()->is('*citizenship-guide*') ||
-        request()->is('*french-citizenship*') ||
+        (request()->is('*french-citizenship*') && !request()->is('*language-test*')) ||
         request()->is('*naturalisation-francaise*') ||
         request()->is('*tcf-vs-tef-vs-delf*') ||
         request()->is('*tcf-tef-ou-delf*') ||
