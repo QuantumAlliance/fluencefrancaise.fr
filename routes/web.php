@@ -239,6 +239,13 @@ Route::get('/en/delf-b2', function () { return view('delf-b2'); });
 Route::get('/fr/delf-b2', function () { return view('delf-b2'); });
 Route::get('/delf-b2', function () { return view('delf-b2'); });
 
+// Page 04: French civic exam (English /en/french-civic-exam/, French /fr/examen-civique/)
+Route::get('/en/french-civic-exam', function () { return view('french-civic-exam'); });
+Route::get('/fr/examen-civique', function () { return view('french-civic-exam'); });
+Route::get('/fr/french-civic-exam', function () { return view('french-civic-exam'); });
+Route::get('/en/examen-civique', function () { return view('french-civic-exam'); });
+Route::get('/french-civic-exam', function () { return view('french-civic-exam'); });
+
 // Page 16: French citizenship guide (English /en/french-citizenship/, French /fr/naturalisation-francaise/)
 Route::get('/en/french-citizenship', function () { return view('french-citizenship'); });
 Route::get('/fr/naturalisation-francaise', function () { return view('french-citizenship'); });
