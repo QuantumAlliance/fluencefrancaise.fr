@@ -239,6 +239,13 @@ Route::get('/en/delf-b2', function () { return view('delf-b2'); });
 Route::get('/fr/delf-b2', function () { return view('delf-b2'); });
 Route::get('/delf-b2', function () { return view('delf-b2'); });
 
+// Page 16: French citizenship guide (English /en/french-citizenship/, French /fr/naturalisation-francaise/)
+Route::get('/en/french-citizenship', function () { return view('french-citizenship'); });
+Route::get('/fr/naturalisation-francaise', function () { return view('french-citizenship'); });
+Route::get('/fr/french-citizenship', function () { return view('french-citizenship'); });
+Route::get('/en/naturalisation-francaise', function () { return view('french-citizenship'); });
+Route::get('/french-citizenship', function () { return view('french-citizenship'); });
+
 // Page 15: TCF vs TEF vs DELF (English /en/tcf-vs-tef-vs-delf/, French /fr/tcf-tef-ou-delf/)
 Route::get('/en/tcf-vs-tef-vs-delf', function () { return view('tcf-vs-tef-vs-delf'); });
 Route::get('/fr/tcf-tef-ou-delf', function () { return view('tcf-vs-tef-vs-delf'); });

@@ -28,8 +28,7 @@
         request()->is('*titre-de-sejour-niveau-francais*') ||
         request()->is('*french-civic-exam*') ||
         request()->is('*examen-civique*') ||
-        (request()->is('*french-citizenship*') && !request()->is('*guide*')) ||
-        request()->is('*naturalisation-francaise*');
+        (request()->is('*french-citizenship*') && !request()->is('*french-citizenship') && !request()->is('french-citizenship'));
 
     $isSwissActive = request()->is('*c-permit-switzerland*') ||
         request()->is('*permis-c-suisse*') ||
@@ -56,6 +55,7 @@
 
     $isGuidesActive = request()->is('*citizenship-guide*') ||
         (request()->is('*french-citizenship*') && !request()->is('*test*')) ||
+        request()->is('*naturalisation-francaise*') ||
         request()->is('*tcf-vs-tef-vs-delf*') ||
         request()->is('*tcf-tef-ou-delf*');
 
