@@ -2,66 +2,115 @@
 @php
     $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
     $siteName = $settings['site_name'] ?? 'Fluence Française';
-
-    // Determine language based on current URL prefix
     $isFr = request()->is('fr*');
 
-    // Page metadata
     $title = $isFr
-        ? "Permis C en Suisse : exigences de langue A2/B1 et préparation en ligne"
-        : "C Permit Switzerland: Language Requirements & Online Prep (A2/B1)";
+        ? 'Permis C Suisse : conditions et niveau de français (A2, B1)'
+        : 'C Permit Switzerland: Requirements and Language Level';
 
     $metaDesc = $isFr
-        ? "Exigences linguistiques pour le permis C en Suisse : A2 oral et A1 écrit pour le permis ordinaire (10 ans), B1 oral pour la demande anticipée (5 ans). Préparation en ligne."
-        : "Language requirements for the Swiss C permit: A2 oral and A1 written for standard 10-year permit, B1 oral for early 5-year application. Live online preparation.";
+        ? 'Permis C en Suisse : A2 à l\'oral et A1 à l\'écrit, B1 à l\'oral pour le permis C anticipé. Conditions, preuves acceptées et préparation au test fide.'
+        : 'C permit Switzerland: A2 spoken and A1 written, or B1 spoken for the early C permit after 5 years. Requirements, accepted proof and online fide test prep.';
 
-    $canonicalUrl = $isFr ? 'https://fluencefrancaise.fr/fr/permis-c-suisse/' : 'https://fluencefrancaise.fr/en/c-permit-switzerland/';
+    $canonicalUrl = $isFr
+        ? 'https://fluencefrancaise.fr/fr/permis-c-suisse/'
+        : 'https://fluencefrancaise.fr/en/c-permit-switzerland/';
     $frUrl = 'https://fluencefrancaise.fr/fr/permis-c-suisse/';
     $enUrl = 'https://fluencefrancaise.fr/en/c-permit-switzerland/';
 
-    // FAQ Data
+    $homeUrl = $isFr ? '/fr' : '/en';
+    $fideUrl = $isFr ? '/fr/test-fide' : '/en/fide-test';
+    $delfUrl = $isFr ? '/fr/delf' : '/en/delf';
+    $delfB1Url = $isFr ? '/fr/delf-b1' : '/en/delf-b1';
+    $citizenshipUrl = $isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship';
+    $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
+    $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
+    $fideSource = 'https://fide-service.ch';
+    $richmondSource = 'https://www.richmondchambers.ch/post/swiss-c-permit-language-requirements-a2-b1';
+    $link = 'class="font-semibold text-[#0055A4] hover:underline"';
+
     $faqs = $isFr ? [
-        [
-            'q' => "Quel niveau de français est exigé pour le permis C ordinaire ?",
-            'a' => "Selon la loi fédérale sur les étrangers et l'intégration (LEI), la demande ordinaire de permis C après 10 ans de séjour en Suisse exige un niveau de langue attesté A2 à l'oral (parler et comprendre) et A1 à l'écrit (lire et écrire)."
-        ],
-        [
-            'q' => "Quel niveau de français pour la demande anticipée de permis C après 5 ans ?",
-            'a' => "Pour une demande anticipée de permis C après 5 ans au titre d'une intégration réussie (article 34 al. 4 LEI), vous devez attester d'un niveau B1 à l'oral et d'au moins A1 à l'écrit."
-        ],
-        [
-            'q' => "Quel examen de langue choisir pour le permis C en Suisse ?",
-            'a' => "Le test fide (Passeport des langues) est l'option la plus rapide et la plus adaptée à la vie quotidienne en Suisse. Cependant, les diplômes DELF (DELF A2 ou DELF B1) ainsi que les attestations TCF et TEF de moins de 2 ans sont également pleinement reconnus."
-        ],
-        [
-            'q' => "Existe-t-il des dispenses de test de langue ?",
-            'a' => "Oui. Vous pouvez être dispensé si le français est votre langue maternelle, ou si vous avez suivi au moins 3 années de scolarité obligatoire en français en Suisse, ou encore si vous êtes titulaire d'un diplôme du degré secondaire II ou tertiaire obtenu en français."
-        ],
-        [
-            'q' => "Combien de temps faut-il pour atteindre le niveau A2 ou B1 ?",
-            'a' => "Avec 2 à 4 heures de cours particuliers par semaine et un travail régulier, la plupart de nos apprenants atteignent le niveau A2 en 6 à 10 semaines, et le niveau B1 en 10 à 16 semaines selon leur niveau de départ."
-        ]
+        ['q' => 'Quelle différence entre le permis B et le permis C ?', 'a' => 'Le permis B est une autorisation de séjour, liée à un but et renouvelée régulièrement. Le permis C est une autorisation d\'établissement, plus stable. Il demande aussi un niveau de langue plus élevé.'],
+        ['q' => 'Le test fide est-il obligatoire pour le permis C ?', 'a' => 'Vous devez prouver votre niveau, mais pas forcément avec le test fide. Un DELF ou un DALF est accepté, et votre langue maternelle ou votre scolarité peuvent suffire.'],
+        ['q' => 'Peut-on obtenir le permis C plus tôt ?', 'a' => 'Oui, de 2 façons. Les ressortissants de nombreux pays d\'Europe de l\'Ouest, des États-Unis et du Canada peuvent l\'obtenir après 5 ans, en vertu d\'accords d\'établissement ou de la réciprocité. Les Britanniques couverts par l\'accord Suisse–Royaume-Uni sur les droits acquis peuvent aussi y avoir droit après 5 ans ; d\'autres règles s\'appliquent aux personnes arrivées à partir du 1er janvier 2021. D\'autres personnes peuvent être admissibles au permis C anticipé après 5 ans de séjour admissible et une intégration réussie, avec le B1 à l\'oral et l\'A1 à l\'écrit.'],
+        ['q' => 'Le niveau se mesure-t-il en français partout en Suisse ?', 'a' => 'Non. Il se mesure dans la langue nationale de votre lieu de résidence : le français en Suisse romande, l\'allemand, l\'italien ou le romanche ailleurs.'],
+        ['q' => 'Combien de temps pour passer de l\'A2 au B1 à l\'oral ?', 'a' => 'Cela dépend de votre point de départ et de votre rythme. Votre premier cours mesure votre oral et donne une estimation réaliste pour votre cas.'],
     ] : [
-        [
-            'q' => "What level of French is required for a standard C permit?",
-            'a' => "Under the Swiss Federal Foreign Nationals and Integration Act (FNIA / LEI), standard C permit applications after 10 years of residency require certified level A2 spoken (oral) and A1 written (reading & writing)."
+        ['q' => 'What\'s the difference between a B and a C permit in Switzerland?', 'a' => 'The B permit is a residence permit, tied to a purpose and renewed regularly. The C permit is a settlement permit and more stable. It also requires a higher language level.'],
+        ['q' => 'Do I need the fide test for a C permit?', 'a' => 'You need to prove your level, but not necessarily with the fide test. A DELF or DALF is accepted, and your mother tongue or schooling may be enough.'],
+        ['q' => 'Is there a fast track to the C permit?', 'a' => 'Yes, 2 ways. Nationals of many Western European countries, the USA and Canada can get it after 5 years, under settlement agreements or reciprocity. UK nationals covered by the Swiss–UK acquired-rights agreement may also qualify after 5 years; different rules apply to those arriving from 1 January 2021. Other applicants may qualify for early settlement after 5 years of qualifying residence if well integrated, with B1 spoken and A1 written.'],
+        ['q' => 'Is the level always measured in French?', 'a' => 'No. It\'s measured in the national language of your place of residence: French in Romandie, German, Italian or Romansh elsewhere.'],
+        ['q' => 'How long does it take to go from A2 to B1 speaking?', 'a' => 'It depends on where you start and how often you practise. Your first class measures your speaking and gives you a realistic estimate for your case.'],
+    ];
+
+    $levels = $isFr ? [
+        ['Ordinaire', 'A2', 'A1'],
+        ['Anticipé (après 5 ans de séjour)', 'B1', 'A1'],
+    ] : [
+        ['Ordinary', 'A2', 'A1'],
+        ['Early (after 5 years\' residence)', 'B1', 'A1'],
+    ];
+
+    $criteria = $isFr ? [
+        'le respect de la sécurité et de l\'ordre publics ;',
+        'le respect des valeurs de la Constitution ;',
+        'les compétences linguistiques ;',
+        'la participation à la vie économique ou l\'acquisition d\'une formation.',
+    ] : [
+        'respect for public safety and order;',
+        'respect for the values of the Federal Constitution;',
+        'language skills;',
+        'taking part in economic life or in education.',
+    ];
+
+    $steps = $isFr ? [
+        ['01', 'Le bon niveau dès le départ', 'Permis C ordinaire ou anticipé : nous fixons la cible à l\'oral et à l\'écrit.'],
+        ['02', 'Votre oral, mesuré au premier cours', 'C\'est là que se joue le permis, alors nous commençons par là.'],
+        ['03', 'Des mises en situation suisses', null],
+        ['04', 'Des cours en direct, 2 ou 4 h par semaine', 'En particulier ou en mini-groupe de 2 à 5 personnes, avec notes et exercices dans votre espace élève.'],
+    ] : [
+        ['01', 'The right level from day 1', 'Ordinary or early C permit: we set the target for speaking and writing.'],
+        ['02', 'Your speaking, measured in your first class', 'That\'s where the permit is decided, so that\'s where we start.'],
+        ['03', 'Real Swiss scenarios', null],
+        ['04', 'Live classes, 2 or 4 hours a week', '1:1 or in a group of 2–5, with notes and practice in your student portal.'],
+    ];
+
+    $faqSchema = [];
+    foreach ($faqs as $faq) {
+        $faqSchema[] = [
+            '@type' => 'Question',
+            'name' => $faq['q'],
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => trim(preg_replace('/\s+/', ' ', strip_tags($faq['a']))),
+            ],
+        ];
+    }
+
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'WebPage',
+                'name' => $title,
+                'description' => $metaDesc,
+                'url' => $canonicalUrl,
+                'inLanguage' => $isFr ? 'fr' : 'en',
+                'publisher' => ['@type' => 'Organization', 'name' => $siteName, 'url' => 'https://fluencefrancaise.fr'],
+            ],
+            [
+                '@type' => 'BreadcrumbList',
+                'itemListElement' => [
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => $isFr ? 'Accueil' : 'Home', 'item' => $isFr ? 'https://fluencefrancaise.fr/fr' : 'https://fluencefrancaise.fr/en'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => $isFr ? 'Suisse' : 'Switzerland', 'item' => $isFr ? 'https://fluencefrancaise.fr/fr' : 'https://fluencefrancaise.fr/en'],
+                    ['@type' => 'ListItem', 'position' => 3, 'name' => $isFr ? 'Permis C' : 'C permit', 'item' => $canonicalUrl],
+                ],
+            ],
+            [
+                '@type' => 'FAQPage',
+                'mainEntity' => $faqSchema,
+            ],
         ],
-        [
-            'q' => "What level do I need for the early (fast-track) C permit?",
-            'a' => "For the fast-track C permit after 5 years based on successful integration (Art. 34 para. 4 FNIA), you must demonstrate certified level B1 spoken (oral) and at least A1 written."
-        ],
-        [
-            'q' => "Which language test should I choose for the C permit?",
-            'a' => "The fide test (Language Passport) is the fastest and most practical option designed specifically for Swiss residency. However, DELF diplomas (DELF A2 or DELF B1) and TCF/TEF certificates under 2 years old are also fully recognized."
-        ],
-        [
-            'q' => "Are there exemptions from the language requirement?",
-            'a' => "Yes. You may be exempt if French is your native language, if you completed at least 3 years of compulsory schooling in French in Switzerland, or if you hold an upper secondary or tertiary degree taught in French."
-        ],
-        [
-            'q' => "How long does it take to reach level A2 or B1?",
-            'a' => "With 2 to 4 hours of live instruction per week and consistent practice, most students bridge the gap to level A2 in 6 to 10 weeks, and to level B1 in 10 to 16 weeks depending on their starting point."
-        ]
     ];
 @endphp
 <html lang="{{ $isFr ? 'fr' : 'en' }}" class="scroll-smooth">
@@ -76,31 +125,21 @@
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
 
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Tailwind CSS (Vite build) -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script
+        type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
 
     @include('partials.theme')
 </head>
 
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-[#0055A4] selection:text-white">
+<body class="antialiased bg-white text-slate-800 font-sans selection:bg-[#0055A4] selection:text-white">
 
-    <div class="min-h-screen flex flex-col justify-between">
+    <div class="landing-page min-h-screen flex flex-col justify-between">
         <div>
             @include('partials.header')
 
@@ -138,18 +177,15 @@
                                     {{ $isFr ? 'Atteignez le niveau de langue' : 'Reach the Language Level' }}
                                 </span>
                                 <br>
-                                <span class="relative inline-block">
+                                <span class="swish relative inline-block">
                                     {{ $isFr ? 'exigé' : 'Required' }}
-                                    <span
-                                        class="absolute bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#0055A4] to-[#EF4135] rounded-full"></span>
                                 </span>
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
                                 {{ $isFr
     ? 'Le permis C exige un niveau certifié A2 oral et A1 écrit (ou B1 oral pour la demande anticipée). Nous vous préparons au niveau exact exigé dans votre canton.'
-    : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.'
-                                }}
+    : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.' }}
                             </p>
 
                             <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -279,440 +315,293 @@
                 </div>
             </section>
 
-            <!-- what language level do you need? -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-10">
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'EXIGENCES FÉDÉRALES' : 'SWISS FEDERAL REQUIREMENTS' }}
-                            </span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'NIVEAU EXIGÉ' : 'LANGUAGE LEVEL' }}</span>
                         </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Quel niveau de langue pour obtenir le permis C ?' : 'What language level do you need for a C permit?' }}
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            {{ $isFr ? 'Quel niveau de français pour le permis C ?' : 'What language level do you need for a C permit?' }}
                         </h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             {{ $isFr
-    ? 'Depuis 2019, la loi fédérale sur les étrangers et l\'intégration (LEI) impose à tout demandeur de permis C de certifier ses compétences dans la langue nationale du canton de domicile (le français en Suisse romande).'
-    : 'Under the revised Federal Foreign Nationals and Integration Act (FNIA), anyone applying for a settlement permit (Permis C) must demonstrate certified language proficiency in the national language of their canton of residence.'
-                            }}
+    ? 'Pour un permis C ordinaire, il faut le niveau A2 à l\'oral et A1 à l\'écrit. Pour un permis C anticipé, après 5 ans, il faut le B1 à l\'oral et l\'A1 à l\'écrit. Le niveau se mesure dans la langue nationale de votre lieu de résidence : en Suisse romande, le français.'
+    : 'An ordinary C permit needs A2 spoken and A1 written. An early C permit, after 5 years, needs B1 spoken and A1 written. Your level is measured in the national language where you live, which is French in Romandie.' }}
                         </p>
                     </div>
 
-                    <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm border-collapse">
-                                <thead>
-                                    <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold">
-                                            {{ $isFr ? 'Type de demande' : 'Application route' }}
-                                        </th>
-                                        <th class="py-4 px-6 font-semibold text-center">
-                                            {{ $isFr ? 'Oral (Parler & Comprendre)' : 'Spoken (Oral)' }}
-                                        </th>
-                                        <th class="py-4 px-6 font-semibold text-center">
-                                            {{ $isFr ? 'Écrit (Lire & Écrire)' : 'Written (Reading & Writing)' }}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100">
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Permis C ordinaire (après 10 ans de séjour)' : 'Standard C permit (after 10 years of residence)' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-center">
-                                            <span
-                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
-                                        </td>
-                                        <td class="py-4 px-6 text-center">
-                                            <span
-                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Permis C anticipé (après 5 ans pour intégration réussie)' : 'Fast-track / Early C permit (after 5 years)' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-center">
-                                            <span
-                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
-                                        </td>
-                                        <td class="py-4 px-6 text-center">
-                                            <span
-                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="rounded-2xl border border-slate-200/80 overflow-hidden">
+                        <div
+                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
+                            <div class="sm:col-span-6">{{ $isFr ? 'Permis C' : 'C permit' }}</div>
+                            <div class="sm:col-span-3 text-center">{{ $isFr ? 'Oral' : 'Spoken' }}</div>
+                            <div class="sm:col-span-3 text-center">{{ $isFr ? 'Écrit' : 'Written' }}</div>
                         </div>
+                        @foreach($levels as $index => $row)
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-5 sm:px-7 py-5 text-sm items-center {{ $index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white' }} {{ $index < count($levels) - 1 ? 'border-b border-slate-100' : '' }}">
+                                <div class="sm:col-span-6 font-semibold text-[#10233e]">{{ $row[0] }}</div>
+                                <div class="sm:col-span-3 sm:text-center">
+                                    <span
+                                        class="sm:hidden text-[11px] uppercase tracking-wide text-[#0055A4] font-bold mr-2">{{ $isFr ? 'Oral' : 'Spoken' }}</span>
+                                    <span
+                                        class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold {{ $row[1] === 'B1' ? 'bg-emerald-50 text-emerald-700' : 'bg-blue-50 text-[#0055a4]' }}">{{ $row[1] }}</span>
+                                </div>
+                                <div class="sm:col-span-3 sm:text-center">
+                                    <span
+                                        class="sm:hidden text-[11px] uppercase tracking-wide text-[#0055A4] font-bold mr-2">{{ $isFr ? 'Écrit' : 'Written' }}</span>
+                                    <span
+                                        class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">{{ $row[2] }}</span>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+
+                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed text-center max-w-3xl mx-auto">
+                        {{ $isFr
+    ? 'Regardez la colonne de gauche. Dans les 2 cas, l\'oral est plus exigeant que l\'écrit. Et pour le permis anticipé, l\'écart passe de A2 à B1 : c\'est souvent lui qui décide si vous gagnez des années.'
+    : 'Look at the left-hand column. In both cases, the spoken level is higher than the written one. For the early permit it rises from A2 to B1, and that\'s often what decides whether you save years.' }}
+                    </p>
                 </div>
             </section>
 
-            <!-- the c permit at a glance -->
-            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? "LE PERMIS D'ÉTABLISSEMENT" : 'THE SETTLEMENT PERMIT' }}
-                            </span>
+            <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                        <div class="lg:col-span-7">
+                            <div class="inline-flex items-center gap-1.5 mb-3">
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LE PERMIS D\'ÉTABLISSEMENT' : 'THE SETTLEMENT PERMIT' }}</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                {{ $isFr ? 'Le permis C en bref' : 'The C permit at a glance' }}
+                            </h2>
+                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                @if($isFr)
+                                    Le permis C est le permis d'établissement. Contrairement au permis B, il n'est pas lié à
+                                    un but de séjour précis et vous donne plus de stabilité en Suisse. Il est aussi une
+                                    étape vers la <a href="{{ $citizenshipUrl }}" {!! $link !!}>naturalisation suisse</a>,
+                                    qui le demande pour la naturalisation ordinaire.
+                                @else
+                                    The C permit is the settlement permit (permis d'établissement). Unlike the B permit, it
+                                    isn't tied to a specific purpose of stay, and it gives you more stability in
+                                    Switzerland. It's also a step towards <a href="{{ $citizenshipUrl }}" {!! $link !!}>Swiss citizenship</a>, which requires it for ordinary naturalisation.
+                                @endif
+                            </p>
+                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                {{ $isFr
+    ? 'Pour l\'obtenir, le canton vérifie votre durée de séjour et votre intégration. La loi retient 4 critères d\'intégration :'
+    : 'To grant it, the canton checks how long you\'ve lived in Switzerland and how well you\'ve integrated. The law sets 4 integration criteria:' }}
+                            </p>
                         </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Le permis C en un coup d\'œil' : 'The C permit at a glance' }}
-                        </h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
-                            {{ $isFr
-    ? 'Le permis d\'établissement C confère la résidence permanente en Suisse. Contrairement au permis B, il n\'est lié à aucun employeur ni contrat temporaire.'
-    : 'The C permit (Permis d\'établissement) grants permanent residency in Switzerland. Unlike the B permit, it is not tied to an employer or fixed-term contract.'
-                            }}
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Droit de séjour et d\'emploi illimité' : 'Unlimited right of residence & employment' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Travaillez pour n\'importe quel employeur, devenez indépendant ou changez de canton sans autorisation préalable.'
-    : 'Work for any employer, become self-employed, or change cantons without prior administrative authorization.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Accès égal au marché du travail et aux aides' : 'Equal access to the Swiss labour market & welfare' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Protection renforcée contre le renvoi et plein droit aux prestations sociales et de chômage suisses.'
-    : 'Protected against revocation on economic grounds and fully entitled to Swiss social security benefits.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Fini les renouvellements annuels d\'autorisation' : 'No permit renewals or employer sponsorship' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Seul le titre biométrique physique est renouvelé tous les 5 ans, comme simple formalité administrative.'
-    : 'Only the physical biometric card is renewed every 5 years, purely as an administrative routine.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Le tremplin obligatoire vers la nationalité suisse' : 'The direct gateway to Swiss naturalisation' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Être titulaire du permis C est la condition indispensable pour pouvoir déposer un dossier de naturalisation suisse.'
-    : 'Holding a valid C permit is a mandatory prerequisite before you can apply for Swiss citizenship.'
-                                    }}
-                                </p>
+                        <div class="lg:col-span-5">
+                            <div class="bg-[#002654] text-white rounded-3xl overflow-hidden">
+                                <div class="h-[3px] w-full flex">
+                                    <span class="w-1/3 bg-[#0055A4]"></span>
+                                    <span class="w-1/3 bg-white"></span>
+                                    <span class="w-1/3 bg-[#EF4135]"></span>
+                                </div>
+                                <ul class="p-6 sm:p-8 space-y-4">
+                                    @foreach($criteria as $item)
+                                        <li class="flex items-start gap-3 text-sm text-blue-100 leading-relaxed">
+                                            <i class="fas fa-check text-white text-xs mt-1"></i>
+                                            <span>{{ $item }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <p class="mt-8 text-sm sm:text-base text-slate-500 leading-relaxed max-w-3xl">
+                        {{ $isFr
+    ? 'La durée de séjour exigée dépend de votre nationalité et de votre situation. Pour votre cas, renseignez-vous auprès de l\'office des migrations de votre canton.'
+    : 'The residence period required depends on your nationality and situation. For your own case, check with your canton\'s migration office.' }}
+                    </p>
                 </div>
             </section>
 
-            <!-- early c permit: speaking makes the difference -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            {{ $isFr ? 'VOIE ANTICIPÉE (5 ANS)' : 'FAST-TRACK ROUTE (5 YEARS)' }}
-                        </span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'APRÈS 5 ANS' : 'AFTER 5 YEARS' }}</span>
                     </div>
-                    <h2
-                        class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                        {{ $isFr ? 'Permis C anticipé : l\'oral fait toute la différence' : 'Early C permit: speaking makes the difference' }}
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        {{ $isFr ? 'Permis C anticipé : l\'oral fait la différence' : 'Early C permit: speaking makes the difference' }}
                     </h2>
-                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'Normalement, l\'octroi du permis C exige 10 ans de séjour continu en Suisse. Cependant, selon l\'article 34 alinéa 4 LEI, les ressortissants de l\'UE/AELE et des pays tiers peuvent l\'obtenir après seulement 5 ans en prouvant une intégration réussie.'
-    : 'Normally, a C permit requires 10 years of unbroken residency in Switzerland. But under the fast-track rule for successful integration (Art. 34 para. 4 FNIA), both EU/EFTA and non-EU citizens can obtain it after just 5 years.'
-                        }}
+    ? 'Le permis C anticipé peut permettre de demander l\'établissement après 5 ans de séjour admissible, si vous êtes éligible et que votre intégration est réussie. La condition de langue monte alors au B1 à l\'oral et reste à l\'A1 à l\'écrit.'
+    : 'The early C permit may let you apply for settlement after 5 years of qualifying residence, if you\'re eligible and well integrated. The language condition then rises to B1 spoken and A1 written.' }}
                     </p>
-                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
+                    <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         {{ $isFr
-    ? 'L\'élément clé est la maîtrise de la langue : votre français oral doit atteindre le niveau B1 (parler et comprendre) tandis que le niveau A1 suffit pour l\'écrit. Notre formation vous permet d\'atteindre ce palier oral rapidement et sans stress.'
-    : 'The key deciding factor is language: your spoken French must reach B1 level (oral) while written French remains at A1 level. Our targeted training focuses on getting your speaking confidence to B1 standard quickly.'
-                        }}
+    ? 'Le B1, c\'est raconter, expliquer, donner son avis et le défendre simplement. L\'A2, c\'est se faire comprendre dans des situations connues. Entre les 2, il y a un vrai travail, mais la hausse porte sur l\'oral ; le niveau A1 à l\'écrit reste exigé.'
+    : 'B1 means telling a story, explaining, and giving and defending a simple opinion. A2 means getting by in familiar situations. Getting from one to the other takes real work, but the increase is focused on speaking; A1 written is still required.' }}
                     </p>
                 </div>
             </section>
 
-            <!-- how do you prove your level? -->
-            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-10">
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'CERTIFICATS OFFICIELS' : 'ACCEPTED PROOF & CERTIFICATES' }}
-                            </span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'PREUVES ACCEPTÉES' : 'ACCEPTED PROOF' }}</span>
                         </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Comment prouver votre niveau de français ?' : 'How do you prove your level?' }}
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            {{ $isFr ? 'Comment prouver votre niveau ?' : 'How do you prove your level?' }}
                         </h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                    </div>
+
+                    <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
+                        <div
+                            class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
+                            <div class="col-span-4">{{ $isFr ? 'Preuve' : 'Proof' }}</div>
+                            <div class="col-span-8">{{ $isFr ? 'À savoir' : 'Good to know' }}</div>
+                        </div>
+                        <div
+                            class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
+                            <div class="col-span-4 font-semibold text-[#10233e]">
+                                <a href="{{ $fideUrl }}" {!! $link !!}>{{ $isFr ? 'Test fide' : 'fide test' }}</a>
+                            </div>
+                            <div class="col-span-8 text-slate-600">
+                                {{ $isFr ? 'Le passeport des langues indique votre niveau à l\'oral et à l\'écrit' : 'Your passeport des langues shows your spoken and written levels' }}
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-4 text-sm bg-white border-b border-slate-100">
+                            <div class="col-span-4 font-semibold text-[#10233e]">
+                                <a href="{{ $delfUrl }}" {!! $link !!}>DELF</a>
+                                {{ $isFr ? 'ou DALF (' : 'or DALF (' }}<a href="{{ $delfB1Url }}" {!! $link !!}>B1</a>…)
+                            </div>
+                            <div class="col-span-8 text-slate-600">
+                                {{ $isFr ? 'Diplôme sans date limite' : 'A diploma with no expiry' }}
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
+                            <div class="col-span-4 font-semibold text-[#10233e]">
+                                {{ $isFr ? 'Langue maternelle' : 'Mother tongue' }}
+                            </div>
+                            <div class="col-span-8 text-slate-600">
+                                {{ $isFr ? 'Si votre langue maternelle est le français' : 'If French is your mother tongue' }}
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-4 text-sm bg-white">
+                            <div class="col-span-4 font-semibold text-[#10233e]">{{ $isFr ? 'Scolarité' : 'Schooling' }}
+                            </div>
+                            <div class="col-span-8 text-slate-600">
+                                {{ $isFr
+    ? 'Au moins 3 ans de scolarité obligatoire en français, ou une formation secondaire II ou supérieure en français'
+    : 'At least 3 years of compulsory schooling in French, or upper-secondary or higher education in French' }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed text-center max-w-3xl mx-auto">
+                        {{ $isFr
+    ? 'Avant de réserver un test, vérifiez auprès de votre canton la liste des certificats reconnus. Elle est mise à jour régulièrement.'
+    : 'Before booking a test, check your canton\'s list of recognised certificates. It\'s updated regularly.' }}
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <div class="inline-flex items-center gap-1.5 mb-3">
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            {{ $isFr ? 'Notre préparation' : 'How we prepare you' }}
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        @foreach($steps as $step)
+                            <div class="p-6 rounded-3xl bg-[#f8fafc] border border-slate-200/80">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055A4] text-sm font-semibold flex items-center justify-center border border-blue-100">{{ $step[0] }}</span>
+                                <h3 class="font-bold text-[#10233e] text-base mt-4 mb-2">{{ $step[1] }}</h3>
+                                <p class="text-[13px] text-slate-500 leading-relaxed">
+                                    @if($step[0] === '03')
+                                        @if($isFr)
+                                            Commune, médecin, régie, employeur, école : les situations du <a href="{{ $fideUrl }}"
+                                                {!! $link !!}>test fide</a>, répétées avec votre tuteur.
+                                        @else
+                                            Commune, doctor, letting agency, employer, school: the situations from the <a
+                                                href="{{ $fideUrl }}" {!! $link !!}>fide test</a>, rehearsed with your tutor.
+                                        @endif
+                                    @else
+                                        {{ $step[2] }}
+                                    @endif
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="mt-12 text-center">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] transition-all">
+                            {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
+                        </a>
+                        <p class="mt-3 text-xs sm:text-[13px] text-slate-500">
                             {{ $isFr
-    ? 'Les autorités cantonales de la population (OCPM, SPOP, etc.) acceptent les attestations et diplômes reconnus suivants :'
-    : 'Swiss cantonal migration authorities (OCPM, SPOP, etc.) accept the following recognized language proofs:'
-                            }}
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
                         </p>
                     </div>
-
-                    <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm border-collapse">
-                                <thead>
-                                    <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold w-1/3">
-                                            {{ $isFr ? 'Type de preuve' : 'Proof type' }}
-                                        </th>
-                                        <th class="py-4 px-6 font-semibold">
-                                            {{ $isFr ? 'Détails et reconnaissance' : 'Details & recognition' }}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100">
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            fide (Passeport des langues)
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Le test officiel suisse conçu spécifiquement pour le séjour et l\'établissement. Évaluation continue de A1 à B1. Valable à vie.'
-    : 'The official Swiss test created specifically for residence and settlement. Continuous assessment for levels A1 to B1. Valid for life.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            DELF / DALF (A2 ou B1)
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Diplômes internationaux délivrés par France Éducation International. Les diplômes DELF A2 et DELF B1 sont reconnus dans toute la Suisse.'
-    : 'Internationally recognized diplomas issued by France Éducation International. DELF A2 and DELF B1 certificates are fully accepted across Switzerland.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            TCF / TEF
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Acceptés s\'ils datent de moins de 2 ans et comportent les scores minimaux exigés par votre canton pour chaque épreuve.'
-    : 'Accepted if taken within the last 2 years in an accredited test center with required score breakdown.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-slate-50/60 transition-colors">
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            {{ $isFr ? 'Scolarité ou diplôme en français' : 'Swiss schooling or degree in French' }}
-                                        </td>
-                                        <td class="py-4 px-6 text-slate-600 font-normal">
-                                            {{ $isFr
-    ? 'Au moins 3 années d\'école obligatoire suivies en français, ou diplôme du secondaire II ou tertiaire obtenu en langue française.'
-    : 'Completion of at least 3 years of compulsory schooling in French, or an upper secondary / tertiary degree taught in French.'
-                                            }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            <!-- how we prepare you -->
-            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'NOTRE MÉTHODE' : 'OUR METHOD' }}
-                            </span>
-                        </div>
-                        <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
-                            {{ $isFr ? 'Comment nous vous préparons' : 'How we prepare you' }}
-                        </h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Diagnostic ciblé' : 'Targeted diagnostic' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Votre tuteur évalue précisément votre écart face aux critères officiels A2 ou B1 dès votre première séance.'
-    : 'Your tutor assesses your exact gap against A2 or B1 Swiss criteria in your first session.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Un plan personnalisé' : 'A personalized plan' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Vos heures se concentrent sur l\'expression orale et la fluidité, où se joue l\'obtention du permis C.'
-    : 'Your hours focus directly on oral communication, where the standard for C permit approval is set.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? '100 % en direct sur Google Meet' : '100% live online' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Séances en direct avec votre professeur dédié, programmées selon vos disponibilités professionnelles.'
-    : 'Google Meet sessions with your dedicated tutor. Sessions scheduled flexibly around your work hours.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fas fa-file-signature"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#10233e] text-base mb-1">
-                                    {{ $isFr ? 'Examens blancs complets' : 'Full exam simulations' }}
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                                    {{ $isFr
-    ? 'Simulations fide ou DELF en conditions d\'examen réelles, avec retours et grille de notation officielle.'
-    : 'Mock tests under real exam conditions for the fide or DELF, with full corrections and feedback.'
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="rounded-3xl bg-[#002654] text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div>
-                            <div class="text-base sm:text-lg font-bold text-white">
-                                {{ $isFr ? 'Prêt à évaluer votre niveau ?' : 'Ready to test your level?' }}
-                            </div>
-                            <div class="text-xs sm:text-sm text-slate-300 font-normal mt-0.5">
-                                {{ $isFr
-    ? 'Réservez votre séance d\'évaluation et mesurez votre écart dès aujourd\'hui.'
-    : 'Book your introductory session and measure your gap today.'
-                                }}
-                            </div>
-                        </div>
-                        <a href="/register"
-                            class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-semibold text-[#002654] bg-white hover:bg-slate-100 transition-all flex-shrink-0">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }}
-                            <i class="fas fa-arrow-right text-xs ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- c permit switzerland faq -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Permis C<br>Suisse<br>FAQ' : 'C Permit<br>Switzerland<br>FAQ',
-                'subtitle' => $isFr
-                    ? 'Tout ce que vous devez savoir sur les exigences linguistiques du permis d\'établissement en Suisse.'
-                    : 'Everything you need to know about Swiss language requirements for the settlement permit.',
-                'faqs' => $faqs
+                'title' => $isFr ? 'Questions fréquentes<br>sur le permis C' : 'C permit<br>FAQ',
+                'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
+                'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
+                'contactUrl' => $contactUrl,
+                'faqs' => $faqs,
+                'sectionClass' => 'py-16 sm:py-20 bg-white border-b border-slate-100',
             ])
 
-            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     @include('partials.cta-banner', [
-                        'eyebrow' => $isFr ? 'ATTEIGNEZ VOTRE OBJECTIF' : "LET'S GET YOU THERE",
-                        'title' => $isFr ? "Votre niveau. Le niveau exigé.<br>Nous comblons l'écart." : 'Your level. The required level.<br>We close the gap.',
+                        'sectionClass' => 'pt-4 pb-6 bg-white',
+                        'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
+                        'title' => $isFr
+                            ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
+                            : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
                         'description' => $isFr
-                            ? 'Votre premier cours définit votre niveau dans chaque compétence et le plan pour atteindre celui exigé par votre permis. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                            : 'Your first class sets your level in each section and the plan to reach the one your permit requires. You choose the pace: 2 or 4 hours a week.',
-                        'primaryBtnText' => $isFr ? "S'inscrire" : 'Enroll now',
-                        'primaryBtnUrl' => '/register',
-                        'secondaryBtnText' => $isFr ? 'Découvrir nos cours' : 'Explore our courses',
-                        'secondaryBtnUrl' => '/courses',
+                            ? 'Votre premier cours mesure votre oral et votre écrit face au niveau de votre permis. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                            : 'Your first class measures your speaking and writing against the level your permit needs. You choose the pace: 2 or 4 hours a week.',
+                        'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
+                        'primaryButtonUrl' => '/register',
+                        'showSecondaryButton' => true,
+                        'secondaryButtonText' => $isFr ? 'Contactez-nous' : 'Talk to us',
+                        'secondaryButtonUrl' => $contactUrl,
                         'helperText' => $isFr
                             ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
+                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included',
                     ])
 
                     <div class="mt-8 text-center text-xs sm:text-sm text-slate-500 font-normal">
-                        <span>{{ $isFr ? 'Vous venez à deux ? 50 CHF de réduction par mois, pour vous et votre proche.' : 'Coming with a friend? CHF 50 off per month, for you and for them.' }}</span>
-                        <a href="{{ $isFr ? '/fr/contact' : '/en/contact' }}"
-                            class="text-[#0055a4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
+                        <span>{{ $isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.' }}</span>
+                        <a href="{{ $referralUrl }}"
+                            class="text-[#0055A4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
                             <span>{{ $isFr ? 'Contactez-nous' : 'Contact us' }}</span>
                             <i class="fas fa-arrow-right text-[10px]"></i>
                         </a>
@@ -721,29 +610,16 @@
                     <div class="border-t border-slate-200/80 my-8"></div>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-                        <span
-                            class="font-bold uppercase tracking-wider text-slate-500">{{ $isFr ? 'SOURCES' : 'SOURCES' }}</span>
-                        <a href="https://www.sem.admin.ch" target="_blank" rel="noopener noreferrer"
+                        <span class="font-bold uppercase tracking-wider text-slate-500">SOURCES</span>
+                        <a href="{{ $fideSource }}" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>SEM — Secrétariat d'État aux migrations</span>
+                            <span>{{ $isFr ? 'fide – test fide' : 'fide – the fide test' }}</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                         <span class="text-slate-300">·</span>
-                        <a href="https://www.ge.ch/ocpm" target="_blank" rel="noopener noreferrer"
+                        <a href="{{ $richmondSource }}" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>Canton de Genève — OCPM</span>
-                            <span class="text-[10px]">↗</span>
-                        </a>
-                        <span class="text-slate-300">·</span>
-                        <a href="https://www.vd.ch/population" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>Canton de Vaud — SPOP</span>
-                            <span class="text-[10px]">↗</span>
-                        </a>
-                        <span class="text-slate-300">·</span>
-                        <a href="https://fide-service.ch" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
-                            <span>fide-service.ch</span>
+                            <span>{{ $isFr ? 'Richmond Chambers – niveaux de langue pour le permis C' : 'Richmond Chambers – C permit language levels' }}</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                     </div>
@@ -753,7 +629,6 @@
 
         @include('partials.footer')
     </div>
-
 </body>
 
 </html>
