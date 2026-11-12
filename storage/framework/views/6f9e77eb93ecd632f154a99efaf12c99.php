@@ -226,47 +226,56 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
                         <div class="lg:col-span-7">
-                            <nav aria-label="Breadcrumb" class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
-                                <a href="<?php echo e($homeUrl); ?>" class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
+                            <nav aria-label="Breadcrumb"
+                                class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
+                                <a href="<?php echo e($homeUrl); ?>"
+                                    class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
                                 <span class="text-slate-300">›</span>
                                 <span>Guides</span>
                                 <span class="text-slate-300">›</span>
-                                <span class="text-slate-700 font-semibold"><?php echo e($isFr ? 'TCF, TEF ou DELF' : 'TCF, TEF or DELF'); ?></span>
+                                <span
+                                    class="text-slate-700 font-semibold"><?php echo e($isFr ? 'TCF, TEF ou DELF' : 'TCF, TEF or DELF'); ?></span>
                             </nav>
 
                             <div class="inline-flex items-center gap-1.5 mb-4">
                                 <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                     <?php echo e($isFr ? 'CHOISIR LE BON TEST' : 'CHOOSE THE RIGHT TEST'); ?>
 
                                 </span>
                             </div>
 
-                            <h1 class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12]">
+                            <h1
+                                class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12]">
                                 <?php echo e($isFr ? 'TCF, TEF ou DELF :' : 'TCF, TEF or DELF:'); ?>
 
                                 <span class="block w-fit max-w-full text-[#0055A4] mt-1">
-                                    <?php echo e($isFr ? 'le bon test en 3 questions' : 'The Right Test in 3 Questions'); ?>
-
-                                    <span class="block h-[3px] mt-2 rounded-full" style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
+                                    <?php if($isFr): ?>
+                                        le bon <span class="swish text-primary-600">test en 3</span> questions
+                                    <?php else: ?>
+                                        The Right <span class="swish text-primary-600">Test in 3</span> Questions
+                                    <?php endif; ?>
                                 </span>
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base md:text-[17px] text-slate-600 max-w-xl leading-relaxed">
                                 <?php echo e($isFr
-                                    ? 'Les 3 sont acceptés pour vos démarches, mais ils ne se valent pas pour votre dossier : voici comment choisir sans vous tromper.'
-                                    : "All 3 are accepted for your application, but they don't serve it equally, so here's how to choose without getting it wrong."); ?>
+    ? 'Les 3 sont acceptés pour vos démarches, mais ils ne se valent pas pour votre dossier : voici comment choisir sans vous tromper.'
+    : "All 3 are accepted for your application, but they don't serve it equally, so here's how to choose without getting it wrong."); ?>
 
                             </p>
 
                             <div class="mt-8 flex flex-wrap items-center gap-4 sm:gap-5">
-                                <a href="/register" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                                <a href="/register"
+                                    class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                                     <?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?>
 
                                     <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                                 </a>
-                                <a href="#short-answer" class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-[#10233e] hover:text-[#0055A4] transition-colors">
+                                <a href="#short-answer"
+                                    class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-[#10233e] hover:text-[#0055A4] transition-colors">
                                     <?php echo e($isFr ? 'Lire le guide' : 'Read the guide'); ?>
 
                                     <i class="fas fa-chevron-down text-[11px] text-[#EF4135]"></i>
@@ -275,8 +284,8 @@
 
                             <p class="mt-5 text-xs sm:text-[13px] text-slate-500 font-medium">
                                 <?php echo e($isFr
-                                    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                             </p>
                             <p class="mt-3 text-xs font-semibold text-slate-400">
@@ -288,11 +297,24 @@
 
                         <div class="lg:col-span-5">
                             <div class="relative mx-auto w-full max-w-[420px] h-[320px] sm:h-[360px]">
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full border border-[#d7e4f5]"></div>
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] rounded-full border border-slate-200/90"></div>
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-6 w-48 h-48 sm:w-56 sm:h-56 rounded-[2rem] bg-[#002654] shadow-[0_24px_50px_-18px_rgba(0,38,84,.45)] flex flex-col items-center justify-center text-center px-5">
-                                    <p class="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-blue-200/80"><?php echo e($isFr ? 'Votre prochaine étape' : 'Your next step'); ?></p>
-                                    <p class="mt-2 text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-none"><?php echo e($isFr ? '3 tests' : '3 tests'); ?></p>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full border border-[#d7e4f5]">
+                                </div>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] rounded-full border border-slate-200/90">
+                                </div>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-6 w-48 h-48 sm:w-56 sm:h-56 rounded-[2rem] bg-[#002654] shadow-[0_24px_50px_-18px_rgba(0,38,84,.45)] flex flex-col items-center justify-center text-center px-5">
+                                    <p
+                                        class="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-blue-200/80">
+                                        <?php echo e($isFr ? 'Votre prochaine étape' : 'Your next step'); ?>
+
+                                    </p>
+                                    <p
+                                        class="mt-2 text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-none">
+                                        <?php echo e($isFr ? '3 tests' : '3 tests'); ?>
+
+                                    </p>
                                     <p class="mt-3 text-xs sm:text-sm font-medium text-blue-100/90">TCF · TEF · DELF</p>
                                 </div>
                             </div>
@@ -301,7 +323,8 @@
 
                     <div class="mt-8 sm:mt-4 flex flex-wrap items-center justify-center gap-2.5">
                         <?php $__currentLoopData = $jumps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jump): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a href="<?php echo e($jump[0]); ?>" class="inline-flex items-center px-4 py-2 rounded-full border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-600 hover:text-[#0055A4] hover:border-[#0055A4]/30 transition-colors">
+                            <a href="<?php echo e($jump[0]); ?>"
+                                class="inline-flex items-center px-4 py-2 rounded-full border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-600 hover:text-[#0055A4] hover:border-[#0055A4]/30 transition-colors">
                                 <?php echo e($jump[1]); ?>
 
                             </a>
@@ -315,7 +338,8 @@
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LA RÉPONSE COURTE' : 'THE SHORT ANSWER'); ?></span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LA RÉPONSE COURTE' : 'THE SHORT ANSWER'); ?></span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                         <?php echo e($isFr ? 'TCF, TEF ou DELF : la réponse courte' : 'TCF vs TEF vs DELF: the short answer'); ?>
@@ -323,9 +347,15 @@
                     </h2>
                     <p class="mt-5 text-sm sm:text-base text-slate-500 leading-relaxed">
                         <?php if($isFr): ?>
-                            Pour un dossier rapide, le TCF IRN ou le TEF IRN : ils sont courts et équivalents, mais valables 2 ans. Pour un dossier qui peut durer, ou plusieurs démarches à la suite, le <a href="<?php echo e($delfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF</a> : il est plus long, mais valable à vie. En Suisse romande, le test fide ou le DELF.
+                            Pour un dossier rapide, le TCF IRN ou le TEF IRN : ils sont courts et équivalents, mais valables
+                            2 ans. Pour un dossier qui peut durer, ou plusieurs démarches à la suite, le <a
+                                href="<?php echo e($delfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF</a> : il est
+                            plus long, mais valable à vie. En Suisse romande, le test fide ou le DELF.
                         <?php else: ?>
-                            For a quick application, take the TCF IRN or TEF IRN: they're short and equivalent, but valid for 2 years. For an application that could drag on, or several applications in a row, take the <a href="<?php echo e($delfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF</a>: it's longer, but valid for life. In French-speaking Switzerland, take the fide test or the DELF.
+                            For a quick application, take the TCF IRN or TEF IRN: they're short and equivalent, but valid
+                            for 2 years. For an application that could drag on, or several applications in a row, take the
+                            <a href="<?php echo e($delfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF</a>: it's
+                            longer, but valid for life. In French-speaking Switzerland, take the fide test or the DELF.
                         <?php endif; ?>
                     </p>
                 </div>
@@ -337,7 +367,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'CÔTE À CÔTE' : 'SIDE BY SIDE'); ?></span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'CÔTE À CÔTE' : 'SIDE BY SIDE'); ?></span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             <?php echo e($isFr ? 'Le comparatif complet' : 'The full comparison'); ?>
@@ -358,27 +389,42 @@
                                 </thead>
                                 <tbody>
                                     <?php $__currentLoopData = $rows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <tr class="<?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> border-t border-slate-100">
+                                        <tr
+                                            class="<?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> border-t border-slate-100">
                                             <th class="px-5 py-4 font-semibold text-[#10233e] align-top"><?php echo e($row[0]); ?></th>
-                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[1]); ?></td>
-                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[2]); ?></td>
-                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[3]); ?></td>
+                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[1]); ?>
+
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[2]); ?>
+
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-600 align-top leading-relaxed"><?php echo e($row[3]); ?>
+
+                                            </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="bg-white border-t border-slate-100">
-                                        <th class="px-5 py-4 font-semibold text-[#10233e] align-top"><?php echo e($isFr ? 'Notre page' : 'Our page'); ?></th>
+                                        <th class="px-5 py-4 font-semibold text-[#10233e] align-top">
+                                            <?php echo e($isFr ? 'Notre page' : 'Our page'); ?>
+
+                                        </th>
                                         <td class="px-5 py-4 align-top">
-                                            <a href="<?php echo e($tcfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TCF IRN →</a>
+                                            <a href="<?php echo e($tcfUrl); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">TCF IRN →</a>
                                         </td>
                                         <td class="px-5 py-4 align-top">
-                                            <a href="<?php echo e($tefUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TEF IRN →</a>
+                                            <a href="<?php echo e($tefUrl); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">TEF IRN →</a>
                                         </td>
                                         <td class="px-5 py-4 align-top leading-relaxed">
-                                            <a href="<?php echo e($delfA2Url); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF A2</a>
+                                            <a href="<?php echo e($delfA2Url); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">DELF A2</a>
                                             <span class="text-slate-300 mx-1">·</span>
-                                            <a href="<?php echo e($delfB1Url); ?>" class="font-semibold text-[#0055A4] hover:underline">B1</a>
+                                            <a href="<?php echo e($delfB1Url); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">B1</a>
                                             <span class="text-slate-300 mx-1">·</span>
-                                            <a href="<?php echo e($delfB2Url); ?>" class="font-semibold text-[#0055A4] hover:underline">B2</a>
+                                            <a href="<?php echo e($delfB2Url); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">B2</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -394,7 +440,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'DÉCIDER EN 3 QUESTIONS' : 'DECIDE IN 3 QUESTIONS'); ?></span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'DÉCIDER EN 3 QUESTIONS' : 'DECIDE IN 3 QUESTIONS'); ?></span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             <?php echo e($isFr ? 'Le bon test en 3 questions' : 'The right test in 3 questions'); ?>
@@ -404,14 +451,21 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-7 flex flex-col">
-                                <span class="text-sm font-bold text-[#0055A4]"><?php echo e($question[0]); ?></span>
+                                <span
+                                    class="text-sm bg-[#0055A4]/20 p-2 rounded-full font-bold text-[#0055A4] w-max"><?php echo e($question[0]); ?></span>
                                 <h3 class="mt-3 text-lg font-bold text-[#10233e] leading-snug"><?php echo e($question[1]); ?></h3>
                                 <p class="mt-3 text-sm text-slate-500 leading-relaxed">
                                     <?php if($loop->first): ?>
                                         <?php if($isFr): ?>
-                                            En Suisse romande, regardez d'abord le <a href="<?php echo e($fideUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">test fide</a>, conçu pour les démarches suisses. Le DELF y est aussi accepté. Le TCF IRN et le TEF IRN sont faits pour les démarches françaises.
+                                            En Suisse romande, regardez d'abord le <a href="<?php echo e($fideUrl); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">test fide</a>, conçu pour les
+                                            démarches suisses. Le DELF y est aussi accepté. Le TCF IRN et le TEF IRN sont faits pour
+                                            les démarches françaises.
                                         <?php else: ?>
-                                            In French-speaking Switzerland, look first at the <a href="<?php echo e($fideUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">fide test</a>, built for Swiss applications. The DELF is accepted there too. The TCF IRN and TEF IRN are designed for French applications.
+                                            In French-speaking Switzerland, look first at the <a href="<?php echo e($fideUrl); ?>"
+                                                class="font-semibold text-[#0055A4] hover:underline">fide test</a>, built for Swiss
+                                            applications. The DELF is accepted there too. The TCF IRN and TEF IRN are designed for
+                                            French applications.
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <?php echo e($question[2]); ?>
@@ -429,7 +483,8 @@
                     <div class="inline-flex items-center gap-1.5 mb-3">
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                         <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'MÊME NIVEAU, FORMAT DIFFÉRENT' : 'SAME LEVEL, DIFFERENT FORMAT'); ?></span>
+                        <span
+                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'MÊME NIVEAU, FORMAT DIFFÉRENT' : 'SAME LEVEL, DIFFERENT FORMAT'); ?></span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                         <?php echo e($isFr ? 'TCF IRN ou TEF IRN : lequel est le plus facile ?' : 'TCF IRN or TEF IRN: which is easier?'); ?>
@@ -438,14 +493,14 @@
                     <div class="mt-5 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                         <p>
                             <?php echo e($isFr
-                                ? 'Aucun des 2. Ils mesurent les mêmes niveaux, avec la même validité, pour les mêmes démarches. La différence se joue sur le format, les dates et les centres près de chez vous.'
-                                : 'Neither. They measure the same levels, with the same validity, for the same applications. The difference is the format, the dates and the centres near you.'); ?>
+    ? 'Aucun des 2. Ils mesurent les mêmes niveaux, avec la même validité, pour les mêmes démarches. La différence se joue sur le format, les dates et les centres près de chez vous.'
+    : 'Neither. They measure the same levels, with the same validity, for the same applications. The difference is the format, the dates and the centres near you.'); ?>
 
                         </p>
                         <p class="rounded-2xl bg-white border border-slate-200/80 px-5 py-4 text-left sm:text-center">
                             <?php echo e($isFr
-                                ? 'Une règle les distingue quand même : au TEF IRN, les 4 épreuves sont indissociables. Abandonnez-en une, et vous n\'avez aucune attestation. Quel que soit votre choix, entraînez-vous sur le format exact que vous allez passer.'
-                                : "One rule does set them apart: on the TEF IRN, the 4 sections can't be separated. Leave 1, and you get no results at all. Whichever you choose, practise on the exact format you'll sit."); ?>
+    ? 'Une règle les distingue quand même : au TEF IRN, les 4 épreuves sont indissociables. Abandonnez-en une, et vous n\'avez aucune attestation. Quel que soit votre choix, entraînez-vous sur le format exact que vous allez passer.'
+    : "One rule does set them apart: on the TEF IRN, the 4 sections can't be separated. Leave 1, and you get no results at all. Whichever you choose, practise on the exact format you'll sit."); ?>
 
                         </p>
                     </div>
@@ -458,7 +513,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LES EXIGENCES 2026' : 'THE 2026 REQUIREMENTS'); ?></span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LES EXIGENCES 2026' : 'THE 2026 REQUIREMENTS'); ?></span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             <?php echo e($isFr ? 'Quel niveau viser ?' : 'What level should you aim for?'); ?>
@@ -466,12 +522,17 @@
                         </h2>
                     </div>
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
-                        <div class="grid grid-cols-12 bg-[#0055A4] text-white px-5 sm:px-6 py-3.5 text-sm font-semibold">
+                        <div
+                            class="grid grid-cols-12 bg-[#0055A4] text-white px-5 sm:px-6 py-3.5 text-sm font-semibold">
                             <div class="col-span-8"><?php echo e($isFr ? 'Démarche' : 'Application'); ?></div>
-                            <div class="col-span-4 text-right"><?php echo e($isFr ? 'Niveau exigé depuis 2026' : 'Level required since 2026'); ?></div>
+                            <div class="col-span-4 text-right">
+                                <?php echo e($isFr ? 'Niveau exigé depuis 2026' : 'Level required since 2026'); ?>
+
+                            </div>
                         </div>
                         <?php $__currentLoopData = $levels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $level): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="grid grid-cols-12 gap-3 px-5 sm:px-6 py-4 text-sm items-center <?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> <?php echo e($index < count($levels) - 1 ? 'border-b border-slate-100' : ''); ?>">
+                            <div
+                                class="grid grid-cols-12 gap-3 px-5 sm:px-6 py-4 text-sm items-center <?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> <?php echo e($index < count($levels) - 1 ? 'border-b border-slate-100' : ''); ?>">
                                 <div class="col-span-8 font-semibold">
                                     <a href="<?php echo e($level[1]); ?>" class="text-[#0055A4] hover:underline"><?php echo e($level[0]); ?> →</a>
                                 </div>
@@ -481,9 +542,13 @@
                     </div>
                     <p class="mt-5 text-center text-xs sm:text-sm text-slate-500 leading-relaxed">
                         <?php if($isFr): ?>
-                            Pour la naturalisation par décret et les titres de séjour concernés par les règles de 2026, <a href="<?php echo e($civicUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">l'examen civique</a> s'ajoute au test de langue.
+                            Pour la naturalisation par décret et les titres de séjour concernés par les règles de 2026, <a
+                                href="<?php echo e($civicUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">l'examen
+                                civique</a> s'ajoute au test de langue.
                         <?php else: ?>
-                            Citizenship by decree and the residence permit applications covered by the 2026 rules also need the <a href="<?php echo e($civicUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">civic exam</a> on top of the language test.
+                            Citizenship by decree and the residence permit applications covered by the 2026 rules also need
+                            the <a href="<?php echo e($civicUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">civic
+                                exam</a> on top of the language test.
                         <?php endif; ?>
                     </p>
                 </div>
@@ -495,7 +560,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LES 3 FORMATS' : 'ALL 3 FORMATS'); ?></span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LES 3 FORMATS' : 'ALL 3 FORMATS'); ?></span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             <?php echo e($isFr ? 'Notre préparation' : 'How we prepare you'); ?>
@@ -503,15 +569,16 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             <?php echo e($isFr
-                                ? 'Nous préparons les 3 formats. Dès le premier cours, votre tuteur mesure vos 4 compétences, vous aide à choisir le test qui convient à votre dossier, puis vous entraîne sur ce format précis. Cours en direct, 2 ou 4 heures par semaine, en particulier ou en mini-groupe.'
-                                : 'We prepare all 3 formats. In your first class, your tutor measures your 4 skills, helps you pick the test that suits your application, then trains you on that exact format. Live classes, 2 or 4 hours a week, 1:1 or in a small group.'); ?>
+    ? 'Nous préparons les 3 formats. Dès le premier cours, votre tuteur mesure vos 4 compétences, vous aide à choisir le test qui convient à votre dossier, puis vous entraîne sur ce format précis. Cours en direct, 2 ou 4 heures par semaine, en particulier ou en mini-groupe.'
+    : 'We prepare all 3 formats. In your first class, your tutor measures your 4 skills, helps you pick the test that suits your application, then trains you on that exact format. Live classes, 2 or 4 hours a week, 1:1 or in a small group.'); ?>
 
                         </p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
                         <?php $__currentLoopData = $prep; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6 flex gap-4">
-                                <span class="w-10 h-10 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
                                     <i class="fas <?php echo e($item[0]); ?> text-sm"></i>
                                 </span>
                                 <div>
@@ -522,15 +589,16 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <div class="mt-10 text-center">
-                        <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                             <?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?>
 
                             <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500">
                             <?php echo e($isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                         </p>
                     </div>
@@ -573,16 +641,25 @@
                     <p class="text-sm text-slate-500">
                         <?php echo e($isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.'); ?>
 
-                        <a href="<?php echo e($referralUrl); ?>" class="text-[#0055A4] font-semibold hover:underline ml-1"><?php echo e($isFr ? 'Contactez-nous' : 'Contact us'); ?> →</a>
+                        <a href="<?php echo e($referralUrl); ?>"
+                            class="text-[#0055A4] font-semibold hover:underline ml-1"><?php echo e($isFr ? 'Contactez-nous' : 'Contact us'); ?>
+
+                            →</a>
                     </p>
                     <div class="my-6 border-t border-slate-100"></div>
-                    <div class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
+                    <div
+                        class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
                         <span class="font-bold tracking-[0.18em] uppercase mr-3">SOURCES</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – <?php echo e($isFr ? 'naturalisation' : 'citizenship'); ?> ↗</a>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank"
+                            rel="noopener" class="hover:text-slate-600">Service-public.fr –
+                            <?php echo e($isFr ? 'naturalisation' : 'citizenship'); ?> ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – <?php echo e($isFr ? 'cartes de séjour' : 'residence cards'); ?> ↗</a>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank"
+                            rel="noopener" class="hover:text-slate-600">Service-public.fr –
+                            <?php echo e($isFr ? 'cartes de séjour' : 'residence cards'); ?> ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="https://www.lefrancaisdesaffaires.fr/" target="_blank" rel="noopener" class="hover:text-slate-600">Le français des affaires – TEF IRN ↗</a>
+                        <a href="https://www.lefrancaisdesaffaires.fr/" target="_blank" rel="noopener"
+                            class="hover:text-slate-600">Le français des affaires – TEF IRN ↗</a>
                     </div>
                 </div>
             </div>
@@ -592,5 +669,4 @@
     </div>
 </body>
 
-</html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/tcf-vs-tef-vs-delf.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/tcf-vs-tef-vs-delf.blade.php ENDPATH**/ ?>
