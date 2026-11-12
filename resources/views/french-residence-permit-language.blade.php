@@ -31,7 +31,7 @@
     $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
     $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
     $referralUrl = $isFr ? '/fr/contact#parrainage' : '/en/contact#referral';
-    $spCards = 'https://www.service-public.fr/particuliers/vosdroits/N110';
+    $spCards = 'https://www.service-public.gouv.fr/particuliers/vosdroits/F34501';
 
     $link = 'class="font-semibold text-[#0055A4] hover:underline"';
 
@@ -275,7 +275,7 @@
                             </p>
                         </div>
                         <div class="lg:col-span-5">
-                            <div class="rounded-3xl bg-[#002654] text-white overflow-hidden border border-slate-800">
+                            <div class="rounded-3xl bg-[#002654] text-white overflow-hidden">
                                 <div class="h-[3px] w-full flex">
                                     <span class="w-1/3 bg-[#0055A4]"></span>
                                     <span class="w-1/3 bg-white"></span>
@@ -304,7 +304,7 @@
 
                     <div class="mt-10 rounded-2xl border border-slate-200/80 overflow-hidden">
                         <div
-                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#002654] text-white text-xs font-semibold tracking-wide">
+                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
                             <div class="sm:col-span-6">{{ $isFr ? 'Titre' : 'Card' }}</div>
                             <div class="sm:col-span-3">{{ $isFr ? 'Niveau exigé' : 'Level required' }}</div>
                             <div class="sm:col-span-3">{{ $isFr ? 'Avant 2026' : 'Before 2026' }}</div>
@@ -352,63 +352,81 @@
                     </div>
                     <div class="grid lg:grid-cols-2 gap-6">
                         <article id="{{ $a2Id }}"
-                            class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 relative">
-                            <span id="multi-year-permit" class="absolute -top-28 left-0"></span>
-                            <span id="carte-pluriannuelle" class="absolute -top-28 left-0"></span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0f6fc] text-[#0055A4] text-xs font-bold tracking-wide">A2</span>
-                            <h2
-                                class="mt-4 text-2xl sm:text-[28px] font-bold text-[#10233e] tracking-tight leading-snug">
-                                {{ $isFr ? 'Carte de séjour pluriannuelle : le niveau A2' : 'Multi-year residence permit: the A2 level' }}
-                            </h2>
-                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
-                                {{ $isFr
+                            class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 relative overflow-hidden">
+                            <span id="{{ $a2Id === 'multi-year-permit' ? 'carte-pluriannuelle' : 'multi-year-permit' }}"
+                                class="absolute -top-28 left-0"></span>
+                            <div class="h-[3px] w-full flex">
+                                <span class="w-1/3 bg-[#0055A4]"></span>
+                                <span class="w-1/3 bg-slate-200"></span>
+                                <span class="w-1/3 bg-[#EF4135]"></span>
+                            </div>
+                            <div class="p-6 sm:p-8">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full bg-[#f0f6fc] text-[#0055A4] text-xs font-bold tracking-wide">A2</span>
+                                <h2
+                                    class="mt-4 text-2xl sm:text-[28px] font-bold text-[#10233e] tracking-tight leading-snug">
+                                    {{ $isFr ? 'Carte de séjour pluriannuelle : le niveau A2' : 'Multi-year residence permit: the A2 level' }}
+                                </h2>
+                                <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                    {{ $isFr
     ? 'L\'A2 correspond à un français de survie solide. Vous comprenez des phrases simples sur des sujets familiers, vous vous présentez, vous faites vos courses, vous décrivez votre quotidien.'
     : 'A2 is solid everyday French. You understand simple sentences on familiar topics, introduce yourself, shop, and describe your daily life.' }}
-                            </p>
-                            <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
-                                @if($isFr)
-                                    C'est le premier palier. Pour beaucoup, c'est aussi le plus rapide à atteindre avec un
-                                    travail régulier. Le <a href="{{ $delfA2Url }}" {!! $link !!}>DELF A2</a>, le <a
-                                        href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> ou le <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> permettent de le prouver.
-                                @else
-                                    It's the first step, and for many people the quickest to reach with steady work. The <a
-                                        href="{{ $delfA2Url }}" {!! $link !!}>DELF A2</a>, the <a href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> or the <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> can
-                                    prove it.
-                                @endif
-                            </p>
+                                </p>
+                                <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                    @if($isFr)
+                                        C'est le premier palier. Pour beaucoup, c'est aussi le plus rapide à atteindre avec
+                                        un
+                                        travail régulier. Le <a href="{{ $delfA2Url }}" {!! $link !!}>DELF A2</a>, le <a
+                                            href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> ou le <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> permettent de le prouver.
+                                    @else
+                                        It's the first step, and for many people the quickest to reach with steady work. The
+                                        <a href="{{ $delfA2Url }}" {!! $link !!}>DELF A2</a>, the <a href="{{ $tcfUrl }}"
+                                            {!! $link !!}>TCF IRN</a> or the <a href="{{ $tefUrl }}" {!! $link !!}>TEF
+                                            IRN</a> can
+                                        prove it.
+                                    @endif
+                                </p>
+                            </div>
                         </article>
 
                         <article id="{{ $b1Id }}"
-                            class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 relative">
-                            <span id="resident-card" class="absolute -top-28 left-0"></span>
-                            <span id="carte-de-resident" class="absolute -top-28 left-0"></span>
-                            <div class="flex items-center gap-2">
-                                <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full bg-[#002654] text-white text-xs font-bold tracking-wide">B1</span>
-                                <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full bg-[#fff1ef] text-[#EF4135] text-xs font-bold tracking-wide">{{ $isFr ? 'Depuis 2026' : 'Since 2026' }}</span>
+                            class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 relative overflow-hidden">
+                            <span id="{{ $b1Id === 'resident-card' ? 'carte-de-resident' : 'resident-card' }}"
+                                class="absolute -top-28 left-0"></span>
+                            <div class="h-[3px] w-full flex">
+                                <span class="w-1/3 bg-[#0055A4]"></span>
+                                <span class="w-1/3 bg-slate-200"></span>
+                                <span class="w-1/3 bg-[#EF4135]"></span>
                             </div>
-                            <h2
-                                class="mt-4 text-2xl sm:text-[28px] font-bold text-[#10233e] tracking-tight leading-snug">
-                                {{ $isFr ? 'Carte de résident : le niveau B1' : '10-year resident card: the B1 level' }}
-                            </h2>
-                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
-                                {{ $isFr
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-[#002654] text-white text-xs font-bold tracking-wide">B1</span>
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-[#fff1ef] text-[#EF4135] text-xs font-bold tracking-wide">{{ $isFr ? 'Depuis 2026' : 'Since 2026' }}</span>
+                                </div>
+                                <h2
+                                    class="mt-4 text-2xl sm:text-[28px] font-bold text-[#10233e] tracking-tight leading-snug">
+                                    {{ $isFr ? 'Carte de résident : le niveau B1' : '10-year resident card: the B1 level' }}
+                                </h2>
+                                <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                    {{ $isFr
     ? 'Le B1 change de dimension. Vous suivez une conversation claire, vous racontez une expérience, vous donnez votre avis et vous le justifiez. Vous vous débrouillez seul dans la plupart des situations de la vie courante.'
     : 'B1 is a different league. You follow a clear conversation, tell someone about an experience, give your opinion and back it up. You handle most everyday situations on your own.' }}
-                            </p>
-                            <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
-                                @if($isFr)
-                                    Passer de l'A2 au B1, c'est passer de « se faire comprendre » à « tenir une vraie
-                                    conversation ». Le <a href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a>, le <a
-                                        href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> ou le <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> permettent de le prouver.
-                                @else
-                                    Going from A2 to B1 means going from “getting understood” to “holding a real
-                                    conversation”. The <a href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a>, the <a
-                                        href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> or the <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> can prove it.
-                                @endif
-                            </p>
+                                </p>
+                                <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
+                                    @if($isFr)
+                                        Passer de l'A2 au B1, c'est passer de « se faire comprendre » à « tenir une vraie
+                                        conversation ». Le <a href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a>, le <a
+                                            href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> ou le <a href="{{ $tefUrl }}" {!! $link !!}>TEF IRN</a> permettent de le prouver.
+                                    @else
+                                        Going from A2 to B1 means going from “getting understood” to “holding a real
+                                        conversation”. The <a href="{{ $delfB1Url }}" {!! $link !!}>DELF B1</a>, the <a
+                                            href="{{ $tcfUrl }}" {!! $link !!}>TCF IRN</a> or the <a href="{{ $tefUrl }}"
+                                            {!! $link !!}>TEF IRN</a> can prove it.
+                                    @endif
+                                </p>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -430,14 +448,14 @@
                     </div>
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden">
                         <div
-                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#f7f9fc] text-xs font-semibold tracking-wide text-slate-500 border-b border-slate-100">
+                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
                             <div class="sm:col-span-3">{{ $isFr ? 'Situation' : 'Situation' }}</div>
                             <div class="sm:col-span-4">{{ $isFr ? 'Au niveau A2, vous…' : 'At A2, you…' }}</div>
                             <div class="sm:col-span-5">{{ $isFr ? 'Au niveau B1, vous…' : 'At B1, you…' }}</div>
                         </div>
                         @foreach($situations as $index => $row)
                             <div
-                                class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-5 sm:px-7 py-5 text-sm {{ $index < count($situations) - 1 ? 'border-b border-slate-100' : '' }}">
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-5 sm:px-7 py-5 text-sm {{ $index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white' }} {{ $index < count($situations) - 1 ? 'border-b border-slate-100' : '' }}">
                                 <div class="sm:col-span-3 font-semibold text-[#10233e]">{{ $row[0] }}</div>
                                 <div class="sm:col-span-4 text-slate-600">
                                     <span
@@ -487,7 +505,7 @@
                         <div class="lg:col-span-7">
                             <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden">
                                 <div
-                                    class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#002654] text-white text-xs font-semibold tracking-wide">
+                                    class="grid grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#0055a4] text-white text-xs font-semibold tracking-wide">
                                     <div class="col-span-8">{{ $isFr ? 'Preuve' : 'Proof' }}</div>
                                     <div class="col-span-4">{{ $isFr ? 'Validité' : 'Valid for' }}</div>
                                 </div>
@@ -537,56 +555,66 @@
             <!-- civic exam -->
             <section class="py-12 sm:py-16 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div
-                        class="rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 border border-slate-800">
-                        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                            <div class="lg:col-span-7">
-                                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                                    {{ $isFr ? 'Le test de langue ne suffit plus : l\'examen civique' : 'The language test isn\'t enough: the civic exam' }}
-                                </h2>
-                                <p class="mt-4 text-sm sm:text-base text-blue-100/90 leading-relaxed">
-                                    @if($isFr)
-                                        Pour la plupart des premières cartes pluriannuelles et des premières cartes de
-                                        résident, vous devez aussi réussir l'examen civique : 40 questions en français, 45
-                                        minutes, 32 bonnes réponses. Votre niveau de lecture compte donc 2 fois. Sa
-                                        préparation est incluse dans nos cours, sans supplément. <a href="{{ $civicUrl }}"
-                                            class="font-semibold text-white underline underline-offset-2">Tout savoir sur
-                                            l'examen civique</a>.
-                                    @else
-                                        For most first multi-year permits and first resident cards, you also have to pass
-                                        the civic exam: 40 questions in French, 45 minutes, 32 correct. So your reading
-                                        level counts twice. Its prep is included in our classes at no extra cost. <a
-                                            href="{{ $civicUrl }}"
-                                            class="font-semibold text-white underline underline-offset-2">All about the
-                                            French civic exam</a>.
-                                    @endif
-                                </p>
-                            </div>
-                            <div class="lg:col-span-5">
-                                <div
-                                    class="rounded-3xl bg-white/10 p-6 sm:p-7 grid grid-cols-3 gap-4 text-center border border-white/10">
-                                    <div>
-                                        <p class="text-3xl font-extrabold text-white">40</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80">
-                                            {{ $isFr ? 'Questions' : 'Questions' }}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p class="text-3xl font-extrabold text-white">45</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80">{{ $isFr ? 'Minutes' : 'Minutes' }}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p class="text-3xl font-extrabold text-white">32</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80">
-                                            {{ $isFr ? 'Bonnes réponses' : 'To pass' }}
-                                        </p>
+                    <div class="rounded-3xl bg-[#002654] text-white overflow-hidden">
+                        <div class="h-[3px] w-full flex">
+                            <span class="w-1/3 bg-[#0055A4]"></span>
+                            <span class="w-1/3 bg-white"></span>
+                            <span class="w-1/3 bg-[#EF4135]"></span>
+                        </div>
+                        <div class="px-6 sm:px-10 py-10 sm:py-12">
+                            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                                <div class="lg:col-span-7">
+                                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                                        {{ $isFr ? 'Le test de langue ne suffit plus : l\'examen civique' : 'The language test isn\'t enough: the civic exam' }}
+                                    </h2>
+                                    <p class="mt-4 text-sm sm:text-base text-blue-100/90 leading-relaxed">
+                                        @if($isFr)
+                                            Pour la plupart des premières cartes pluriannuelles et des premières cartes de
+                                            résident, vous devez aussi réussir l'examen civique : 40 questions en français,
+                                            45
+                                            minutes, 32 bonnes réponses. Votre niveau de lecture compte donc 2 fois. Sa
+                                            préparation est incluse dans nos cours, sans supplément. <a
+                                                href="{{ $civicUrl }}"
+                                                class="font-semibold text-white underline underline-offset-2">Tout savoir
+                                                sur
+                                                l'examen civique</a>.
+                                        @else
+                                            For most first multi-year permits and first resident cards, you also have to
+                                            pass
+                                            the civic exam: 40 questions in French, 45 minutes, 32 correct. So your reading
+                                            level counts twice. Its prep is included in our classes at no extra cost. <a
+                                                href="{{ $civicUrl }}"
+                                                class="font-semibold text-white underline underline-offset-2">All about the
+                                                French civic exam</a>.
+                                        @endif
+                                    </p>
+                                </div>
+                                <div class="lg:col-span-5">
+                                    <div
+                                        class="rounded-3xl bg-white/10 p-6 sm:p-7 grid grid-cols-3 gap-4 text-center border border-white/10">
+                                        <div>
+                                            <p class="text-3xl font-extrabold text-white">40</p>
+                                            <p class="mt-1 text-[11px] text-blue-100/80">
+                                                {{ $isFr ? 'Questions' : 'Questions' }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="text-3xl font-extrabold text-white">45</p>
+                                            <p class="mt-1 text-[11px] text-blue-100/80">
+                                                {{ $isFr ? 'Minutes' : 'Minutes' }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="text-3xl font-extrabold text-white">32</p>
+                                            <p class="mt-1 text-[11px] text-blue-100/80">
+                                                {{ $isFr ? 'Bonnes réponses' : 'To pass' }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- how we prepare you -->
