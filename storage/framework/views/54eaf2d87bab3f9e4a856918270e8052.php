@@ -387,12 +387,8 @@
                     </div>
 
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
-                        <div class="grid grid-cols-1 sm:grid-cols-12 bg-[#0055A4] text-white px-5 sm:px-7 py-3.5 text-xs sm:text-sm font-semibold">
-                            <div class="sm:col-span-4"><?php echo e($isFr ? 'Détail' : 'Detail'); ?></div>
-                            <div class="hidden sm:block sm:col-span-8">DELF A2</div>
-                        </div>
                         <?php $__currentLoopData = $glanceRows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> <?php echo e($index < count($glanceRows) - 1 ? 'border-b border-slate-100' : ''); ?>">
+                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white'); ?> <?php echo e($index < count($glanceRows) - 1 ? 'border-b border-slate-100' : ''); ?>">
                                 <div class="sm:col-span-4 font-semibold text-[#10233e]"><?php echo e($row[0]); ?></div>
                                 <div class="sm:col-span-8 text-slate-600 leading-relaxed"><?php echo e($row[1]); ?></div>
                             </div>
@@ -417,12 +413,6 @@
                             <?php echo e($isFr ? 'Les 4 épreuves du DELF A2' : 'The 4 sections of the DELF A2'); ?>
 
                         </h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
-                            <?php echo e($isFr
-                                ? "Les 3 premières épreuves se passent ensemble, en 1 h 40 environ. L'oral dure 6 à 8 minutes, après 10 minutes de préparation."
-                                : 'The first 3 sections are taken together, in about 1 h 40. The oral lasts 6 to 8 minutes, after 10 minutes of prep.'); ?>
-
-                        </p>
                     </div>
 
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
@@ -439,6 +429,12 @@
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
+                    <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-3xl">
+                        <?php echo e($isFr
+                            ? "Les 3 premières épreuves se passent ensemble, en 1 h 40 environ. L'oral dure 6 à 8 minutes, après 10 minutes de préparation."
+                            : 'The first 3 sections are taken together, in about 1 h 40. The oral lasts 6 to 8 minutes, after 10 minutes of prep.'); ?>
+
+                    </p>
                 </div>
             </section>
 

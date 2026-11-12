@@ -288,9 +288,9 @@ Route::get('/fr/contact', function () { return view('contact-us'); });
 Route::get('/contact', function () { return view('contact-us'); });
 
 // Page 13: DELF guide / all levels (English /en/delf/, French /fr/delf/)
-Route::get('/en/delf', function () { return view('delf-b2'); });
-Route::get('/fr/delf', function () { return view('delf-b2'); });
-Route::get('/delf', function () { return view('delf-b2'); });
+Route::get('/en/delf', function () { return view('delf'); });
+Route::get('/fr/delf', function () { return view('delf'); });
+Route::get('/delf', function () { return view('delf'); });
 
 // Page 09: French residence permits (English /en/french-residence-permit-language/, French /fr/titre-de-sejour-niveau-francais/)
 Route::get('/en/french-residence-permit-language', function () { return view('french-residence-permit-language'); });
