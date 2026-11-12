@@ -229,9 +229,18 @@ Route::get('/en/delf-a2', function () { return view('delf-a2'); });
 Route::get('/fr/delf-a2', function () { return view('delf-a2'); });
 Route::get('/delf-a2', function () { return view('delf-a2'); });
 
+// Page 08: DELF B1 (English /en/delf-b1/, French /fr/delf-b1/)
+Route::get('/en/delf-b1', function () { return view('delf-b1'); });
+Route::get('/fr/delf-b1', function () { return view('delf-b1'); });
+Route::get('/delf-b1', function () { return view('delf-b1'); });
+
 // Page 03: French citizenship language test (English /en/french-citizenship-language-test/, French /fr/test-francais-naturalisation/)
 Route::get('/en/french-citizenship-language-test', function () { return view('citizenship-language-test'); });
 Route::get('/fr/test-francais-naturalisation', function () { return view('citizenship-language-test'); });
+Route::get('/en/swiss-citizenship', function () { return view('citizenship-language-test'); });
+Route::get('/fr/naturalisation-suisse', function () { return view('citizenship-language-test'); });
+Route::get('/swiss-citizenship', function () { return view('citizenship-language-test'); });
+Route::get('/citizenship-language-test', function () { return view('citizenship-language-test'); });
 
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });

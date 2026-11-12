@@ -143,15 +143,15 @@
                                 <span class="relative inline-block">
                                     <?php echo e($isFr ? 'exigé' : 'Required'); ?>
 
-                                    <span class="absolute bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#0055A4] to-[#EF4135] rounded-full"></span>
+                                    <span
+                                        class="absolute bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#0055A4] to-[#EF4135] rounded-full"></span>
                                 </span>
                             </h1>
 
-                            <p
-                                class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
+                            <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
                                 <?php echo e($isFr
-                                    ? 'Le permis C exige un niveau certifié A2 oral et A1 écrit (ou B1 oral pour la demande anticipée). Nous vous préparons au niveau exact exigé dans votre canton.'
-                                    : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.'); ?>
+    ? 'Le permis C exige un niveau certifié A2 oral et A1 écrit (ou B1 oral pour la demande anticipée). Nous vous préparons au niveau exact exigé dans votre canton.'
+    : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.'); ?>
 
                             </p>
 
@@ -181,7 +181,8 @@
                                 <div class="absolute inset-8 rounded-full border border-blue-100"></div>
                                 <div class="absolute inset-16 rounded-full border border-blue-50"></div>
 
-                                <div class="relative w-44 h-44 rounded-3xl bg-[#002654] text-white flex flex-col items-center justify-center shadow-xl z-10">
+                                <div
+                                    class="relative w-44 h-44 rounded-3xl bg-[#002654] text-white flex flex-col items-center justify-center shadow-xl z-10">
                                     <div class="text-3xl font-extrabold tracking-tight text-white">A2 / B1</div>
                                     <div class="text-[11px] text-blue-200 mt-1 uppercase tracking-wider font-semibold">
                                         <?php echo e($isFr ? 'Normes suisses' : 'Swiss standards'); ?>
@@ -193,23 +194,39 @@
                                     </div>
                                 </div>
 
-                                <div class="absolute top-4 right-2 bg-white rounded-2xl border border-slate-100 shadow-lg p-3 flex items-center gap-2.5 z-20">
-                                    <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
+                                <div
+                                    class="absolute top-4 right-2 bg-white rounded-2xl border border-slate-100 shadow-lg p-3 flex items-center gap-2.5 z-20">
+                                    <span
+                                        class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
                                         <i class="fas fa-check"></i>
                                     </span>
                                     <div>
-                                        <div class="text-xs font-bold text-[#10233e]"><?php echo e($isFr ? 'Taux de réussite' : 'Pass rate'); ?></div>
-                                        <div class="text-[10px] text-slate-400"><?php echo e($isFr ? '98 % dès le 1er passage' : '98% first attempt'); ?></div>
+                                        <div class="text-xs font-bold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Taux de réussite' : 'Pass rate'); ?>
+
+                                        </div>
+                                        <div class="text-[10px] text-slate-400">
+                                            <?php echo e($isFr ? '98 % dès le 1er passage' : '98% first attempt'); ?>
+
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="absolute bottom-4 left-2 bg-white rounded-2xl border border-slate-100 shadow-lg p-3 flex items-center gap-2.5 z-20">
-                                    <span class="w-8 h-8 rounded-xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-sm font-bold">
+                                <div
+                                    class="absolute bottom-4 left-2 bg-white rounded-2xl border border-slate-100 shadow-lg p-3 flex items-center gap-2.5 z-20">
+                                    <span
+                                        class="w-8 h-8 rounded-xl bg-blue-50 text-[#0055a4] flex items-center justify-center text-sm font-bold">
                                         <i class="fas fa-certificate"></i>
                                     </span>
                                     <div>
-                                        <div class="text-xs font-bold text-[#10233e]"><?php echo e($isFr ? 'fide & DELF' : 'fide & DELF'); ?></div>
-                                        <div class="text-[10px] text-slate-400"><?php echo e($isFr ? 'A2 Oral · A1 Écrit' : 'A2 Oral · A1 Written'); ?></div>
+                                        <div class="text-xs font-bold text-[#10233e]">
+                                            <?php echo e($isFr ? 'fide & DELF' : 'fide & DELF'); ?>
+
+                                        </div>
+                                        <div class="text-[10px] text-slate-400">
+                                            <?php echo e($isFr ? 'A2 Oral · A1 Écrit' : 'A2 Oral · A1 Written'); ?>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -221,27 +238,46 @@
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
-                                    <div class="text-xs font-bold text-[#10233e]"><?php echo e($isFr ? 'Permis C anticipé (5 ans)' : 'Fast-track C permit (5 years)'); ?></div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5"><?php echo e($isFr ? 'Exige B1 oral + A1 écrit' : 'Requires B1 oral + A1 written'); ?></div>
+                                    <div class="text-xs font-bold text-[#10233e]">
+                                        <?php echo e($isFr ? 'Permis C anticipé (5 ans)' : 'Fast-track C permit (5 years)'); ?>
+
+                                    </div>
+                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                        <?php echo e($isFr ? 'Exige B1 oral + A1 écrit' : 'Requires B1 oral + A1 written'); ?>
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
-                                    <div class="text-xs font-bold text-[#10233e]"><?php echo e($isFr ? 'Permis C ordinaire (10 ans)' : 'Standard C permit (10 years)'); ?></div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5"><?php echo e($isFr ? 'Exige A2 oral + A1 écrit' : 'Requires A2 oral + A1 written'); ?></div>
+                                    <div class="text-xs font-bold text-[#10233e]">
+                                        <?php echo e($isFr ? 'Permis C ordinaire (10 ans)' : 'Standard C permit (10 years)'); ?>
+
+                                    </div>
+                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                        <?php echo e($isFr ? 'Exige A2 oral + A1 écrit' : 'Requires A2 oral + A1 written'); ?>
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
-                                    <div class="text-xs font-bold text-[#10233e]"><?php echo e($isFr ? 'Examens officiels reconnus' : 'Official tests recognized'); ?></div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5"><?php echo e($isFr ? 'fide, DELF, TCF, TEF' : 'fide, DELF, TCF, TEF'); ?></div>
+                                    <div class="text-xs font-bold text-[#10233e]">
+                                        <?php echo e($isFr ? 'Examens officiels reconnus' : 'Official tests recognized'); ?>
+
+                                    </div>
+                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                        <?php echo e($isFr ? 'fide, DELF, TCF, TEF' : 'fide, DELF, TCF, TEF'); ?>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
+                        <div
+                            class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
                             <span>GENÈVE</span>
                             <span>·</span>
                             <span>VAUD</span>
@@ -277,8 +313,8 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Depuis 2019, la loi fédérale sur les étrangers et l\'intégration (LEI) impose à tout demandeur de permis C de certifier ses compétences dans la langue nationale du canton de domicile (le français en Suisse romande).'
-                                : 'Under the revised Federal Foreign Nationals and Integration Act (FNIA), anyone applying for a settlement permit (Permis C) must demonstrate certified language proficiency in the national language of their canton of residence.'); ?>
+    ? 'Depuis 2019, la loi fédérale sur les étrangers et l\'intégration (LEI) impose à tout demandeur de permis C de certifier ses compétences dans la langue nationale du canton de domicile (le français en Suisse romande).'
+    : 'Under the revised Federal Foreign Nationals and Integration Act (FNIA), anyone applying for a settlement permit (Permis C) must demonstrate certified language proficiency in the national language of their canton of residence.'); ?>
 
                         </p>
                     </div>
@@ -288,9 +324,18 @@
                             <table class="w-full text-left text-sm border-collapse">
                                 <thead>
                                     <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold"><?php echo e($isFr ? 'Type de demande' : 'Application route'); ?></th>
-                                        <th class="py-4 px-6 font-semibold text-center"><?php echo e($isFr ? 'Oral (Parler & Comprendre)' : 'Spoken (Oral)'); ?></th>
-                                        <th class="py-4 px-6 font-semibold text-center"><?php echo e($isFr ? 'Écrit (Lire & Écrire)' : 'Written (Reading & Writing)'); ?></th>
+                                        <th class="py-4 px-6 font-semibold">
+                                            <?php echo e($isFr ? 'Type de demande' : 'Application route'); ?>
+
+                                        </th>
+                                        <th class="py-4 px-6 font-semibold text-center">
+                                            <?php echo e($isFr ? 'Oral (Parler & Comprendre)' : 'Spoken (Oral)'); ?>
+
+                                        </th>
+                                        <th class="py-4 px-6 font-semibold text-center">
+                                            <?php echo e($isFr ? 'Écrit (Lire & Écrire)' : 'Written (Reading & Writing)'); ?>
+
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
@@ -300,10 +345,12 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A2</span>
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
@@ -312,10 +359,12 @@
 
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700">B1</span>
                                         </td>
                                         <td class="py-4 px-6 text-center">
-                                            <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
+                                            <span
+                                                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0055a4]">A1</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -344,15 +393,16 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Le permis d\'établissement C confère la résidence permanente en Suisse. Contrairement au permis B, il n\'est lié à aucun employeur ni contrat temporaire.'
-                                : 'The C permit (Permis d\'établissement) grants permanent residency in Switzerland. Unlike the B permit, it is not tied to an employer or fixed-term contract.'); ?>
+    ? 'Le permis d\'établissement C confère la résidence permanente en Suisse. Contrairement au permis B, il n\'est lié à aucun employeur ni contrat temporaire.'
+    : 'The C permit (Permis d\'établissement) grants permanent residency in Switzerland. Unlike the B permit, it is not tied to an employer or fixed-term contract.'); ?>
 
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div>
@@ -362,15 +412,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Travaillez pour n\'importe quel employeur, devenez indépendant ou changez de canton sans autorisation préalable.'
-                                        : 'Work for any employer, become self-employed, or change cantons without prior administrative authorization.'); ?>
+    ? 'Travaillez pour n\'importe quel employeur, devenez indépendant ou changez de canton sans autorisation préalable.'
+    : 'Work for any employer, become self-employed, or change cantons without prior administrative authorization.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div>
@@ -380,15 +431,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Protection renforcée contre le renvoi et plein droit aux prestations sociales et de chômage suisses.'
-                                        : 'Protected against revocation on economic grounds and fully entitled to Swiss social security benefits.'); ?>
+    ? 'Protection renforcée contre le renvoi et plein droit aux prestations sociales et de chômage suisses.'
+    : 'Protected against revocation on economic grounds and fully entitled to Swiss social security benefits.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div>
@@ -398,15 +450,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Seul le titre biométrique physique est renouvelé tous les 5 ans, comme simple formalité administrative.'
-                                        : 'Only the physical biometric card is renewed every 5 years, purely as an administrative routine.'); ?>
+    ? 'Seul le titre biométrique physique est renouvelé tous les 5 ans, comme simple formalité administrative.'
+    : 'Only the physical biometric card is renewed every 5 years, purely as an administrative routine.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-blue-50 text-[#0055a4] flex items-center justify-center flex-shrink-0 text-base">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div>
@@ -416,8 +469,8 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Être titulaire du permis C est la condition indispensable pour pouvoir déposer un dossier de naturalisation suisse.'
-                                        : 'Holding a valid C permit is a mandatory prerequisite before you can apply for Swiss citizenship.'); ?>
+    ? 'Être titulaire du permis C est la condition indispensable pour pouvoir déposer un dossier de naturalisation suisse.'
+    : 'Holding a valid C permit is a mandatory prerequisite before you can apply for Swiss citizenship.'); ?>
 
                                 </p>
                             </div>
@@ -444,14 +497,14 @@
                     </h2>
                     <p class="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
                         <?php echo e($isFr
-                            ? 'Normalement, l\'octroi du permis C exige 10 ans de séjour continu en Suisse. Cependant, selon l\'article 34 alinéa 4 LEI, les ressortissants de l\'UE/AELE et des pays tiers peuvent l\'obtenir après seulement 5 ans en prouvant une intégration réussie.'
-                            : 'Normally, a C permit requires 10 years of unbroken residency in Switzerland. But under the fast-track rule for successful integration (Art. 34 para. 4 FNIA), both EU/EFTA and non-EU citizens can obtain it after just 5 years.'); ?>
+    ? 'Normalement, l\'octroi du permis C exige 10 ans de séjour continu en Suisse. Cependant, selon l\'article 34 alinéa 4 LEI, les ressortissants de l\'UE/AELE et des pays tiers peuvent l\'obtenir après seulement 5 ans en prouvant une intégration réussie.'
+    : 'Normally, a C permit requires 10 years of unbroken residency in Switzerland. But under the fast-track rule for successful integration (Art. 34 para. 4 FNIA), both EU/EFTA and non-EU citizens can obtain it after just 5 years.'); ?>
 
                     </p>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
                         <?php echo e($isFr
-                            ? 'L\'élément clé est la maîtrise de la langue : votre français oral doit atteindre le niveau B1 (parler et comprendre) tandis que le niveau A1 suffit pour l\'écrit. Notre formation vous permet d\'atteindre ce palier oral rapidement et sans stress.'
-                            : 'The key deciding factor is language: your spoken French must reach B1 level (oral) while written French remains at A1 level. Our targeted training focuses on getting your speaking confidence to B1 standard quickly.'); ?>
+    ? 'L\'élément clé est la maîtrise de la langue : votre français oral doit atteindre le niveau B1 (parler et comprendre) tandis que le niveau A1 suffit pour l\'écrit. Notre formation vous permet d\'atteindre ce palier oral rapidement et sans stress.'
+    : 'The key deciding factor is language: your spoken French must reach B1 level (oral) while written French remains at A1 level. Our targeted training focuses on getting your speaking confidence to B1 standard quickly.'); ?>
 
                     </p>
                 </div>
@@ -476,8 +529,8 @@
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
                             <?php echo e($isFr
-                                ? 'Les autorités cantonales de la population (OCPM, SPOP, etc.) acceptent les attestations et diplômes reconnus suivants :'
-                                : 'Swiss cantonal migration authorities (OCPM, SPOP, etc.) accept the following recognized language proofs:'); ?>
+    ? 'Les autorités cantonales de la population (OCPM, SPOP, etc.) acceptent les attestations et diplômes reconnus suivants :'
+    : 'Swiss cantonal migration authorities (OCPM, SPOP, etc.) accept the following recognized language proofs:'); ?>
 
                         </p>
                     </div>
@@ -487,8 +540,14 @@
                             <table class="w-full text-left text-sm border-collapse">
                                 <thead>
                                     <tr class="bg-[#0055a4] text-white">
-                                        <th class="py-4 px-6 font-semibold w-1/3"><?php echo e($isFr ? 'Type de preuve' : 'Proof type'); ?></th>
-                                        <th class="py-4 px-6 font-semibold"><?php echo e($isFr ? 'Détails et reconnaissance' : 'Details & recognition'); ?></th>
+                                        <th class="py-4 px-6 font-semibold w-1/3">
+                                            <?php echo e($isFr ? 'Type de preuve' : 'Proof type'); ?>
+
+                                        </th>
+                                        <th class="py-4 px-6 font-semibold">
+                                            <?php echo e($isFr ? 'Détails et reconnaissance' : 'Details & recognition'); ?>
+
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
@@ -498,8 +557,8 @@
                                         </td>
                                         <td class="py-4 px-6 text-slate-600 font-normal">
                                             <?php echo e($isFr
-                                                ? 'Le test officiel suisse conçu spécifiquement pour le séjour et l\'établissement. Évaluation continue de A1 à B1. Valable à vie.'
-                                                : 'The official Swiss test created specifically for residence and settlement. Continuous assessment for levels A1 to B1. Valid for life.'); ?>
+    ? 'Le test officiel suisse conçu spécifiquement pour le séjour et l\'établissement. Évaluation continue de A1 à B1. Valable à vie.'
+    : 'The official Swiss test created specifically for residence and settlement. Continuous assessment for levels A1 to B1. Valid for life.'); ?>
 
                                         </td>
                                     </tr>
@@ -509,8 +568,8 @@
                                         </td>
                                         <td class="py-4 px-6 text-slate-600 font-normal">
                                             <?php echo e($isFr
-                                                ? 'Diplômes internationaux délivrés par France Éducation International. Les diplômes DELF A2 et DELF B1 sont reconnus dans toute la Suisse.'
-                                                : 'Internationally recognized diplomas issued by France Éducation International. DELF A2 and DELF B1 certificates are fully accepted across Switzerland.'); ?>
+    ? 'Diplômes internationaux délivrés par France Éducation International. Les diplômes DELF A2 et DELF B1 sont reconnus dans toute la Suisse.'
+    : 'Internationally recognized diplomas issued by France Éducation International. DELF A2 and DELF B1 certificates are fully accepted across Switzerland.'); ?>
 
                                         </td>
                                     </tr>
@@ -520,8 +579,8 @@
                                         </td>
                                         <td class="py-4 px-6 text-slate-600 font-normal">
                                             <?php echo e($isFr
-                                                ? 'Acceptés s\'ils datent de moins de 2 ans et comportent les scores minimaux exigés par votre canton pour chaque épreuve.'
-                                                : 'Accepted if taken within the last 2 years in an accredited test center with required score breakdown.'); ?>
+    ? 'Acceptés s\'ils datent de moins de 2 ans et comportent les scores minimaux exigés par votre canton pour chaque épreuve.'
+    : 'Accepted if taken within the last 2 years in an accredited test center with required score breakdown.'); ?>
 
                                         </td>
                                     </tr>
@@ -532,8 +591,8 @@
                                         </td>
                                         <td class="py-4 px-6 text-slate-600 font-normal">
                                             <?php echo e($isFr
-                                                ? 'Au moins 3 années d\'école obligatoire suivies en français, ou diplôme du secondaire II ou tertiaire obtenu en langue française.'
-                                                : 'Completion of at least 3 years of compulsory schooling in French, or an upper secondary / tertiary degree taught in French.'); ?>
+    ? 'Au moins 3 années d\'école obligatoire suivies en français, ou diplôme du secondaire II ou tertiaire obtenu en langue française.'
+    : 'Completion of at least 3 years of compulsory schooling in French, or an upper secondary / tertiary degree taught in French.'); ?>
 
                                         </td>
                                     </tr>
@@ -565,7 +624,8 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
                                 <i class="fas fa-bullseye"></i>
                             </div>
                             <div>
@@ -575,15 +635,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Votre tuteur évalue précisément votre écart face aux critères officiels A2 ou B1 dès votre première séance.'
-                                        : 'Your tutor assesses your exact gap against A2 or B1 Swiss criteria in your first session.'); ?>
+    ? 'Votre tuteur évalue précisément votre écart face aux critères officiels A2 ou B1 dès votre première séance.'
+    : 'Your tutor assesses your exact gap against A2 or B1 Swiss criteria in your first session.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
                                 <i class="fas fa-calendar-check"></i>
                             </div>
                             <div>
@@ -593,15 +654,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Vos heures se concentrent sur l\'expression orale et la fluidité, où se joue l\'obtention du permis C.'
-                                        : 'Your hours focus directly on oral communication, where the standard for C permit approval is set.'); ?>
+    ? 'Vos heures se concentrent sur l\'expression orale et la fluidité, où se joue l\'obtention du permis C.'
+    : 'Your hours focus directly on oral communication, where the standard for C permit approval is set.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
                                 <i class="fas fa-video"></i>
                             </div>
                             <div>
@@ -611,15 +673,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Séances en direct avec votre professeur dédié, programmées selon vos disponibilités professionnelles.'
-                                        : 'Google Meet sessions with your dedicated tutor. Sessions scheduled flexibly around your work hours.'); ?>
+    ? 'Séances en direct avec votre professeur dédié, programmées selon vos disponibilités professionnelles.'
+    : 'Google Meet sessions with your dedicated tutor. Sessions scheduled flexibly around your work hours.'); ?>
 
                                 </p>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-3xl border border-slate-200/80 p-7 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-[#002654] text-white flex items-center justify-center flex-shrink-0 text-sm">
                                 <i class="fas fa-file-signature"></i>
                             </div>
                             <div>
@@ -629,15 +692,16 @@
                                 </h3>
                                 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                                     <?php echo e($isFr
-                                        ? 'Simulations fide ou DELF en conditions d\'examen réelles, avec retours et grille de notation officielle.'
-                                        : 'Mock tests under real exam conditions for the fide or DELF, with full corrections and feedback.'); ?>
+    ? 'Simulations fide ou DELF en conditions d\'examen réelles, avec retours et grille de notation officielle.'
+    : 'Mock tests under real exam conditions for the fide or DELF, with full corrections and feedback.'); ?>
 
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="rounded-3xl bg-[#002654] text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div
+                        class="rounded-3xl bg-[#002654] text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div>
                             <div class="text-base sm:text-lg font-bold text-white">
                                 <?php echo e($isFr ? 'Prêt à évaluer votre niveau ?' : 'Ready to test your level?'); ?>
@@ -645,8 +709,8 @@
                             </div>
                             <div class="text-xs sm:text-sm text-slate-300 font-normal mt-0.5">
                                 <?php echo e($isFr
-                                    ? 'Réservez votre séance d\'évaluation et mesurez votre écart dès aujourd\'hui.'
-                                    : 'Book your introductory session and measure your gap today.'); ?>
+    ? 'Réservez votre séance d\'évaluation et mesurez votre écart dès aujourd\'hui.'
+    : 'Book your introductory session and measure your gap today.'); ?>
 
                             </div>
                         </div>
@@ -700,7 +764,8 @@
                     <div class="border-t border-slate-200/80 my-8"></div>
 
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
-                        <span class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
+                        <span
+                            class="font-bold uppercase tracking-wider text-slate-500"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
                         <a href="https://www.sem.admin.ch" target="_blank" rel="noopener noreferrer"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>SEM — Secrétariat d'État aux migrations</span>
@@ -734,6 +799,4 @@
 
 </body>
 
-</html>
-
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/c-permit-switzerland.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/c-permit-switzerland.blade.php ENDPATH**/ ?>

@@ -2,578 +2,703 @@
 @php
     $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
     $siteName = $settings['site_name'] ?? 'Fluence Française';
-    
+
     // Determine language based on current URL prefix
     $isFr = request()->is('fr*');
-    
-    // Metadata
-    $title = $isFr 
+
+    // Page metadata
+    $title = $isFr
         ? "Test de français naturalisation 2026 : le niveau B2 exigé"
-        : "French Citizenship Language Test 2026: B2 Now Required";
-        
+        : "French Citizenship Language Test: How to Reach B2";
+
     $metaDesc = $isFr
-        ? "Depuis 2026, la naturalisation exige le niveau B2 à l'oral et à l'écrit. Les tests acceptés, leur validité et comment atteindre le B2 en ligne."
-        : "Since January 2026, French citizenship requires B2 French, spoken and written. See which tests count, how long results last and how to reach B2 online.";
-        
+        ? "Depuis 2026, la naturalisation exige le niveau B2 à l'oral et à l'écrit. Les tests acceptés (TCF, TEF, DELF B2), examen civique et préparation en ligne en direct."
+        : "Since 2026, French citizenship requires B2 French across all 4 skills. Official accepted tests (TCF, TEF, DELF B2), civic exam, and live online preparation.";
+
     $canonicalUrl = $isFr ? 'https://fluencefrancaise.fr/fr/test-francais-naturalisation/' : 'https://fluencefrancaise.fr/en/french-citizenship-language-test/';
     $frUrl = 'https://fluencefrancaise.fr/fr/test-francais-naturalisation/';
     $enUrl = 'https://fluencefrancaise.fr/en/french-citizenship-language-test/';
-    
+
     // FAQ Data
     $faqs = $isFr ? [
         [
             'q' => "Le niveau B1 suffit-il encore pour la naturalisation ?",
-            'a' => "Seulement pour les dossiers déposés avant le 1er janvier 2026. Pour toute nouvelle demande, c'est le B2, à l'oral et à l'écrit."
+            'a' => "Seulement pour les dossiers officiellement déposés avant le 1er janvier 2026. Pour toute nouvelle demande déposée depuis cette date, le niveau B2 est obligatoire sur les 4 compétences (compréhension orale, écrite, expression orale et écrite)."
         ],
         [
-            'q' => "Existe-t-il un test gratuit avec certificat valable pour la naturalisation ?",
-            'a' => "Non. Les tests en ligne gratuits servent seulement à vous situer. Seuls le TCF, le TEF, le DELF, le DALF ou certains diplômes français sont acceptés dans un dossier."
+            'q' => "Le B2 s'applique-t-il aussi à la nationalité par mariage ?",
+            'a' => "Oui. Depuis le 1er janvier 2026, la nationalité par déclaration (mariage avec conjoint français) exige également le niveau B2 sur l'ensemble des 4 épreuves."
         ],
         [
-            'q' => "Combien coûte le test de français pour la naturalisation ?",
-            'a' => "Chaque centre agréé fixe son tarif. Pour le TCF IRN ou le TEF IRN, comptez généralement entre 130 et 210 €. Une nouvelle tentative est facturée à nouveau."
+            'q' => "Quel test est le plus accessible pour le B2 : TCF IRN, TEF IRN ou DELF B2 ?",
+            'a' => "Les trois évaluent la même norme B2 du CECRL. Le TCF IRN et le TEF IRN se déroulent sur ordinateur avec une échelle de points progressive, tandis que le DELF B2 est un examen complet sur table et oral conférant un diplôme valable à vie."
         ],
         [
-            'q' => "Peut-on passer le test de français en ligne ?",
-            'a' => "Non. Le TCF, le TEF et le DELF se passent dans un centre agréé. La préparation, elle, peut se faire entièrement en ligne."
+            'q' => "Quelle est la durée de validité des attestations de langue ?",
+            'a' => "Les attestations du TCF IRN et du TEF IRN sont valables pendant 2 ans à compter de la date de passation. Le diplôme du DELF B2 est valable à vie et ne périme jamais."
         ],
         [
-            'q' => "Mon diplôme étranger en français me dispense-t-il du test ?",
-            'a' => "Non. Un diplôme délivré par un autre pays ne compte pas, même si vos études étaient en français. En dehors du TCF et du TEF, seuls les diplômes français ou un diplôme attestant votre niveau de français au B2 ou plus sont acceptés."
+            'q' => "Un diplôme universitaire étranger dispensé en français est-il accepté ?",
+            'a' => "Non. Les diplômes délivrés par des établissements étrangers ne dispensent pas du test, même si les études ont été suivies en français. Seuls les diplômes français ou une attestation officielle (TCF, TEF, DELF B2) sont recevables."
         ],
         [
-            'q' => "Qui est dispensé du test de français ?",
-            'a' => "Les personnes dont le handicap ou l'état de santé rend l'évaluation impossible, sur certificat médical. Et, pour la naturalisation, les réfugiés ou apatrides de plus de 70 ans résidant en France depuis au moins 15 ans avec un titre de séjour. Vérifiez votre situation sur <a href=\"https://www.service-public.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary-600 underline\">service-public.fr</a>."
+            'q' => "En quoi consiste l'examen civique pour la naturalisation ?",
+            'a' => "Les candidats à la naturalisation par décret doivent justifier d'une connaissance suffisante de l'histoire, de la culture, des institutions et des valeurs de la République française, évaluée via un questionnaire et l'entretien d'assimilation en préfecture."
         ],
         [
-            'q' => "Ces règles valent-elles pour la nationalité par mariage ?",
-            'a' => "En partie. Depuis le 1er janvier 2026, la nationalité par mariage exige aussi le B2 à l'oral et à l'écrit. Mais elle passe par une déclaration : pas d'examen civique, un entretien d'assimilation à la place. Consultez notre guide de la naturalisation française."
+            'q' => "Combien de temps faut-il pour passer du niveau B1 au niveau B2 ?",
+            'a' => "Avec 2 à 4 heures de cours en direct par semaine associées à un entraînement ciblé, la plupart de nos apprenants comblent l'écart du B1 au B2 en 8 à 14 semaines."
         ]
     ] : [
         [
-            'q' => "Is B1 still enough for French citizenship?",
-            'a' => "Only for applications filed before 1 January 2026. Any new application needs B2, spoken and written."
+            'q' => "Is level B1 still accepted for French citizenship?",
+            'a' => "Only for applications officially filed before 1 January 2026. For all new applications filed since that date, level B2 is strictly required across all 4 skills (listening, reading, writing, and speaking)."
         ],
         [
-            'q' => "Is there a free French test with a certificate for citizenship?",
-            'a' => "No. Free online tests only tell you where you stand. Only the TCF, TEF, DELF, DALF or certain French qualifications are accepted in an application."
+            'q' => "Does the B2 requirement apply to citizenship by marriage?",
+            'a' => "Yes. Under the new 2026 decree, citizenship by declaration (marriage to a French spouse) also requires certified level B2 across all 4 skills."
         ],
         [
-            'q' => "How much does the French citizenship language test cost?",
-            'a' => "Each approved centre sets its own price. For the TCF IRN or TEF IRN, expect roughly €130–210. A retake is charged again."
+            'q' => "Which test is easiest to reach B2: TCF IRN, TEF IRN or DELF B2?",
+            'a' => "All three assess the same CEFR B2 standard. TCF IRN and TEF IRN are computer-based with progressive scoring, while DELF B2 is a traditional written and oral examination awarding a lifetime diploma."
         ],
         [
-            'q' => "Can I take the test online?",
-            'a' => "No. The TCF, TEF and DELF are taken at an approved centre. The preparation can be fully online."
+            'q' => "How long are the test certificates valid?",
+            'a' => "TCF IRN and TEF IRN certificates are valid for 2 years from the exam date. The DELF B2 diploma has lifelong validity and never expires."
         ],
         [
-            'q' => "Does my foreign degree taught in French exempt me?",
-            'a' => "No. A degree issued by another country doesn't count, even if it was taught in French. Besides the TCF and TEF, only French qualifications or a diploma certifying your French at B2 or above are accepted."
+            'q' => "Are foreign university degrees taught in French accepted?",
+            'a' => "No. Diplomas issued by institutions outside France do not provide an exemption, even if your studies were conducted entirely in French. Only French national diplomas or approved test results (TCF, TEF, DELF B2) are accepted."
         ],
         [
-            'q' => "Who is exempt from the language test?",
-            'a' => "People whose disability or health makes testing impossible, with a medical certificate. Also, for naturalisation, refugees or stateless people over 70 who have lived in France for at least 15 years with a residence permit. Check your case on <a href=\"https://www.service-public.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary-600 underline\">service-public.fr</a>."
+            'q' => "What does the civic exam requirement involve?",
+            'a' => "Candidates applying by decree must demonstrate sufficient knowledge of French history, culture, institutions, and Republican principles, evaluated through an official questionnaire and the prefecture assimilation interview."
         ],
         [
-            'q' => "Do these rules apply to citizenship through marriage?",
-            'a' => "Partly. Since 1 January 2026, citizenship through marriage also requires B2, spoken and written. But it goes through a declaration: no civic exam, and an assimilation interview instead. See our French citizenship guide."
-        ]
-    ];
-
-    // Structured Data JSON-LD
-    $breadcrumbSchema = [
-        '@type' => 'BreadcrumbList',
-        'itemListElement' => [
-            [
-                '@type' => 'ListItem',
-                'position' => 1,
-                'name' => $isFr ? 'Accueil' : 'Home',
-                'item' => $isFr ? 'https://fluencefrancaise.fr/fr/' : 'https://fluencefrancaise.fr/en/'
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 2,
-                'name' => 'France',
-                'item' => $canonicalUrl
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 3,
-                'name' => $isFr ? 'Naturalisation' : 'Citizenship',
-                'item' => $canonicalUrl
-            ]
-        ]
-    ];
-
-    $webpageSchema = [
-        '@type' => 'WebPage',
-        'name' => $title,
-        'description' => $metaDesc,
-        'url' => $canonicalUrl,
-        'publisher' => [
-            '@type' => 'EducationalOrganization',
-            'name' => $siteName,
-            'url' => $canonicalUrl
-        ]
-    ];
-
-    $faqSchema = [
-        '@type' => 'FAQPage',
-        'mainEntity' => array_map(function($f) {
-            return [
-                '@type' => 'Question',
-                'name' => $f['q'],
-                'acceptedAnswer' => [
-                    '@type' => 'Answer',
-                    'text' => strip_tags($f['a'])
-                ]
-            ];
-        }, $faqs)
-    ];
-
-    $jsonLd = [
-        '@context' => 'https://schema.org',
-        '@graph' => [
-            $breadcrumbSchema,
-            $webpageSchema,
-            $faqSchema
+            'q' => "How long does it take to prepare from B1 to B2?",
+            'a' => "With 2 to 4 hours of live instruction per week and targeted practice, most students bridge the gap from B1 to B2 in 8 to 14 weeks."
         ]
     ];
 @endphp
-<html lang="{{ $isFr ? 'fr' : 'en' }}">
+<html lang="{{ $isFr ? 'fr' : 'en' }}" class="scroll-smooth">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{{ $title }}</title>
+    <title>{{ $title }} | {{ $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
-    <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
 
-    @include('partials.social-meta', [
-        'ogType' => 'website',
-        'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title,
-        'ogDescription' => $metaDesc,
-        'ogSiteName' => $siteName,
-        'ogImage' => isset($settings['site_logo']) ? asset('storage/' . $settings['site_logo']) : null,
-    ])
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:description" content="{{ $metaDesc }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:site_name" content="{{ $siteName }}">
 
-    <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    @include('partials.favicon')
+    <!-- Tailwind CSS (Vite build) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     @include('partials.theme')
-    @include('partials.custom-scripts-head')
 </head>
-<body class="antialiased bg-white text-ink">
-    @include('partials.custom-scripts-body')
 
-    <div class="landing-page">
-        @include('partials.header')
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-[#0055A4] selection:text-white">
 
-        <!-- BREADCRUMB -->
-        <div class="pt-28 md:pt-36 pb-3 bg-white border-b border-slate-100">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <nav aria-label="Breadcrumb" class="text-xs text-slate-500 font-medium flex items-center gap-2">
-                    <a href="{{ $isFr ? '/fr' : '/en' }}" class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
-                    <span class="text-slate-300">›</span>
-                    <span class="text-slate-600">France</span>
-                    <span class="text-slate-300">›</span>
-                    <span class="text-primary-600 font-semibold">{{ $isFr ? 'Naturalisation' : 'Citizenship' }}</span>
-                </nav>
-            </div>
-        </div>
+    <div class="min-h-screen flex flex-col justify-between">
+        <div>
+            @include('partials.header')
 
-        <!-- ============ SECTION 1: HERO ============ -->
-        <section class="relative overflow-hidden bg-white pt-10 md:pt-16 pb-16 md:pb-24">
-            <div class="hero-aurora-strong"></div>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="max-w-3xl mx-auto text-center reveal">
-                    <div class="inline-flex flex-col items-center justify-center gap-1.5 mb-3">
-                        <span class="text-xs sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary-600">{{ $isFr ? 'NATIONALITÉ FRANÇAISE' : 'FRENCH CITIZENSHIP' }}</span>
-                        <span class="tricolor my-1" style="height:3.5px;width:48px;"><i></i><i></i><i></i></span>
+            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <section
+                class="relative pt-8 pb-12 sm:pt-14 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
+
+                    <nav class="flex items-center justify-center gap-1.5 text-xs text-slate-500 mb-6 font-medium">
+                        <a href="{{ $isFr ? '/fr' : '/en' }}"
+                            class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
+                        <span>›</span>
+                        <a href="{{ $isFr ? '/fr/cours' : '/en/courses' }}"
+                            class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Examens' : 'Exams' }}</a>
+                        <span>›</span>
+                        <span class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation' : 'Citizenship' }}</span>
+                    </nav>
+
+                    <div class="inline-flex items-center gap-1.5 mb-5">
+                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                            {{ $isFr ? 'NATURALISATION FRANÇAISE · NOUVELLE EXIGENCE 2026' : 'FRENCH CITIZENSHIP · NEW 2026 LANGUAGE REQUIREMENT' }}
+                        </span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-semibold text-ink tracking-tight leading-tight">
-                        {{ $isFr ? 'Test de français pour la naturalisation : visez le B2' : 'French Citizenship Language Test: How to Reach B2' }}
-                    </h1>
+                    <div class="flex flex-col items-center justify-center">
+                        <h1
+                            class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.28]">
+                            {{ $isFr ? 'Test de français pour la naturalisation :' : 'French Citizenship Language Test:' }}
+                            <br>
+                            <span class="relative inline-block text-[#0055a4]">
+                                {{ $isFr ? 'Visez le niveau B2' : 'How to Reach B2' }}
+                            </span>
+                        </h1>
 
-                    <p class="mt-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                        {{ $isFr ? 'Mis à jour le 6 octobre 2026' : 'Updated 6 October 2026' }}
-                    </p>
-
-                    <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                        {{ $isFr 
-                            ? 'Depuis le 1er janvier 2026, la naturalisation exige le B2 à l\'oral et à l\'écrit : voici comment le prouver, et l\'atteindre.' 
-                            : 'Since 1 January 2026, French citizenship requires B2 French, spoken and written: here\'s how to prove it, and how to get there.' 
-                        }}
-                    </p>
-
-                    <div class="mt-8 flex flex-col items-center gap-3">
-                        <a href="/register" class="btn btn-primary btn-lg">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }} <i class="fas fa-arrow-right text-xs ml-1"></i>
-                        </a>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium">
-                            {{ $isFr 
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
-                            }}
-                        </p>
-                    </div>
-
-                    <!-- 3 FACTS STRIP -->
-                    <div class="mt-12 grid sm:grid-cols-3 gap-4 pt-8 border-t border-slate-100 text-left">
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-award"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? 'Préparation TCF IRN, TEF IRN et DELF B2' : 'TCF IRN, TEF IRN and DELF B2 prep' }}</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-laptop"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? 'Examens blancs dans votre espace élève' : 'Mock exams in your student portal' }}</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-mist rounded-2xl p-4 border border-slate-100">
-                            <span class="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 grid place-content-center shrink-0"><i class="fas fa-pen-nib"></i></span>
-                            <span class="text-sm font-semibold text-ink">{{ $isFr ? 'Retour sur chaque devoir' : 'Feedback on every assignment' }}</span>
+                        <div class="w-full max-w-xs sm:max-w-md h-1 flex mt-3">
+                            <span class="w-1/3 h-full bg-[#0055A4]"></span>
+                            <span class="w-1/3 h-full bg-slate-200"></span>
+                            <span class="w-1/3 h-full bg-[#EF4135]"></span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ============ SECTION 2: ACCEPTED PROOF ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Règle officielle' : 'Official Rule' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Quel niveau de français pour la naturalisation en 2026 ?' : 'What level of French do you need for French citizenship?' }}
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        {{ $isFr 
-                            ? 'Le niveau B2, à l\'oral comme à l\'écrit, pour toute demande déposée depuis le 1er janvier 2026. Vous le prouvez avec un TCF ou un TEF de moins de 2 ans, un DELF B2 ou certains diplômes français. Une simple attestation de cours ne suffit pas.'
-                            : 'B2, in both speaking and writing, for any application filed since 1 January 2026. You prove it with a TCF or TEF result under 2 years old, a DELF B2 diploma or certain French qualifications. A certificate of attendance from a language school doesn\'t count.'
-                        }}
-                    </p>
-
-                    <!-- Table -->
-                    <div class="mt-8 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card">
-                        <table class="w-full text-left text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200">
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Preuve acceptée' : 'Accepted proof' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink">{{ $isFr ? 'Validité' : 'Valid for' }}</th>
-                                    <th class="py-4 px-6 font-bold text-ink text-right">{{ $isFr ? 'À savoir' : 'Good to know' }}</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">
-                                        <a href="{{ $isFr ? '/fr/tcf-irn' : '/en/tcf-irn' }}" class="text-primary-600 underline font-semibold hover:text-primary-700">TCF IRN</a>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold">{{ $isFr ? '2 ans' : '2 years' }}</td>
-                                    <td class="py-4 px-6 text-slate-600 text-right">{{ $isFr ? "Un niveau par compétence, 1 h 35 d'épreuves" : 'A level for each skill, 1 h 35 of testing' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">
-                                        <span>TEF IRN</span>
-                                    </td>
-                                    <td class="py-4 px-6 text-slate-700 font-semibold">{{ $isFr ? '2 ans' : '2 years' }}</td>
-                                    <td class="py-4 px-6 text-slate-600 text-right">{{ $isFr ? '4 épreuves obligatoires dans la même session' : '4 compulsory sections in 1 session' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">
-                                        <span>DELF B2 {{ $isFr ? 'ou DALF' : 'or DALF' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 font-bold text-primary-600">{{ $isFr ? 'À vie' : 'Life' }}</td>
-                                    <td class="py-4 px-6 text-slate-600 text-right">{{ $isFr ? "Un diplôme : il n'expire jamais" : 'A diploma: it never expires' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-6 font-bold text-ink">
-                                        <span>{{ $isFr ? 'Diplôme ou certification français (brevet, diplôme d\'État ou certification professionnelle de niveau 3 et plus)' : 'French qualification (brevet, or a state diploma or professional certification at level 3+)' }}</span>
-                                    </td>
-                                    <td class="py-4 px-6 font-bold text-primary-600">{{ $isFr ? 'À vie' : 'Life' }}</td>
-                                    <td class="py-4 px-6 text-slate-600 text-right">{{ $isFr ? 'Diplômes et certifications français uniquement' : 'French qualifications only' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 3: B1 OR B2? ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Changement 2026' : '2026 Changes' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'B1 ou B2 : ce qui a changé en 2026' : 'B1 or B2? What changed in 2026' }}
-                    </h2>
-                    
-                    <div class="mt-6 space-y-5 text-lg text-slate-600 leading-relaxed">
-                        <p>
-                            {{ $isFr
-                                ? "Si vous avez lu « niveau B1 » quelque part, l'information date d'avant 2026. La loi du 26 janvier 2024 a relevé le niveau, et le B2 s'applique depuis le 1er janvier 2026. Le B1 ne vaut plus que pour les dossiers déposés avant cette date."
-                                : "If you've read “B1” somewhere, that advice predates 2026. The immigration law of 26 January 2024 raised the bar, and B2 has applied since 1 January 2026. B1 now only covers applications filed before that date."
-                            }}
-                        </p>
-                        <p>
-                            {{ $isFr
-                                ? "L'écart entre les 2 niveaux est réel. Au B1, on se débrouille. Au B2, on argumente, on nuance, on suit un débat sans tout faire répéter."
-                                : "The gap between the 2 levels is real. At B1, you get by. At B2, you argue, you nuance, you follow a debate without asking people to repeat themselves."
-                            }}
-                        </p>
-                        <div class="bg-primary-50/70 border-l-4 border-primary-600 rounded-2xl p-6 text-ink font-medium">
-                            {{ $isFr
-                                ? "Préparer le B1 aujourd'hui, c'est préparer un niveau qui ne suffit plus pour un nouveau dossier."
-                                : "Preparing for B1 today means preparing for a level that no longer counts on a new application."
-                            }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 4: WHICH TEST TO TAKE? ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Comparatif' : 'Comparison' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Quel test choisir pour la naturalisation ?' : 'Which test should you take for French citizenship?' }}
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                    <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
                         {{ $isFr
-                            ? "Les 3 tests sont acceptés. La différence se joue sur la validité et sur la façon de noter. Le TCF IRN et le TEF IRN donnent un niveau par compétence et un niveau global. Le DELF B2 se valide sur une note globale : 50 sur 100, avec au moins 5 sur 25 dans chaque épreuve."
-                            : "All 3 are accepted. The differences are validity and scoring. The TCF IRN and TEF IRN give you a level for each skill and an overall level. The DELF B2 is passed on an overall score: 50 out of 100, with at least 5 out of 25 in each section."
+    ? 'Depuis le 1er janvier 2026, la naturalisation exige le niveau B2 sur les 4 compétences. Nous vous préparons à l\'examen de votre choix, du diagnostic initial au jour de l\'épreuve.'
+    : 'Since 1 January 2026, French citizenship requires level B2 in French across all 4 skills. We train you for the exact test you choose, from your first class to exam day.'
                         }}
                     </p>
 
-                    <!-- Table -->
-                    <div class="mt-8 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card">
-                        <table class="w-full text-left text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200">
-                                    <th class="py-4 px-5 font-bold text-ink"></th>
-                                    <th class="py-4 px-5 font-bold text-primary-600">TCF IRN</th>
-                                    <th class="py-4 px-5 font-bold text-ink">TEF IRN</th>
-                                    <th class="py-4 px-5 font-bold text-ink">DELF B2</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr>
-                                    <td class="py-4 px-5 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Organisme' : 'Run by' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">France Éducation international</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Le français des affaires (CCI Paris Île-de-France)' : 'Le français des affaires (Paris Chamber of Commerce)' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">France Éducation international</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-5 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Format' : 'Format' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? '4 épreuves, 1 h 35' : '4 sections, 1 h 35' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? '4 épreuves, 1 session' : '4 sections, 1 session' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? '2 h 30 d\'écrit + oral de 20 min' : '2 h 30 written + 20 min speaking' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-5 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Résultat' : 'Result' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Diplôme si 50/100 et 5/25 minimum par épreuve' : 'Diploma at 50/100, minimum 5/25 per section' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-5 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Validité' : 'Valid for' }}</td>
-                                    <td class="py-4 px-5 font-semibold text-slate-700">{{ $isFr ? '2 ans' : '2 years' }}</td>
-                                    <td class="py-4 px-5 font-semibold text-slate-700">{{ $isFr ? '2 ans' : '2 years' }}</td>
-                                    <td class="py-4 px-5 font-bold text-primary-600">{{ $isFr ? 'À vie' : 'Life' }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4 px-5 font-bold text-ink bg-slate-50/70">{{ $isFr ? 'Bon choix si…' : 'Best if…' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Vous voulez un test court' : 'You want a short test' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Les dates ou le centre vous arrangent' : 'The dates or centre suit you' }}</td>
-                                    <td class="py-4 px-5 text-slate-700">{{ $isFr ? 'Votre calendrier est incertain' : 'Your timeline is uncertain' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <p class="mt-6 text-sm text-slate-600 leading-relaxed">
-                        {{ $isFr 
-                            ? 'Pour aller plus loin : TCF, TEF ou DELF, le comparatif complet' 
-                            : 'More detail: TCF vs TEF vs DELF, the full comparison' 
-                        }}
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 5: CIVIC EXAM ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal bg-[#002654] text-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lift">
-                    <div class="tricolor-bar absolute top-0 left-0 right-0"></div>
-                    <span class="eyebrow text-[#8eb8e1]"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Épreuve civique' : 'Civic Test' }}</span>
-                    <h2 class="mt-4 text-2xl md:text-3xl font-semibold">
-                        {{ $isFr ? 'La langue ne suffit plus : l\'examen civique' : 'Language isn\'t the only test: the civic exam' }}
-                    </h2>
-                    <p class="mt-4 text-slate-300 leading-relaxed">
-                        {{ $isFr
-                            ? 'Depuis 2026, la naturalisation par décret exige aussi la réussite à un examen civique : 40 questions, 45 minutes, 32 bonnes réponses minimum. Toutes les questions sont en français. Votre niveau de lecture compte donc aussi ici. Sa préparation est incluse dans nos cours, sans supplément.'
-                            : 'Since 2026, citizenship by decree also requires passing a civic exam: 40 questions, 45 minutes, at least 32 correct. Every question is in French, so your reading level matters here too. Its prep is included in our classes at no extra cost.'
-                        }}
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 6: HOW WE GET YOU TO B2 ============ -->
-        <section class="py-16 md:py-24 bg-mist">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Méthode' : 'Methodology' }}</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Notre préparation au B2' : 'How we get you to B2' }}
-                    </h2>
-
-                    @php
-                        $prepSteps = $isFr ? [
-                            "<strong>Votre niveau, compétence par compétence.</strong> Dès le premier cours, votre tuteur situe vos 4 compétences face au B2.",
-                            "<strong>Le bon test pour votre calendrier.</strong> TCF IRN, TEF IRN ou DELF B2 : nous vous aidons à choisir, puis nous préparons ce format précis.",
-                            "<strong>Des cours en direct, 2 ou 4 h par semaine.</strong> En particulier ou en mini-groupe de 2 à 5 personnes, sur Google Meet, avec vos notes après chaque séance.",
-                            "<strong>Des examens blancs jusqu'au jour J.</strong> Votre espace élève contient des tests au format de l'examen et des exercices à vitesse native. Chaque devoir reçoit un retour."
-                        ] : [
-                            "<strong>Your level, skill by skill.</strong> In your first class, your tutor places your 4 skills against B2.",
-                            "<strong>The right test for your timeline.</strong> TCF IRN, TEF IRN or DELF B2: we help you choose, then train that exact format.",
-                            "<strong>Live classes, 2 or 4 hours a week.</strong> 1:1 or in a group of 2–5 on Google Meet, with notes after every session.",
-                            "<strong>Mock exams until test day.</strong> Your student portal has exam-format tests and native-speed practice. Every assignment gets feedback."
-                        ];
-                    @endphp
-
-                    <div class="mt-8 space-y-4">
-                        @foreach($prepSteps as $idx => $step)
-                        <div class="flex items-start gap-4 bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                            <span class="w-8 h-8 rounded-full bg-primary-600 text-white grid place-content-center text-sm font-bold shrink-0 mt-0.5">{{ $idx + 1 }}</span>
-                            <p class="text-slate-700 leading-relaxed">{!! $step !!}</p>
-                        </div>
-                        @endforeach
-                    </div>
-
-                    <div class="mt-10 text-center flex flex-col items-center gap-2">
-                        <a href="/register" class="btn btn-primary btn-lg">
-                            {{ $isFr ? "S'inscrire" : 'Enroll now' }} <i class="fas fa-arrow-right text-xs ml-1"></i>
-                        </a>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium">
-                            {{ $isFr 
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
-                            }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 7: FAQ ============ -->
-        <section id="faq" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <div class="text-center mb-12 reveal">
-                    <span class="eyebrow justify-center"><span class="tricolor"><i></i><i></i><i></i></span> FAQ</span>
-                    <h2 class="mt-4 text-3xl md:text-4xl font-semibold text-ink">
-                        {{ $isFr ? 'Questions fréquentes' : 'FAQ' }}
-                    </h2>
-                </div>
-
-                <div class="space-y-3 reveal">
-                    @foreach($faqs as $item)
-                    <div class="bg-mist rounded-2xl border border-slate-100 overflow-hidden">
-                        <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left gap-4 cursor-pointer">
-                            <span class="font-bold text-ink text-base">{{ $item['q'] }}</span>
-                            <i class="fas fa-plus text-primary-600 text-sm transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6 text-slate-600 leading-relaxed text-sm">
-                            {!! $item['a'] !!}
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ SECTION 8: FINAL CTA & SOURCES ============ -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden max-w-4xl mx-auto shadow-lift">
-                    <div class="absolute inset-x-0 bottom-0 h-1.5" style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
-
-                    <h2 class="text-3xl md:text-5xl font-semibold leading-tight max-w-2xl mx-auto">
-                        {{ $isFr ? 'Votre niveau. Le niveau exigé. Nous comblons l\'écart.' : 'Your level. The required level. We close the gap.' }}
-                    </h2>
-
-                    <p class="mt-4 text-lg text-primary-100 max-w-xl mx-auto">
-                        {{ $isFr 
-                            ? 'Votre premier cours situe vos 4 compétences face au B2 et fixe le plan pour y arriver. Vous choisissez le rythme : 2 ou 4 heures par semaine.' 
-                            : 'Your first class places your 4 skills against B2 and sets the plan to get there. You choose the pace: 2 or 4 hours a week.' 
-                        }}
-                    </p>
-
-                    <div class="mt-8 flex flex-col items-center gap-3">
-                        <a href="/register" class="btn btn-onnavy btn-lg">
+                    <div class="mt-8">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
                             {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
-                        <p class="text-xs sm:text-sm text-primary-100 font-medium">
-                            {{ $isFr 
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' 
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' 
+                        <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
+                            {{ $isFr
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
                             }}
                         </p>
                     </div>
 
-                    <!-- Referral note -->
-                    <div class="mt-8 pt-6 border-t border-white/20 text-xs sm:text-sm text-primary-100 space-y-2">
-                        <p>
-                            @if($isFr)
-                                Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami. <a href="/fr/contact#parrainage" class="text-white underline font-bold hover:text-accent">Contactez-nous</a>
-                            @else
-                                Coming with a friend? €50 off per month, for you and for them. <a href="/en/contact#referral" class="text-white underline font-bold hover:text-accent">Contact us</a>
-                            @endif
+                    <div
+                        class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-certificate text-[#0055a4]"></i>
+                            <span>{{ $isFr ? 'Niveau B2 obligatoire en 2026' : 'B2 required since 1 Jan 2026' }}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-layer-group text-[#0055a4]"></i>
+                            <span>{{ $isFr ? '4 épreuves obligatoires' : '4 compulsory skills' }}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-award text-[#0055a4]"></i>
+                            <span>{{ $isFr ? 'TCF IRN, TEF IRN ou DELF B2' : 'TCF IRN, TEF IRN or DELF B2' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 2: WHAT LEVEL OF FRENCH DO YOU NEED? ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                        <div class="lg:col-span-7">
+                            <div class="inline-flex items-center gap-1.5 mb-3">
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                    {{ $isFr ? 'RÉFORME 2026' : '2026 LANGUAGE REFORM' }}
+                                </span>
+                            </div>
+                            <h2
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                {{ $isFr ? 'Quel niveau de français pour la naturalisation en 2026 ?' : 'What level of French do you need for French citizenship?' }}
+                            </h2>
+                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? "L'article 21-24 du Code civil exige désormais le niveau B2 du CECRL pour la nationalité française (décret applicable depuis le 1er janvier 2026). Il s'applique à la naturalisation par décret et par déclaration (mariage)."
+    : "Article 21-24 of the French Civil Code now requires level B2 of the CEFR for French nationality (decree effective 1 January 2026). It applies to naturalisation by decree and marriage."
+                                }}
+                            </p>
+                            <div class="mt-6 flex items-center gap-2 text-xs sm:text-sm text-[#0055A4] font-semibold">
+                                <svg class="w-4 h-4 text-[#0055A4]" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                                <span>{{ $isFr ? 'Conforme aux décrets officiels du ministère de l\'Intérieur.' : 'Verified against official 2026 Ministry of the Interior specifications.' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5">
+                            <div class="rounded-3xl bg-[#002654] text-white overflow-hidden relative">
+                                <div class="h-[3px] w-full flex">
+                                    <span class="w-1/3 h-full bg-[#0055A4]"></span>
+                                    <span class="w-1/3 h-full bg-white"></span>
+                                    <span class="w-1/3 h-full bg-[#EF4135]"></span>
+                                </div>
+                                <div class="grid grid-cols-2 divide-x divide-y divide-white/10 p-6 sm:p-8">
+                                    <div class="p-4 sm:p-5">
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">B2</div>
+                                        <div class="text-xs text-slate-300 mt-1 font-normal">
+                                            {{ $isFr ? 'Niveau CECRL exigé' : 'Required CEFR level' }}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-5">
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">4 épreuves</div>
+                                        <div class="text-xs text-slate-300 mt-1 font-normal">
+                                            {{ $isFr ? 'Oral et écrit indissociables' : 'All tested equally' }}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-5">
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">3 tests</div>
+                                        <div class="text-xs text-slate-300 mt-1 font-normal">
+                                            {{ $isFr ? 'TCF, TEF ou DELF' : 'TCF, TEF or DELF' }}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-5">
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">2026</div>
+                                        <div class="text-xs text-slate-300 mt-1 font-normal">
+                                            {{ $isFr ? 'En vigueur depuis le 1er janv.' : 'In force since 1 Jan' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-[#f8fafc] rounded-3xl border border-slate-200/80 p-6 sm:p-8">
+                        <div class="divide-y divide-slate-200/60">
+                            <div class="py-4 first:pt-0 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 text-sm">
+                                <span class="md:col-span-4 font-bold text-[#10233e]">
+                                    {{ $isFr ? 'Naturalisation par décret' : 'Naturalisation by decree' }}
+                                </span>
+                                <span class="md:col-span-2 font-bold text-[#0055a4]">B2</span>
+                                <span class="md:col-span-6 text-slate-600 font-normal">
+                                    {{ $isFr ? 'Remplace le niveau B1 exigé jusqu’au 31 décembre 2025' : 'Replaces the previous B1 requirement' }}
+                                </span>
+                            </div>
+                            <div class="py-4 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 text-sm">
+                                <span class="md:col-span-4 font-bold text-[#10233e]">
+                                    {{ $isFr ? 'Nationalité par mariage (déclaration)' : 'Citizenship by marriage (declaration)' }}
+                                </span>
+                                <span class="md:col-span-2 font-bold text-[#0055a4]">B2</span>
+                                <span class="md:col-span-6 text-slate-600 font-normal">
+                                    {{ $isFr ? 'Relevé de B1 à B2 depuis le 1er janvier 2026' : 'Raised from B1 to B2 in 2026' }}
+                                </span>
+                            </div>
+                            <div class="py-4 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 text-sm">
+                                <span class="md:col-span-4 font-bold text-[#10233e]">
+                                    {{ $isFr ? 'Carte de résident (10 ans)' : '10-year resident card' }}
+                                </span>
+                                <span class="md:col-span-2 font-bold text-[#0055a4]">B1</span>
+                                <span class="md:col-span-6 text-slate-600 font-normal">
+                                    {{ $isFr ? 'Relevé de A2 à B1 depuis le 1er janvier 2026' : 'Raised from A2 to B1 in 2026' }}
+                                </span>
+                            </div>
+                            <div class="py-4 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 text-sm">
+                                <span class="md:col-span-4 font-bold text-[#10233e]">
+                                    {{ $isFr ? 'Carte de séjour pluriannuelle' : 'Multi-year residence permit' }}
+                                </span>
+                                <span class="md:col-span-2 font-bold text-[#0055a4]">A2</span>
+                                <span class="md:col-span-6 text-slate-600 font-normal">
+                                    {{ $isFr ? 'Relevé de A1 à A2 depuis le 1er janvier 2026' : 'Raised from A1 to A2 in 2026' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 3: B1 OR B2? WHAT CHANGED IN 2026 ============ -->
+            <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-7">
+                            <div class="inline-flex items-center gap-1.5 mb-3">
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                    {{ $isFr ? 'DIFFÉRENCE FONDAMENTALE' : 'KEY DIFFERENCE' }}
+                                </span>
+                            </div>
+                            <h2
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                {{ $isFr ? 'B1 ou B2 : ce qui a changé en 2026' : 'B1 or B2? What changed in 2026' }}
+                            </h2>
+                            <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'Le niveau B1 validait une autonomie pratique : comprendre l’essentiel, faire face aux situations courantes et donner un avis simple.'
+    : 'Level B1 demonstrated basic independence: handling everyday transactions, explaining problems simply, and giving personal opinions.'
+                                }}
+                            </p>
+                            <p class="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'Le niveau B2 exige une réelle argumentation : défendre un point de vue nuancé, comprendre des discours complexes et rédiger un texte structuré sans répétitions syntaxiques.'
+    : 'Level B2 requires genuine argument, nuance, and structural control: you must be able to defend an opinion, synthesize complex viewpoints, and write clear, structured arguments.'
+                                }}
+                            </p>
+                        </div>
+
+                        <div class="lg:col-span-5">
+                            <div
+                                class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 flex items-center justify-around gap-4">
+                                <div class="text-center">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-slate-300">B1</div>
+                                    <div class="text-xs text-slate-400 mt-1">
+                                        {{ $isFr ? 'Jusqu\'en 2025' : 'Until Dec 2025' }}</div>
+                                    <div class="text-[11px] text-slate-400 font-medium">
+                                        {{ $isFr ? 'Utilisateur seuil' : 'Threshold user' }}</div>
+                                </div>
+                                <div class="text-slate-300 text-2xl font-bold">→</div>
+                                <div class="text-center p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-[#0055a4]">B2</div>
+                                    <div class="text-xs text-[#0055a4] font-bold mt-1">
+                                        {{ $isFr ? 'Depuis 2026' : 'Since Jan 2026' }}</div>
+                                    <div class="text-[11px] text-slate-600 font-semibold">
+                                        {{ $isFr ? 'Obligatoire' : 'Mandatory' }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
+                        <i class="fas fa-circle-info text-[#0055a4]"></i>
+                        <span>
+                            {{ $isFr
+    ? 'Les dossiers déposés avant le 1er janvier 2026 sont instruits selon l’ancienne règle (B1). Tout nouveau dossier exige le B2.'
+    : 'Applications filed before 1 January 2026 remain processed under the former B1 rule. All applications filed since must show B2.'
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 4: WHICH TEST SHOULD YOU TAKE? ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-1.5 mb-3">
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                {{ $isFr ? 'COMPARATIF DES EXAMENS' : 'OFFICIAL EXAMS COMPARED' }}
+                            </span>
+                        </div>
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            {{ $isFr ? 'Quel test choisir pour la naturalisation ?' : 'Which test should you take for French citizenship?' }}
+                        </h2>
+                        <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
+                            {{ $isFr
+    ? 'Trois tests officiels sont acceptés par le ministère de l’Intérieur pour justifier du niveau B2. Voici leurs caractéristiques comparées :'
+    : 'The Ministry of the Interior accepts 3 official standardized tests for French nationality. Here is how they compare:'
+                            }}
                         </p>
-                        <p class="text-primary-200">
-                            {{ $isFr 
-                                ? 'Vous visez une carte de séjour plutôt que la nationalité ? Niveau A2 ou B1 :' 
-                                : 'Applying for a residence card rather than citizenship? See the A2 and B1 rules' 
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-[#0055a4] text-white">
+                                        <th class="py-4 px-6 font-semibold">{{ $isFr ? 'Critère' : 'Criteria' }}</th>
+                                        <th class="py-4 px-6 font-semibold">TCF IRN</th>
+                                        <th class="py-4 px-6 font-semibold">TEF IRN</th>
+                                        <th class="py-4 px-6 font-semibold">DELF B2</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            {{ $isFr ? 'Format' : 'Format' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '1 h 35 · 4 épreuves' : '1 h 35 · 4 sections' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '1 h 40 · 4 épreuves' : '1 h 40 · 4 sections' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '2 h 30 écrit + 20 min oral' : '2 h 30 written + 20 min oral' }}
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            {{ $isFr ? 'Évaluation' : 'Scoring scale' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Admis / Non admis (50/100)' : 'Pass/Fail (50/100 min)' }}</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            {{ $isFr ? 'Délais des résultats' : 'Results turnaround' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '15 à 20 jours ouvrés' : '15 to 20 working days' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '1 à 10 jours ouvrés' : '1 to 10 working days' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? '4 à 6 semaines' : '4 to 6 weeks' }}</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            {{ $isFr ? 'Validité' : 'Validity' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">{{ $isFr ? '2 ans' : '2 years' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">{{ $isFr ? '2 ans' : '2 years' }}</td>
+                                        <td class="py-4 px-6 text-slate-600 font-bold text-[#0055a4]">
+                                            {{ $isFr ? 'À vie (Diplôme)' : 'Lifelong (Diploma)' }}</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            {{ $isFr ? 'Idéal pour' : 'Best for' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Évaluation multi-niveaux' : 'Multi-level scoring' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Délais rapides' : 'Fast turnaround' }}</td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            {{ $isFr ? 'Certificat définitif' : 'Permanent diploma' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 5: THE CIVIC EXAM ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                    <div class="rounded-3xl bg-[#002654] text-white p-8 sm:p-12 relative overflow-hidden">
+                        <div class="absolute inset-x-0 top-0 h-1 flex">
+                            <span class="w-1/3 bg-[#0055A4]"></span>
+                            <span class="w-1/3 bg-white"></span>
+                            <span class="w-1/3 bg-[#EF4135]"></span>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7">
+                                <span
+                                    class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 mb-4">
+                                    {{ $isFr ? 'EXAMEN CIVIQUE' : 'THE CIVIC KNOWLEDGE REQUIREMENT' }}
+                                </span>
+                                <h3
+                                    class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+                                    {{ $isFr ? 'La langue ne suffit plus : l\'examen civique' : 'Language isn\'t the only test: the civic exam' }}
+                                </h3>
+                                <p class="mt-4 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                                    {{ $isFr
+    ? 'En plus de l\'attestation B2, la naturalisation par décret impose la réussite d\'un examen civique portant sur l\'histoire, les institutions et les valeurs de la République française.'
+    : 'Along with the B2 language requirement, candidates for naturalisation by decree must pass an official civic exam testing knowledge of French history, institutions, and Republican values.'
+                                    }}
+                                </p>
+                            </div>
+                            <div class="lg:col-span-5">
+                                <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10">
+                                    <div class="flex items-center gap-2 text-sm font-bold text-white mb-2">
+                                        <i class="fas fa-shield-halved text-blue-300"></i>
+                                        <span>{{ $isFr ? 'Inclus dans votre préparation' : 'Included in your preparation' }}</span>
+                                    </div>
+                                    <p class="text-xs text-slate-200 leading-relaxed font-normal">
+                                        {{ $isFr
+    ? 'Nous vous entraînons à la fois sur les 4 épreuves du B2 et sur les questions types de l\'entretien d\'assimilation en préfecture.'
+    : 'We train you for both the B2 language test and the prefecture assimilation interview questions.'
+                                        }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION 6: HOW WE GET YOU TO B2 ============ -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                        <div class="inline-flex items-center gap-1.5 mb-3">
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
+                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
+                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                {{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}
+                            </span>
+                        </div>
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            {{ $isFr ? 'Notre préparation au B2' : 'How we get you to B2' }}
+                        </h2>
+                        <p
+                            class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto font-normal">
+                            {{ $isFr
+    ? 'Un accompagnement ciblé dès votre premier cours jusqu’à l’examen. De vraies simulations. Pas de programme générique.'
+    : 'Targeted 1:1 or small-group live coaching from your initial benchmark to exam day.'
+                            }}
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="flex flex-col items-start">
+                            <div class="relative flex items-center w-full mb-4">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm font-semibold flex items-center justify-center border border-blue-100 flex-shrink-0">
+                                    01
+                                </span>
+                                <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4"></div>
+                            </div>
+                            <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                {{ $isFr ? 'Votre niveau, diagnostiqué' : 'Your level, diagnosed' }}
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'Votre première séance situe vos 4 compétences face aux exigences du B2.'
+    : 'Your first session benchmarks all 4 skills against the official B2 descriptors.'
+                                }}
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-start">
+                            <div class="relative flex items-center w-full mb-4">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm font-semibold flex items-center justify-center border border-blue-100 flex-shrink-0">
+                                    02
+                                </span>
+                                <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4"></div>
+                            </div>
+                            <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                {{ $isFr ? 'Un calendrier calé sur votre dossier' : 'The roadmap to your timeline' }}
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'Nous planifions les heures nécessaires pour atteindre le B2 avant votre dépôt en préfecture.'
+    : 'We calculate the exact hours needed to reach B2 before your prefecture submission date.'
+                                }}
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-start">
+                            <div class="relative flex items-center w-full mb-4">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm font-semibold flex items-center justify-center border border-blue-100 flex-shrink-0">
+                                    03
+                                </span>
+                                <div class="hidden lg:block flex-1 h-[1px] bg-[#e1eaf2] ml-4 -mr-4"></div>
+                            </div>
+                            <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                {{ $isFr ? 'Cours en direct, 2 ou 4 h par semaine' : 'Live classes, 2 or 4 hours a week' }}
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'En particulier ou mini-groupe sur Google Meet, avec notes et devoirs après chaque séance.'
+    : '1:1 or in mini-groups on Google Meet, with structured notes and homework after every class.'
+                                }}
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-start">
+                            <div class="relative flex items-center w-full mb-4">
+                                <span
+                                    class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055a4] text-sm font-semibold flex items-center justify-center border border-blue-100 flex-shrink-0">
+                                    04
+                                </span>
+                            </div>
+                            <h3 class="font-bold text-[#10233e] text-base sm:text-[17px] mb-2">
+                                {{ $isFr ? 'Examens blancs et corrections' : 'Mocks exams and scoring' }}
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal">
+                                {{ $isFr
+    ? 'Simulations complètes en conditions réelles du test choisi (TCF, TEF ou DELF B2).'
+    : 'Full simulations under real exam conditions for your chosen test (TCF, TEF or DELF B2).'
+                                }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 text-center">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055a4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+                            {{ $isFr ? "S'inscrire" : 'Enroll now' }}
+                            <i class="fas fa-arrow-right text-xs ml-2.5"></i>
+                        </a>
+                        <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
+                            {{ $isFr
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
                             }}
                         </p>
                     </div>
                 </div>
+            </section>
 
-                <!-- Official Sources Line -->
-                <div class="mt-12 text-center text-xs text-slate-400 max-w-3xl mx-auto">
-                    <p>
-                        <strong>{{ $isFr ? 'Sources :' : 'Sources:' }}</strong>
-                        <a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }}</a>
-                        ·
-                        <a href="https://www.service-public.gouv.fr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">Service-public.fr – {{ $isFr ? 'cartes de séjour' : 'residence cards' }}</a>
-                    </p>
+            <!-- ============ SECTION 7: FAQ ============ -->
+            @include('partials.faq-section', [
+                'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
+                'title' => $isFr ? 'Naturalisation<br>FAQ' : 'French citizenship<br>FAQ',
+                'subtitle' => $isFr
+                    ? 'Tout ce que vous devez savoir sur le niveau B2 exigé pour la nationalité française.'
+                    : 'Answers to the most common questions about the B2 language requirement and French nationality.',
+                'faqs' => $faqs
+            ])
+
+            <!-- ============ SECTION 8: FINAL CTA & SOURCES ============ -->
+            <section class="py-16 sm:py-20 bg-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                    @include('partials.cta-banner', [
+                        'eyebrow' => $isFr ? 'ATTEIGNEZ VOTRE OBJECTIF' : "LET'S GET YOU THERE",
+                        'title' => $isFr ? "Votre niveau. Le niveau exigé.<br>Nous comblons l'écart." : 'Your level. The required level.<br>We close the gap.',
+                        'description' => $isFr
+                            ? 'Votre premier cours définit votre niveau dans chaque compétence et le plan pour atteindre le B2 exigé par votre dossier. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                            : 'Your first class sets your level in each section and the plan to reach B2 for your citizenship dossier. You choose the pace: 2 or 4 hours a week.',
+                        'primaryBtnText' => $isFr ? "S'inscrire" : 'Enroll now',
+                        'primaryBtnUrl' => '/register',
+                        'secondaryBtnText' => $isFr ? 'Nous contacter' : 'Talk to us',
+                        'secondaryBtnUrl' => '/contact',
+                        'helperText' => $isFr
+                            ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
+                    ])
+
+                    <div class="mt-8 text-center text-xs sm:text-sm text-slate-500 font-normal">
+                        <span>{{ $isFr ? 'Vous venez à deux ? 50 € de réduction par mois, pour vous et votre proche.' : 'Coming with a friend? €50 off per month, for you and for them.' }}</span>
+                        <a href="{{ $isFr ? '/fr/contact' : '/en/contact' }}"
+                            class="text-[#0055a4] font-semibold hover:underline inline-flex items-center gap-1 ml-1.5">
+                            <span>{{ $isFr ? 'Contactez-nous' : 'Contact us' }}</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    <div class="border-t border-slate-200/80 my-8"></div>
+
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
+                        <span
+                            class="font-bold uppercase tracking-wider text-slate-500">{{ $isFr ? 'SOURCES' : 'SOURCES' }}</span>
+                        <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2213" target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
+                            <span>Service-public.fr — Naturalisation</span>
+                            <span class="text-[10px]">↗</span>
+                        </a>
+                        <span class="text-slate-300">·</span>
+                        <a href="https://www.france-education-international.fr/test/tcf-irn" target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
+                            <span>France Éducation international — TCF IRN</span>
+                            <span class="text-[10px]">↗</span>
+                        </a>
+                        <span class="text-slate-300">·</span>
+                        <a href="https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/tef-irn/"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
+                            <span>Le français des affaires — TEF IRN</span>
+                            <span class="text-[10px]">↗</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         @include('partials.footer')
     </div>
 
-    <script>
-        // FAQ accordion
-        document.querySelectorAll('.faq-toggle').forEach(function (button) {
-            button.addEventListener('click', function () {
-                var content = this.nextElementSibling;
-                var icon = this.querySelector('i');
-                var isOpen = !content.classList.contains('hidden');
-                content.classList.toggle('hidden');
-                if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
-            });
-        });
-    </script>
 </body>
-</html>
 
+</html>
