@@ -119,7 +119,7 @@
         <div>
             @include('partials.header')
 
-            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <!-- hero banner -->
             <section
                 class="relative  pt-32 md:pt-40 pb-16 md:pb-24overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
@@ -198,7 +198,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 2: WHAT LEVEL OF FRENCH DO YOU NEED? ============ -->
+            <!-- what level of french do you need? -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -311,7 +311,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 3: B1 OR B2? WHAT CHANGED IN 2026 ============ -->
+            <!-- b1 or b2? what changed in 2026 -->
             <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -380,7 +380,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 4: WHICH TEST SHOULD YOU TAKE? ============ -->
+            <!-- which test should you take? -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -488,7 +488,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 5: THE CIVIC EXAM ============ -->
+            <!-- the civic exam -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="rounded-3xl bg-[#002654] text-white p-8 sm:p-12 relative overflow-hidden">
@@ -533,7 +533,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 6: HOW WE GET YOU TO B2 ============ -->
+            <!-- how we get you to b2 -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -650,7 +650,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 7: FAQ ============ -->
+            <!-- faq -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => $isFr ? 'Naturalisation<br>FAQ' : 'French citizenship<br>FAQ',
@@ -660,7 +660,7 @@
                 'faqs' => $faqs
             ])
 
-            <!-- ============ SECTION 8: FINAL CTA & SOURCES ============ -->
+            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     @include('partials.cta-banner', [

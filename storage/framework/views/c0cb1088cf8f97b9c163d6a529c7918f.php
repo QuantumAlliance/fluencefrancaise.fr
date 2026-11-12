@@ -175,7 +175,7 @@
         <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <main class="flex-grow">
-            <!-- ============  HERO (HOMEPAGE AURORA STYLE) ============ -->
+            <!-- hero -->
             <section
                 class="relative overflow-hidden bg-white pt-28 sm:pt-36 md:pt-40 pb-16 md:pb-20 border-b border-slate-100">
                 <div class="hero-aurora-strong"></div>
@@ -256,7 +256,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 2: THE TCF IRN AT A GLANCE ============ -->
+            <!-- the tcf irn at a glance -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
@@ -467,7 +467,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 3: YOUR GAP IS NEVER THE SAME ============ -->
+            <!-- your gap is never the same -->
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
@@ -630,7 +630,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 4: TCF IRN FORMAT (THE 4 SECTIONS) ============ -->
+            <!-- tcf irn format (the 4 sections) -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -785,7 +785,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 5: WHERE CANDIDATES LOSE POINTS ============ -->
+            <!-- where candidates lose points -->
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -907,7 +907,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 6: HOW WE PREPARE YOU ============ -->
+            <!-- how we prepare you -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -1014,7 +1014,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 7: WHAT TCF IRN LEVEL DO YOU NEED? ============ -->
+            <!-- what tcf irn level do you need? -->
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -1112,7 +1112,7 @@
                     </div>
                 </div>
             </section>
-            <!-- ============ SECTION 8: FAQ (REUSABLE COMPONENT) ============ -->
+            <!-- faq -->
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => 'TCF IRN<br>FAQ',
@@ -1122,7 +1122,7 @@
                 'faqs' => $faqs
             ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
+            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <?php echo $__env->make('partials.cta-banner', [

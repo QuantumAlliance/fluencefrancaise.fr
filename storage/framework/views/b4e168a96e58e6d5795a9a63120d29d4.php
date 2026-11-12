@@ -120,7 +120,7 @@
         <div>
             <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <!-- ============ HERO BANNER ============ -->
+            <!-- hero banner -->
             <section
                 class="relative pt-28 sm:pt-36 md:pt-40 pb-16 md:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
@@ -202,7 +202,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 2: THE FIDE TEST AT A GLANCE ============ -->
+            <!-- the fide test at a glance -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -342,7 +342,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 3: WHAT FIDE LEVEL DOES YOUR PERMIT NEED? ============ -->
+            <!-- what fide level does your permit need? -->
             <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -457,7 +457,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 4: FIDE TEST FORMAT ============ -->
+            <!-- fide test format -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -584,7 +584,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 5: WHERE FIDE CANDIDATES LOSE POINTS ============ -->
+            <!-- where fide candidates lose points -->
             <section class="py-16 sm:py-24 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -780,7 +780,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 6: PREPARING IN GENEVA, LAUSANNE, FRIBOURG... ============ -->
+            <!-- preparing in geneva, lausanne, fribourg... -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="rounded-3xl bg-[#002654] text-white p-8 sm:p-12 relative overflow-hidden">
@@ -836,7 +836,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 7: HOW WE PREPARE YOU FOR THE FIDE TEST ============ -->
+            <!-- how we prepare you for the fide test -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -960,7 +960,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 8: FAQ (REUSABLE COMPONENT) ============ -->
+            <!-- faq -->
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => $isFr ? 'Test fide<br>FAQ' : 'fide test<br>FAQ',
@@ -970,7 +970,7 @@
                 'faqs' => $faqs
             ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <!-- ============ SECTION 9: FINAL CTA & SOURCES ============ -->
+            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <?php echo $__env->make('partials.cta-banner', [

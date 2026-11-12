@@ -270,7 +270,7 @@
     <div class="landing-page">
         @include('partials.header')
 
-        <!-- ============ SECTION 1: HERO ============ -->
+        <!-- hero -->
         <section id="home" class="relative overflow-hidden bg-white pt-32 md:pt-40 pb-16 md:pb-24">
             <div class="hero-aurora-strong"></div>
 
@@ -302,7 +302,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 2: WHAT WE DO ============ -->
+        <!-- what we do -->
         <section class="py-16 md:py-24 bg-mist">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl reveal">
@@ -333,7 +333,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 3: PROGRAMS & PRICING ============ -->
+        <!-- programs & pricing -->
         <section id="pricing" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto reveal">
@@ -396,7 +396,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 4: RESOURCE CARDS & EVERYTHING YOU NEED BETWEEN CLASSES ============ -->
+        <!-- resource cards & everything you need between classes -->
         <section id="portal" class="py-16 md:py-24 bg-mist">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -441,7 +441,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 5: REFERRAL OFFER ============ -->
+        <!-- referral offer -->
         <section id="referral" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="reveal relative overflow-hidden rounded-5xl bg-[#002654] text-white p-8 md:p-14">
@@ -464,7 +464,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 6: WHO THIS IS FOR ============ -->
+        <!-- who this is for -->
         <section class="py-16 md:py-24 bg-mist">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto reveal">
@@ -495,7 +495,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 7: FAQ ============ -->
+        <!-- faq -->
         <section id="faq" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                 <div class="text-center mb-12 reveal">
@@ -544,7 +544,7 @@
             </div>
         </section>
 
-        <!-- ============ SECTION 8: FINAL CTA ============ -->
+        <!-- final cta -->
         @include('partials.cta-banner', [
             'eyebrow' => "LET'S GET YOU THERE",
             'title' => "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",

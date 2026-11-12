@@ -171,7 +171,7 @@
         <div>
             @include('partials.header')
 
-            <!-- ============ SECTION 1: HERO BANNER ============ -->
+            <!-- hero banner -->
             <section
                 class="relative overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white pt-28 sm:pt-36 md:pt-40 pb-12 border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
@@ -253,7 +253,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 2: 2026 REQUIREMENTS & COMPARISON ============ -->
+            <!-- 2026 requirements & comparison -->
             <section id="{{ $levelsId }}" class="scroll-mt-28 py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -338,7 +338,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 3: PERMIT CARDS (A2 & B1) ============ -->
+            <!-- permit cards (a2 & b1) -->
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
@@ -413,7 +413,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 4: REAL LIFE COMPARISON ============ -->
+            <!-- real life comparison -->
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
@@ -454,7 +454,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 5: ACCEPTED PROOF ============ -->
+            <!-- accepted proof -->
             <section id="{{ $proofId }}" class="scroll-mt-28 py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -533,7 +533,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 6: CIVIC EXAM ============ -->
+            <!-- civic exam -->
             <section class="py-12 sm:py-16 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div
@@ -588,7 +588,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 7: HOW WE PREPARE YOU ============ -->
+            <!-- how we prepare you -->
             <section id="{{ $prepareId }}" class="scroll-mt-28 py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -629,7 +629,7 @@
                 </div>
             </section>
 
-            <!-- ============ SECTION 8: RESIDENCE PERMIT FAQ ============ -->
+            <!-- residence permit faq -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
                 'title' => $isFr ? 'Questions fréquentes<br>sur le titre de séjour' : 'Residence permit<br>FAQ',
@@ -640,7 +640,7 @@
                 'sectionClass' => 'py-16 sm:py-20 bg-white border-b border-slate-100',
             ])
 
-            <!-- ============ FINAL CTA & SOURCES ============ -->
+            <!-- final cta & sources -->
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div id="enroll" class="scroll-mt-28">
