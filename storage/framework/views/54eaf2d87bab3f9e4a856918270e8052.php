@@ -251,10 +251,13 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
                         <div class="lg:col-span-7">
-                            <nav aria-label="Breadcrumb" class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
-                                <a href="<?php echo e($isFr ? '/fr' : '/en'); ?>" class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
+                            <nav aria-label="Breadcrumb"
+                                class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
+                                <a href="<?php echo e($isFr ? '/fr' : '/en'); ?>"
+                                    class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
                                 <span class="text-slate-300">›</span>
-                                <a href="<?php echo e($isFr ? '/fr#exams' : '/en#exams'); ?>" class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Examens' : 'Exams'); ?></a>
+                                <a href="<?php echo e($isFr ? '/fr#exams' : '/en#exams'); ?>"
+                                    class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Examens' : 'Exams'); ?></a>
                                 <span class="text-slate-300">›</span>
                                 <span class="text-slate-700 font-semibold">DELF A2</span>
                             </nav>
@@ -262,21 +265,26 @@
                             <div class="inline-flex items-center gap-1.5 mb-4">
                                 <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
                                     <?php echo e($isFr ? 'LE DIPLÔME A2 À VIE' : 'THE LIFETIME A2 DIPLOMA'); ?>
 
                                 </span>
                             </div>
 
-                            <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl">
-                                <?php echo e($isFr ? "DELF A2 : validez l'A2 pour votre carte de séjour" : 'DELF A2: Prove A2 for Your Residence Permit'); ?>
-
+                            <h1
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl">
+                                <?php if($isFr): ?>
+                                    DELF A2 : validez l'A2 pour votre carte de séjour
+                                <?php else: ?>
+                                    DELF A2: Prove A2 for Your <span class="swish text-primary-600 inline">Residence </span>Permit
+                                <?php endif; ?>
                             </h1>
 
                             <p class="mt-5 text-sm sm:text-base md:text-[17px] text-slate-600 max-w-xl leading-relaxed">
                                 <?php echo e($isFr
-                                    ? "Depuis 2026, la carte pluriannuelle exige l'A2 : le DELF A2 le prouve à vie, et nous vous y préparons en direct."
-                                    : "Since 2026, France's multi-year permit requires A2, and the DELF A2 proves it for life. We prepare you for it, live."); ?>
+    ? "Depuis 2026, la carte pluriannuelle exige l'A2 : le DELF A2 le prouve à vie, et nous vous y préparons en direct."
+    : "Since 2026, France's multi-year permit requires A2, and the DELF A2 proves it for life. We prepare you for it, live."); ?>
 
                             </p>
 
@@ -297,14 +305,20 @@
 
                             <div class="mt-5 flex items-center gap-3">
                                 <div class="flex -space-x-2 shrink-0" aria-hidden="true">
-                                    <span class="w-7 h-7 rounded-full bg-[#0055A4] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i class="fas fa-user"></i></span>
-                                    <span class="w-7 h-7 rounded-full bg-[#7aa2d4] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i class="fas fa-user"></i></span>
-                                    <span class="w-7 h-7 rounded-full bg-[#EF4135] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i class="fas fa-user"></i></span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-[#0055A4] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i
+                                            class="fas fa-user"></i></span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-[#7aa2d4] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i
+                                            class="fas fa-user"></i></span>
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-[#EF4135] ring-2 ring-white flex items-center justify-center text-white text-[10px]"><i
+                                            class="fas fa-user"></i></span>
                                 </div>
                                 <p class="text-xs sm:text-[13px] text-slate-500 font-medium leading-snug">
                                     <?php echo e($isFr
-                                        ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                        : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                                 </p>
                             </div>
@@ -320,39 +334,55 @@
 
                         <div class="lg:col-span-5">
                             <div class="relative mx-auto w-full max-w-[440px] h-[380px] sm:h-[420px]">
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] rounded-full border border-[#d7e4f5]"></div>
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] h-[230px] sm:w-[260px] sm:h-[260px] rounded-full border border-slate-200/90"></div>
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[54%] w-44 h-44 sm:w-52 sm:h-52 rounded-[2rem] bg-[#0055A4] shadow-[0_24px_50px_-18px_rgba(0,85,164,.55)] flex items-center justify-center">
-                                    <span class="text-white text-6xl sm:text-7xl font-extrabold tracking-tight leading-none">A2</span>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] rounded-full border border-[#d7e4f5]">
+                                </div>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] h-[230px] sm:w-[260px] sm:h-[260px] rounded-full border border-slate-200/90">
+                                </div>
+                                <div
+                                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[54%] w-44 h-44 sm:w-52 sm:h-52 rounded-[2rem] bg-[#0055A4] shadow-[0_24px_50px_-18px_rgba(0,85,164,.55)] flex items-center justify-center">
+                                    <span
+                                        class="text-white text-6xl sm:text-7xl font-extrabold tracking-tight leading-none">A2</span>
                                 </div>
 
-                                <div class="absolute top-6 right-0 sm:right-2 bg-white rounded-2xl shadow-card border border-slate-100 px-3.5 py-3 flex items-center gap-2.5 max-w-[190px]">
-                                    <span class="w-7 h-7 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
+                                <div
+                                    class="absolute top-6 right-0 sm:right-2 bg-white rounded-2xl shadow-card border border-slate-100 px-3.5 py-3 flex items-center gap-2.5 max-w-[190px]">
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
                                         <i class="fas fa-check text-[11px]"></i>
                                     </span>
                                     <span>
-                                        <span class="block text-[13px] font-bold text-[#10233e] leading-tight"><?php echo e($isFr ? 'Objectif clair' : 'Clear target'); ?></span>
-                                        <span class="block text-[11px] text-slate-400 mt-0.5"><?php echo e($isFr ? 'Selon votre dossier' : 'From your application'); ?></span>
+                                        <span
+                                            class="block text-[13px] font-bold text-[#10233e] leading-tight"><?php echo e($isFr ? 'Objectif clair' : 'Clear target'); ?></span>
+                                        <span
+                                            class="block text-[11px] text-slate-400 mt-0.5"><?php echo e($isFr ? 'Selon votre dossier' : 'From your application'); ?></span>
                                     </span>
                                 </div>
 
-                                <div class="absolute bottom-8 left-0 sm:left-1 bg-white rounded-2xl shadow-card border border-slate-100 px-3.5 py-3 flex items-center gap-2.5 max-w-[200px]">
-                                    <span class="w-7 h-7 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
+                                <div
+                                    class="absolute bottom-8 left-0 sm:left-1 bg-white rounded-2xl shadow-card border border-slate-100 px-3.5 py-3 flex items-center gap-2.5 max-w-[200px]">
+                                    <span
+                                        class="w-7 h-7 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
                                         <i class="fas fa-calendar-check text-[11px]"></i>
                                     </span>
                                     <span>
-                                        <span class="block text-[13px] font-bold text-[#10233e] leading-tight"><?php echo e($isFr ? 'Plan en direct' : 'Live plan'); ?></span>
-                                        <span class="block text-[11px] text-slate-400 mt-0.5"><?php echo e($isFr ? '2 ou 4 heures par semaine' : '2 or 4 hours a week'); ?></span>
+                                        <span
+                                            class="block text-[13px] font-bold text-[#10233e] leading-tight"><?php echo e($isFr ? 'Plan en direct' : 'Live plan'); ?></span>
+                                        <span
+                                            class="block text-[11px] text-slate-400 mt-0.5"><?php echo e($isFr ? '2 ou 4 heures par semaine' : '2 or 4 hours a week'); ?></span>
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-6 sm:mt-2 bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl shadow-sm grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+                    <div
+                        class="mt-6 sm:mt-2 bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                         <?php $__currentLoopData = $facts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fact): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="flex items-center gap-3 px-5 sm:px-6 py-5">
-                                <span class="w-9 h-9 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center shrink-0">
                                     <i class="fas <?php echo e($fact[0]); ?> text-sm"></i>
                                 </span>
                                 <span class="text-sm font-semibold text-[#10233e] leading-snug"><?php echo e($fact[1]); ?></span>
@@ -374,21 +404,23 @@
 
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Le DELF A2 en bref' : 'The DELF A2 at a glance'); ?>
 
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             <?php echo e($isFr
-                                ? "Le DELF A2 est un diplôme officiel du ministère de l'Éducation nationale. Il certifie un français élémentaire solide : vous vous débrouillez dans les situations simples du quotidien. Il compte 4 épreuves notées sur 25. Il s'obtient avec 50 sur 100, sans épreuve sous 5 sur 25, et il est valable à vie."
-                                : "The DELF A2 is an official French Ministry of Education diploma. It certifies solid elementary French: you can handle simple everyday situations. It has 4 sections marked out of 25. You pass with 50 out of 100 and no section below 5 out of 25, and it's valid for life."); ?>
+    ? "Le DELF A2 est un diplôme officiel du ministère de l'Éducation nationale. Il certifie un français élémentaire solide : vous vous débrouillez dans les situations simples du quotidien. Il compte 4 épreuves notées sur 25. Il s'obtient avec 50 sur 100, sans épreuve sous 5 sur 25, et il est valable à vie."
+    : "The DELF A2 is an official French Ministry of Education diploma. It certifies solid elementary French: you can handle simple everyday situations. It has 4 sections marked out of 25. You pass with 50 out of 100 and no section below 5 out of 25, and it's valid for life."); ?>
 
                         </p>
                     </div>
 
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
                         <?php $__currentLoopData = $glanceRows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white'); ?> <?php echo e($index < count($glanceRows) - 1 ? 'border-b border-slate-100' : ''); ?>">
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white'); ?> <?php echo e($index < count($glanceRows) - 1 ? 'border-b border-slate-100' : ''); ?>">
                                 <div class="sm:col-span-4 font-semibold text-[#10233e]"><?php echo e($row[0]); ?></div>
                                 <div class="sm:col-span-8 text-slate-600 leading-relaxed"><?php echo e($row[1]); ?></div>
                             </div>
@@ -409,30 +441,35 @@
 
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Les 4 épreuves du DELF A2' : 'The 4 sections of the DELF A2'); ?>
 
                         </h2>
                     </div>
 
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
-                        <div class="hidden sm:grid sm:grid-cols-12 bg-[#0055A4] text-white px-6 py-3.5 text-sm font-semibold">
+                        <div
+                            class="hidden sm:grid sm:grid-cols-12 bg-[#0055A4] text-white px-6 py-3.5 text-sm font-semibold">
                             <div class="sm:col-span-4"><?php echo e($isFr ? 'Épreuve' : 'Section'); ?></div>
                             <div class="sm:col-span-6"><?php echo e($isFr ? 'Ce que vous faites' : 'What you do'); ?></div>
                             <div class="sm:col-span-2 text-right"><?php echo e($isFr ? 'Note' : 'Marks'); ?></div>
                         </div>
                         <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-6 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> <?php echo e($index < count($sections) - 1 ? 'border-b border-slate-100' : ''); ?>">
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-6 py-4 sm:py-5 text-sm <?php echo e($index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]'); ?> <?php echo e($index < count($sections) - 1 ? 'border-b border-slate-100' : ''); ?>">
                                 <div class="sm:col-span-4 font-semibold text-[#10233e]"><?php echo e($section[0]); ?></div>
                                 <div class="sm:col-span-6 text-slate-600 leading-relaxed"><?php echo e($section[1]); ?></div>
-                                <div class="sm:col-span-2 sm:text-right font-semibold text-[#0055A4]"><?php echo e($section[2]); ?></div>
+                                <div class="sm:col-span-2 sm:text-right font-semibold text-[#0055A4]"><?php echo e($section[2]); ?>
+
+                                </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed max-w-3xl">
                         <?php echo e($isFr
-                            ? "Les 3 premières épreuves se passent ensemble, en 1 h 40 environ. L'oral dure 6 à 8 minutes, après 10 minutes de préparation."
-                            : 'The first 3 sections are taken together, in about 1 h 40. The oral lasts 6 to 8 minutes, after 10 minutes of prep.'); ?>
+    ? "Les 3 premières épreuves se passent ensemble, en 1 h 40 environ. L'oral dure 6 à 8 minutes, après 10 minutes de préparation."
+    : 'The first 3 sections are taken together, in about 1 h 40. The oral lasts 6 to 8 minutes, after 10 minutes of prep.'); ?>
 
                     </p>
                 </div>
@@ -450,24 +487,44 @@
 
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Pourquoi le DELF A2 pour votre carte pluriannuelle ?' : "Why the DELF A2 for France's multi-year permit?"); ?>
 
                         </h2>
                         <div class="mt-5 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                             <?php if($isFr): ?>
                                 <p>
-                                    Depuis le 1er janvier 2026, une première <a href="<?php echo e($permitUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">carte de séjour pluriannuelle</a> exige l'A2. Le <a href="<?php echo e($tcfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a> et le <a href="<?php echo e($tefUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TEF IRN</a> le prouvent aussi, mais pour 2 ans seulement. Le DELF A2, lui, ne s'arrête jamais de compter.
+                                    Depuis le 1er janvier 2026, une première <a href="<?php echo e($permitUrl); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">carte de séjour
+                                        pluriannuelle</a> exige l'A2. Le <a href="<?php echo e($tcfUrl); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a> et le <a
+                                        href="<?php echo e($tefUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TEF
+                                        IRN</a> le prouvent aussi, mais pour 2 ans seulement. Le DELF A2, lui, ne s'arrête
+                                    jamais de compter.
                                 </p>
                                 <p>
-                                    Et l'A2 n'est souvent qu'une étape. Si vous visez ensuite la <a href="<?php echo e($residentUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">carte de résident</a> (B1), le <a href="<?php echo e($delfB1Url); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF B1</a> sera la marche suivante.
+                                    Et l'A2 n'est souvent qu'une étape. Si vous visez ensuite la <a
+                                        href="<?php echo e($residentUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">carte
+                                        de résident</a> (B1), le <a href="<?php echo e($delfB1Url); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">DELF B1</a> sera la marche
+                                    suivante.
                                 </p>
                             <?php else: ?>
                                 <p>
-                                    Since 1 January 2026, a first <a href="<?php echo e($permitUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">multi-year residence permit</a> requires A2. The <a href="<?php echo e($tcfUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a> and <a href="<?php echo e($tefUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TEF IRN</a> prove it too, but only for 2 years. The DELF A2 counts forever.
+                                    Since 1 January 2026, a first <a href="<?php echo e($permitUrl); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">multi-year residence permit</a>
+                                    requires A2. The <a href="<?php echo e($tcfUrl); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">TCF IRN</a> and <a
+                                        href="<?php echo e($tefUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">TEF
+                                        IRN</a> prove it too, but only for 2 years. The DELF A2 counts forever.
                                 </p>
                                 <p>
-                                    A2 is often just a step. If you're aiming for the <a href="<?php echo e($residentUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">10-year resident card</a> (B1) next, the <a href="<?php echo e($delfB1Url); ?>" class="font-semibold text-[#0055A4] hover:underline">DELF B1</a> is the following one.
+                                    A2 is often just a step. If you're aiming for the <a href="<?php echo e($residentUrl); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">10-year resident card</a> (B1)
+                                    next, the <a href="<?php echo e($delfB1Url); ?>"
+                                        class="font-semibold text-[#0055A4] hover:underline">DELF B1</a> is the following
+                                    one.
                                 </p>
                             <?php endif; ?>
                         </div>
@@ -487,7 +544,8 @@
 
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Où les candidats perdent des points au DELF A2' : 'Where DELF A2 candidates lose points'); ?>
 
                         </h2>
@@ -496,7 +554,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <?php $__currentLoopData = $traps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $trap): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-7 flex flex-col">
-                                <span class="text-sm font-bold text-[#0055A4]"><?php echo e(str_pad($index + 1, 2, '0', STR_PAD_LEFT)); ?></span>
+                                <span
+                                    class="text-sm font-bold text-[#0055A4]"><?php echo e(str_pad($index + 1, 2, '0', STR_PAD_LEFT)); ?></span>
                                 <h3 class="mt-3 text-lg font-bold text-[#10233e] leading-snug"><?php echo e($trap['title']); ?></h3>
                                 <p class="mt-3 text-sm text-slate-500 leading-relaxed flex-1"><?php echo e($trap['body']); ?></p>
                                 <div class="mt-5 rounded-2xl bg-[#f2f7fc] border border-blue-100/70 px-4 py-3.5">
@@ -524,7 +583,8 @@
 
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Notre préparation au DELF A2' : 'How we prepare you for the DELF A2'); ?>
 
                         </h2>
@@ -532,8 +592,10 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <?php $__currentLoopData = $plan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $step): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <article class="rounded-2xl border border-slate-200/80 bg-white px-5 py-5 sm:px-6 sm:py-6 flex items-start gap-4">
-                                <span class="w-11 h-11 rounded-xl bg-[#002654] text-white text-sm font-bold flex items-center justify-center shrink-0"><?php echo e($step[0]); ?></span>
+                            <article
+                                class="rounded-2xl border border-slate-200/80 bg-white px-5 py-5 sm:px-6 sm:py-6 flex items-start gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-xl bg-[#002654] text-white text-sm font-bold flex items-center justify-center shrink-0"><?php echo e($step[0]); ?></span>
                                 <div>
                                     <h3 class="font-bold text-[#10233e] text-base leading-snug"><?php echo e($step[1]); ?></h3>
                                     <p class="mt-1.5 text-sm text-slate-500 leading-relaxed"><?php echo e($step[2]); ?></p>
@@ -542,13 +604,17 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
 
-                    <div class="mt-6 sm:mt-8 rounded-2xl bg-[#002654] text-white px-5 sm:px-7 py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div
+                        class="mt-6 sm:mt-8 rounded-2xl bg-[#002654] text-white px-5 sm:px-7 py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <p class="text-base sm:text-lg font-bold"><?php echo e($isFr ? 'Prêt à construire votre plan ?' : 'Ready to build your plan?'); ?></p>
+                            <p class="text-base sm:text-lg font-bold">
+                                <?php echo e($isFr ? 'Prêt à construire votre plan ?' : 'Ready to build your plan?'); ?>
+
+                            </p>
                             <p class="mt-1 text-xs sm:text-sm text-blue-100/85">
                                 <?php echo e($isFr
-                                    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                             </p>
                         </div>
@@ -575,15 +641,18 @@
 
             <div class="bg-white pb-4">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="border-t border-slate-100 pt-6 flex flex-wrap items-center justify-center gap-y-2 text-center text-xs sm:text-[13px] text-slate-400">
-                        <span class="font-bold tracking-[0.18em] uppercase text-slate-400 mr-3"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
+                    <div
+                        class="border-t border-slate-100 pt-6 flex flex-wrap items-center justify-center gap-y-2 text-center text-xs sm:text-[13px] text-slate-400">
+                        <span
+                            class="font-bold tracking-[0.18em] uppercase text-slate-400 mr-3"><?php echo e($isFr ? 'SOURCES' : 'SOURCES'); ?></span>
                         <a href="https://www.france-education-international.fr/delf-dalf" target="_blank" rel="noopener"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>France Éducation international – DELF A2</span>
                             <span class="text-[10px]">↗</span>
                         </a>
                         <span class="text-slate-300 mx-2.5">·</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank" rel="noopener"
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank"
+                            rel="noopener"
                             class="hover:text-slate-600 transition-colors inline-flex items-center gap-1">
                             <span>Service-public.fr – <?php echo e($isFr ? 'cartes de séjour' : 'residence cards'); ?></span>
                             <span class="text-[10px]">↗</span>
@@ -634,5 +703,4 @@
     </div>
 </body>
 
-</html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/delf-a2.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/delf-a2.blade.php ENDPATH**/ ?>
