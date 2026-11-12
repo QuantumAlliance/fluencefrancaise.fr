@@ -67,7 +67,7 @@
                   </svg>
                 </a>
                 <a href="/en/french-citizenship" :class="['dropdown-item-link group/item', isSubActive('french-citizenship') ? 'active-submenu' : '']">
-                  <span>Citizenship guide</span>
+                  <span>French Citizenship guide</span>
                   <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
@@ -246,7 +246,7 @@
               <!-- Card Items -->
               <div class="flex flex-col space-y-0.5">
                 <a href="/en/french-citizenship" :class="['dropdown-item-link group/item', (isSubActive('french-citizenship') && !isSubActive('language-test')) ? 'active-submenu' : '']">
-                  <span>Citizenship guide</span>
+                  <span>French Citizenship guide</span>
                   <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
@@ -384,7 +384,7 @@
                 <span class="text-xs text-slate-400">↗</span>
               </a>
               <a href="/en/french-citizenship" :class="['py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center', isSubActive('french-citizenship') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '']">
-                <span>Citizenship guide</span>
+                <span>French Citizenship guide</span>
                 <span class="text-xs text-slate-400">↗</span>
               </a>
             </div>
@@ -481,7 +481,7 @@
             </button>
             <div v-show="activeAccordion === 'guides'" class="pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
               <a href="/en/french-citizenship" :class="['py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center', (isSubActive('french-citizenship') && !isSubActive('language-test')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '']">
-                <span>Citizenship guide</span>
+                <span>French Citizenship guide</span>
                 <span class="text-xs text-slate-400">↗</span>
               </a>
               <a href="/en/tcf-vs-tef-vs-delf" :class="['py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center', isSubActive('tcf-vs-tef-vs-delf') ? 'bg-blue-50 text-[#0055A4] font-semibold' : '']">

@@ -491,7 +491,7 @@
                                     <div class="mt-5 grid grid-cols-10 gap-1.5" aria-hidden="true">
                                         <?php for($i = 1; $i <= 40; $i++): ?>
                                             <span
-                                                class="aspect-square rounded-sm <?php echo e($i <= 32 ? 'bg-[#008000]/60' : 'bg-white/20'); ?>"></span>
+                                                class="aspect-square rounded-sm <?php echo e($i <= 32 ? 'bg-[#48CAE4]/60' : 'bg-white/20'); ?>"></span>
                                         <?php endfor; ?>
                                     </div>
                                 </div>

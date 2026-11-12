@@ -419,7 +419,7 @@
                             </a>
                             <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
                                 class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
-                                <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
+                                <span>{{ $isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide' }}</span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -626,7 +626,7 @@
                         <div class="flex flex-col space-y-0.5">
                             <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
                                 class="dropdown-item-link group/item {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : '' }}">
-                                <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
+                                <span>{{ $isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide' }}</span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -693,7 +693,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                                                                                                }}"
+                                                                                                                                                                                                                                                                                                                                }}"
                         class="btn-enroll-pill">
                         DASHBOARD
                     </a>
@@ -786,7 +786,7 @@
                     </a>
                     <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
-                        <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
+                        <span>{{ $isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                 </div>
@@ -893,7 +893,7 @@
                     class="mobile-acc-content {{ $isGuidesActive ? '' : 'hidden' }} pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
                     <a href="{{ $isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship' }}"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center {{ ((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : '' }}">
-                        <span>{{ $isFr ? 'Guide naturalisation' : 'Citizenship guide' }}</span>
+                        <span>{{ $isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide' }}</span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="{{ $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf' }}"
@@ -940,7 +940,7 @@
                     <a href="{{
                 auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'super_admin' ? '/admin/dashboard' :
                 (auth()->user()->user_type === 'tutor' ? '/tutor/dashboard' : '/student/dashboard')
-                                                                                                                                                                                                                                                }}"
+                                                                                                                                                                                                                                                                                                                                }}"
                         class="w-full py-3.5 bg-[#002654] text-white rounded-full text-center font-bold text-sm tracking-wide shadow-md">
                         DASHBOARD
                     </a>
