@@ -6,18 +6,63 @@
     $isFr = request()->is('fr*');
     $currentPath = request()->path();
 
-    // Clean URLs for language toggle
-    if ($isFr) {
+    // Clean URLs for language toggle using Developer Guide pairs
+    $routePairs = [
+        'en' => '/',
+        '' => '/en',
+        'fr' => '/en',
+        'en/tcf-irn' => '/fr/tcf-irn',
+        'fr/tcf-irn' => '/en/tcf-irn',
+        'en/french-citizenship-language-test' => '/fr/test-francais-naturalisation',
+        'fr/test-francais-naturalisation' => '/en/french-citizenship-language-test',
+        'en/french-civic-exam' => '/fr/examen-civique',
+        'fr/examen-civique' => '/en/french-civic-exam',
+        'en/fide-test' => '/fr/test-fide',
+        'fr/test-fide' => '/en/fide-test',
+        'en/tef-irn' => '/fr/tef-irn',
+        'fr/tef-irn' => '/en/tef-irn',
+        'en/delf-b2' => '/fr/delf-b2',
+        'fr/delf-b2' => '/en/delf-b2',
+        'en/delf-b1' => '/fr/delf-b1',
+        'fr/delf-b1' => '/en/delf-b1',
+        'en/delf-a2' => '/fr/delf-a2',
+        'fr/delf-a2' => '/en/delf-a2',
+        'en/french-residence-permit-language' => '/fr/titre-de-sejour-niveau-francais',
+        'fr/titre-de-sejour-niveau-francais' => '/en/french-residence-permit-language',
+        'en/c-permit-switzerland' => '/fr/permis-c-suisse',
+        'fr/permis-c-suisse' => '/en/c-permit-switzerland',
+        'en/swiss-citizenship' => '/fr/naturalisation-suisse',
+        'fr/naturalisation-suisse' => '/en/swiss-citizenship',
+        'en/online-french-classes' => '/fr/cours-de-francais-en-ligne',
+        'fr/cours-de-francais-en-ligne' => '/en/online-french-classes',
+        'en/delf' => '/fr/delf',
+        'fr/delf' => '/en/delf',
+        'en/tcf-vs-tef-vs-delf' => '/fr/tcf-tef-ou-delf',
+        'fr/tcf-tef-ou-delf' => '/en/tcf-vs-tef-vs-delf',
+        'en/french-citizenship' => '/fr/naturalisation-francaise',
+        'fr/naturalisation-francaise' => '/en/french-citizenship',
+        'en/about' => '/fr/a-propos',
+        'fr/a-propos' => '/en/about',
+        'en/contact' => '/fr/contact',
+        'fr/contact' => '/en/contact',
+    ];
+
+    $trimmedCurrent = trim($currentPath, '/');
+    if (isset($routePairs[$trimmedCurrent])) {
+        $target = $routePairs[$trimmedCurrent];
+        $frUrl = $isFr ? '/' . $trimmedCurrent : $target;
+        $enUrl = $isFr ? $target : '/' . $trimmedCurrent;
+    } elseif ($isFr) {
         $cleanPath = preg_replace('#^fr/?#', '', $currentPath);
         $frUrl = '/' . ltrim($currentPath, '/');
         $enUrl = $cleanPath ? '/en/' . ltrim($cleanPath, '/') : '/en';
     } elseif (request()->is('en*')) {
         $cleanPath = preg_replace('#^en/?#', '', $currentPath);
         $enUrl = '/' . ltrim($currentPath, '/');
-        $frUrl = $cleanPath ? '/fr/' . ltrim($cleanPath, '/') : '/fr';
+        $frUrl = $cleanPath ? '/fr/' . ltrim($cleanPath, '/') : '/';
     } else {
         $enUrl = '/en';
-        $frUrl = '/fr';
+        $frUrl = '/';
     }
 
     // Determine active menu sections based on current path
@@ -28,7 +73,8 @@
         request()->is('*titre-de-sejour-niveau-francais*') ||
         request()->is('*french-civic-exam*') ||
         request()->is('*examen-civique*') ||
-        (request()->is('*french-citizenship*') && !request()->is('*french-citizenship') && !request()->is('french-citizenship'));
+        (request()->is('*french-citizenship*') && !request()->is('*french-citizenship-language-test*')) ||
+        request()->is('*naturalisation-francaise*');
 
     $isSwissActive = request()->is('*c-permit-switzerland*') ||
         request()->is('*permis-c-suisse*') ||
@@ -54,10 +100,12 @@
         request()->is('upper-intermediate*');
 
     $isGuidesActive = request()->is('*citizenship-guide*') ||
-        (request()->is('*french-citizenship*') && !request()->is('*test*')) ||
+        request()->is('*french-citizenship*') ||
         request()->is('*naturalisation-francaise*') ||
         request()->is('*tcf-vs-tef-vs-delf*') ||
-        request()->is('*tcf-tef-ou-delf*');
+        request()->is('*tcf-tef-ou-delf*') ||
+        request()->is('*/delf') ||
+        request()->is('delf');
 
     $isAboutActive = request()->is('about-us') ||
         request()->is('*about*') ||
@@ -344,7 +392,7 @@
     <header class="header-pill max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <!-- Left: Logo & Wordmark -->
         <div class="flex items-center shrink-0">
-            <a href="<?php echo e($isFr ? '/fr' : '/'); ?>" class="flex items-center gap-2 sm:gap-2.5">
+            <a href="<?php echo e($isFr ? '/' : '/en'); ?>" class="flex items-center gap-2 sm:gap-2.5">
                 <img src="<?php echo e(asset('images/brand-mark.png')); ?>" alt="Fluence Française"
                     class="brand-mark-img w-auto shrink-0">
                 <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
@@ -383,16 +431,16 @@
                         <div class="flex flex-col space-y-0.5">
                             <a href="<?php echo e($isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Naturalisation B2' : 'Citizenship B2'); ?></span>
+                                <span><?php echo e($isFr ? 'Naturalisation — niveau B2' : 'Citizenship — B2 level'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M7 17L17 7M17 7H7M17 7V17" />
-                                    </span>
+                                </svg>
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card'); ?>"
                                 class="dropdown-item-link group/item <?php echo e(request()->is('*resident-card*') ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Carte de résident B1' : 'Resident card B1'); ?></span>
+                                <span><?php echo e($isFr ? 'Carte de résident — B1' : 'Resident card — B1'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -401,7 +449,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit'); ?>"
                                 class="dropdown-item-link group/item <?php echo e(request()->is('*multi-year-permit*') ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Carte pluriannuelle A2' : 'Multi-year permit A2'); ?></span>
+                                <span><?php echo e($isFr ? 'Carte pluriannuelle — A2' : 'Multi-year permit — A2'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -419,7 +467,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship'); ?>"
                                 class="dropdown-item-link group/item <?php echo e(((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide'); ?></span>
+                                <span><?php echo e($isFr ? 'Guide de la naturalisation' : 'Citizenship guide'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -459,7 +507,7 @@
                         <div class="flex flex-col space-y-0.5">
                             <a href="<?php echo e($isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Permis C (A2 / B1)' : 'C permit (A2 / B1)'); ?></span>
+                                <span><?php echo e($isFr ? 'Permis C — A2 / B1' : 'C permit — A2 / B1'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -468,7 +516,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Naturalisation suisse (B1)' : 'Swiss citizenship (B1)'); ?></span>
+                                <span><?php echo e($isFr ? 'Naturalisation suisse — B1' : 'Swiss citizenship — B1'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -571,7 +619,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/delf' : '/en/delf'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*delf') || request()->is('*/delf/*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Tous les niveaux DELF' : 'All DELF levels'); ?></span>
+                                <span><?php echo e($isFr ? 'Tous les niveaux du DELF' : 'All DELF levels'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -580,7 +628,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF'); ?></span>
+                                <span><?php echo e($isFr ? 'Comparer : TCF, TEF ou DELF ?' : 'Compare: TCF, TEF or DELF?'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -593,7 +641,7 @@
             </div>
 
             <!-- 4. Courses (Direct Link) -->
-            <a href="<?php echo e($isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses'); ?>"
+            <a href="<?php echo e($isFr ? '/fr/cours-de-francais-en-ligne' : '/en/online-french-classes'); ?>"
                 class="nav-pill-link <?php echo e($isCoursesActive ? 'active-nav' : ''); ?>">
                 <span class="nav-label"><?php echo e($isFr ? 'Cours' : 'Courses'); ?></span>
             </a>
@@ -626,7 +674,7 @@
                         <div class="flex flex-col space-y-0.5">
                             <a href="<?php echo e($isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship'); ?>"
                                 class="dropdown-item-link group/item <?php echo e(((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide'); ?></span>
+                                <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French citizenship guide'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -635,7 +683,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF'); ?></span>
+                                <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF, TEF or DELF?'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -644,7 +692,7 @@
                             </a>
                             <a href="<?php echo e($isFr ? '/fr/delf' : '/en/delf'); ?>"
                                 class="dropdown-item-link group/item <?php echo e((request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'active-submenu' : ''); ?>">
-                                <span><?php echo e($isFr ? 'Guide DELF' : 'DELF guide'); ?></span>
+                                <span><?php echo e($isFr ? 'DELF : le guide' : 'DELF guide'); ?></span>
                                 <svg class="arrow-icon w-3.5 h-3.5 text-slate-400 transition-transform" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -657,7 +705,7 @@
             </div>
 
             <!-- 6. About (Direct Link) -->
-            <a href="<?php echo e($isFr ? '/fr/a-propos' : '/about-us'); ?>"
+            <a href="<?php echo e($isFr ? '/fr/a-propos' : '/en/about'); ?>"
                 class="nav-pill-link <?php echo e($isAboutActive ? 'active-nav' : ''); ?>">
                 <span class="nav-label"><?php echo e($isFr ? 'À propos' : 'About'); ?></span>
             </a>
@@ -669,7 +717,7 @@
             <div class="h-5 w-[1px] bg-slate-200 mr-1 hidden xl:block"></div>
 
             <!-- Contact Link -->
-            <a href="<?php echo e($isFr ? '/fr/contact' : '/contact-us'); ?>"
+            <a href="<?php echo e($isFr ? '/fr/contact' : '/en/contact'); ?>"
                 class="nav-pill-link <?php echo e($isContactActive ? 'active-nav' : ''); ?>">
                 <span class="nav-label">Contact</span>
             </a>
@@ -740,7 +788,7 @@
 
         <!-- Header: Logo & Close Button -->
         <div class="flex justify-between items-center mb-8 mt-2">
-            <a href="<?php echo e($isFr ? '/fr' : '/'); ?>" class="flex items-center gap-2.5 shrink-0">
+            <a href="<?php echo e($isFr ? '/' : '/en'); ?>" class="flex items-center gap-2.5 shrink-0">
                 <img src="<?php echo e(asset('images/brand-mark.png')); ?>" alt="Fluence Française"
                     class="brand-mark-img w-auto shrink-0">
                 <span class="brand-wordmark">Fluence <span class="accent">Française</span></span>
@@ -765,17 +813,17 @@
                     class="mobile-acc-content <?php echo e($isFranceActive ? '' : 'hidden'); ?> pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
                     <a href="<?php echo e($isFr ? '/fr/test-francais-naturalisation' : '/en/french-citizenship-language-test'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*french-citizenship-language-test*') || request()->is('*test-francais-naturalisation*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Naturalisation B2' : 'Citizenship B2'); ?></span>
+                        <span><?php echo e($isFr ? 'Naturalisation — niveau B2' : 'Citizenship — B2 level'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/titre-de-sejour-niveau-francais#carte-de-resident' : '/en/french-residence-permit-language#resident-card'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e(request()->is('*resident-card*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Carte de résident B1' : 'Resident card B1'); ?></span>
+                        <span><?php echo e($isFr ? 'Carte de résident — B1' : 'Resident card — B1'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/titre-de-sejour-niveau-francais#carte-pluriannuelle' : '/en/french-residence-permit-language#multi-year-permit'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e(request()->is('*multi-year-permit*') ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Carte pluriannuelle A2' : 'Multi-year permit A2'); ?></span>
+                        <span><?php echo e($isFr ? 'Carte pluriannuelle — A2' : 'Multi-year permit — A2'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/examen-civique' : '/en/french-civic-exam'); ?>"
@@ -785,7 +833,7 @@
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e(((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide'); ?></span>
+                        <span><?php echo e($isFr ? 'Guide de la naturalisation' : 'Citizenship guide'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                 </div>
@@ -803,12 +851,12 @@
                     class="mobile-acc-content <?php echo e($isSwissActive ? '' : 'hidden'); ?> pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
                     <a href="<?php echo e($isFr ? '/fr/permis-c-suisse' : '/en/c-permit-switzerland'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*c-permit-switzerland*') || request()->is('*permis-c-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Permis C (A2 / B1)' : 'C permit (A2 / B1)'); ?></span>
+                        <span><?php echo e($isFr ? 'Permis C — A2 / B1' : 'C permit — A2 / B1'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/naturalisation-suisse' : '/en/swiss-citizenship'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*swiss-citizenship*') || request()->is('*naturalisation-suisse*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Naturalisation suisse (B1)' : 'Swiss citizenship (B1)'); ?></span>
+                        <span><?php echo e($isFr ? 'Naturalisation suisse — B1' : 'Swiss citizenship — B1'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/test-fide' : '/en/fide-test'); ?>"
@@ -861,12 +909,12 @@
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/delf' : '/en/delf'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*delf') || request()->is('*/delf/*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Tous les niveaux DELF' : 'All DELF levels'); ?></span>
+                        <span><?php echo e($isFr ? 'Tous les niveaux du DELF' : 'All DELF levels'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF'); ?></span>
+                        <span><?php echo e($isFr ? 'Comparer : TCF, TEF ou DELF ?' : 'Compare: TCF, TEF or DELF?'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                 </div>
@@ -874,7 +922,7 @@
 
             <!-- Courses -->
             <div class="py-3">
-                <a href="<?php echo e($isFr ? '/fr/cours-de-francais-en-ligne' : '/our-courses'); ?>"
+                <a href="<?php echo e($isFr ? '/fr/cours-de-francais-en-ligne' : '/en/online-french-classes'); ?>"
                     class="block text-base font-bold <?php echo e($isCoursesActive ? 'text-[#0055A4]' : 'text-[#002654]'); ?> hover:text-[#0055A4]">
                     <?php echo e($isFr ? 'Cours' : 'Courses'); ?>
 
@@ -893,17 +941,17 @@
                     class="mobile-acc-content <?php echo e($isGuidesActive ? '' : 'hidden'); ?> pl-3 pt-2 flex flex-col space-y-1 text-sm text-slate-600">
                     <a href="<?php echo e($isFr ? '/fr/naturalisation-francaise' : '/en/french-citizenship'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e(((request()->is('*french-citizenship*') || request()->is('*naturalisation-francaise*')) && !request()->is('*language-test*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French Citizenship guide'); ?></span>
+                        <span><?php echo e($isFr ? 'Naturalisation française : le guide' : 'French citizenship guide'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*tcf-vs-tef-vs-delf*') || request()->is('*tcf-tef-ou-delf*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF vs TEF vs DELF'); ?></span>
+                        <span><?php echo e($isFr ? 'TCF, TEF ou DELF ?' : 'TCF, TEF or DELF?'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                     <a href="<?php echo e($isFr ? '/fr/delf' : '/en/delf'); ?>"
                         class="py-1.5 px-2 rounded-md hover:text-[#0055A4] flex justify-between items-center <?php echo e((request()->is('*delf*') && !request()->is('*tcf*') && !request()->is('*delf-a2*') && !request()->is('*delf-b1*') && !request()->is('*delf-b2*')) ? 'bg-blue-50 text-[#0055A4] font-semibold' : ''); ?>">
-                        <span><?php echo e($isFr ? 'Guide DELF' : 'DELF guide'); ?></span>
+                        <span><?php echo e($isFr ? 'DELF : le guide' : 'DELF guide'); ?></span>
                         <span class="text-xs text-slate-400">↗</span>
                     </a>
                 </div>
@@ -911,7 +959,7 @@
 
             <!-- About -->
             <div class="py-3">
-                <a href="<?php echo e($isFr ? '/fr/a-propos' : '/about-us'); ?>"
+                <a href="<?php echo e($isFr ? '/fr/a-propos' : '/en/about'); ?>"
                     class="block text-base font-bold <?php echo e($isAboutActive ? 'text-[#0055A4]' : 'text-[#002654]'); ?> hover:text-[#0055A4]">
                     <?php echo e($isFr ? 'À propos' : 'About'); ?>
 
@@ -920,7 +968,7 @@
 
             <!-- Contact -->
             <div class="py-3">
-                <a href="<?php echo e($isFr ? '/fr/contact' : '/contact-us'); ?>"
+                <a href="<?php echo e($isFr ? '/fr/contact' : '/en/contact'); ?>"
                     class="block text-base font-bold <?php echo e($isContactActive ? 'text-[#0055A4]' : 'text-[#002654]'); ?> hover:text-[#0055A4]">
                     Contact
                 </a>

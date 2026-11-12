@@ -271,6 +271,34 @@ Route::get('/fr/naturalisation-suisse', function () { return view('swiss-citizen
 Route::get('/fr/swiss-citizenship', function () { return view('swiss-citizenship'); });
 Route::get('/swiss-citizenship', function () { return view('swiss-citizenship'); });
 
+// Page 12: Online French classes (English /en/online-french-classes/, French /fr/cours-de-francais-en-ligne/)
+Route::get('/en/online-french-classes', function () { return view('our-courses'); });
+Route::get('/fr/cours-de-francais-en-ligne', function () { return view('our-courses'); });
+Route::get('/online-french-classes', function () { return view('our-courses'); });
+
+// Page 17: About (English /en/about/, French /fr/a-propos/)
+Route::get('/en/about', function () { return view('about-us'); });
+Route::get('/fr/a-propos', function () { return view('about-us'); });
+Route::get('/fr/about', function () { return view('about-us'); });
+Route::get('/about', function () { return view('about-us'); });
+
+// Page 18: Contact (English /en/contact/, French /fr/contact/)
+Route::get('/en/contact', function () { return view('contact-us'); });
+Route::get('/fr/contact', function () { return view('contact-us'); });
+Route::get('/contact', function () { return view('contact-us'); });
+
+// Page 13: DELF guide / all levels (English /en/delf/, French /fr/delf/)
+Route::get('/en/delf', function () { return view('delf-b2'); });
+Route::get('/fr/delf', function () { return view('delf-b2'); });
+Route::get('/delf', function () { return view('delf-b2'); });
+
+// Page 09: French residence permits (English /en/french-residence-permit-language/, French /fr/titre-de-sejour-niveau-francais/)
+Route::get('/en/french-residence-permit-language', function () { return view('french-residence-permit'); });
+Route::get('/fr/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit'); });
+Route::get('/fr/french-residence-permit-language', function () { return view('french-residence-permit'); });
+Route::get('/en/titre-de-sejour-niveau-francais', function () { return view('french-residence-permit'); });
+Route::get('/french-residence-permit-language', function () { return view('french-residence-permit'); });
+
 // Policies page (Blade template)
 Route::get('/new-policies', function () { return view('new-policies'); });
 
