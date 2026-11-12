@@ -25,6 +25,8 @@
     $delfUrl = $isFr ? '/fr/delf/' : '/en/delf/';
     $contactUrl = $isFr ? '/fr/contact/' : '/en/contact/';
     $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
+    $samplesUrl = 'https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b2/exemples-sujets';
+    $linkClass = 'font-semibold text-[#0055A4] hover:underline';
 
     $faqs = $isFr ? [
         [
@@ -45,7 +47,7 @@
         ],
         [
             'q' => 'Existe-t-il une formation DELF B2 gratuite ?',
-            'a' => 'France Éducation international publie gratuitement des exemples de sujets. Ils montrent le format. Ce qui leur manque, c\'est la correction de vos propres textes et de votre oral, et c\'est là que se gagnent les points.',
+            'a' => 'France Éducation international publie gratuitement des <a href="' . $samplesUrl . '" target="_blank" rel="noopener" class="' . $linkClass . '">exemples de sujets</a>. Ils montrent le format. Ce qui leur manque, c\'est la correction de vos propres textes et de votre oral, et c\'est là que se gagnent les points.',
         ],
         [
             'q' => 'Où et quand passer le DELF B2 ?',
@@ -74,7 +76,7 @@
         ],
         [
             'q' => 'Are there free DELF B2 sample papers?',
-            'a' => 'Yes. France Éducation international publishes free sample papers that show the format. What they can\'t give you is feedback on your own writing and speaking, which is where the marks are won.',
+            'a' => 'Yes. France Éducation international publishes <a href="' . $samplesUrl . '" target="_blank" rel="noopener" class="' . $linkClass . '">free sample papers</a> that show the format. What they can\'t give you is feedback on your own writing and speaking, which is where the marks are won.',
         ],
         [
             'q' => 'Where and when can I take the DELF B2?',

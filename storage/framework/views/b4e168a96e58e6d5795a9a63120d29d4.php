@@ -250,7 +250,8 @@
 
                             <span class="text-[#0055a4]"><?php echo e($isFr ? 'atteignez le niveau' : 'Reach the Level'); ?></span>
                             <br>
-                            <span class="text-[#0055a4]"><?php echo e($isFr ? 'exigé pour votre permis' : 'Your Permit Requires'); ?></span>
+                            <span
+                                class="text-[#0055a4]"><?php echo e($isFr ? 'exigé pour votre permis' : 'Your Permit Requires'); ?></span>
                         </h1>
 
                         <span class="block w-full max-w-xs sm:max-w-md h-[3px] mt-3 rounded-full"
