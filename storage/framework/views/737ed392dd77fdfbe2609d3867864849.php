@@ -105,7 +105,7 @@
 
             <!-- ============ SECTION 1: HERO BANNER ============ -->
             <section
-                class="relative pt-8 pb-12 sm:pt-14 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
+                class="relative  pt-32 md:pt-40 pb-16 md:pb-24overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">

@@ -121,7 +121,7 @@
 
             <!-- ============ SECTION 1: HERO BANNER ============ -->
             <section
-                class="relative pt-8 pb-12 sm:pt-14 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
+                class="relative  pt-32 md:pt-40 pb-16 md:pb-24overflow-hidden bg-gradient-to-b from-[#f0f6ff]/70 via-white to-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center">
 
                     <nav class="flex items-center justify-center gap-1.5 text-xs text-slate-500 mb-6 font-medium">
@@ -368,17 +368,25 @@
                                 <div class="text-center">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-slate-300">B1</div>
                                     <div class="text-xs text-slate-400 mt-1">
-                                        <?php echo e($isFr ? 'Jusqu\'en 2025' : 'Until Dec 2025'); ?></div>
+                                        <?php echo e($isFr ? 'Jusqu\'en 2025' : 'Until Dec 2025'); ?>
+
+                                    </div>
                                     <div class="text-[11px] text-slate-400 font-medium">
-                                        <?php echo e($isFr ? 'Utilisateur seuil' : 'Threshold user'); ?></div>
+                                        <?php echo e($isFr ? 'Utilisateur seuil' : 'Threshold user'); ?>
+
+                                    </div>
                                 </div>
                                 <div class="text-slate-300 text-2xl font-bold">→</div>
                                 <div class="text-center p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-[#0055a4]">B2</div>
                                     <div class="text-xs text-[#0055a4] font-bold mt-1">
-                                        <?php echo e($isFr ? 'Depuis 2026' : 'Since Jan 2026'); ?></div>
+                                        <?php echo e($isFr ? 'Depuis 2026' : 'Since Jan 2026'); ?>
+
+                                    </div>
                                     <div class="text-[11px] text-slate-600 font-semibold">
-                                        <?php echo e($isFr ? 'Obligatoire' : 'Mandatory'); ?></div>
+                                        <?php echo e($isFr ? 'Obligatoire' : 'Mandatory'); ?>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -435,11 +443,17 @@
                                 <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
                                     <tr class="hover:bg-slate-50/60 transition-colors">
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            <?php echo e($isFr ? 'Format' : 'Format'); ?></td>
+                                            <?php echo e($isFr ? 'Format' : 'Format'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? '1 h 35 · 4 épreuves' : '1 h 35 · 4 sections'); ?></td>
+                                            <?php echo e($isFr ? '1 h 35 · 4 épreuves' : '1 h 35 · 4 sections'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? '1 h 40 · 4 épreuves' : '1 h 40 · 4 sections'); ?></td>
+                                            <?php echo e($isFr ? '1 h 40 · 4 épreuves' : '1 h 40 · 4 sections'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
                                             <?php echo e($isFr ? '2 h 30 écrit + 20 min oral' : '2 h 30 written + 20 min oral'); ?>
 
@@ -447,41 +461,69 @@
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            <?php echo e($isFr ? 'Évaluation' : 'Scoring scale'); ?></td>
+                                            <?php echo e($isFr ? 'Évaluation' : 'Scoring scale'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
+                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?></td>
+                                            <?php echo e($isFr ? 'Échelle A1 à B2' : 'A1 to B2 continuous'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Admis / Non admis (50/100)' : 'Pass/Fail (50/100 min)'); ?></td>
+                                            <?php echo e($isFr ? 'Admis / Non admis (50/100)' : 'Pass/Fail (50/100 min)'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            <?php echo e($isFr ? 'Délais des résultats' : 'Results turnaround'); ?></td>
+                                            <?php echo e($isFr ? 'Délais des résultats' : 'Results turnaround'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? '15 à 20 jours ouvrés' : '15 to 20 working days'); ?></td>
+                                            <?php echo e($isFr ? '15 à 20 jours ouvrés' : '15 to 20 working days'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? '1 à 10 jours ouvrés' : '1 to 10 working days'); ?></td>
+                                            <?php echo e($isFr ? '1 à 10 jours ouvrés' : '1 to 10 working days'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? '4 à 6 semaines' : '4 to 6 weeks'); ?></td>
+                                            <?php echo e($isFr ? '4 à 6 semaines' : '4 to 6 weeks'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            <?php echo e($isFr ? 'Validité' : 'Validity'); ?></td>
+                                            <?php echo e($isFr ? 'Validité' : 'Validity'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
                                         <td class="py-4 px-6 text-slate-600 font-bold text-[#0055a4]">
-                                            <?php echo e($isFr ? 'À vie (Diplôme)' : 'Lifelong (Diploma)'); ?></td>
+                                            <?php echo e($isFr ? 'À vie (Diplôme)' : 'Lifelong (Diploma)'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/60 transition-colors">
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">
-                                            <?php echo e($isFr ? 'Idéal pour' : 'Best for'); ?></td>
+                                            <?php echo e($isFr ? 'Idéal pour' : 'Best for'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Évaluation multi-niveaux' : 'Multi-level scoring'); ?></td>
+                                            <?php echo e($isFr ? 'Évaluation multi-niveaux' : 'Multi-level scoring'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Délais rapides' : 'Fast turnaround'); ?></td>
+                                            <?php echo e($isFr ? 'Délais rapides' : 'Fast turnaround'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">
-                                            <?php echo e($isFr ? 'Certificat définitif' : 'Permanent diploma'); ?></td>
+                                            <?php echo e($isFr ? 'Certificat définitif' : 'Permanent diploma'); ?>
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
