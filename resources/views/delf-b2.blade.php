@@ -344,13 +344,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}</span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                {{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}
+                            </span>
+
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? 'Le DELF B2 en bref' : 'The DELF B2 at a glance' }}
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -422,13 +426,16 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'UN DIPLÔME, PAS UN TEST' : 'A DIPLOMA, NOT A TEST RESULT' }}</span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                {{ $isFr ? 'UN DIPLÔME, PAS UN TEST' : 'A DIPLOMA, NOT A TEST RESULT' }}
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? 'Pourquoi le DELF B2 plutôt qu\'un test ?' : 'Why choose the DELF B2 over a test?' }}
                             </h2>
                             <div class="mt-4 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -470,13 +477,15 @@
             <section id="sections" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "LE JOUR DE L'EXAMEN" : 'KNOW WHAT EXAM DAY LOOKS LIKE' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? "LE JOUR DE L'EXAMEN" : 'KNOW WHAT EXAM DAY LOOKS LIKE' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Les 4 épreuves du DELF B2' : 'The 4 sections of the DELF B2' }}
                         </h2>
                     </div>
@@ -507,13 +516,15 @@
             <section class="py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'ÉVITER LES PIÈGES FRÉQUENTS' : 'AVOID THE COMMON TRAPS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'ÉVITER LES PIÈGES FRÉQUENTS' : 'AVOID THE COMMON TRAPS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Où les candidats perdent des points au DELF B2' : 'Where DELF B2 candidates lose points' }}
                         </h2>
                     </div>
@@ -539,13 +550,15 @@
             <section id="prepare" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Notre préparation au DELF B2' : 'How we prepare you for the DELF B2' }}
                         </h2>
                     </div>
@@ -582,13 +595,15 @@
             <section id="applications" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'VOTRE PROCHAINE ÉTAPE, CLAIREMENT' : 'YOUR NEXT STEP, CLEARLY EXPLAINED' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'VOTRE PROCHAINE ÉTAPE, CLAIREMENT' : 'YOUR NEXT STEP, CLEARLY EXPLAINED' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Le DELF B2 pour quelle démarche ?' : 'Which applications does the DELF B2 cover?' }}
                         </h2>
                     </div>
