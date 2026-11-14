@@ -160,14 +160,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -625,7 +625,7 @@
 
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>TCF, TEF ou DELF' : 'TCF, TEF or<br>DELF FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'TCF, TEF or<br>DELF FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,

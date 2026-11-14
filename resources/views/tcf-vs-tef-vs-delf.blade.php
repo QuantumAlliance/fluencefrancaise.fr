@@ -160,14 +160,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -592,7 +592,7 @@
 
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>TCF, TEF ou DELF' : 'TCF, TEF or<br>DELF FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'TCF, TEF or<br>DELF FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,

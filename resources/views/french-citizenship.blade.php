@@ -83,14 +83,14 @@
 
     $requirements = $isFr ? [
         ['Âge', '18 ans (demande possible dès 17 ans)', null],
-        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés.', null],
-        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses).', null],
-        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit.', $langUrl],
-        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40.', $civicUrl],
-        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français.', null],
-        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer.', null],
-        ['Conduite', 'Pas de condamnation qui fasse obstacle.', null],
-        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane).', null],
+        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés', null],
+        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses)', null],
+        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit', $langUrl],
+        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40', $civicUrl],
+        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français', null],
+        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer', null],
+        ['Conduite', 'Pas de condamnation qui fasse obstacle', null],
+        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane)', null],
     ] : [
         ['Age', '18 (you can apply from 17).', null],
         ['Residence', '5 years in France. 2 years if you earned a French higher-education diploma after 2 years of study. No minimum in some cases, such as for refugees.', null],
@@ -156,14 +156,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -412,13 +412,19 @@
                         @foreach($requirements as $item)
                             <article class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6">
                                 <h3 class="font-bold text-[#10233e]">
-                                    @if($item[2])
+                                    @if($item[2] && !($isFr && $item[0] === 'Langue'))
                                         <a href="{{ $item[2] }}" class="text-[#0055A4] hover:underline">{{ $item[0] }} →</a>
                                     @else
                                         {{ $item[0] }}
                                     @endif
                                 </h3>
-                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">{{ $item[1] }}</p>
+                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">
+                                    @if($isFr && $item[0] === 'Langue')
+                                        <a href="{{ $langUrl }}" class="font-semibold text-[#0055A4] hover:underline">Niveau B2</a> à l'oral et à l'écrit
+                                    @else
+                                        {{ $item[1] }}
+                                    @endif
+                                </p>
                             </article>
                         @endforeach
                     </div>
@@ -637,7 +643,7 @@
 
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>sur la nationalité' : 'French<br>citizenship FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'French<br>citizenship FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,
