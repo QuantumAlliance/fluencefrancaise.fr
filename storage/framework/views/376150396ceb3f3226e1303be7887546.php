@@ -2,8 +2,8 @@
     $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
     $siteName = $settings['site_name'] ?? 'Fluence Française';
 
-    // Determine language based on current URL prefix
-    $isFr = request()->is('fr*');
+    // French homepage is /, English homepage is /en. Other French pages use /fr.
+    $isFr = request()->is('fr*') || request()->is('/');
     $currentPath = request()->path();
 
     // Clean URLs for language toggle using Developer Guide pairs
