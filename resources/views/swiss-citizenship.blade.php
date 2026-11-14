@@ -111,7 +111,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.favicon')
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
@@ -120,7 +120,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -163,7 +163,7 @@
                                     class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Suisse' : 'Switzerland' }}</a>
                                 <span>›</span>
                                 <span
-                                    class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation suisse' : 'Swiss Citizenship' }}</span>
+                                    class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation' : 'Swiss Citizenship' }}</span>
                             </nav>
                             <span class="eyebrow">
                                 <span class="tricolor w-12">
@@ -175,14 +175,17 @@
                             </span>
                             <h1
                                 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
-                                {{ $isFr ? 'Naturalisation suisse :' : 'Swiss Citizenship: Reach' }}
-                                <br>
-                                <span class="text-[#0055a4]">
-                                    {{ $isFr ? 'Atteignez le niveau de langue' : 'the Language Level' }}
-                                </span>
-                                <br>
-                                <span class="swish relative inline-block">
-                                    {{ $isFr ? 'exigé' : 'Required' }}
+                                @if($isFr)
+                                    Naturalisation suisse :<br>
+                                    <span class="text-[#0055a4]">atteignez le niveau de langue </span><span
+                                        class="swish relative inline-block text-[#0055a4]">exigé</span>
+                                @else
+                                    Swiss Citizenship: Reach
+                                    <br>
+                                    <span class="text-[#0055a4]">the Language Level</span>
+                                    <br>
+                                    <span class="swish relative inline-block">Required</span>
+                                @endif
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">

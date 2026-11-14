@@ -111,7 +111,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
@@ -120,7 +120,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -163,7 +163,7 @@
                                     class="hover:text-[#0055A4] transition-colors"><?php echo e($isFr ? 'Suisse' : 'Switzerland'); ?></a>
                                 <span>›</span>
                                 <span
-                                    class="text-slate-800 font-semibold"><?php echo e($isFr ? 'Naturalisation suisse' : 'Swiss Citizenship'); ?></span>
+                                    class="text-slate-800 font-semibold"><?php echo e($isFr ? 'Naturalisation' : 'Swiss Citizenship'); ?></span>
                             </nav>
                             <span class="eyebrow">
                                 <span class="tricolor w-12">
@@ -176,17 +176,17 @@
                             </span>
                             <h1
                                 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
-                                <?php echo e($isFr ? 'Naturalisation suisse :' : 'Swiss Citizenship: Reach'); ?>
-
-                                <br>
-                                <span class="text-[#0055a4]">
-                                    <?php echo e($isFr ? 'Atteignez le niveau de langue' : 'the Language Level'); ?>
-
-                                </span>
-                                <br>
-                                <span class="swish relative inline-block">
-                                    <?php echo e($isFr ? 'exigé' : 'Required'); ?>
-
+                                <?php if($isFr): ?>
+                                    Naturalisation suisse :<br>
+                                    <span class="text-[#0055a4]">atteignez le niveau de langue </span><span
+                                        class="swish relative inline-block text-[#0055a4]">exigé</span>
+                                <?php else: ?>
+                                    Swiss Citizenship: Reach
+                                    <br>
+                                    <span class="text-[#0055a4]">the Language Level</span>
+                                    <br>
+                                    <span class="swish relative inline-block">Required</span>
+                                <?php endif; ?>
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">

@@ -119,14 +119,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.favicon')
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -170,20 +170,22 @@
                             </span>
                             <h1
                                 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
-                                {{ $isFr ? 'Permis C en Suisse :' : 'C Permit Switzerland:' }}
-                                <br>
-                                <span class="text-[#0055a4]">
-                                    {{ $isFr ? 'Atteignez le niveau de langue' : 'Reach the Language Level' }}
-                                </span>
-                                <br>
-                                <span class="swish relative inline-block">
-                                    {{ $isFr ? 'exigé' : 'Required' }}
-                                </span>
+                                @if($isFr)
+                                    Permis C :<br>
+                                    <span class="text-[#0055a4]">atteignez le niveau de français </span><span
+                                        class="swish relative inline-block text-[#0055a4]">exigé</span>
+                                @else
+                                    C Permit Switzerland:
+                                    <br>
+                                    <span class="text-[#0055a4]">Reach the Language Level</span>
+                                    <br>
+                                    <span class="swish relative inline-block">Required</span>
+                                @endif
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
                                 {{ $isFr
-    ? 'Le permis C exige un niveau certifié A2 oral et A1 écrit (ou B1 oral pour la demande anticipée). Nous vous préparons au niveau exact exigé dans votre canton.'
+    ? 'Pour le permis C, la langue est la condition que vous maîtrisez le plus : nous vous préparons au niveau exact, à l\'oral comme à l\'écrit.'
     : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.' }}
                             </p>
 
@@ -202,7 +204,7 @@
 
                             <div class="mt-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
                                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-                                <span>{{ $isFr ? 'Cours particuliers sur Google Meet · Horaires flexibles · Garantie conformité SEM' : 'Live classes on Google Meet · Flexible hours · SEM compliant preparation' }}</span>
+                                <span>{{ $isFr ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' : 'Live classes on Google Meet · Flexible hours · SEM compliant preparation' }}</span>
                             </div>
                         </div>
 
@@ -265,33 +267,39 @@
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Permis C anticipé (5 ans)' : 'Fast-track C permit (5 years)' }}
+                                        {{ $isFr ? 'Préparation au test fide et au DELF' : 'Fast-track C permit (5 years)' }}
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? 'Exige B1 oral + A1 écrit' : 'Requires B1 oral + A1 written' }}
-                                    </div>
+                                    @unless($isFr)
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            Requires B1 oral + A1 written
+                                        </div>
+                                    @endunless
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Permis C ordinaire (10 ans)' : 'Standard C permit (10 years)' }}
+                                        {{ $isFr ? 'Mises en situation suisses' : 'Standard C permit (10 years)' }}
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? 'Exige A2 oral + A1 écrit' : 'Requires A2 oral + A1 written' }}
-                                    </div>
+                                    @unless($isFr)
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            Requires A2 oral + A1 written
+                                        </div>
+                                    @endunless
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        {{ $isFr ? 'Examens officiels reconnus' : 'Official tests recognized' }}
+                                        {{ $isFr ? 'En ligne, partout en Suisse romande' : 'Official tests recognized' }}
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        {{ $isFr ? 'fide, DELF, TCF, TEF' : 'fide, DELF, TCF, TEF' }}
-                                    </div>
+                                    @unless($isFr)
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            fide, DELF, TCF, TEF
+                                        </div>
+                                    @endunless
                                 </div>
                             </div>
                         </div>

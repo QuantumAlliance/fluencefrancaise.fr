@@ -119,14 +119,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -171,23 +171,22 @@
                             </span>
                             <h1
                                 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
-                                <?php echo e($isFr ? 'Permis C en Suisse :' : 'C Permit Switzerland:'); ?>
-
-                                <br>
-                                <span class="text-[#0055a4]">
-                                    <?php echo e($isFr ? 'Atteignez le niveau de langue' : 'Reach the Language Level'); ?>
-
-                                </span>
-                                <br>
-                                <span class="swish relative inline-block">
-                                    <?php echo e($isFr ? 'exigé' : 'Required'); ?>
-
-                                </span>
+                                <?php if($isFr): ?>
+                                    Permis C :<br>
+                                    <span class="text-[#0055a4]">atteignez le niveau de français </span><span
+                                        class="swish relative inline-block text-[#0055a4]">exigé</span>
+                                <?php else: ?>
+                                    C Permit Switzerland:
+                                    <br>
+                                    <span class="text-[#0055a4]">Reach the Language Level</span>
+                                    <br>
+                                    <span class="swish relative inline-block">Required</span>
+                                <?php endif; ?>
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
                                 <?php echo e($isFr
-    ? 'Le permis C exige un niveau certifié A2 oral et A1 écrit (ou B1 oral pour la demande anticipée). Nous vous préparons au niveau exact exigé dans votre canton.'
+    ? 'Pour le permis C, la langue est la condition que vous maîtrisez le plus : nous vous préparons au niveau exact, à l\'oral comme à l\'écrit.'
     : 'A C permit requires certified language level A2 oral and A1 written (or B1 oral for early application). We prepare you for the exact level, spoken in your canton.'); ?>
 
                             </p>
@@ -208,7 +207,7 @@
 
                             <div class="mt-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
                                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-                                <span><?php echo e($isFr ? 'Cours particuliers sur Google Meet · Horaires flexibles · Garantie conformité SEM' : 'Live classes on Google Meet · Flexible hours · SEM compliant preparation'); ?></span>
+                                <span><?php echo e($isFr ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus' : 'Live classes on Google Meet · Flexible hours · SEM compliant preparation'); ?></span>
                             </div>
                         </div>
 
@@ -276,39 +275,42 @@
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        <?php echo e($isFr ? 'Permis C anticipé (5 ans)' : 'Fast-track C permit (5 years)'); ?>
+                                        <?php echo e($isFr ? 'Préparation au test fide et au DELF' : 'Fast-track C permit (5 years)'); ?>
 
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        <?php echo e($isFr ? 'Exige B1 oral + A1 écrit' : 'Requires B1 oral + A1 written'); ?>
-
-                                    </div>
+                                    <?php if (! ($isFr)): ?>
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            Requires B1 oral + A1 written
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        <?php echo e($isFr ? 'Permis C ordinaire (10 ans)' : 'Standard C permit (10 years)'); ?>
+                                        <?php echo e($isFr ? 'Mises en situation suisses' : 'Standard C permit (10 years)'); ?>
 
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        <?php echo e($isFr ? 'Exige A2 oral + A1 écrit' : 'Requires A2 oral + A1 written'); ?>
-
-                                    </div>
+                                    <?php if (! ($isFr)): ?>
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            Requires A2 oral + A1 written
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/70 flex items-start gap-3">
                                 <i class="fas fa-check text-[#0055a4] mt-1 text-xs"></i>
                                 <div>
                                     <div class="text-xs font-bold text-[#10233e]">
-                                        <?php echo e($isFr ? 'Examens officiels reconnus' : 'Official tests recognized'); ?>
+                                        <?php echo e($isFr ? 'En ligne, partout en Suisse romande' : 'Official tests recognized'); ?>
 
                                     </div>
-                                    <div class="text-xs text-slate-500 font-normal mt-0.5">
-                                        <?php echo e($isFr ? 'fide, DELF, TCF, TEF' : 'fide, DELF, TCF, TEF'); ?>
-
-                                    </div>
+                                    <?php if (! ($isFr)): ?>
+                                        <div class="text-xs text-slate-500 font-normal mt-0.5">
+                                            fide, DELF, TCF, TEF
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
