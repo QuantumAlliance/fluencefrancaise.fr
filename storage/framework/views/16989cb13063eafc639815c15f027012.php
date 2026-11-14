@@ -30,7 +30,7 @@
     $delfUrl = $isFr ? '/fr/delf' : '/en/delf';
     $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
     $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
-    $referralUrl = $isFr ? '/fr/contact#parrainage' : '/en/contact#referral';
+    $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact#referral';
     $spCards = 'https://www.service-public.gouv.fr/particuliers/vosdroits/F34501';
 
     $link = 'class="font-semibold text-[#0055A4] hover:underline"';
@@ -115,14 +115,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -718,7 +718,7 @@
             <!-- residence permit faq -->
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>sur le titre de séjour' : 'Residence permit<br>FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'Residence permit<br>FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,

@@ -30,7 +30,7 @@
     $delfUrl = $isFr ? '/fr/delf' : '/en/delf';
     $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
     $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
-    $referralUrl = $isFr ? '/fr/contact#parrainage' : '/en/contact#referral';
+    $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact#referral';
     $spCards = 'https://www.service-public.gouv.fr/particuliers/vosdroits/F34501';
 
     $link = 'class="font-semibold text-[#0055A4] hover:underline"';
@@ -115,14 +115,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.favicon')
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -672,7 +672,7 @@
             <!-- residence permit faq -->
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>sur le titre de séjour' : 'Residence permit<br>FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'Residence permit<br>FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,

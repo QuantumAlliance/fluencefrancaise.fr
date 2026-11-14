@@ -193,14 +193,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -747,7 +747,7 @@
                         ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
                         : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
                     'description' => $isFr
-                        ? 'Votre premier cours mesure vos 4 épreuves face au B1 et fixe le plan jusqu’à la session. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
+                        ? "Votre premier cours mesure vos 4 épreuves face au B1 et fixe le plan jusqu'à la session. Vous choisissez le rythme : 2 ou 4 heures par semaine."
                         : 'Your first class measures your 4 sections against B1 and sets the plan up to your session. You choose the pace: 2 or 4 hours a week.',
                     'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
                     'primaryButtonUrl' => '/register',
