@@ -56,7 +56,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
@@ -65,7 +65,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">

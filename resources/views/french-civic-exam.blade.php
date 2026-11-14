@@ -67,9 +67,9 @@
     ];
 
     $who = $isFr ? [
-        'une première demande de carte de séjour pluriannuelle concernée par les règles de 2026',
-        'une première demande de carte de résident concernée par les règles de 2026',
-        'une demande de naturalisation par décret',
+        'une première demande de carte de séjour pluriannuelle concernée par les règles de 2026 ;',
+        'une première demande de carte de résident concernée par les règles de 2026 ;',
+        'une demande de naturalisation par décret.',
     ] : [
         'a first carte de séjour pluriannuelle (multi-year residence permit) covered by the 2026 rules',
         'a first carte de résident (10-year resident card) covered by the 2026 rules',
@@ -125,14 +125,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -370,7 +370,7 @@
                                 </h3>
                                 <p class="mt-3 text-sm text-slate-500 leading-relaxed">
                                     {{ $isFr
-    ? 'Les personnes de plus de 65 ans ne le passent pas. Pour une première carte pluriannuelle, les catégories exclues comprennent les titres hors contrat d\'intégration républicaine, la protection subsidiaire et le statut d\'apatride. Pour une carte de résident, les dispenses dépendent de la catégorie de carte. Un problème de santé ou un handicap peut ouvrir droit à des aménagements ou à une dispense, sur certificat médical.'
+    ? 'Dispenses : les personnes de plus de 65 ans ne le passent pas. Pour une première carte pluriannuelle, les catégories exclues comprennent les titres hors contrat d\'intégration républicaine, la protection subsidiaire et le statut d\'apatride. Pour une carte de résident, les dispenses dépendent de la catégorie de carte. Un problème de santé ou un handicap peut ouvrir droit à des aménagements ou à une dispense, sur certificat médical.'
     : "People over 65 don't take it. For a first multi-year permit, excluded categories include permits outside the republican integration contract, subsidiary protection and stateless status. For resident cards, exemptions depend on the card category. A health condition or disability can lead to adapted conditions or an exemption, with a medical certificate." }}
                                 </p>
                             </div>
