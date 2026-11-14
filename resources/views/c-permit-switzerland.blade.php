@@ -160,17 +160,16 @@
                                 <span class="text-slate-800 font-semibold">{{ $isFr ? 'Permis C' : 'C Permit' }}</span>
                             </nav>
 
-                            <div class="inline-flex items-center gap-1.5 mb-5">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? "SUISSE · PERMIS D'ÉTABLISSEMENT C" : 'SWITZERLAND · PERMANENT SETTLEMENT' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
-
+                                {{ $isFr ? "SUISSE · PERMIS D'ÉTABLISSEMENT C" : 'SWITZERLAND · PERMANENT SETTLEMENT' }}
+                            </span>
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2]">
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
                                 {{ $isFr ? 'Permis C en Suisse :' : 'C Permit Switzerland:' }}
                                 <br>
                                 <span class="text-[#0055a4]">
@@ -318,13 +317,16 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'NIVEAU EXIGÉ' : 'LANGUAGE LEVEL' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'NIVEAU EXIGÉ' : 'LANGUAGE LEVEL' }}
+                        </span>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Quel niveau de français pour le permis C ?' : 'What language level do you need for a C permit?' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -373,13 +375,16 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LE PERMIS D\'ÉTABLISSEMENT' : 'THE SETTLEMENT PERMIT' }}</span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                {{ $isFr ? 'LE PERMIS D\'ÉTABLISSEMENT' : 'THE SETTLEMENT PERMIT' }}
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? 'Le permis C en bref' : 'The C permit at a glance' }}
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -428,13 +433,15 @@
 
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'APRÈS 5 ANS' : 'AFTER 5 YEARS' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <span class="eyebrow">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'APRÈS 5 ANS' : 'AFTER 5 YEARS' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         {{ $isFr ? 'Permis C anticipé : l\'oral fait la différence' : 'Early C permit: speaking makes the difference' }}
                     </h2>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -453,13 +460,15 @@
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'PREUVES ACCEPTÉES' : 'ACCEPTED PROOF' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'PREUVES ACCEPTÉES' : 'ACCEPTED PROOF' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-5">
                             {{ $isFr ? 'Comment prouver votre niveau ?' : 'How do you prove your level?' }}
                         </h2>
                     </div>
@@ -520,13 +529,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-5">
                             {{ $isFr ? 'Notre préparation' : 'How we prepare you' }}
                         </h2>
                     </div>

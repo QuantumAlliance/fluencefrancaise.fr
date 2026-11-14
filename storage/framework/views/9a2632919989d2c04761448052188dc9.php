@@ -88,7 +88,8 @@
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <script type="application/ld+json"><?php echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?></script>
+    <script
+        type="application/ld+json"><?php echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?></script>
     <?php echo $__env->make('partials.favicon', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('partials.theme', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('partials.custom-scripts-head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -104,20 +105,30 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <div class="reveal">
-                        <nav aria-label="Breadcrumb" class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
-                            <a href="<?php echo e($homeUrl); ?>" class="hover:text-primary-600 transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
+                        <nav aria-label="Breadcrumb"
+                            class="text-xs text-slate-400 font-medium flex items-center gap-2 mb-5">
+                            <a href="<?php echo e($homeUrl); ?>"
+                                class="hover:text-primary-600 transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
                             <span class="text-slate-300">›</span>
                             <span class="text-slate-700 font-semibold"><?php echo e($isFr ? 'À propos' : 'About'); ?></span>
                         </nav>
-                        <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> <?php echo e($isFr ? 'À propos' : 'About'); ?></span>
+                        <span class="eyebrow">
+                            <span class="tricolor ">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'À propos' : 'About'); ?>
+
+                        </span>
                         <h1 class="mt-5 text-[2.5rem] leading-[1.06] md:text-6xl font-semibold text-ink tracking-tight">
                             <?php echo e($isFr ? 'À propos de Fluence Française' : 'About Fluence Française'); ?>
 
                         </h1>
                         <p class="mt-6 text-lg text-slate-600 leading-relaxed">
                             <?php echo e($isFr
-                                ? 'Pour vous, le français n\'est pas un loisir. C\'est une condition : pour une carte de séjour, une nationalité, un permis, une vie. Nous avons construit notre école autour de cette réalité.'
-                                : 'For you, French isn\'t a hobby. It\'s a requirement: for a residence card, a passport, a permit, a life. We built our school around that reality.'); ?>
+    ? 'Pour vous, le français n\'est pas un loisir. C\'est une condition : pour une carte de séjour, une nationalité, un permis, une vie. Nous avons construit notre école autour de cette réalité.'
+    : 'For you, French isn\'t a hobby. It\'s a requirement: for a residence card, a passport, a permit, a life. We built our school around that reality.'); ?>
 
                         </p>
                     </div>
@@ -147,7 +158,8 @@
         <section class="py-16 md:py-24 bg-mist">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> <?php echo e($isFr ? 'Notre idée' : 'Our idea'); ?></span>
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span>
+                        <?php echo e($isFr ? 'Notre idée' : 'Our idea'); ?></span>
                     <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">
                         <?php echo e($isFr ? 'Notre idée : l\'écart' : 'Our idea: the gap'); ?>
 
@@ -155,14 +167,14 @@
                     <div class="mt-6 space-y-4 text-lg text-slate-600 leading-relaxed">
                         <p>
                             <?php echo e($isFr
-                                ? 'Chaque démarche exige un niveau précis : A2, B1, B2. Chaque candidat a un niveau réel, souvent inégal d\'une compétence à l\'autre. Entre les 2, il y a un écart.'
-                                : 'Every application requires a specific level: A2, B1, B2. Every candidate has a real level, often uneven from one skill to the next. Between the 2, there\'s a gap.'); ?>
+    ? 'Chaque démarche exige un niveau précis : A2, B1, B2. Chaque candidat a un niveau réel, souvent inégal d\'une compétence à l\'autre. Entre les 2, il y a un écart.'
+    : 'Every application requires a specific level: A2, B1, B2. Every candidate has a real level, often uneven from one skill to the next. Between the 2, there\'s a gap.'); ?>
 
                         </p>
                         <p>
                             <?php echo e($isFr
-                                ? 'Nous ne vendons pas « des cours de français » en général. Nous mesurons cet écart, puis nous le comblons, compétence par compétence.'
-                                : 'We don\'t sell “French classes” in general. We measure that gap, then close it, skill by skill.'); ?>
+    ? 'Nous ne vendons pas « des cours de français » en général. Nous mesurons cet écart, puis nous le comblons, compétence par compétence.'
+    : 'We don\'t sell “French classes” in general. We measure that gap, then close it, skill by skill.'); ?>
 
                         </p>
                         <p class="text-ink font-semibold">
@@ -177,7 +189,8 @@
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-2xl reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> <?php echo e($isFr ? 'La méthode' : 'The method'); ?></span>
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span>
+                        <?php echo e($isFr ? 'La méthode' : 'The method'); ?></span>
                     <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">
                         <?php echo e($isFr ? 'Comment nous enseignons' : 'How we teach'); ?>
 
@@ -185,16 +198,18 @@
                 </div>
                 <div class="mt-12 grid md:grid-cols-2 gap-5">
                     <?php $__currentLoopData = $steps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $step): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="reveal card-glow bg-mist rounded-3xl border border-slate-100 p-7" style="transition-delay:<?php echo e($i * 70); ?>ms">
-                            <span class="w-12 h-12 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-sm font-bold"><?php echo e($step[0]); ?></span>
+                        <div class="reveal card-glow bg-mist rounded-3xl border border-slate-100 p-7"
+                            style="transition-delay:<?php echo e($i * 70); ?>ms">
+                            <span
+                                class="w-12 h-12 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-sm font-bold"><?php echo e($step[0]); ?></span>
                             <p class="mt-5 text-lg text-slate-600 leading-relaxed"><?php echo e($step[1]); ?></p>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <p class="mt-8 max-w-3xl text-lg text-slate-600 leading-relaxed">
                     <?php echo e($isFr
-                        ? 'Les cours ont lieu en direct sur Google Meet, en particulier ou en mini-groupe de 2 à 5 personnes. Entre les cours, votre espace élève prend le relais : notes de cours, exercices à vitesse native, banques de questions, examens blancs.'
-                        : 'Classes run live on Google Meet, 1:1 or in a group of 2–5. Between classes, your student portal takes over: class notes, native-speed practice, question banks, mock exams.'); ?>
+    ? 'Les cours ont lieu en direct sur Google Meet, en particulier ou en mini-groupe de 2 à 5 personnes. Entre les cours, votre espace élève prend le relais : notes de cours, exercices à vitesse native, banques de questions, examens blancs.'
+    : 'Classes run live on Google Meet, 1:1 or in a group of 2–5. Between classes, your student portal takes over: class notes, native-speed practice, question banks, mock exams.'); ?>
 
                 </p>
             </div>
@@ -203,7 +218,8 @@
         <section class="py-16 md:py-24 bg-mist">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-2xl reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> <?php echo e($isFr ? 'Nos engagements' : 'Our commitments'); ?></span>
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span>
+                        <?php echo e($isFr ? 'Nos engagements' : 'Our commitments'); ?></span>
                     <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">
                         <?php echo e($isFr ? 'Ce que nous promettons, et ce que nous ne promettrons jamais' : 'What we promise, and what we never will'); ?>
 
@@ -211,7 +227,8 @@
                 </div>
                 <div class="mt-12 grid md:grid-cols-3 gap-5">
                     <?php $__currentLoopData = $promises; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $promise): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="reveal card-glow bg-white rounded-3xl border border-slate-100 p-7" style="transition-delay:<?php echo e($i * 70); ?>ms">
+                        <div class="reveal card-glow bg-white rounded-3xl border border-slate-100 p-7"
+                            style="transition-delay:<?php echo e($i * 70); ?>ms">
                             <p class="text-slate-600 leading-relaxed"><?php echo e($promise); ?></p>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -222,15 +239,16 @@
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl reveal">
-                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> <?php echo e($isFr ? 'L\'équipe' : 'The team'); ?></span>
+                    <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span>
+                        <?php echo e($isFr ? 'L\'équipe' : 'The team'); ?></span>
                     <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">
                         <?php echo e($isFr ? 'Une équipe qui prépare déjà aux examens de français' : 'A team that already prepares people for French exams'); ?>
 
                     </h2>
                     <p class="mt-6 text-lg text-slate-600 leading-relaxed">
                         <?php echo e($isFr
-                            ? 'Fluence Française est née de l\'équipe de Focus Frame French, qui prépare au TEF et au TCF les candidats à la résidence permanente au Canada, avec plus de 100 avis 5 étoiles sur Google.'
-                            : 'Fluence Française comes from the team behind Focus Frame French, which prepares candidates for Canadian permanent residence through the TEF and TCF, with 100+ 5-star Google reviews.'); ?>
+    ? 'Fluence Française est née de l\'équipe de Focus Frame French, qui prépare au TEF et au TCF les candidats à la résidence permanente au Canada, avec plus de 100 avis 5 étoiles sur Google.'
+    : 'Fluence Française comes from the team behind Focus Frame French, which prepares candidates for Canadian permanent residence through the TEF and TCF, with 100+ 5-star Google reviews.'); ?>
 
                     </p>
                 </div>
@@ -239,13 +257,16 @@
 
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden">
-                    <div class="absolute inset-x-0 bottom-0 h-1.5" style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)"></div>
+                <div
+                    class="reveal rounded-5xl bg-primary-600 text-white text-center px-6 py-14 md:py-16 relative overflow-hidden">
+                    <div class="absolute inset-x-0 bottom-0 h-1.5"
+                        style="background:linear-gradient(90deg,#003d7a 0 33.3%,#fff 33.3% 66.6%,#EF4135 66.6% 100%)">
+                    </div>
                     <a href="/register" class="btn btn-onnavy btn-lg"><?php echo e($isFr ? "S'inscrire" : 'Enroll now'); ?></a>
                     <p class="mt-6 text-sm md:text-base text-primary-100">
                         <?php echo e($isFr
-                            ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                            : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included'); ?>
 
                     </p>
                 </div>
@@ -256,5 +277,4 @@
     </div>
 </body>
 
-</html>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/about-us.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/about-us.blade.php ENDPATH**/ ?>

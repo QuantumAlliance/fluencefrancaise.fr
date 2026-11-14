@@ -165,18 +165,16 @@
                                 <span
                                     class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation suisse' : 'Swiss Citizenship' }}</span>
                             </nav>
-
-                            <div class="inline-flex items-center gap-1.5 mb-5">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'SUISSE · NATURALISATION ORDINAIRE & FACILITÉE' : 'SWISS CITIZENSHIP · LANGUAGE REQUIREMENTS' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
-
+                                {{ $isFr ? 'SUISSE · NATURALISATION ORDINAIRE & FACILITÉE' : 'SWISS CITIZENSHIP · LANGUAGE REQUIREMENTS' }}
+                            </span>
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2]">
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
                                 {{ $isFr ? 'Naturalisation suisse :' : 'Swiss Citizenship: Reach' }}
                                 <br>
                                 <span class="text-[#0055a4]">

@@ -38,16 +38,16 @@
         ['q' => 'Combien coûte le test de français pour la naturalisation ?', 'a' => 'Chaque centre agréé fixe son tarif. Pour le TCF IRN ou le TEF IRN, comptez généralement entre 130 et 210 €. Une nouvelle tentative est facturée à nouveau.'],
         ['q' => 'Peut-on passer le test de français en ligne ?', 'a' => 'Non. Le TCF, le TEF et le DELF se passent dans un centre agréé. La préparation, elle, peut se faire entièrement en ligne.'],
         ['q' => 'Mon diplôme étranger en français me dispense-t-il du test ?', 'a' => 'Non. Un diplôme délivré par un autre pays ne compte pas, même si vos études étaient en français. En dehors du TCF et du TEF, seuls les diplômes français ou un diplôme attestant votre niveau de français au B2 ou plus sont acceptés.'],
-        ['q' => 'Qui est dispensé du test de français ?', 'a' => 'Les personnes dont le handicap ou l\'état de santé rend l\'évaluation impossible, sur certificat médical. Et, pour la naturalisation, les réfugiés ou apatrides de plus de 70 ans résidant en France depuis au moins 15 ans avec un titre de séjour. Vérifiez votre situation sur <a href="'.$spCitizenship.'" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.'],
-        ['q' => 'Ces règles valent-elles pour la nationalité par mariage ?', 'a' => 'En partie. Depuis le 1er janvier 2026, la nationalité par mariage exige aussi le B2 à l\'oral et à l\'écrit. Mais elle passe par une déclaration : pas d\'examen civique, un entretien d\'assimilation à la place. Consultez notre <a href="'.$guideUrl.'" class="font-semibold text-[#0055A4] hover:underline">guide de la naturalisation française</a>.'],
+        ['q' => 'Qui est dispensé du test de français ?', 'a' => 'Les personnes dont le handicap ou l\'état de santé rend l\'évaluation impossible, sur certificat médical. Et, pour la naturalisation, les réfugiés ou apatrides de plus de 70 ans résidant en France depuis au moins 15 ans avec un titre de séjour. Vérifiez votre situation sur <a href="' . $spCitizenship . '" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.'],
+        ['q' => 'Ces règles valent-elles pour la nationalité par mariage ?', 'a' => 'En partie. Depuis le 1er janvier 2026, la nationalité par mariage exige aussi le B2 à l\'oral et à l\'écrit. Mais elle passe par une déclaration : pas d\'examen civique, un entretien d\'assimilation à la place. Consultez notre <a href="' . $guideUrl . '" class="font-semibold text-[#0055A4] hover:underline">guide de la naturalisation française</a>.'],
     ] : [
         ['q' => 'Is B1 still enough for French citizenship?', 'a' => 'Only for applications filed before 1 January 2026. Any new application needs B2, spoken and written.'],
         ['q' => 'Is there a free French test with a certificate for citizenship?', 'a' => 'No. Free online tests only tell you where you stand. Only the TCF, TEF, DELF, DALF or certain French qualifications are accepted in an application.'],
         ['q' => 'How much does the French citizenship language test cost?', 'a' => 'Each approved centre sets its own price. For the TCF IRN or TEF IRN, expect roughly €130–210. A retake is charged again.'],
         ['q' => 'Can I take the test online?', 'a' => 'No. The TCF, TEF and DELF are taken at an approved centre. The preparation can be fully online.'],
         ['q' => 'Does my foreign degree taught in French exempt me?', 'a' => 'No. A degree issued by another country doesn\'t count, even if it was taught in French. Besides the TCF and TEF, only French qualifications or a diploma certifying your French at B2 or above are accepted.'],
-        ['q' => 'Who is exempt from the language test?', 'a' => 'People whose disability or health makes testing impossible, with a medical certificate. Also, for naturalisation, refugees or stateless people over 70 who have lived in France for at least 15 years with a residence permit. Check your case on <a href="'.$spCitizenship.'" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.'],
-        ['q' => 'Do these rules apply to citizenship through marriage?', 'a' => 'Partly. Since 1 January 2026, citizenship through marriage also requires B2, spoken and written. But it goes through a declaration: no civic exam, and an assimilation interview instead. See our <a href="'.$guideUrl.'" class="font-semibold text-[#0055A4] hover:underline">French citizenship guide</a>.'],
+        ['q' => 'Who is exempt from the language test?', 'a' => 'People whose disability or health makes testing impossible, with a medical certificate. Also, for naturalisation, refugees or stateless people over 70 who have lived in France for at least 15 years with a residence permit. Check your case on <a href="' . $spCitizenship . '" target="_blank" rel="noopener" class="font-semibold text-[#0055A4] hover:underline">service-public.fr</a>.'],
+        ['q' => 'Do these rules apply to citizenship through marriage?', 'a' => 'Partly. Since 1 January 2026, citizenship through marriage also requires B2, spoken and written. But it goes through a declaration: no civic exam, and an assimilation interview instead. See our <a href="' . $guideUrl . '" class="font-semibold text-[#0055A4] hover:underline">French citizenship guide</a>.'],
     ];
 ?>
 <html lang="<?php echo e($isFr ? 'fr' : 'en'); ?>" class="scroll-smooth">
@@ -140,16 +140,17 @@
                         <span class="text-slate-800 font-semibold"><?php echo e($isFr ? 'Naturalisation' : 'Citizenship'); ?></span>
                     </nav>
 
-                    <div class="inline-flex items-center gap-1.5 mb-5">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            <?php echo e($isFr ? 'NATURALISATION FRANÇAISE · NOUVELLE EXIGENCE 2026' : 'FRENCH CITIZENSHIP · NEW 2026 LANGUAGE REQUIREMENT'); ?>
-
+                    <span class="eyebrow">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
                         </span>
-                    </div>
+                        <?php echo e($isFr ? 'NATURALISATION FRANÇAISE · NOUVELLE EXIGENCE 2026' : 'FRENCH CITIZENSHIP · NEW 2026 LANGUAGE REQUIREMENT'); ?>
 
-                    <div class="flex flex-col items-center justify-center">
+                    </span>
+
+                    <div class="flex flex-col items-center justify-center mt-5">
                         <h1
                             class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.28]">
                             <?php echo e($isFr ? 'Test de français pour la naturalisation :' : 'French Citizenship Language Test:'); ?>
@@ -221,17 +222,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    <?php echo e($isFr ? 'RÉFORME 2026' : '2026 LANGUAGE REFORM'); ?>
-
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                <?php echo e($isFr ? 'RÉFORME 2026' : '2026 LANGUAGE REFORM'); ?>
+
+                            </span>
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Quel niveau de français pour la naturalisation en 2026 ?' : 'What level of French do you need for French citizenship?'); ?>
 
                             </h2>
@@ -266,14 +267,20 @@
                                         </div>
                                     </div>
                                     <div class="p-4 sm:p-5">
-                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">2 <?php echo e($isFr ? 'ans' : 'yrs'); ?></div>
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">2
+                                            <?php echo e($isFr ? 'ans' : 'yrs'); ?>
+
+                                        </div>
                                         <div class="text-xs text-slate-300 mt-1 font-normal">
                                             <?php echo e($isFr ? 'TCF et TEF' : 'TCF and TEF'); ?>
 
                                         </div>
                                     </div>
                                     <div class="p-4 sm:p-5">
-                                        <div class="text-2xl sm:text-3xl font-extrabold text-white"><?php echo e($isFr ? 'À vie' : 'Life'); ?></div>
+                                        <div class="text-2xl sm:text-3xl font-extrabold text-white">
+                                            <?php echo e($isFr ? 'À vie' : 'Life'); ?>
+
+                                        </div>
                                         <div class="text-xs text-slate-300 mt-1 font-normal">
                                             <?php echo e($isFr ? 'DELF et DALF' : 'DELF and DALF'); ?>
 
@@ -285,30 +292,51 @@
                     </div>
 
                     <div class="mt-12 rounded-2xl border border-slate-200/80 overflow-hidden">
-                        <div class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#002654] text-white text-xs font-semibold tracking-wide">
+                        <div
+                            class="hidden sm:grid sm:grid-cols-12 gap-4 px-5 sm:px-7 py-3.5 bg-[#002654] text-white text-xs font-semibold tracking-wide">
                             <div class="sm:col-span-5"><?php echo e($isFr ? 'Preuve acceptée' : 'Accepted proof'); ?></div>
                             <div class="sm:col-span-2"><?php echo e($isFr ? 'Validité' : 'Valid for'); ?></div>
                             <div class="sm:col-span-5"><?php echo e($isFr ? 'À savoir' : 'Good to know'); ?></div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
-                            <div class="sm:col-span-5 font-semibold"><a href="<?php echo e($tcfUrl); ?>" <?php echo $link; ?>>TCF IRN</a></div>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
+                            <div class="sm:col-span-5 font-semibold"><a href="<?php echo e($tcfUrl); ?>" <?php echo $link; ?>>TCF IRN</a>
+                            </div>
                             <div class="sm:col-span-2 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></div>
-                            <div class="sm:col-span-5 text-slate-600"><?php echo e($isFr ? 'Un niveau par compétence, 1 h 35 d\'épreuves' : 'A level for each skill, 1 h 35 of testing'); ?></div>
+                            <div class="sm:col-span-5 text-slate-600">
+                                <?php echo e($isFr ? 'Un niveau par compétence, 1 h 35 d\'épreuves' : 'A level for each skill, 1 h 35 of testing'); ?>
+
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-white border-b border-slate-100">
-                            <div class="sm:col-span-5 font-semibold"><a href="<?php echo e($tefUrl); ?>" <?php echo $link; ?>>TEF IRN</a></div>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-white border-b border-slate-100">
+                            <div class="sm:col-span-5 font-semibold"><a href="<?php echo e($tefUrl); ?>" <?php echo $link; ?>>TEF IRN</a>
+                            </div>
                             <div class="sm:col-span-2 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></div>
-                            <div class="sm:col-span-5 text-slate-600"><?php echo e($isFr ? '4 épreuves obligatoires dans la même session' : '4 compulsory sections in 1 session'); ?></div>
+                            <div class="sm:col-span-5 text-slate-600">
+                                <?php echo e($isFr ? '4 épreuves obligatoires dans la même session' : '4 compulsory sections in 1 session'); ?>
+
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-[#f7f9fc] border-b border-slate-100">
                             <div class="sm:col-span-5 font-semibold text-[#10233e]"><a href="<?php echo e($delfB2Url); ?>" <?php echo $link; ?>>DELF B2</a> <?php echo e($isFr ? 'ou DALF' : 'or DALF'); ?></div>
                             <div class="sm:col-span-2 text-slate-600"><?php echo e($isFr ? 'À vie' : 'Life'); ?></div>
-                            <div class="sm:col-span-5 text-slate-600"><?php echo e($isFr ? 'Un diplôme : il n\'expire jamais' : 'A diploma: it never expires'); ?></div>
+                            <div class="sm:col-span-5 text-slate-600">
+                                <?php echo e($isFr ? 'Un diplôme : il n\'expire jamais' : 'A diploma: it never expires'); ?>
+
+                            </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm bg-white">
-                            <div class="sm:col-span-5 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Diplôme ou certification français (brevet, diplôme d\'État ou certification professionnelle de niveau 3 et plus)' : 'French qualification (brevet, or a state diploma or professional certification at level 3+)'); ?></div>
+                            <div class="sm:col-span-5 font-semibold text-[#10233e]">
+                                <?php echo e($isFr ? 'Diplôme ou certification français (brevet, diplôme d\'État ou certification professionnelle de niveau 3 et plus)' : 'French qualification (brevet, or a state diploma or professional certification at level 3+)'); ?>
+
+                            </div>
                             <div class="sm:col-span-2 text-slate-600"><?php echo e($isFr ? 'À vie' : 'Life'); ?></div>
-                            <div class="sm:col-span-5 text-slate-600"><?php echo e($isFr ? 'Diplômes et certifications français uniquement' : 'French qualifications only'); ?></div>
+                            <div class="sm:col-span-5 text-slate-600">
+                                <?php echo e($isFr ? 'Diplômes et certifications français uniquement' : 'French qualifications only'); ?>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -319,17 +347,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    <?php echo e($isFr ? 'DIFFÉRENCE FONDAMENTALE' : 'KEY DIFFERENCE'); ?>
-
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                <?php echo e($isFr ? 'DIFFÉRENCE FONDAMENTALE' : 'KEY DIFFERENCE'); ?>
+
+                            </span>
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'B1 ou B2 : ce qui a changé en 2026' : 'B1 or B2? What changed in 2026'); ?>
 
                             </h2>
@@ -358,12 +386,17 @@
                                 class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 flex items-center justify-around gap-4">
                                 <div class="text-center">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-slate-300">B1</div>
-                                    <div class="text-xs text-slate-400 mt-1"><?php echo e($isFr ? 'Avant 2026' : 'Before 2026'); ?></div>
+                                    <div class="text-xs text-slate-400 mt-1"><?php echo e($isFr ? 'Avant 2026' : 'Before 2026'); ?>
+
+                                    </div>
                                 </div>
                                 <div class="text-slate-300 text-2xl font-bold">→</div>
                                 <div class="text-center p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
                                     <div class="text-3xl sm:text-4xl font-extrabold text-[#0055a4]">B2</div>
-                                    <div class="text-xs text-[#0055a4] font-bold mt-1"><?php echo e($isFr ? 'Depuis 2026' : 'Since 2026'); ?></div>
+                                    <div class="text-xs text-[#0055a4] font-bold mt-1">
+                                        <?php echo e($isFr ? 'Depuis 2026' : 'Since 2026'); ?>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -375,16 +408,17 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'COMPARATIF DES EXAMENS' : 'OFFICIAL EXAMS COMPARED'); ?>
-
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'COMPARATIF DES EXAMENS' : 'OFFICIAL EXAMS COMPARED'); ?>
+
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Quel test choisir pour la naturalisation ?' : 'Which test should you take for French citizenship?'); ?>
 
                         </h2>
@@ -396,9 +430,11 @@
                         </p>
                         <p class="mt-3 text-sm sm:text-base text-slate-500">
                             <?php if($isFr): ?>
-                                Pour aller plus loin : <a href="<?php echo e($compareUrl); ?>" <?php echo $link; ?>>TCF, TEF ou DELF, le comparatif complet</a>.
+                                Pour aller plus loin : <a href="<?php echo e($compareUrl); ?>" <?php echo $link; ?>>TCF, TEF ou DELF, le
+                                    comparatif complet</a>.
                             <?php else: ?>
-                                More detail: <a href="<?php echo e($compareUrl); ?>" <?php echo $link; ?>>TCF vs TEF vs DELF, the full comparison</a>.
+                                More detail: <a href="<?php echo e($compareUrl); ?>" <?php echo $link; ?>>TCF vs TEF vs DELF, the full
+                                    comparison</a>.
                             <?php endif; ?>
                         </p>
                     </div>
@@ -416,34 +452,79 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
                                     <tr>
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Organisme' : 'Run by'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Organisme' : 'Run by'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">France Éducation international</td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Le français des affaires (CCI Paris Île-de-France)' : 'Le français des affaires (Paris Chamber of Commerce)'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Le français des affaires (CCI Paris Île-de-France)' : 'Le français des affaires (Paris Chamber of Commerce)'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600">France Éducation international</td>
                                     </tr>
                                     <tr>
                                         <td class="py-4 px-6 font-semibold text-[#10233e]">Format</td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '4 épreuves, 1 h 35' : '4 sections, 1 h 35'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '4 épreuves, 1 session' : '4 sections, 1 session'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 h 30 d\'écrit + oral de 20 min' : '2 h 30 written + 20 min speaking'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '4 épreuves, 1 h 35' : '4 sections, 1 h 35'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '4 épreuves, 1 session' : '4 sections, 1 session'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? '2 h 30 d\'écrit + oral de 20 min' : '2 h 30 written + 20 min speaking'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Résultat' : 'Result'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Diplôme si 50/100 et 5/25 minimum par épreuve' : 'Diploma at 50/100, minimum 5/25 per section'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Résultat' : 'Result'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Un niveau par compétence + niveau global' : 'A level per skill + overall level'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Diplôme si 50/100 et 5/25 minimum par épreuve' : 'Diploma at 50/100, minimum 5/25 per section'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Validité' : 'Valid for'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Validité' : 'Valid for'); ?>
+
+                                        </td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
                                         <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? '2 ans' : '2 years'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600 font-semibold text-[#0055a4]"><?php echo e($isFr ? 'À vie' : 'Life'); ?></td>
+                                        <td class="py-4 px-6 text-slate-600 font-semibold text-[#0055a4]">
+                                            <?php echo e($isFr ? 'À vie' : 'Life'); ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="py-4 px-6 font-semibold text-[#10233e]"><?php echo e($isFr ? 'Bon choix si…' : 'Best if…'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Vous voulez un test court' : 'You want a short test'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Les dates ou le centre vous arrangent' : 'The dates or centre suit you'); ?></td>
-                                        <td class="py-4 px-6 text-slate-600"><?php echo e($isFr ? 'Votre calendrier est incertain' : 'Your timeline is uncertain'); ?></td>
+                                        <td class="py-4 px-6 font-semibold text-[#10233e]">
+                                            <?php echo e($isFr ? 'Bon choix si…' : 'Best if…'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Vous voulez un test court' : 'You want a short test'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Les dates ou le centre vous arrangent' : 'The dates or centre suit you'); ?>
+
+                                        </td>
+                                        <td class="py-4 px-6 text-slate-600">
+                                            <?php echo e($isFr ? 'Votre calendrier est incertain' : 'Your timeline is uncertain'); ?>
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -475,9 +556,19 @@
                                 </h2>
                                 <p class="mt-4 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
                                     <?php if($isFr): ?>
-                                        Depuis 2026, la naturalisation par décret exige aussi la réussite à un examen civique : 40 questions, 45 minutes, 32 bonnes réponses minimum. Toutes les questions sont en français. Votre niveau de lecture compte donc aussi ici. Sa préparation est incluse dans nos cours, sans supplément. <a href="<?php echo e($civicUrl); ?>" class="font-semibold text-white underline underline-offset-2">Tout savoir sur l'examen civique</a>.
+                                        Depuis 2026, la naturalisation par décret exige aussi la réussite à un examen
+                                        civique : 40 questions, 45 minutes, 32 bonnes réponses minimum. Toutes les questions
+                                        sont en français. Votre niveau de lecture compte donc aussi ici. Sa préparation est
+                                        incluse dans nos cours, sans supplément. <a href="<?php echo e($civicUrl); ?>"
+                                            class="font-semibold text-white underline underline-offset-2">Tout savoir sur
+                                            l'examen civique</a>.
                                     <?php else: ?>
-                                        Since 2026, citizenship by decree also requires passing a civic exam: 40 questions, 45 minutes, at least 32 correct. Every question is in French, so your reading level matters here too. Its prep is included in our classes at no extra cost. <a href="<?php echo e($civicUrl); ?>" class="font-semibold text-white underline underline-offset-2">All about the French civic exam</a>.
+                                        Since 2026, citizenship by decree also requires passing a civic exam: 40 questions,
+                                        45 minutes, at least 32 correct. Every question is in French, so your reading level
+                                        matters here too. Its prep is included in our classes at no extra cost. <a
+                                            href="<?php echo e($civicUrl); ?>"
+                                            class="font-semibold text-white underline underline-offset-2">All about the
+                                            French civic exam</a>.
                                     <?php endif; ?>
                                 </p>
                             </div>
@@ -485,15 +576,23 @@
                                 <div class="rounded-3xl bg-white/10 p-6 grid grid-cols-3 gap-4 text-center">
                                     <div>
                                         <p class="text-3xl font-extrabold">40</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Questions' : 'Questions'); ?></p>
+                                        <p class="mt-1 text-[11px] text-blue-100/80">
+                                            <?php echo e($isFr ? 'Questions' : 'Questions'); ?>
+
+                                        </p>
                                     </div>
                                     <div>
                                         <p class="text-3xl font-extrabold">45</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Minutes' : 'Minutes'); ?></p>
+                                        <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Minutes' : 'Minutes'); ?>
+
+                                        </p>
                                     </div>
                                     <div>
                                         <p class="text-3xl font-extrabold">32</p>
-                                        <p class="mt-1 text-[11px] text-blue-100/80"><?php echo e($isFr ? 'Pour réussir' : 'To pass'); ?></p>
+                                        <p class="mt-1 text-[11px] text-blue-100/80">
+                                            <?php echo e($isFr ? 'Pour réussir' : 'To pass'); ?>
+
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -506,16 +605,17 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.'); ?>
-
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.'); ?>
+
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Notre préparation au B2' : 'How we get you to B2'); ?>
 
                         </h2>

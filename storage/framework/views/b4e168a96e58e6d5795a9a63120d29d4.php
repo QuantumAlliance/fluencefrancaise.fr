@@ -234,16 +234,16 @@
                         <span class="text-slate-800 font-semibold"><?php echo e($isFr ? 'Test fide' : 'fide test'); ?></span>
                     </nav>
 
-                    <div class="inline-flex items-center gap-1.5 mb-5">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                            <?php echo e($isFr ? 'TEST FIDE · SUISSE ROMANDE' : 'FIDE TEST · FRENCH-SPEAKING SWITZERLAND'); ?>
-
+                    <span class="eyebrow">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
                         </span>
-                    </div>
+                        <?php echo e($isFr ? 'TEST FIDE · SUISSE ROMANDE' : 'FIDE TEST · FRENCH-SPEAKING SWITZERLAND'); ?>
 
-                    <div class="flex flex-col items-center justify-center">
+                    </span>
+                    <div class="flex flex-col items-center justify-center mt-5">
                         <h1
                             class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.28]">
                             <?php echo e($isFr ? 'Test fide :' : 'fide Test:'); ?>
