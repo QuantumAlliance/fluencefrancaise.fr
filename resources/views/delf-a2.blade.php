@@ -261,18 +261,16 @@
                                 <span class="text-slate-300">›</span>
                                 <span class="text-slate-700 font-semibold">DELF A2</span>
                             </nav>
-
-                            <div class="inline-flex items-center gap-1.5 mb-4">
-                                <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'LE DIPLÔME A2 À VIE' : 'THE LIFETIME A2 DIPLOMA' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
-
+                                {{ $isFr ? 'LE DIPLÔME A2 À VIE' : 'THE LIFETIME A2 DIPLOMA' }}
+                            </span>
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl">
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl mt-5">
                                 @if($isFr)
                                     DELF A2 : validez l'A2 pour votre carte de <span
                                         class="swish text-primary-600 inline">séjour</span>

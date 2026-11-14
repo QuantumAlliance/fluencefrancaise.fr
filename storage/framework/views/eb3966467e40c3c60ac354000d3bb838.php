@@ -321,7 +321,8 @@
                                 <?php echo e($isFr ? 'DEUX VOIES' : 'TWO ROUTES'); ?>
 
                             </span>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Comment obtenir la nationalité française ?' : 'How do you get French citizenship?'); ?>
 
                             </h2>
@@ -423,7 +424,7 @@
                             <?php echo e($isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED"); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Les conditions de la naturalisation par décret' : 'Requirements for naturalisation by decree'); ?>
 
                         </h2>
@@ -464,7 +465,7 @@
                             <?php echo e($isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT"); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'La naturalisation en 7 étapes' : 'French naturalisation in 7 steps'); ?>
 
                         </h2>
@@ -589,7 +590,7 @@
                                 <?php echo e($isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE'); ?>
 
                             </span>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                                 <?php echo e($isFr ? 'Nationalité française par mariage' : 'French citizenship by marriage'); ?>
 
                             </h2>
@@ -624,7 +625,7 @@
                             <?php echo e($isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Comment nous vous préparons' : 'How we prepare you'); ?>
 
                         </h2>

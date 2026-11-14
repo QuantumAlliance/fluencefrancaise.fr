@@ -293,7 +293,7 @@
                             </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Le TCF IRN en bref' : 'The TCF IRN at a glance'); ?>
 
                             </h2>
@@ -504,7 +504,7 @@
                             </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? "Votre écart n'est jamais le même partout." : 'Your gap is never the same in every skill.'); ?>
 
                             </h2>
@@ -665,7 +665,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Format du TCF IRN : les 4 épreuves' : 'TCF IRN format: the 4 sections'); ?>
 
                         </h2>
@@ -817,7 +817,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Où les candidats perdent des points au TCF IRN' : 'Where TCF IRN candidates lose points'); ?>
 
                         </h2>
@@ -933,7 +933,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Notre préparation au TCF IRN' : 'How we prepare you for the TCF IRN'); ?>
 
                         </h2>
@@ -1034,7 +1034,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Quel niveau viser au TCF IRN ?' : 'What TCF IRN level do you need?'); ?>
 
                         </h2>

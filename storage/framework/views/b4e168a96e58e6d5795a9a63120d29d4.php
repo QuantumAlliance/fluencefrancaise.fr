@@ -312,7 +312,7 @@
 
                             </span>
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Le test fide en bref' : 'The fide test at a glance'); ?>
 
                             </h2>
@@ -390,7 +390,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Quel niveau fide pour votre permis ?' : 'What fide level does your permit need?'); ?>
 
                         </h2>
@@ -502,7 +502,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Le format du test fide' : 'fide test format'); ?>
 
                         </h2>
@@ -578,7 +578,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Où les candidats perdent des points au test fide' : 'Where fide candidates lose points'); ?>
 
                         </h2>
@@ -807,7 +807,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Notre préparation au test fide' : 'How we prepare you for the fide test'); ?>
 
                         </h2>

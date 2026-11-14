@@ -212,7 +212,7 @@
                             <?php echo e($isFr ? 'LES 4 NIVEAUX' : 'THE 4 LEVELS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Le DELF en bref' : 'The DELF at a glance'); ?>
 
                         </h2>
@@ -264,7 +264,7 @@
                         <?php echo e($isFr ? 'AVANT DE CHOISIR' : 'BEFORE YOU CHOOSE'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         <?php echo e($isFr ? '3 règles à connaître avant de choisir' : '3 rules to know before you choose'); ?>
 
                     </h2>
@@ -324,7 +324,7 @@
                             <?php echo e($isFr ? 'VOTRE DÉMARCHE' : 'YOUR APPLICATION'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Quel DELF pour quelle démarche ?' : 'Which DELF for which application?'); ?>
 
                         </h2>
@@ -404,9 +404,9 @@
                             <i></i>
                         </span>
                         C1 ·
-                            C2
+                        C2
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         <?php echo e($isFr ? 'Et le DALF ?' : 'What about the DALF?'); ?>
 
                     </h2>
@@ -431,7 +431,7 @@
                             <?php echo e($isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Notre préparation au DELF' : 'How we prepare you for the DELF'); ?>
 
                         </h2>

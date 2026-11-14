@@ -338,7 +338,7 @@
                             </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Le TEF IRN en bref' : 'The TEF IRN at a glance'); ?>
 
                             </h2>
@@ -548,7 +548,7 @@
                             </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'La règle que beaucoup découvrent trop tard' : 'The rule many candidates learn too late'); ?>
 
                             </h2>
@@ -675,7 +675,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Les 4 épreuves du TEF IRN' : 'The 4 sections of the TEF IRN'); ?>
 
                         </h2>
@@ -816,7 +816,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Là où les candidats perdent des points au TEF IRN' : 'Where TEF IRN candidates lose points'); ?>
 
                         </h2>
@@ -995,7 +995,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Notre préparation au TEF IRN' : 'How we prepare you for the TEF IRN'); ?>
 
                         </h2>
@@ -1120,7 +1120,7 @@
 
                         </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Quel niveau viser au TEF IRN ?' : 'What TEF IRN level do you need?'); ?>
 
                         </h2>

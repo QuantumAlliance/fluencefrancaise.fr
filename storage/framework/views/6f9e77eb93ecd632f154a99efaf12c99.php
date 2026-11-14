@@ -248,7 +248,7 @@
                             </span>
 
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12]">
+                                class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] mt-3">
                                 <?php echo e($isFr ? 'TCF, TEF ou DELF :' : 'TCF, TEF or DELF:'); ?>
 
                                 <span class="block w-fit max-w-full text-[#0055A4] mt-1">
@@ -344,7 +344,7 @@
                         <?php echo e($isFr ? 'LA RÉPONSE COURTE' : 'THE SHORT ANSWER'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         <?php echo e($isFr ? 'TCF, TEF ou DELF : la réponse courte' : 'TCF vs TEF vs DELF: the short answer'); ?>
 
                     </h2>
@@ -376,7 +376,7 @@
                             <?php echo e($isFr ? 'CÔTE À CÔTE' : 'SIDE BY SIDE'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Le comparatif complet' : 'The full comparison'); ?>
 
                         </h2>
@@ -452,7 +452,7 @@
                             <?php echo e($isFr ? 'DÉCIDER EN 3 QUESTIONS' : 'DECIDE IN 3 QUESTIONS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Le bon test en 3 questions' : 'The right test in 3 questions'); ?>
 
                         </h2>
@@ -498,7 +498,7 @@
                         <?php echo e($isFr ? 'MÊME NIVEAU, FORMAT DIFFÉRENT' : 'SAME LEVEL, DIFFERENT FORMAT'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         <?php echo e($isFr ? 'TCF IRN ou TEF IRN : lequel est le plus facile ?' : 'TCF IRN or TEF IRN: which is easier?'); ?>
 
                     </h2>
@@ -531,7 +531,7 @@
                             <?php echo e($isFr ? 'LES EXIGENCES 2026' : 'THE 2026 REQUIREMENTS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Quel niveau viser ?' : 'What level should you aim for?'); ?>
 
                         </h2>
@@ -581,7 +581,7 @@
                             <?php echo e($isFr ? 'LES 3 FORMATS' : 'ALL 3 FORMATS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight  mt-3">
                             <?php echo e($isFr ? 'Notre préparation' : 'How we prepare you'); ?>
 
                         </h2>

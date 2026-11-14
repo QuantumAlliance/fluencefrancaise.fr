@@ -341,7 +341,7 @@
                             <?php echo e($isFr ? 'CONDITIONS' : 'REQUIREMENTS'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             <?php echo e($isFr ? 'Les conditions de la naturalisation suisse' : 'Swiss citizenship requirements'); ?>
 
                         </h2>
@@ -389,7 +389,7 @@
                         <?php echo e($isFr ? 'NIVEAU DE LANGUE' : 'LANGUAGE LEVEL'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         <?php echo e($isFr ? 'Quel niveau de français pour la naturalisation suisse ?' : 'Swiss citizenship language requirements'); ?>
 
                     </h2>
@@ -432,7 +432,7 @@
                         <?php echo e($isFr ? 'TEST ET ENTRETIEN' : 'TEST AND INTERVIEW'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         <?php echo e($isFr ? 'La langue compte 2 fois : test et entretien' : 'Language counts twice: test and interview'); ?>
 
                     </h2>
@@ -462,7 +462,7 @@
                         <?php echo e($isFr ? 'CONJOINTS' : 'BY MARRIAGE'); ?>
 
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         <?php echo e($isFr ? 'Naturalisation facilitée pour les conjoints' : 'Swiss citizenship by marriage'); ?>
 
                     </h2>
@@ -487,7 +487,7 @@
                             <?php echo e($isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES'); ?>
 
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Notre préparation' : 'How we prepare you'); ?>
 
                         </h2>
