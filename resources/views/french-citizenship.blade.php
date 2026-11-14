@@ -244,16 +244,16 @@
                             <span class="text-slate-700 font-semibold">{{ $crumb }}</span>
                         </nav>
 
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
-
+                            {{ $isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH' }}
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15] mt-5">
                             {{ $isFr ? 'Naturalisation française :' : 'French Citizenship:' }}
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
                                 {{ $isFr ? 'les conditions, étape par étape' : 'The Requirements, Step by Step' }}

@@ -258,46 +258,51 @@
                 <div class="hero-aurora"></div>
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="max-w-3xl mx-auto text-center">
-                        <nav aria-label="Breadcrumb" class="mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
-                            <a href="{{ $isFr ? '/fr' : '/en' }}" class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
+                        <nav aria-label="Breadcrumb"
+                            class="mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
+                            <a href="{{ $isFr ? '/fr' : '/en' }}"
+                                class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
                             <span class="text-slate-300">›</span>
-                            <a href="{{ $isFr ? '/fr#exams' : '/en#exams' }}" class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Examens' : 'Exams' }}</a>
+                            <a href="{{ $isFr ? '/fr#exams' : '/en#exams' }}"
+                                class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Examens' : 'Exams' }}</a>
                             <span class="text-slate-300">›</span>
                             <span class="text-slate-700 font-semibold">DELF B1</span>
                         </nav>
-
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'VOTRE NIVEAU, RECONNU À VIE' : 'YOUR LEVEL, RECOGNISED FOR LIFE' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
-
-                        <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.18]">
+                            {{ $isFr ? 'VOTRE NIVEAU, RECONNU À VIE' : 'YOUR LEVEL, RECOGNISED FOR LIFE' }}
+                        </span>
+                        <h1
+                            class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.18] mt-5">
                             {{ $isFr ? 'DELF B1 : validez le B1' : 'DELF B1: Prove B1' }}
                             <br>
                             <span class="relative inline-block text-[#0055A4] mt-1 pb-2.5 sm:pb-3">
                                 {{ $isFr ? 'une fois pour toutes' : 'Once and for All' }}
-                                <span class="absolute left-0 right-0 bottom-0 h-[3px] rounded-full" style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
+                                <span class="absolute left-0 right-0 bottom-0 h-[3px] rounded-full"
+                                    style="background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.3%, #eaebf0 33.3%, #eaebf0 66.6%, #EF4135 66.6%, #EF4135 100%);"></span>
                             </span>
                         </h1>
 
                         <p class="mt-6 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
                             {{ $isFr
-                                ? 'Le DELF B1 prouve le niveau de la carte de résident pour toujours : nous vous préparons aux 4 épreuves, en direct avec un tuteur.'
-                                : "The DELF B1 proves the level for France's 10-year resident card for good, and we prepare you for all 4 sections, live with a tutor." }}
+    ? 'Le DELF B1 prouve le niveau de la carte de résident pour toujours : nous vous préparons aux 4 épreuves, en direct avec un tuteur.'
+    : "The DELF B1 proves the level for France's 10-year resident card for good, and we prepare you for all 4 sections, live with a tutor." }}
                         </p>
 
                         <div class="mt-8">
-                            <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                            <a href="/register"
+                                class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                                 {{ $isFr ? "S'inscrire" : 'Enroll now' }}
                                 <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                             </a>
                             <p class="mt-3 text-xs sm:text-[13px] text-slate-500 font-medium">
                                 {{ $isFr
-                                    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
                             </p>
                         </div>
 
@@ -308,7 +313,8 @@
                             {{ $isFr ? 'Mis à jour le 11 novembre 2026' : 'Updated 11 November 2026' }}
                         </p>
 
-                        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-slate-600">
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-slate-600">
                             @foreach($facts as $fact)
                                 <span class="inline-flex items-center gap-2">
                                     <i class="fas fa-check text-[#0055A4] text-[11px]"></i>
@@ -318,14 +324,19 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-500">
-                        <span class="font-semibold text-slate-400">{{ $isFr ? 'Sur cette page' : 'On this page' }}</span>
+                    <div
+                        class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-500">
+                        <span
+                            class="font-semibold text-slate-400">{{ $isFr ? 'Sur cette page' : 'On this page' }}</span>
                         <a href="#at-a-glance" class="hover:text-[#0055A4]">{{ $isFr ? 'En bref' : 'At a glance' }}</a>
                         <a href="#sections" class="hover:text-[#0055A4]">{{ $isFr ? 'Format' : 'Test format' }}</a>
-                        <a href="#prepare" class="hover:text-[#0055A4]">{{ $isFr ? 'Notre préparation' : 'Our preparation' }}</a>
-                        <a href="#applications" class="hover:text-[#0055A4]">{{ $isFr ? 'Démarches' : 'Applications' }}</a>
+                        <a href="#prepare"
+                            class="hover:text-[#0055A4]">{{ $isFr ? 'Notre préparation' : 'Our preparation' }}</a>
+                        <a href="#applications"
+                            class="hover:text-[#0055A4]">{{ $isFr ? 'Démarches' : 'Applications' }}</a>
                         <a href="#faq" class="hover:text-[#0055A4]">FAQ</a>
-                        <a href="#enroll" class="font-semibold text-[#0055A4]">{{ $isFr ? 'Commencer' : 'Start preparing' }} →</a>
+                        <a href="#enroll"
+                            class="font-semibold text-[#0055A4]">{{ $isFr ? 'Commencer' : 'Start preparing' }} →</a>
                     </div>
                 </div>
             </section>
@@ -338,17 +349,19 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}</span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}</span>
                             </div>
                             <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
                                 {{ $isFr ? 'Le DELF B1 en bref' : 'The DELF B1 at a glance' }}
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                                 {{ $isFr
-                                    ? "Le DELF B1 est un diplôme du ministère de l'Éducation nationale, délivré via France Éducation international. Il valide le niveau B1 sur 4 épreuves de 25 points chacune. Il s'obtient avec 50 sur 100, sans aucune épreuve sous 5 sur 25. Il est valable à vie."
-                                    : "The DELF B1 is a French Ministry of Education diploma, awarded through France Éducation international. It certifies B1 across 4 sections worth 25 points each. You pass with 50 out of 100 and no section below 5 out of 25. It's valid for life." }}
+    ? "Le DELF B1 est un diplôme du ministère de l'Éducation nationale, délivré via France Éducation international. Il valide le niveau B1 sur 4 épreuves de 25 points chacune. Il s'obtient avec 50 sur 100, sans aucune épreuve sous 5 sur 25. Il est valable à vie."
+    : "The DELF B1 is a French Ministry of Education diploma, awarded through France Éducation international. It certifies B1 across 4 sections worth 25 points each. You pass with 50 out of 100 and no section below 5 out of 25. It's valid for life." }}
                             </p>
-                            <p class="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-slate-500 font-medium">
+                            <p
+                                class="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-slate-500 font-medium">
                                 <i class="fas fa-shield-halved text-[#0055A4]"></i>
                                 {{ $isFr ? "Préparation en direct en ligne. Confiance totale le jour de l'examen." : 'Live online preparation. Real exam-day confidence.' }}
                             </p>
@@ -364,22 +377,31 @@
                                     <div class="p-6">
                                         <i class="fas fa-layer-group text-blue-200/80 text-sm"></i>
                                         <div class="mt-2 text-3xl font-extrabold">4</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Épreuves, 25 points chacune' : 'Sections, 25 points each' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Épreuves, 25 points chacune' : 'Sections, 25 points each' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <i class="fas fa-bullseye text-blue-200/80 text-sm"></i>
                                         <div class="mt-2 text-3xl font-extrabold">50/100</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Note pour réussir' : 'Overall pass mark' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Note pour réussir' : 'Overall pass mark' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <i class="fas fa-clock text-blue-200/80 text-sm"></i>
                                         <div class="mt-2 text-3xl font-extrabold">15 min</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Oral, après 10 min de préparation' : 'Oral, after 10-min prep' }}</div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Oral, après 10 min de préparation' : 'Oral, after 10-min prep' }}
+                                        </div>
                                     </div>
                                     <div class="p-6">
                                         <i class="fas fa-infinity text-blue-200/80 text-sm"></i>
-                                        <div class="mt-2 text-3xl font-extrabold">{{ $isFr ? 'À vie' : 'For life' }}</div>
-                                        <div class="text-xs text-blue-100/80 mt-1">{{ $isFr ? 'Validité du diplôme' : 'Diploma validity' }}</div>
+                                        <div class="mt-2 text-3xl font-extrabold">{{ $isFr ? 'À vie' : 'For life' }}
+                                        </div>
+                                        <div class="text-xs text-blue-100/80 mt-1">
+                                            {{ $isFr ? 'Validité du diplôme' : 'Diploma validity' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -388,7 +410,8 @@
 
                     <div class="mt-10 rounded-2xl border border-slate-200/80 overflow-hidden">
                         @foreach($glanceRows as $index => $row)
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm {{ $index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white' }} {{ $index < count($glanceRows) - 1 ? 'border-b border-slate-100' : '' }}">
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-7 py-4 text-sm {{ $index % 2 === 0 ? 'bg-[#f7f9fc]' : 'bg-white' }} {{ $index < count($glanceRows) - 1 ? 'border-b border-slate-100' : '' }}">
                                 <div class="sm:col-span-3 font-semibold text-[#10233e]">{{ $row[0] }}</div>
                                 <div class="sm:col-span-9 text-slate-600">{{ $row[1] }}</div>
                             </div>
@@ -405,7 +428,8 @@
                             <div class="inline-flex items-center gap-1.5 mb-3">
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                                 <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LE BON DIPLÔME POUR VOTRE DOSSIER' : 'THE RIGHT DIPLOMA FOR YOUR APPLICATION' }}</span>
+                                <span
+                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LE BON DIPLÔME POUR VOTRE DOSSIER' : 'THE RIGHT DIPLOMA FOR YOUR APPLICATION' }}</span>
                             </div>
                             <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
                                 {{ $isFr ? 'Le DELF B1 suffit-il pour la nationalité française ?' : 'Is the DELF B1 enough for French citizenship?' }}
@@ -413,39 +437,60 @@
                             <div class="mt-4 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
                                 <p>
                                     {{ $isFr
-                                        ? 'Plus pour les nouvelles demandes. Depuis le 1er janvier 2026, la naturalisation exige le B2. Le DELF B1 reste valable pour les dossiers déposés avant cette date, et pour la carte de résident, qui demande le B1.'
-                                        : 'Not for new applications. Since 1 January 2026, citizenship requires B2. The DELF B1 still counts for applications filed before that date, and for the 10-year resident card, which requires B1.' }}
+    ? 'Plus pour les nouvelles demandes. Depuis le 1er janvier 2026, la naturalisation exige le B2. Le DELF B1 reste valable pour les dossiers déposés avant cette date, et pour la carte de résident, qui demande le B1.'
+    : 'Not for new applications. Since 1 January 2026, citizenship requires B2. The DELF B1 still counts for applications filed before that date, and for the 10-year resident card, which requires B1.' }}
                                 </p>
                                 <p>
                                     {{ $isFr
-                                        ? "Si vous lisez encore « diplôme B1 pour la nationalité », l'information est ancienne. Préparer le B1 pour une naturalisation aujourd'hui, c'est viser un niveau en dessous de celui exigé."
-                                        : "If you still see “B1 diploma for French nationality” online, that information is out of date. Preparing B1 for a citizenship application today means aiming below the required level." }}
+    ? "Si vous lisez encore « diplôme B1 pour la nationalité », l'information est ancienne. Préparer le B1 pour une naturalisation aujourd'hui, c'est viser un niveau en dessous de celui exigé."
+    : "If you still see “B1 diploma for French nationality” online, that information is out of date. Preparing B1 for a citizenship application today means aiming below the required level." }}
                                 </p>
                                 <p>
                                     @if($isFr)
-                                        Vous visez la nationalité ? Passez directement au <a href="{{ $delfB2Url }}" class="font-semibold text-[#0055A4] hover:underline">DELF B2</a> ou lisez le <a href="{{ $citizenshipUrl }}" class="font-semibold text-[#0055A4] hover:underline">test de français pour la naturalisation</a>.
+                                        Vous visez la nationalité ? Passez directement au <a href="{{ $delfB2Url }}"
+                                            class="font-semibold text-[#0055A4] hover:underline">DELF B2</a> ou lisez le <a
+                                            href="{{ $citizenshipUrl }}"
+                                            class="font-semibold text-[#0055A4] hover:underline">test de français pour la
+                                            naturalisation</a>.
                                     @else
-                                        Going for citizenship? Go straight to the <a href="{{ $delfB2Url }}" class="font-semibold text-[#0055A4] hover:underline">DELF B2</a> or read about the <a href="{{ $citizenshipUrl }}" class="font-semibold text-[#0055A4] hover:underline">French citizenship language test</a>.
+                                        Going for citizenship? Go straight to the <a href="{{ $delfB2Url }}"
+                                            class="font-semibold text-[#0055A4] hover:underline">DELF B2</a> or read about
+                                        the <a href="{{ $citizenshipUrl }}"
+                                            class="font-semibold text-[#0055A4] hover:underline">French citizenship language
+                                            test</a>.
                                     @endif
                                 </p>
                             </div>
                         </div>
                         <div class="lg:col-span-6">
-                            <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 grid grid-cols-2 gap-6">
+                            <div
+                                class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 grid grid-cols-2 gap-6">
                                 <div>
-                                    <p class="text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase text-slate-400">{{ $isFr ? 'Carte de résident' : '10-year resident card' }}</p>
+                                    <p
+                                        class="text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase text-slate-400">
+                                        {{ $isFr ? 'Carte de résident' : '10-year resident card' }}
+                                    </p>
                                     <p class="mt-3 text-5xl font-extrabold text-[#0055A4]">B1</p>
-                                    <p class="mt-2 text-xs sm:text-sm text-slate-500">{{ $isFr ? 'Votre diplôme le prouve à vie.' : 'Your diploma proves it for life.' }}</p>
-                                    <span class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-blue-50 text-[#0055A4] px-3 py-1 text-[11px] font-semibold">
+                                    <p class="mt-2 text-xs sm:text-sm text-slate-500">
+                                        {{ $isFr ? 'Votre diplôme le prouve à vie.' : 'Your diploma proves it for life.' }}
+                                    </p>
+                                    <span
+                                        class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-blue-50 text-[#0055A4] px-3 py-1 text-[11px] font-semibold">
                                         <i class="fas fa-check text-[9px]"></i>
                                         {{ $isFr ? 'DELF B1 accepté' : 'DELF B1 accepted' }}
                                     </span>
                                 </div>
                                 <div class="border-l border-slate-100 pl-6">
-                                    <p class="text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase text-slate-400">{{ $isFr ? 'Nouvelles demandes de naturalisation' : 'New French citizenship applications' }}</p>
+                                    <p
+                                        class="text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase text-slate-400">
+                                        {{ $isFr ? 'Nouvelles demandes de naturalisation' : 'New French citizenship applications' }}
+                                    </p>
                                     <p class="mt-3 text-5xl font-extrabold text-[#0055A4]">B2</p>
-                                    <p class="mt-2 text-xs sm:text-sm text-slate-500">{{ $isFr ? 'Le niveau exigé depuis 2026.' : 'The level required since 2026.' }}</p>
-                                    <a href="{{ $delfB2Url }}" class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#0055A4] hover:underline">
+                                    <p class="mt-2 text-xs sm:text-sm text-slate-500">
+                                        {{ $isFr ? 'Le niveau exigé depuis 2026.' : 'The level required since 2026.' }}
+                                    </p>
+                                    <a href="{{ $delfB2Url }}"
+                                        class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#0055A4] hover:underline">
                                         {{ $isFr ? 'Voir le DELF B2' : 'Explore DELF B2' }} →
                                     </a>
                                 </div>
@@ -462,7 +507,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "LE JOUR DE L'EXAMEN" : 'KNOW WHAT EXAM DAY LOOKS LIKE' }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "LE JOUR DE L'EXAMEN" : 'KNOW WHAT EXAM DAY LOOKS LIKE' }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'Les 4 épreuves du DELF B1' : 'The 4 sections of the DELF B1' }}
@@ -472,7 +518,8 @@
                         @foreach($sections as $section)
                             <article class="rounded-2xl border border-slate-200/80 bg-white p-5 flex flex-col">
                                 <div class="flex items-start justify-between gap-3">
-                                    <span class="w-9 h-9 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center">
+                                    <span
+                                        class="w-9 h-9 rounded-full bg-blue-50 text-[#0055A4] flex items-center justify-center">
                                         <i class="fas {{ $section[0] }} text-sm"></i>
                                     </span>
                                     <span class="text-[11px] font-semibold text-slate-400">{{ $section[3] }}</span>
@@ -485,8 +532,8 @@
                     <p class="mt-5 rounded-2xl bg-[#f4f7fb] px-5 py-3.5 text-xs sm:text-sm text-slate-500 text-center">
                         <i class="fas fa-clock text-[#0055A4] mr-1.5"></i>
                         {{ $isFr
-                            ? "Chaque épreuve est notée sur 25. Les 3 premières se passent ensemble, l'oral se passe à part."
-                            : 'Each section is marked out of 25. The first 3 are taken together; the oral is separate.' }}
+    ? "Chaque épreuve est notée sur 25. Les 3 premières se passent ensemble, l'oral se passe à part."
+    : 'Each section is marked out of 25. The first 3 are taken together; the oral is separate.' }}
                     </p>
                 </div>
             </section>
@@ -498,7 +545,8 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'ÉVITER LES PIÈGES FRÉQUENTS' : 'AVOID THE COMMON TRAPS' }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'ÉVITER LES PIÈGES FRÉQUENTS' : 'AVOID THE COMMON TRAPS' }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             {{ $isFr ? 'Où les candidats perdent des points au DELF B1' : 'Where DELF B1 candidates lose points' }}
@@ -507,11 +555,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         @foreach($traps as $index => $trap)
                             <article class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-7 flex flex-col">
-                                <span class="text-sm font-bold text-[#0055A4]">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                <span
+                                    class="text-sm font-bold text-[#0055A4]">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
                                 <h3 class="mt-2 text-lg font-bold text-[#10233e]">{{ $trap['title'] }}</h3>
                                 <p class="mt-2 text-sm text-slate-500 leading-relaxed flex-1">{{ $trap['body'] }}</p>
                                 <div class="mt-5 rounded-2xl bg-[#f2f7fc] border border-blue-100/70 px-4 py-3.5">
-                                    <p class="text-[11px] font-bold uppercase tracking-wider text-[#0055A4] mb-1">{{ $isFr ? 'Ce que nous faisons' : 'What we do' }}</p>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-[#0055A4] mb-1">
+                                        {{ $isFr ? 'Ce que nous faisons' : 'What we do' }}
+                                    </p>
                                     <p class="text-xs sm:text-[13px] text-slate-600 leading-relaxed">{{ $trap['fix'] }}</p>
                                 </div>
                             </article>
@@ -527,22 +578,24 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.' }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'Notre préparation au DELF B1' : 'How we prepare you for the DELF B1' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500">
                             {{ $isFr
-                                ? "Un accompagnement ciblé dès votre premier cours jusqu'à l'examen. Pas de programme générique. Pas d'apprentissage seul."
-                                : 'Focused support from your first class to exam day. No generic syllabus. No learning alone.' }}
+    ? "Un accompagnement ciblé dès votre premier cours jusqu'à l'examen. Pas de programme générique. Pas d'apprentissage seul."
+    : 'Focused support from your first class to exam day. No generic syllabus. No learning alone.' }}
                         </p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         @foreach($plan as $index => $step)
                             <div>
                                 <div class="flex items-center mb-4">
-                                    <span class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055A4] text-sm font-semibold flex items-center justify-center border border-blue-100 shrink-0">{{ $step[0] }}</span>
+                                    <span
+                                        class="w-10 h-10 rounded-full bg-[#f0f6fc] text-[#0055A4] text-sm font-semibold flex items-center justify-center border border-blue-100 shrink-0">{{ $step[0] }}</span>
                                     @if($index < 3)
                                         <div class="hidden lg:block flex-1 h-px bg-[#e1eaf2] ml-4"></div>
                                     @endif
@@ -553,14 +606,15 @@
                         @endforeach
                     </div>
                     <div class="mt-12 text-center">
-                        <a href="/register" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
+                        <a href="/register"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-semibold text-white bg-[#0055A4] hover:bg-[#003f7a] shadow-lg shadow-blue-500/25 transition-all">
                             {{ $isFr ? "S'inscrire" : 'Enroll now' }}
                             <i class="fas fa-arrow-right text-xs ml-2.5"></i>
                         </a>
                         <p class="mt-3 text-xs sm:text-[13px] text-slate-500">
                             {{ $isFr
-                                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
-                                : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
+    ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+    : 'Live classes on Google Meet · 1:1 or small group · Student portal included' }}
                         </p>
                     </div>
                 </div>
@@ -573,33 +627,47 @@
                         <div class="inline-flex items-center gap-1.5 mb-3">
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
                             <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'VOTRE PROCHAINE ÉTAPE, CLAIREMENT' : 'YOUR NEXT STEP, CLEARLY EXPLAINED' }}</span>
+                            <span
+                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'VOTRE PROCHAINE ÉTAPE, CLAIREMENT' : 'YOUR NEXT STEP, CLEARLY EXPLAINED' }}</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
                             {{ $isFr ? 'Le DELF B1 pour quelle démarche ?' : 'Which applications does the DELF B1 cover?' }}
                         </h2>
                     </div>
                     <div class="rounded-2xl border border-slate-200/80 overflow-hidden bg-white">
-                        <div class="hidden sm:grid sm:grid-cols-12 bg-[#0055A4] text-white px-6 py-3.5 text-sm font-semibold">
+                        <div
+                            class="hidden sm:grid sm:grid-cols-12 bg-[#0055A4] text-white px-6 py-3.5 text-sm font-semibold">
                             <div class="sm:col-span-5">{{ $isFr ? 'Démarche' : 'Application' }}</div>
                             <div class="sm:col-span-4">{{ $isFr ? 'Niveau exigé' : 'Level required' }}</div>
-                            <div class="sm:col-span-3 sm:text-right">{{ $isFr ? 'Le DELF B1 suffit ?' : 'Is DELF B1 enough?' }}</div>
+                            <div class="sm:col-span-3 sm:text-right">
+                                {{ $isFr ? 'Le DELF B1 suffit ?' : 'Is DELF B1 enough?' }}
+                            </div>
                         </div>
                         @foreach($applications as $index => $app)
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-6 py-4 text-sm {{ $index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]' }} {{ $index < count($applications) - 1 ? 'border-b border-slate-100' : '' }}">
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 px-5 sm:px-6 py-4 text-sm {{ $index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fc]' }} {{ $index < count($applications) - 1 ? 'border-b border-slate-100' : '' }}">
                                 <div class="sm:col-span-5 font-semibold">
                                     <a href="{{ $app[1] }}" class="text-[#0055A4] hover:underline">{{ $app[0] }} →</a>
                                 </div>
                                 <div class="sm:col-span-4 text-slate-600">{{ $app[2] }}</div>
-                                <div class="sm:col-span-3 sm:text-right font-semibold {{ $app[4] ? 'text-emerald-600' : 'text-[#EF4135]' }}">{{ $app[3] }}</div>
+                                <div
+                                    class="sm:col-span-3 sm:text-right font-semibold {{ $app[4] ? 'text-emerald-600' : 'text-[#EF4135]' }}">
+                                    {{ $app[3] }}
+                                </div>
                             </div>
                         @endforeach
                     </div>
                     <p class="mt-5 text-center text-xs sm:text-sm text-slate-500 max-w-3xl mx-auto leading-relaxed">
                         @if($isFr)
-                            En France, la plupart des premières cartes de résident demandent aussi <a href="{{ $civicUrl }}" class="font-semibold text-[#0055A4] hover:underline">l'examen civique</a> depuis 2026. Vous hésitez avec un test ? <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">Comparez le TCF, le TEF et le DELF</a>.
+                            En France, la plupart des premières cartes de résident demandent aussi <a href="{{ $civicUrl }}"
+                                class="font-semibold text-[#0055A4] hover:underline">l'examen civique</a> depuis 2026. Vous
+                            hésitez avec un test ? <a href="{{ $compareUrl }}"
+                                class="font-semibold text-[#0055A4] hover:underline">Comparez le TCF, le TEF et le DELF</a>.
                         @else
-                            In France, most first resident card applications now also need the <a href="{{ $civicUrl }}" class="font-semibold text-[#0055A4] hover:underline">civic exam</a>. Weighing it against a test? <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">Compare the TCF, TEF and DELF</a>.
+                            In France, most first resident card applications now also need the <a href="{{ $civicUrl }}"
+                                class="font-semibold text-[#0055A4] hover:underline">civic exam</a>. Weighing it against a
+                            test? <a href="{{ $compareUrl }}" class="font-semibold text-[#0055A4] hover:underline">Compare
+                                the TCF, TEF and DELF</a>.
                         @endif
                     </p>
                 </div>
@@ -640,20 +708,30 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center">
                     <p class="text-sm text-slate-500">
                         {{ $isFr ? 'Vous venez à deux ? 50 € de remise par mois, pour vous et pour votre ami.' : 'Coming with a friend? €50 off per month, for you and for them.' }}
-                        <a href="{{ $referralUrl }}" class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Contactez-nous' : 'Contact us' }} →</a>
+                        <a href="{{ $referralUrl }}"
+                            class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Contactez-nous' : 'Contact us' }}
+                            →</a>
                     </p>
                     <p class="mt-2 text-sm text-slate-500">
                         {{ $isFr ? 'Vous partez de plus bas ?' : 'Starting from further back?' }}
-                        <a href="{{ $delfA2Url }}" class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Voir le DELF A2' : 'See the DELF A2' }} →</a>
+                        <a href="{{ $delfA2Url }}"
+                            class="text-[#0055A4] font-semibold hover:underline ml-1">{{ $isFr ? 'Voir le DELF A2' : 'See the DELF A2' }}
+                            →</a>
                     </p>
                     <div class="my-6 border-t border-slate-100"></div>
-                    <div class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
+                    <div
+                        class="flex flex-wrap items-center justify-center gap-y-2 text-xs sm:text-[13px] text-slate-400">
                         <span class="font-bold tracking-[0.18em] uppercase mr-3">SOURCES</span>
-                        <a href="https://www.france-education-international.fr/delf-dalf" target="_blank" rel="noopener" class="hover:text-slate-600">France Éducation international – DELF B1 ↗</a>
+                        <a href="https://www.france-education-international.fr/delf-dalf" target="_blank" rel="noopener"
+                            class="hover:text-slate-600">France Éducation international – DELF B1 ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'cartes de séjour' : 'residence cards' }} ↗</a>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/N110" target="_blank"
+                            rel="noopener" class="hover:text-slate-600">Service-public.fr –
+                            {{ $isFr ? 'cartes de séjour' : 'residence cards' }} ↗</a>
                         <span class="mx-2.5 text-slate-300">·</span>
-                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank" rel="noopener" class="hover:text-slate-600">Service-public.fr – {{ $isFr ? 'naturalisation' : 'citizenship' }} ↗</a>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/F2213" target="_blank"
+                            rel="noopener" class="hover:text-slate-600">Service-public.fr –
+                            {{ $isFr ? 'naturalisation' : 'citizenship' }} ↗</a>
                     </div>
                 </div>
             </div>

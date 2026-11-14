@@ -154,14 +154,16 @@
                             <span class="text-slate-300">›</span>
                             <span class="text-slate-700 font-semibold">DELF</span>
                         </nav>
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'DELF · A1 À B2' : 'DELF · A1 TO B2' }}</span>
-                        </div>
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.18]">
+                            class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.18] mt-5">
                             {{ $isFr ? 'DELF :' : 'DELF:' }}
                             <span
                                 class="text-[#0055a4]">{{ $isFr ? 'choisissez le niveau que votre dossier' : 'Choose the Level Your Application' }}</span>

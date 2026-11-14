@@ -203,17 +203,17 @@
                                 <span class="text-slate-700 font-semibold">TCF IRN</span>
                             </nav>
                         </div>
-
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'VOTRE PROCHAIN CHAPITRE COMMENCE PAR LA BONNE PRÉPARATION' : 'YOUR NEXT CHAPTER STARTS WITH THE RIGHT PREPARATION' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'VOTRE PROCHAIN CHAPITRE COMMENCE PAR LA BONNE PRÉPARATION' : 'YOUR NEXT CHAPTER STARTS WITH THE RIGHT PREPARATION' }}
+                        </span>
 
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.30] sm:leading-[1.32]">
+                            class="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#0c1e38] tracking-medium leading-[1.30] sm:leading-[1.32] mt-5">
                             @if($isFr)
                                 TCF IRN : préparez exactement<br class="hidden sm:inline" />
                                 <span class="relative inline-block text-[#0055a4] mt-1 sm:mt-1.5 pb-2.5 sm:pb-3.5">
@@ -1043,9 +1043,14 @@
                     </div>
                     <p class="mt-8 text-sm sm:text-base text-slate-600 leading-relaxed text-center max-w-3xl mx-auto">
                         @if($isFr)
-                            Depuis 2026, un <a href="{{ $civicUrl }}" {!! $link !!}>examen civique</a> est aussi exigé pour la naturalisation par décret et pour les titres de séjour concernés par les règles de 2026. Vous hésitez encore sur le test ? <a href="{{ $compareUrl }}" {!! $link !!}>Comparez le TCF, le TEF et le DELF</a>.
+                            Depuis 2026, un <a href="{{ $civicUrl }}" {!! $link !!}>examen civique</a> est aussi exigé pour
+                            la naturalisation par décret et pour les titres de séjour concernés par les règles de 2026. Vous
+                            hésitez encore sur le test ? <a href="{{ $compareUrl }}" {!! $link !!}>Comparez le TCF, le TEF
+                                et le DELF</a>.
                         @else
-                            Citizenship by decree and the residence permit applications covered by the 2026 rules also need the <a href="{{ $civicUrl }}" {!! $link !!}>French civic exam</a>. Not sure which test to take? <a href="{{ $compareUrl }}" {!! $link !!}>Compare the TCF, TEF and DELF</a>.
+                            Citizenship by decree and the residence permit applications covered by the 2026 rules also need
+                            the <a href="{{ $civicUrl }}" {!! $link !!}>French civic exam</a>. Not sure which test to take?
+                            <a href="{{ $compareUrl }}" {!! $link !!}>Compare the TCF, TEF and DELF</a>.
                         @endif
                     </p>
                 </div>
