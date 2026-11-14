@@ -7,12 +7,13 @@
 
     $contactEmail = !empty($settings['contact_email'])
         ? $settings['contact_email']
-        : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
+        : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.com');
     $contactPhone = !empty($settings['contact_phone'])
         ? $settings['contact_phone']
-        : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '+33 1 23 45 67 89');
+        : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '');
     $contactPhoneTel = preg_replace('/[^0-9+]/', '', $contactPhone);
     $whatsappDigits = preg_replace('/[^0-9]/', '', $contactPhone);
+    $showPhone = $whatsappDigits !== '' && $whatsappDigits !== '33123456789';
 
     $title = $isFr ? 'Contact et parrainage – Fluence Française' : 'Contact and Referrals – Fluence Française';
     $metaDesc = $isFr
@@ -83,7 +84,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
@@ -93,7 +94,7 @@
     @include('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title . ' | ' . $siteName,
+        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ])
@@ -143,21 +144,23 @@
                         <p class="mt-6 text-xl font-bold text-ink">Email</p>
                         <p class="mt-4 text-primary-600 font-bold break-words">{{ $contactEmail }}</p>
                     </a>
-                    <div class="reveal card-glow bg-mist rounded-4xl border border-slate-100 p-8"
-                        style="transition-delay:.07s">
-                        <span
-                            class="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-xl"><i
-                                class="fab fa-whatsapp"></i></span>
-                        <p class="mt-6 text-xl font-bold text-ink">
-                            {{ $isFr ? 'Téléphone / WhatsApp' : 'Phone / WhatsApp' }}
-                        </p>
-                        <p class="mt-4 text-primary-600 font-bold">
-                            <a href="tel:{{ $contactPhoneTel }}" class="hover:underline">{{ $contactPhone }}</a>
-                            <span class="text-slate-300 mx-1.5">·</span>
-                            <a href="https://wa.me/{{ $whatsappDigits }}" target="_blank" rel="noopener"
-                                class="hover:underline">WhatsApp</a>
-                        </p>
-                    </div>
+                    @if($showPhone)
+                        <div class="reveal card-glow bg-mist rounded-4xl border border-slate-100 p-8"
+                            style="transition-delay:.07s">
+                            <span
+                                class="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-xl"><i
+                                    class="fab fa-whatsapp"></i></span>
+                            <p class="mt-6 text-xl font-bold text-ink">
+                                {{ $isFr ? 'Téléphone / WhatsApp' : 'Phone / WhatsApp' }}
+                            </p>
+                            <p class="mt-4 text-primary-600 font-bold">
+                                <a href="tel:{{ $contactPhoneTel }}" class="hover:underline">{{ $contactPhone }}</a>
+                                <span class="text-slate-300 mx-1.5">·</span>
+                                <a href="https://wa.me/{{ $whatsappDigits }}" target="_blank" rel="noopener"
+                                    class="hover:underline">WhatsApp</a>
+                            </p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

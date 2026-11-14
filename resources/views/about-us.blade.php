@@ -74,7 +74,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
@@ -84,7 +84,7 @@
     @include('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title . ' | ' . $siteName,
+        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ])

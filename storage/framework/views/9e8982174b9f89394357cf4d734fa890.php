@@ -7,12 +7,13 @@
 
     $contactEmail = !empty($settings['contact_email'])
         ? $settings['contact_email']
-        : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
+        : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.com');
     $contactPhone = !empty($settings['contact_phone'])
         ? $settings['contact_phone']
-        : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '+33 1 23 45 67 89');
+        : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '');
     $contactPhoneTel = preg_replace('/[^0-9+]/', '', $contactPhone);
     $whatsappDigits = preg_replace('/[^0-9]/', '', $contactPhone);
+    $showPhone = $whatsappDigits !== '' && $whatsappDigits !== '33123456789';
 
     $title = $isFr ? 'Contact et parrainage – Fluence Française' : 'Contact and Referrals – Fluence Française';
     $metaDesc = $isFr
@@ -83,7 +84,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <meta name="robots" content="<?php echo e($settings['robots'] ?? 'index, follow'); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
@@ -93,7 +94,7 @@
     <?php echo $__env->make('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title . ' | ' . $siteName,
+        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -145,22 +146,24 @@
                         <p class="mt-6 text-xl font-bold text-ink">Email</p>
                         <p class="mt-4 text-primary-600 font-bold break-words"><?php echo e($contactEmail); ?></p>
                     </a>
-                    <div class="reveal card-glow bg-mist rounded-4xl border border-slate-100 p-8"
-                        style="transition-delay:.07s">
-                        <span
-                            class="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-xl"><i
-                                class="fab fa-whatsapp"></i></span>
-                        <p class="mt-6 text-xl font-bold text-ink">
-                            <?php echo e($isFr ? 'Téléphone / WhatsApp' : 'Phone / WhatsApp'); ?>
+                    <?php if($showPhone): ?>
+                        <div class="reveal card-glow bg-mist rounded-4xl border border-slate-100 p-8"
+                            style="transition-delay:.07s">
+                            <span
+                                class="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 grid place-content-center text-xl"><i
+                                    class="fab fa-whatsapp"></i></span>
+                            <p class="mt-6 text-xl font-bold text-ink">
+                                <?php echo e($isFr ? 'Téléphone / WhatsApp' : 'Phone / WhatsApp'); ?>
 
-                        </p>
-                        <p class="mt-4 text-primary-600 font-bold">
-                            <a href="tel:<?php echo e($contactPhoneTel); ?>" class="hover:underline"><?php echo e($contactPhone); ?></a>
-                            <span class="text-slate-300 mx-1.5">·</span>
-                            <a href="https://wa.me/<?php echo e($whatsappDigits); ?>" target="_blank" rel="noopener"
-                                class="hover:underline">WhatsApp</a>
-                        </p>
-                    </div>
+                            </p>
+                            <p class="mt-4 text-primary-600 font-bold">
+                                <a href="tel:<?php echo e($contactPhoneTel); ?>" class="hover:underline"><?php echo e($contactPhone); ?></a>
+                                <span class="text-slate-300 mx-1.5">·</span>
+                                <a href="https://wa.me/<?php echo e($whatsappDigits); ?>" target="_blank" rel="noopener"
+                                    class="hover:underline">WhatsApp</a>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>

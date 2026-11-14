@@ -74,7 +74,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <meta name="robots" content="<?php echo e($settings['robots'] ?? 'index, follow'); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
@@ -84,7 +84,7 @@
     <?php echo $__env->make('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title . ' | ' . $siteName,
+        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

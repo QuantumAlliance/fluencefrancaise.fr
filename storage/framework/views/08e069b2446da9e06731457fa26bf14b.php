@@ -31,7 +31,8 @@
     ];
 
     $contactEmail = !empty($settings['contact_email']) ? $settings['contact_email'] : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
-    $contactPhone = !empty($settings['contact_phone']) ? $settings['contact_phone'] : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '+33 1 23 45 67 89');
+    $contactPhone = !empty($settings['contact_phone']) ? $settings['contact_phone'] : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '');
+    $showPhone = preg_replace('/\D+/', '', (string) $contactPhone) !== '' && preg_replace('/\D+/', '', (string) $contactPhone) !== '33123456789';
 
     $socialLinks = $footerData['social'] ?? [
         'facebook' => '#',
@@ -97,10 +98,12 @@
                         <i class="fas fa-envelope text-[#5993d0] w-4"></i> 
                         <a href="mailto:<?php echo e($contactEmail); ?>" class="hover:text-white transition"><?php echo e($contactEmail); ?></a>
                     </li>
+                    <?php if($showPhone): ?>
                     <li class="flex items-center gap-3">
                         <i class="fas fa-phone text-[#5993d0] w-4"></i> 
                         <span><?php echo e($contactPhone); ?></span>
                     </li>
+                    <?php endif; ?>
                     <?php if (! ($isFr)): ?>
                     <li class="flex items-center gap-3">
                         <i class="fab fa-whatsapp text-[#5993d0] w-4"></i> 
