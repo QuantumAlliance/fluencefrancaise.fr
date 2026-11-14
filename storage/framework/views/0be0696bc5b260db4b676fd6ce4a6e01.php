@@ -15,7 +15,7 @@
     $enUrl = 'https://fluencefrancaise.fr/en/online-french-classes/';
     $frUrl = 'https://fluencefrancaise.fr/fr/cours-de-francais-en-ligne/';
     $homeUrl = $isFr ? '/fr' : '/en';
-    $pricingUrl = $isFr ? '/fr#pricing' : '/en#pricing';
+    $pricingUrl = $isFr ? '/fr#tarifs' : '/en#pricing';
     $referralUrl = $isFr ? '/fr/contact/#parrainage' : '/en/contact/#referral';
     $contactUrl = $isFr ? '/fr/contact' : '/en/contact';
     $permitUrl = $isFr ? '/fr/titre-de-sejour-niveau-francais' : '/en/french-residence-permit-language';
@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- SEO Meta Tags -->
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
@@ -45,7 +45,7 @@
     <?php echo $__env->make('partials.social-meta', [
         'ogType' => 'article',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $title . ' | ' . $siteName,
+        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -117,12 +117,24 @@
         <section class="relative overflow-hidden bg-white pt-32 md:pt-40 pb-14 md:pb-20">
             <div class="hero-aurora"></div>
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center max-w-3xl">
+                <nav aria-label="Breadcrumb"
+                    class="reveal mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
+                    <a href="<?php echo e($homeUrl); ?>" class="hover:text-primary-600 transition-colors"><?php echo e($isFr ? 'Accueil' : 'Home'); ?></a>
+                    <span class="text-slate-300">›</span>
+                    <span class="text-slate-700 font-semibold"><?php echo e($isFr ? 'Cours' : 'Courses'); ?></span>
+                </nav>
                 <span class="eyebrow justify-center reveal"><span class="tricolor"><i></i><i></i><i></i></span>
                     <?php echo e($isFr ? 'Cours en direct' : 'Live classes'); ?></span>
-                <h1 class="reveal mt-5 text-[2.6rem] leading-[1.05] md:text-6xl font-semibold text-ink tracking-tight">
-                    <?php echo e($isFr ? 'Cours de français en ligne : de' : 'Online French Classes: From'); ?>
-
-                    <span class="swish text-primary-600"><?php echo e($isFr ? 'A1 à B2' : 'A1 to B2, Live'); ?></span>
+                <h1 class="reveal mt-5 text-[2rem] leading-[1.08] sm:text-5xl font-semibold text-ink tracking-tight">
+                    <?php if($isFr): ?>
+                        <span class="block sm:hidden">Cours de français</span>
+                        <span class="hidden sm:block">Cours de français en ligne :</span>
+                        <span class="block sm:hidden">en ligne : <span class="swish text-primary-600">de A1 à B2</span></span>
+                        <span class="hidden sm:block"><span class="swish text-primary-600">de A1 à B2</span></span>
+                    <?php else: ?>
+                        <span class="block">Online French Classes:</span>
+                        <span class="block"><span class="swish text-primary-600">From A1 to B2, Live</span></span>
+                    <?php endif; ?>
                 </h1>
                 <p class="reveal mt-6 text-lg text-slate-600 leading-relaxed">
                     <?php echo e($isFr
