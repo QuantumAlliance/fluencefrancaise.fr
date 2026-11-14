@@ -433,9 +433,9 @@
                             <span class="tricolor my-1" style="height:3.5px;width:48px;"><i></i><i></i><i></i></span>
                             <span class="text-xs sm:text-sm font-semibold tracking-wide text-primary-700/85">{{ $isFr ? 'TCF IRN · TEF IRN · DELF · Test fide · Examen civique' : 'TCF IRN · TEF IRN · DELF · fide test · Civic exam' }}</span>
                         </div>
-                        <h1 class="mt-5 text-[2.7rem] leading-[1.04] md:text-6xl lg:text-7xl font-semibold text-ink tracking-tight">
+                        <h1 class="mt-5 text-[2.7rem] leading-[1.04] md:text-6xl {{ $isFr ? 'lg:text-[4.25rem]' : 'lg:text-7xl' }} font-semibold text-ink tracking-tight">
                             @if($isFr)
-                                Des cours de français pour la vie que vous construisez en <span class="swish text-primary-600">France ou en Suisse</span>.
+                                <span class="md:block">Des cours de français pour </span><span class="md:block">la vie que vous construisez </span><span class="md:block">en <span class="swish text-primary-600">France ou en Suisse</span>.</span>
                             @else
                                 French classes for the life you're building in <span class="swish text-primary-600">France or Switzerland</span>.
                             @endif
@@ -589,8 +589,10 @@
                         </div>
                     </div>
                     <div class="reveal order-1 lg:order-2" style="transition-delay:.1s">
-                        <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> {{ $isFr ? 'Espace élève' : 'Student portal' }}</span>
-                        <h2 class="mt-4 text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">{{ $isFr ? 'Tout ce qu\'il vous faut entre 2 cours' : 'Everything you need between classes' }}</h2>
+                        @unless($isFr)
+                        <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> Student portal</span>
+                        @endunless
+                        <h2 class="{{ $isFr ? '' : 'mt-4' }} text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">{{ $isFr ? 'Tout ce qu\'il vous faut entre 2 cours' : 'Everything you need between classes' }}</h2>
                         <div class="mt-5 rounded-2xl border-l-4 border-primary-600 bg-primary-50/70 p-5 shadow-sm">
                             <p class="text-lg text-slate-700 leading-relaxed">{{ $isFr ? 'Votre apprentissage continue après le cours. Chaque élève a accès à toute la bibliothèque de ressources : notes de cours, exercices à vitesse native, banques d\'exercices et examens blancs.' : 'Your learning keeps going after class. Every student gets the full resource library: class notes, native-speed practice, practice banks and mock exams.' }}</p>
                         </div>
@@ -755,7 +757,7 @@
         <!-- final cta -->
         @include('partials.cta-banner', [
             'isFr' => $isFr,
-            'eyebrow' => $isFr ? 'NOUS VOUS ACCOMPAGNONS' : "LET'S GET YOU THERE",
+            'eyebrow' => $isFr ? '' : "LET'S GET YOU THERE",
             'title' => $isFr
                 ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
                 : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
@@ -767,7 +769,7 @@
             'secondaryButtonText' => $isFr ? 'Nous parler' : 'Talk to us',
             'secondaryButtonUrl' => $isFr ? '/fr/contact/' : '/en/contact/',
             'helperText' => $isFr
-                ? 'Cours en direct sur Google Meet · Particulier ou mini-groupe · Espace élève inclus'
+                ? ''
                 : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
         ])
 

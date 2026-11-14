@@ -101,10 +101,12 @@
                         <i class="fas fa-phone text-[#5993d0] w-4"></i> 
                         <span><?php echo e($contactPhone); ?></span>
                     </li>
+                    <?php if (! ($isFr)): ?>
                     <li class="flex items-center gap-3">
                         <i class="fab fa-whatsapp text-[#5993d0] w-4"></i> 
-                        <span><?php echo e($isFr ? 'WhatsApp disponible' : 'WhatsApp available'); ?></span>
+                        <span>WhatsApp available</span>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
 

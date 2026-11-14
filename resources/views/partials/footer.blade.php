@@ -99,10 +99,12 @@
                         <i class="fas fa-phone text-[#5993d0] w-4"></i> 
                         <span>{{ $contactPhone }}</span>
                     </li>
+                    @unless($isFr)
                     <li class="flex items-center gap-3">
                         <i class="fab fa-whatsapp text-[#5993d0] w-4"></i> 
-                        <span>{{ $isFr ? 'WhatsApp disponible' : 'WhatsApp available' }}</span>
+                        <span>WhatsApp available</span>
                     </li>
+                    @endunless
                 </ul>
             </div>
 

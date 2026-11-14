@@ -999,7 +999,7 @@
                 </a>
                 <a href="/login"
                     class="w-full py-2 text-center text-slate-500 font-bold text-sm tracking-wide hover:text-[#0055A4] transition">
-                    LOGIN
+                    {{ $isFr ? 'Connexion' : 'LOGIN' }}
                 </a>
             @endauth
         </div>
