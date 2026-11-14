@@ -116,10 +116,11 @@
         <!-- ===== HERO ===== -->
         <section class="relative overflow-hidden bg-white pt-32 md:pt-40 pb-14 md:pb-20">
             <div class="hero-aurora"></div>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center max-w-3xl">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center max-w-4xl">
                 <nav aria-label="Breadcrumb"
                     class="reveal mb-5 flex justify-center text-xs text-slate-400 font-medium items-center gap-2">
-                    <a href="{{ $homeUrl }}" class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
+                    <a href="{{ $homeUrl }}"
+                        class="hover:text-primary-600 transition-colors">{{ $isFr ? 'Accueil' : 'Home' }}</a>
                     <span class="text-slate-300">›</span>
                     <span class="text-slate-700 font-semibold">{{ $isFr ? 'Cours' : 'Courses' }}</span>
                 </nav>
@@ -129,14 +130,15 @@
                     @if($isFr)
                         <span class="block sm:hidden">Cours de français</span>
                         <span class="hidden sm:block">Cours de français en ligne :</span>
-                        <span class="block sm:hidden">en ligne : <span class="swish text-primary-600">de A1 à B2</span></span>
+                        <span class="block sm:hidden">en ligne : <span class="swish text-primary-600">de A1 à
+                                B2</span></span>
                         <span class="hidden sm:block"><span class="swish text-primary-600">de A1 à B2</span></span>
                     @else
                         <span class="block">Online French Classes:</span>
                         <span class="block"><span class="swish text-primary-600">From A1 to B2, Live</span></span>
                     @endif
                 </h1>
-                <p class="reveal mt-6 text-lg text-slate-600 leading-relaxed">
+                <p class="reveal mt-6 mx-auto text-lg text-slate-600 leading-relaxed {{ $isFr ? 'max-w-[49rem]' : 'max-w-[38rem]' }}">
                     {{ $isFr
     ? 'Des cours en direct avec un tuteur, construits autour du niveau que votre titre de séjour, votre naturalisation ou votre examen exige.'
     : 'Live classes with a tutor, built around the level your residence permit, citizenship or exam requires.' }}
