@@ -187,18 +187,17 @@
                             <span
                                 class="text-slate-700 font-semibold"><?php echo e($isFr ? 'Titre de séjour' : 'Residence permits'); ?></span>
                         </nav>
-
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'TITRE DE SÉJOUR · 2026' : 'RESIDENCE PERMITS · 2026'); ?>
-
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'TITRE DE SÉJOUR · 2026' : 'RESIDENCE PERMITS · 2026'); ?>
 
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15] mt-5">
                             <?php echo e($isFr ? 'Titre de séjour :' : 'French Residence Permits:'); ?>
 
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1 relative">
@@ -269,13 +268,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'EXIGENCES 2026' : '2026 REQUIREMENTS'); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? 'EXIGENCES 2026' : '2026 REQUIREMENTS'); ?>
+
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Quel niveau de français pour un titre de séjour en 2026 ?' : 'What level of French do you need for a French residence permit in 2026?'); ?>
 
                             </h2>
@@ -361,14 +364,17 @@
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'A2 ET B1' : 'A2 AND B1'); ?></span>
-                        </div>
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'A2 ET B1' : 'A2 AND B1'); ?>
+
+                        </span>
                     </div>
-                    <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="grid lg:grid-cols-2 gap-6 mt-3">
                         <article id="<?php echo e($a2Id); ?>"
                             class="scroll-mt-28 bg-white rounded-3xl border border-slate-200/80 relative overflow-hidden">
                             <span id="<?php echo e($a2Id === 'multi-year-permit' ? 'carte-pluriannuelle' : 'multi-year-permit'); ?>"
@@ -458,13 +464,17 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LE FRANÇAIS AU QUOTIDIEN' : 'EVERYDAY FRENCH'); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'LE FRANÇAIS AU QUOTIDIEN' : 'EVERYDAY FRENCH'); ?>
+
+                        </span>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'A2 et B1, concrètement' : 'A2 and B1 in real life'); ?>
 
                         </h2>
@@ -503,13 +513,16 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                         <div class="lg:col-span-5">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'PREUVES ACCEPTÉES' : 'ACCEPTED PROOF'); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? 'PREUVES ACCEPTÉES' : 'ACCEPTED PROOF'); ?>
+
+                            </span>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                                 <?php echo e($isFr ? 'Quelles preuves sont acceptées ?' : 'Which proof is accepted?'); ?>
 
                             </h2>
@@ -659,13 +672,16 @@
             <section id="<?php echo e($prepareId); ?>" class="scroll-mt-28 py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES'); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES'); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Notre préparation' : 'How we prepare you'); ?>
 
                         </h2>

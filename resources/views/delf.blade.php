@@ -198,13 +198,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES 4 NIVEAUX' : 'THE 4 LEVELS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'LES 4 NIVEAUX' : 'THE 4 LEVELS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Le DELF en bref' : 'The DELF at a glance' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -244,13 +246,15 @@
 
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'AVANT DE CHOISIR' : 'BEFORE YOU CHOOSE' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'AVANT DE CHOISIR' : 'BEFORE YOU CHOOSE' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         {{ $isFr ? '3 règles à connaître avant de choisir' : '3 rules to know before you choose' }}
                     </h2>
                     <div class="mt-8 grid lg:grid-cols-3 gap-6">
@@ -298,13 +302,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'VOTRE DÉMARCHE' : 'YOUR APPLICATION' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'VOTRE DÉMARCHE' : 'YOUR APPLICATION' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Quel DELF pour quelle démarche ?' : 'Which DELF for which application?' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -373,13 +379,16 @@
 
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">C1 ·
-                            C2</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        C1 ·
+                        C2
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         {{ $isFr ? 'Et le DALF ?' : 'What about the DALF?' }}
                     </h2>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -393,13 +402,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Notre préparation au DELF' : 'How we prepare you for the DELF' }}
                         </h2>
                     </div>

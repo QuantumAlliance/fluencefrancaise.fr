@@ -278,17 +278,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
                         <div class="lg:col-span-7 space-y-4 sm:space-y-5">
-                            <div class="inline-flex items-center gap-1.5">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                {{ $isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW YOUR EXAM' }}
+                            </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? 'Le TCF IRN en bref' : 'The TCF IRN at a glance' }}
                             </h2>
 
@@ -477,17 +477,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                         <div class="lg:col-span-6 space-y-4">
-                            <div class="inline-flex items-center gap-1.5">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'UNE MEILLEURE MÉTHODE' : 'A SMARTER WAY TO PREPARE' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                {{ $isFr ? 'UNE MEILLEURE MÉTHODE' : 'A SMARTER WAY TO PREPARE' }}
+                            </span>
 
                             <h2
-                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                                class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? "Votre écart n'est jamais le même partout." : 'Your gap is never the same in every skill.' }}
                             </h2>
 
@@ -631,15 +631,16 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'STRUCTURE DES ÉPREUVES' : 'THE 4 SECTIONS' }}
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'STRUCTURE DES ÉPREUVES' : 'THE 4 SECTIONS' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Format du TCF IRN : les 4 épreuves' : 'TCF IRN format: the 4 sections' }}
                         </h2>
                         <p
@@ -769,15 +770,16 @@
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'PIÈGES FRÉQUENTS' : 'WHERE POINTS ARE LOST' }}
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'PIÈGES FRÉQUENTS' : 'WHERE POINTS ARE LOST' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Où les candidats perdent des points au TCF IRN' : 'Where TCF IRN candidates lose points' }}
                         </h2>
                     </div>
@@ -878,15 +880,16 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'NOTRE MÉTHODE' : 'OUR PREPARATION' }}
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'NOTRE MÉTHODE' : 'OUR PREPARATION' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Notre préparation au TCF IRN' : 'How we prepare you for the TCF IRN' }}
                         </h2>
                     </div>
@@ -966,15 +969,16 @@
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'NIVEAU VISÉ' : 'WHICH LEVEL FOR WHICH GOAL' }}
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'NIVEAU VISÉ' : 'WHICH LEVEL FOR WHICH GOAL' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Quel niveau viser au TCF IRN ?' : 'What TCF IRN level do you need?' }}
                         </h2>
                         <p

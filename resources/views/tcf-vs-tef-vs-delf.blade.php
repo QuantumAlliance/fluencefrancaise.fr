@@ -237,17 +237,17 @@
                                     class="text-slate-700 font-semibold">{{ $isFr ? 'TCF, TEF ou DELF' : 'TCF, TEF or DELF' }}</span>
                             </nav>
 
-                            <div class="inline-flex items-center gap-1.5 mb-4">
-                                <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'CHOISIR LE BON TEST' : 'CHOOSE THE RIGHT TEST' }}
+                            <span class="eyebrow mb-4">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                {{ $isFr ? 'CHOISIR LE BON TEST' : 'CHOOSE THE RIGHT TEST' }}
+                            </span>
 
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12]">
+                                class="text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] mt-3">
                                 {{ $isFr ? 'TCF, TEF ou DELF :' : 'TCF, TEF or DELF:' }}
                                 <span class="block w-fit max-w-full text-[#0055A4] mt-1">
                                     @if($isFr)
@@ -325,13 +325,15 @@
 
             <section id="short-answer" class="scroll-mt-28 py-16 sm:py-20 bg-white border-t border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LA RÉPONSE COURTE' : 'THE SHORT ANSWER' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'LA RÉPONSE COURTE' : 'THE SHORT ANSWER' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         {{ $isFr ? 'TCF, TEF ou DELF : la réponse courte' : 'TCF vs TEF vs DELF: the short answer' }}
                     </h2>
                     <p class="mt-5 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -353,13 +355,15 @@
             <section id="comparison" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CÔTE À CÔTE' : 'SIDE BY SIDE' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'CÔTE À CÔTE' : 'SIDE BY SIDE' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Le comparatif complet' : 'The full comparison' }}
                         </h2>
                     </div>
@@ -421,13 +425,15 @@
             <section id="questions" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'DÉCIDER EN 3 QUESTIONS' : 'DECIDE IN 3 QUESTIONS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'DÉCIDER EN 3 QUESTIONS' : 'DECIDE IN 3 QUESTIONS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Le bon test en 3 questions' : 'The right test in 3 questions' }}
                         </h2>
                     </div>
@@ -462,13 +468,15 @@
 
             <section class="py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'MÊME NIVEAU, FORMAT DIFFÉRENT' : 'SAME LEVEL, DIFFERENT FORMAT' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'MÊME NIVEAU, FORMAT DIFFÉRENT' : 'SAME LEVEL, DIFFERENT FORMAT' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                         {{ $isFr ? 'TCF IRN ou TEF IRN : lequel est le plus facile ?' : 'TCF IRN or TEF IRN: which is easier?' }}
                     </h2>
                     <div class="mt-5 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -489,13 +497,15 @@
             <section id="levels" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES EXIGENCES 2026' : 'THE 2026 REQUIREMENTS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'LES EXIGENCES 2026' : 'THE 2026 REQUIREMENTS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Quel niveau viser ?' : 'What level should you aim for?' }}
                         </h2>
                     </div>
@@ -534,13 +544,15 @@
             <section id="prepare" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES 3 FORMATS' : 'ALL 3 FORMATS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'LES 3 FORMATS' : 'ALL 3 FORMATS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight  mt-3">
                             {{ $isFr ? 'Notre préparation' : 'How we prepare you' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">

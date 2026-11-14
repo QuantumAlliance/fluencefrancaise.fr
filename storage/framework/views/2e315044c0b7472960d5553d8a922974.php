@@ -27,38 +27,42 @@
             <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-4">
                 <!-- Eyebrow with Blue & Red Dashes -->
                 <?php if(!empty($faqEyebrow)): ?>
-                <div class="inline-flex items-center gap-1.5">
-                    <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                    <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                    <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
+                    <span class="eyebrow">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
                         <?php echo e($faqEyebrow); ?>
 
                     </span>
-                </div>
                 <?php endif; ?>
 
                 <!-- Section Title -->
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#10233e] tracking-tight leading-[1.08]">
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#10233e] tracking-tight leading-[1.08] mt-3">
                     <?php echo $faqTitle; ?>
 
                 </h2>
 
                 <!-- Subtext -->
                 <?php if(!empty($faqDescription)): ?>
-                <p class="text-sm sm:text-base text-slate-500 font-normal leading-relaxed max-w-sm pt-1">
-                    <?php echo nl2br(e($faqDescription)); ?>
+                    <p class="text-sm sm:text-base text-slate-500 font-normal leading-relaxed max-w-sm pt-1">
+                        <?php echo nl2br(e($faqDescription)); ?>
 
-                </p>
+                    </p>
                 <?php endif; ?>
 
                 <!-- Contact Link -->
                 <?php if(!empty($faqContactText)): ?>
-                <div class="pt-2">
-                    <a href="<?php echo e($faqContactUrl); ?>" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0055A4] hover:text-[#002654] group transition-colors">
-                        <span><?php echo e($faqContactText); ?></span>
-                        <span class="inline-block transform group-hover:translate-x-1 transition-transform font-normal">→</span>
-                    </a>
-                </div>
+                    <div class="pt-2">
+                        <a href="<?php echo e($faqContactUrl); ?>"
+                            class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0055A4] hover:text-[#002654] group transition-colors">
+                            <span><?php echo e($faqContactText); ?></span>
+                            <span
+                                class="inline-block transform group-hover:translate-x-1 transition-transform font-normal">→</span>
+                        </a>
+                    </div>
                 <?php endif; ?>
             </div>
 
@@ -71,27 +75,19 @@
                         $itemId = "{$componentUid}_item_{$idx}";
                     ?>
                     <div class="group">
-                        <button 
-                            type="button"
-                            onclick="toggleFaqItem('<?php echo e($itemId); ?>')"
+                        <button type="button" onclick="toggleFaqItem('<?php echo e($itemId); ?>')"
                             class="w-full py-5 sm:py-6 text-left flex items-center justify-between gap-4 font-semibold text-sm sm:text-[15px] md:text-base text-[#10233e] hover:text-[#0055A4] transition-colors focus:outline-none"
-                            aria-expanded="false"
-                            id="btn_<?php echo e($itemId); ?>"
-                        >
+                            aria-expanded="false" id="btn_<?php echo e($itemId); ?>">
                             <span class="pr-2 leading-snug"><?php echo e($q); ?></span>
-                            <span 
-                                id="icon_<?php echo e($itemId); ?>" 
-                                class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-200/80 bg-slate-50/60 group-hover:bg-blue-50/70 group-hover:border-[#0055a4]/30 flex items-center justify-center shrink-0 text-slate-400 group-hover:text-[#0055A4] transition-all duration-300 transform"
-                            >
+                            <span id="icon_<?php echo e($itemId); ?>"
+                                class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-200/80 bg-slate-50/60 group-hover:bg-blue-50/70 group-hover:border-[#0055a4]/30 flex items-center justify-center shrink-0 text-slate-400 group-hover:text-[#0055A4] transition-all duration-300 transform">
                                 <svg class="w-3.5 h-3.5 stroke-[2]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
                             </span>
                         </button>
-                        <div 
-                            id="content_<?php echo e($itemId); ?>" 
-                            class="hidden pb-6 pr-4 sm:pr-8 text-sm sm:text-[15px] text-slate-600 leading-relaxed font-normal"
-                        >
+                        <div id="content_<?php echo e($itemId); ?>"
+                            class="hidden pb-6 pr-4 sm:pr-8 text-sm sm:text-[15px] text-slate-600 leading-relaxed font-normal">
                             <?php echo is_string($a) ? $a : ''; ?>
 
                         </div>
@@ -105,7 +101,7 @@
 <!-- Interactive FAQ Script (Idempotent) -->
 <script>
     if (typeof window.toggleFaqItem === 'undefined') {
-        window.toggleFaqItem = function(id) {
+        window.toggleFaqItem = function (id) {
             const content = document.getElementById('content_' + id);
             const icon = document.getElementById('icon_' + id);
             const btn = document.getElementById('btn_' + id);
@@ -127,5 +123,4 @@
             }
         };
     }
-</script>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/faq-section.blade.php ENDPATH**/ ?>
+</script><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/faq-section.blade.php ENDPATH**/ ?>

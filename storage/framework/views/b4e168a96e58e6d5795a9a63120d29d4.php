@@ -302,15 +302,15 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    <?php echo e($isFr ? "DÉCOUVREZ L'EXAMEN" : 'KNOW YOUR EXAM'); ?>
-
+                            <span class="eyebrow mb-3">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
+                                <?php echo e($isFr ? "DÉCOUVREZ L'EXAMEN" : 'KNOW YOUR EXAM'); ?>
+
+                            </span>
                             <h2
                                 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                                 <?php echo e($isFr ? 'Le test fide en bref' : 'The fide test at a glance'); ?>
@@ -380,14 +380,15 @@
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'EXIGENCES LINGUISTIQUES' : 'SWISS PERMIT REQUIREMENTS'); ?>
-
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'EXIGENCES LINGUISTIQUES' : 'SWISS PERMIT REQUIREMENTS'); ?>
+
+                        </span>
                         <h2
                             class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Quel niveau fide pour votre permis ?' : 'What fide level does your permit need?'); ?>
@@ -491,14 +492,15 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'STRUCTURE DU TEST' : 'TEST STRUCTURE'); ?>
-
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'STRUCTURE DU TEST' : 'TEST STRUCTURE'); ?>
+
+                        </span>
                         <h2
                             class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Le format du test fide' : 'fide test format'); ?>
@@ -566,14 +568,15 @@
             <section class="py-16 sm:py-24 bg-[#f4f7fb] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'LES PIÈGES DU TEST' : 'COMMON PITFALLS'); ?>
-
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'LES PIÈGES DU TEST' : 'COMMON PITFALLS'); ?>
+
+                        </span>
                         <h2
                             class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Où les candidats perdent des points au test fide' : 'Where fide candidates lose points'); ?>
@@ -794,14 +797,15 @@
             <section class="py-16 sm:py-24 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.'); ?>
-
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'UN ENSEIGNEMENT EN DIRECT. UN PLAN QUI VOUS CORRESPOND.' : 'LIVE TEACHING. A PLAN THAT FITS YOU.'); ?>
+
+                        </span>
                         <h2
                             class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
                             <?php echo e($isFr ? 'Notre préparation au test fide' : 'How we prepare you for the fide test'); ?>
