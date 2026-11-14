@@ -12,7 +12,7 @@
         : "TEF IRN 2026: Sections, Rules and Online Preparation";
 
     $metaDesc = $isFr
-        ? "TEF IRN 2026 : 4 épreuves obligatoires, attestation valable 2 ans, A2, B1 ou B2 selon votre dossier. Pièges à éviter et préparation en ligne."
+        ? "TEF IRN 2026 : 4 épreuves obligatoires, attestation valable 2 ans, niveau A2, B1 ou B2 selon votre dossier. Pièges à éviter et préparation en ligne."
         : "TEF IRN in 2026: 4 compulsory sections, results valid 2 years, A2, B1 or B2 depending on your application. Common traps and live online prep.";
 
     $canonicalUrl = $isFr ? 'https://fluencefrancaise.fr/fr/tef-irn/' : 'https://fluencefrancaise.fr/en/tef-irn/';
@@ -92,7 +92,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
@@ -101,7 +101,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -817,7 +817,7 @@
                         </span>
                         <h2
                             class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
-                            <?php echo e($isFr ? 'Là où les candidats perdent des points au TEF IRN' : 'Where TEF IRN candidates lose points'); ?>
+                            <?php echo e($isFr ? 'Où les candidats perdent des points au TEF IRN' : 'Where TEF IRN candidates lose points'); ?>
 
                         </h2>
                         <p
