@@ -488,7 +488,7 @@
 
                             <h2
                                 class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
-                                {{ $isFr ? "Votre écart n'est jamais le même partout." : 'Your gap is never the same in every skill.' }}
+                                {{ $isFr ? "Votre écart n'est jamais le même partout" : 'Your gap is never the same in every skill.' }}
                             </h2>
 
                             <div
@@ -1011,7 +1011,7 @@
                             <div>
                                 <span class="text-3xl font-extrabold text-[#0055a4]">B1</span>
                                 <h3 class="font-bold text-[#10233e] text-lg mt-2">
-                                    {{ $isFr ? 'Carte de résident (10 ans)' : '10-year resident card' }}
+                                    {{ $isFr ? 'Carte de résident' : '10-year resident card' }}
                                 </h3>
                             </div>
                             <div class="pt-6">
@@ -1033,7 +1033,7 @@
                             <div>
                                 <span class="text-3xl font-extrabold text-white">B2</span>
                                 <h3 class="font-bold text-white text-lg mt-2">
-                                    {{ $isFr ? 'Naturalisation française' : 'French citizenship' }}
+                                    {{ $isFr ? 'Naturalisation' : 'French citizenship' }}
                                 </h3>
                             </div>
                             <div class="pt-6">
