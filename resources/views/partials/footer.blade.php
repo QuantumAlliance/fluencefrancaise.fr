@@ -14,7 +14,7 @@
         ['text' => $isFr ? 'Accueil' : 'Home', 'url' => $isFr ? '/' : '/en'],
         ['text' => $isFr ? 'Cours' : 'Courses', 'url' => $isFr ? '/fr/cours-de-francais-en-ligne' : '/en/online-french-classes'],
         ['text' => $isFr ? 'Parrainage' : 'Referral', 'url' => $isFr ? '/fr/contact/#parrainage' : '/en/contact#referral'],
-        ['text' => 'FAQ', 'url' => $isFr ? '/#faq' : '/en#faq']
+        ['text' => 'FAQ', 'url' => $isFr ? '/#faq' : '/en/#faq']
     ];
 
     $examLinks = [
@@ -32,7 +32,13 @@
 
     $contactEmail = !empty($settings['contact_email']) ? $settings['contact_email'] : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
     $contactPhone = !empty($settings['contact_phone']) ? $settings['contact_phone'] : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '');
-    $showPhone = preg_replace('/\D+/', '', (string) $contactPhone) !== '' && preg_replace('/\D+/', '', (string) $contactPhone) !== '33123456789';
+    $phoneDigits = preg_replace('/\D+/', '', (string) $contactPhone);
+    $showPhone = $phoneDigits !== '' && $phoneDigits !== '33123456789';
+    // Phone / WhatsApp: one item, linked (tel:), per developer guide section 7
+    $phoneHref = 'tel:+' . ltrim($phoneDigits, '0');
+    if (str_starts_with(trim((string) $contactPhone), '0')) {
+        $phoneHref = 'tel:' . $phoneDigits;
+    }
 
     $socialLinks = $footerData['social'] ?? [
         'facebook' => '#',
@@ -97,17 +103,18 @@
                         <a href="mailto:{{ $contactEmail }}" class="hover:text-white transition">{{ $contactEmail }}</a>
                     </li>
                     @if($showPhone)
+                    @if($isFr)
                     <li class="flex items-center gap-3">
-                        <i class="fas fa-phone text-[#5993d0] w-4"></i> 
+                        <i class="fas fa-phone text-[#5993d0] w-4"></i>
                         <span>{{ $contactPhone }}</span>
                     </li>
-                    @endif
-                    @unless($isFr)
+                    @else
                     <li class="flex items-center gap-3">
-                        <i class="fab fa-whatsapp text-[#5993d0] w-4"></i> 
-                        <span>WhatsApp available</span>
+                        <i class="fab fa-whatsapp text-[#5993d0] w-4"></i>
+                        <a href="{{ $phoneHref }}" class="hover:text-white transition">{{ $contactPhone }}</a>
                     </li>
-                    @endunless
+                    @endif
+                    @endif
                 </ul>
             </div>
 

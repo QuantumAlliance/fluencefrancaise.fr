@@ -21,7 +21,7 @@
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="https://fluencefrancaise.fr/">
     <link rel="alternate" hreflang="en" href="https://fluencefrancaise.fr/en/">
-    <link rel="alternate" hreflang="x-default" href="https://fluencefrancaise.fr/en/">
+    <link rel="alternate" hreflang="x-default" href="https://fluencefrancaise.fr/">
 
     <!-- Social Media Meta Tags -->
     @include('partials.social-meta', [
@@ -70,7 +70,7 @@
             ],
             [
                 'question' => 'Which exams do you prepare for?',
-                'answer' => 'The TCF IRN, TEF IRN, DELF (A1 to B2) and fide test. Civic-exam prep is included in every plan at no extra cost. Not sure which one? Compare the TCF, TEF and DELF at https://fluencefrancaise.fr/en/tcf-vs-tef-vs-delf/ .'
+                'answer' => 'The TCF IRN, TEF IRN, DELF (A1 to B2) and fide test. Civic-exam prep is included in every plan at no extra cost. Not sure which one? Compare the TCF, TEF and DELF.'
             ],
             [
                 'question' => 'Do you prepare for Swiss applications?',
@@ -429,7 +429,7 @@
                 <div class="max-w-3xl mx-auto text-center">
                     <div class="reveal">
                         <div class="inline-flex flex-col items-center justify-center gap-1.5 mb-2">
-                            <span class="text-xs sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary-600">{{ $isFr ? 'Cours en direct' : 'LIVE ONLINE CLASSES' }}</span>
+                            <span class="text-xs sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary-600">{{ $isFr ? 'Cours en direct' : 'Live online classes' }}</span>
                             <span class="tricolor my-1" style="height:3.5px;width:48px;"><i></i><i></i><i></i></span>
                             <span class="text-xs sm:text-sm font-semibold tracking-wide text-primary-700/85">{{ $isFr ? 'TCF IRN · TEF IRN · DELF · Test fide · Examen civique' : 'TCF IRN · TEF IRN · DELF · fide test · Civic exam' }}</span>
                         </div>
@@ -589,22 +589,21 @@
                         </div>
                     </div>
                     <div class="reveal order-1 lg:order-2" style="transition-delay:.1s">
-                        @unless($isFr)
-                        <span class="eyebrow"><span class="tricolor"><i></i><i></i><i></i></span> Student portal</span>
-                        @endunless
-                        <h2 class="{{ $isFr ? '' : 'mt-4' }} text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">{{ $isFr ? 'Tout ce qu\'il vous faut entre 2 cours' : 'Everything you need between classes' }}</h2>
+                        <h2 class="text-3xl md:text-[2.7rem] leading-tight font-semibold text-ink">{{ $isFr ? 'Tout ce qu\'il vous faut entre 2 cours' : 'Everything you need between classes' }}</h2>
                         <div class="mt-5 rounded-2xl border-l-4 border-primary-600 bg-primary-50/70 p-5 shadow-sm">
                             <p class="text-lg text-slate-700 leading-relaxed">{{ $isFr ? 'Votre apprentissage continue après le cours. Chaque élève a accès à toute la bibliothèque de ressources : notes de cours, exercices à vitesse native, banques d\'exercices et examens blancs.' : 'Your learning keeps going after class. Every student gets the full resource library: class notes, native-speed practice, practice banks and mock exams.' }}</p>
                         </div>
                         <div class="mt-6 rounded-2xl bg-white border border-primary-100 p-5 flex gap-4">
                             <span class="w-10 h-10 rounded-xl bg-accent-soft text-[#EF4135] grid place-content-center shrink-0"><i class="fas fa-star"></i></span>
+                            @if($isFr)
                             <p class="text-sm text-slate-600">
-                                @if($isFr)
                                     Après 6 mois d'inscription, vous recevez un accès gratuit à <strong class="text-ink">PrepMyFuture</strong> pour vous entraîner encore davantage.
-                                @else
-                                    After 6 months of enrolment, you get free access to <strong class="text-ink">PrepMyFuture</strong> for even more practice.
-                                @endif
                             </p>
+                            @else
+                            <p class="text-sm font-semibold text-ink">
+                                    After 6 months of enrolment, you get free access to PrepMyFuture for even more practice.
+                            </p>
+                            @endif
                         </div>
                         <a href="/register" class="btn btn-primary btn-lg mt-7">{{ $isFr ? "S'inscrire" : 'Enroll now' }} <i class="fas fa-arrow-right text-xs"></i></a>
                     </div>
@@ -634,7 +633,7 @@
                         <div class="md:justify-self-end w-full max-w-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-4xl p-7">
                             <p class="text-7xl font-semibold text-white" style="font-family:'Urbanist',sans-serif">{{ $isFr ? '50 €' : '€50' }}<span class="text-2xl text-slate-300 align-top">{{ $isFr ? '/mois' : '/mo' }}</span></p>
                             <p class="mt-3 text-slate-300">{{ $isFr ? 'La remise s\'applique aux 2 personnes, chaque mois d\'inscription.' : 'The discount applies to both of you, every month of enrolment.' }}</p>
-                            <p class="mt-6 text-xs text-slate-400 border-t border-white/10 pt-4">{{ $isFr ? 'Offre valable une fois par compte élève, non cumulable avec d\'autres offres.' : 'Valid once per student account, not combinable with other offers.' }}</p>
+                            <p class="mt-6 text-xs {{ $isFr ? '' : 'italic' }} text-slate-400 border-t border-white/10 pt-4">{{ $isFr ? 'Offre valable une fois par compte élève, non cumulable avec d\'autres offres.' : 'Valid once per student account, not combinable with other offers.' }}</p>
                         </div>
                     </div>
                 </div>
@@ -660,7 +659,7 @@
                             'Vous voulez des cours en direct, un vrai suivi, et quelqu\'un qui vous dit où vous en êtes.',
                         ] : [
                             "You're applying for a <a href=\"/en/french-residence-permit-language/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">multi-year residence permit or a 10-year resident card</a> and need to prove A2 or B1.",
-                            "You're going for <a href=\"/en/french-citizenship-language-test/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">French citizenship</a> : B2 spoken and written and, for citizenship by decree, the <a href=\"/en/french-civic-exam/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">civic exam</a>.",
+                            "You're going for <a href=\"/en/french-citizenship-language-test/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">French citizenship</a>: B2 spoken and written and, for citizenship by decree, the <a href=\"/en/french-civic-exam/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">civic exam</a>.",
                             "You live in French-speaking Switzerland and are preparing your <a href=\"/en/c-permit-switzerland/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">C permit</a> or <a href=\"/en/swiss-citizenship/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">Swiss citizenship</a>.",
                             "You're preparing for the <a href=\"/en/tcf-irn/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">TCF IRN</a>, <a href=\"/en/tef-irn/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">TEF IRN</a>, <a href=\"/en/delf/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">DELF</a> or <a href=\"/en/fide-test/\" class=\"text-primary-600 underline font-semibold hover:text-primary-700\">fide test</a>.",
                             "You're tired of apps, irregular tutors and lessons with no clear thread.",
@@ -757,20 +756,18 @@
         <!-- final cta -->
         @include('partials.cta-banner', [
             'isFr' => $isFr,
-            'eyebrow' => $isFr ? '' : "LET'S GET YOU THERE",
+            'eyebrow' => '',
             'title' => $isFr
                 ? "Votre niveau. Le niveau exigé.<br class='hidden sm:inline'> Nous comblons l'écart."
                 : "Your level. The required level.<br class='hidden sm:inline'> We close the gap.",
             'description' => $isFr
                 ? 'Votre premier cours fixe votre niveau et votre plan. Vous choisissez le rythme : 2 ou 4 heures par semaine.'
-                : 'Your first class sets your level in each section and the plan to reach the one your application needs. You choose the pace: 2 or 4 hours a week.',
+                : 'Your first class sets your level and your plan. You choose the pace: 2 or 4 hours a week.',
             'primaryButtonText' => $isFr ? "S'inscrire" : 'Enroll now',
             'primaryButtonUrl' => '/register',
             'secondaryButtonText' => $isFr ? 'Nous parler' : 'Talk to us',
             'secondaryButtonUrl' => $isFr ? '/fr/contact/' : '/en/contact/',
-            'helperText' => $isFr
-                ? ''
-                : 'Live classes on Google Meet · 1:1 or small group · Student portal included'
+            'helperText' => ''
         ])
 
         @include('partials.footer')
