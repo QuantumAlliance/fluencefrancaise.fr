@@ -168,4 +168,4 @@
         }
     ?>
 <?php endif; ?>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/partials/footer.blade.php ENDPATH**/ ?>

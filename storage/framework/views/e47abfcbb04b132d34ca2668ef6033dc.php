@@ -25,7 +25,7 @@
     $enUrl = 'https://fluencefrancaise.fr/en/contact/';
     $homeUrl = $isFr ? '/fr' : '/en';
     $formAction = $isFr ? '/fr/contact' : '/en/contact';
-    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
+    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf/' : '/en/tcf-vs-tef-vs-delf/';
     $privacyUrl = '/new-policies';
     $referralId = $isFr ? 'parrainage' : 'referral';
 
@@ -84,7 +84,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
+    <title><?php echo e($title); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <meta name="robots" content="<?php echo e($settings['robots'] ?? 'index, follow'); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
@@ -94,7 +94,7 @@
     <?php echo $__env->make('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
+        'ogTitle' => $title,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -378,4 +378,4 @@ unset($__errorArgs, $__bag); ?>
     </script>
 </body>
 
-</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/contact-us.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/contact-us.blade.php ENDPATH**/ ?>

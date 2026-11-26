@@ -25,7 +25,7 @@
     $enUrl = 'https://fluencefrancaise.fr/en/contact/';
     $homeUrl = $isFr ? '/fr' : '/en';
     $formAction = $isFr ? '/fr/contact' : '/en/contact';
-    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf' : '/en/tcf-vs-tef-vs-delf';
+    $compareUrl = $isFr ? '/fr/tcf-tef-ou-delf/' : '/en/tcf-vs-tef-vs-delf/';
     $privacyUrl = '/new-policies';
     $referralId = $isFr ? 'parrainage' : 'referral';
 
@@ -84,7 +84,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
+    <title>{{ $title }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <meta name="robots" content="{{ $settings['robots'] ?? 'index, follow' }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
@@ -94,7 +94,7 @@
     @include('partials.social-meta', [
         'ogType' => 'website',
         'ogUrl' => $canonicalUrl,
-        'ogTitle' => $isFr ? $title : $title . ' | ' . $siteName,
+        'ogTitle' => $title,
         'ogDescription' => $metaDesc,
         'ogSiteName' => $siteName,
     ])

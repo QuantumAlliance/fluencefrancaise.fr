@@ -123,4 +123,4 @@
             }
         };
     }
-</script><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/faq-section.blade.php ENDPATH**/ ?>
+</script><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/partials/faq-section.blade.php ENDPATH**/ ?>

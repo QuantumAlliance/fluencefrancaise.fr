@@ -138,7 +138,8 @@
                         <span class="block"><span class="swish text-primary-600">From A1 to B2, Live</span></span>
                     @endif
                 </h1>
-                <p class="reveal mt-6 mx-auto text-lg text-slate-600 leading-relaxed {{ $isFr ? 'max-w-[49rem]' : 'max-w-[38rem]' }}">
+                <p
+                    class="reveal mt-6 mx-auto text-lg text-slate-600 leading-relaxed {{ $isFr ? 'max-w-[49rem]' : 'max-w-[38rem]' }}">
                     {{ $isFr
     ? 'Des cours en direct avec un tuteur, construits autour du niveau que votre titre de séjour, votre naturalisation ou votre examen exige.'
     : 'Live classes with a tutor, built around the level your residence permit, citizenship or exam requires.' }}
