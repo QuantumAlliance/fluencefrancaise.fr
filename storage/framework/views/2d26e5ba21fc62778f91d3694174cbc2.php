@@ -67,9 +67,9 @@
     ];
 
     $who = $isFr ? [
-        'une première demande de carte de séjour pluriannuelle concernée par les règles de 2026',
-        'une première demande de carte de résident concernée par les règles de 2026',
-        'une demande de naturalisation par décret',
+        'une première demande de carte de séjour pluriannuelle concernée par les règles de 2026 ;',
+        'une première demande de carte de résident concernée par les règles de 2026 ;',
+        'une demande de naturalisation par décret.',
     ] : [
         'a first carte de séjour pluriannuelle (multi-year residence permit) covered by the 2026 rules',
         'a first carte de résident (10-year resident card) covered by the 2026 rules',
@@ -125,14 +125,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -199,18 +199,17 @@
                             <span
                                 class="text-slate-700 font-semibold"><?php echo e($isFr ? 'Examen civique' : 'Civic exam'); ?></span>
                         </nav>
-
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'L\'EXAMEN CIVIQUE 2026' : 'THE 2026 CIVIC EXAM'); ?>
-
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'L\'EXAMEN CIVIQUE 2026' : 'THE 2026 CIVIC EXAM'); ?>
 
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15] mt-45">
                             <?php echo e($isFr ? 'Examen civique :' : 'French Civic Exam:'); ?>
 
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
@@ -280,13 +279,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW THE EXAM'); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? "CONNAÎTRE L'EXAMEN" : 'KNOW THE EXAM'); ?>
+
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'L\'examen civique en bref' : 'The French civic exam at a glance'); ?>
 
                             </h2>
@@ -354,13 +357,16 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'POUR QUI' : "WHO IT'S FOR"); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? 'POUR QUI' : "WHO IT'S FOR"); ?>
+
+                            </span>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                                 <?php echo e($isFr ? 'Qui doit passer l\'examen civique ?' : 'Who has to take the civic exam?'); ?>
 
                             </h2>
@@ -385,7 +391,7 @@
                                 </h3>
                                 <p class="mt-3 text-sm text-slate-500 leading-relaxed">
                                     <?php echo e($isFr
-    ? 'Les personnes de plus de 65 ans ne le passent pas. Pour une première carte pluriannuelle, les catégories exclues comprennent les titres hors contrat d\'intégration républicaine, la protection subsidiaire et le statut d\'apatride. Pour une carte de résident, les dispenses dépendent de la catégorie de carte. Un problème de santé ou un handicap peut ouvrir droit à des aménagements ou à une dispense, sur certificat médical.'
+    ? 'Dispenses : les personnes de plus de 65 ans ne le passent pas. Pour une première carte pluriannuelle, les catégories exclues comprennent les titres hors contrat d\'intégration républicaine, la protection subsidiaire et le statut d\'apatride. Pour une carte de résident, les dispenses dépendent de la catégorie de carte. Un problème de santé ou un handicap peut ouvrir droit à des aménagements ou à une dispense, sur certificat médical.'
     : "People over 65 don't take it. For a first multi-year permit, excluded categories include permits outside the republican integration contract, subsidiary protection and stateless status. For resident cards, exemptions depend on the card category. A health condition or disability can lead to adapted conditions or an exemption, with a medical certificate."); ?>
 
                                 </p>
@@ -414,13 +420,16 @@
             <section id="themes" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'CE QUE COUVRENT LES QUESTIONS' : 'WHAT THE QUESTIONS COVER'); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'CE QUE COUVRENT LES QUESTIONS' : 'WHAT THE QUESTIONS COVER'); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Les 5 thèmes de l\'examen civique' : 'The 5 themes of the civic exam'); ?>
 
                         </h2>
@@ -504,13 +513,16 @@
             <section id="prepare" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'EN DIRECT. INCLUS DANS VOTRE PRÉPARATION.' : 'LIVE TEACHING. INCLUDED IN YOUR PREP.'); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'EN DIRECT. INCLUS DANS VOTRE PRÉPARATION.' : 'LIVE TEACHING. INCLUDED IN YOUR PREP.'); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Notre préparation à l\'examen civique' : 'How we prepare you for the civic exam'); ?>
 
                         </h2>
@@ -632,9 +644,8 @@
                 </div>
             </div>
         </main>
-
         <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 </body>
 
-</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/french-civic-exam.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/french-civic-exam.blade.php ENDPATH**/ ?>

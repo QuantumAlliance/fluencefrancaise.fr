@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="register-page-root flex flex-col min-h-screen">
     <PublicHeader />
     <div class="flex-grow enroll-page px-4 pt-32 md:pt-36 pb-12">
       <div class="w-full max-w-4xl mx-auto">
@@ -1124,6 +1124,14 @@ onMounted(async () => {
     width: min(62rem, 90vw);
     height: 32rem;
   }
+}
+
+/* Register page only: frosted-glass navbar on scroll.
+   The header component's rule loses its unprefixed backdrop-filter during
+   minification (only -webkit- survives, which Chrome ignores), so set the
+   standard property here without !important and let the build add prefixes. */
+.register-page-root :deep(.header-container.is-scrolled .header-pill) {
+  backdrop-filter: blur(18px) saturate(180%);
 }
 
 /* Keep the hero and the card above the wash. */

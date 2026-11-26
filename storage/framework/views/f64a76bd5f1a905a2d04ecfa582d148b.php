@@ -2,8 +2,8 @@
     $settings = \App\Models\Settings::pluck('value', 'key')->toArray();
     $siteName = $settings['site_name'] ?? 'Fluence Française';
 
-    // Determine language based on current URL prefix
-    $isFr = request()->is('fr*');
+    // French homepage is /, English homepage is /en. Other French pages use /fr.
+    $isFr = request()->is('fr*') || request()->is('/');
     $currentPath = request()->path();
 
     // Clean URLs for language toggle using Developer Guide pairs
@@ -334,11 +334,16 @@
     }
 
     .header-container.is-scrolled .header-pill {
-        background-color: rgba(255, 255, 255, 0.82) !important;
-        backdrop-filter: blur(16px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-        box-shadow: 0 10px 30px -4px rgba(0, 38, 84, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-        border-color: rgba(241, 245, 249, 0.75) !important;
+        background-color: rgba(255, 255, 255, 0.55) !important;
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+        backdrop-filter: blur(18px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+        box-shadow:
+            0 18px 40px -12px rgba(0, 22, 50, 0.28),
+            0 6px 16px -4px rgba(0, 38, 84, 0.12),
+            0 1px 2px rgba(0, 0, 0, 0.04),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(226, 232, 240, 0.9) !important;
     }
 
     .dropdown-menu-wrapper {
@@ -1000,7 +1005,8 @@
                 </a>
                 <a href="/login"
                     class="w-full py-2 text-center text-slate-500 font-bold text-sm tracking-wide hover:text-[#0055A4] transition">
-                    LOGIN
+                    <?php echo e($isFr ? 'Connexion' : 'LOGIN'); ?>
+
                 </a>
             <?php endif; ?>
         </div>
@@ -1118,4 +1124,4 @@
             });
         }
     });
-</script><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/header.blade.php ENDPATH**/ ?>
+</script><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/partials/header.blade.php ENDPATH**/ ?>

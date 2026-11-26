@@ -83,14 +83,14 @@
 
     $requirements = $isFr ? [
         ['Âge', '18 ans (demande possible dès 17 ans)', null],
-        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés.', null],
-        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses).', null],
-        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit.', $langUrl],
-        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40.', $civicUrl],
-        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français.', null],
-        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer.', null],
-        ['Conduite', 'Pas de condamnation qui fasse obstacle.', null],
-        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane).', null],
+        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés', null],
+        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses)', null],
+        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit', $langUrl],
+        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40', $civicUrl],
+        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français', null],
+        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer', null],
+        ['Conduite', 'Pas de condamnation qui fasse obstacle', null],
+        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane)', null],
     ] : [
         ['Age', '18 (you can apply from 17).', null],
         ['Residence', '5 years in France. 2 years if you earned a French higher-education diploma after 2 years of study. No minimum in some cases, such as for refugees.', null],
@@ -156,14 +156,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo e($title); ?> | <?php echo e($siteName); ?></title>
+    <title><?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?></title>
     <meta name="description" content="<?php echo e($metaDesc); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <link rel="alternate" hreflang="fr" href="<?php echo e($frUrl); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo e($enUrl); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($enUrl); ?>">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="<?php echo e($title); ?> | <?php echo e($siteName); ?>">
+    <meta property="og:title" content="<?php echo e($isFr ? $title : $title . ' | ' . $siteName); ?>">
     <meta property="og:description" content="<?php echo e($metaDesc); ?>">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
     <meta property="og:site_name" content="<?php echo e($siteName); ?>">
@@ -244,17 +244,17 @@
                             <span class="text-slate-700 font-semibold"><?php echo e($crumb); ?></span>
                         </nav>
 
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                <?php echo e($isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH'); ?>
-
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            <?php echo e($isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH'); ?>
 
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15] mt-5">
                             <?php echo e($isFr ? 'Naturalisation française :' : 'French Citizenship:'); ?>
 
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
@@ -312,13 +312,17 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'DEUX VOIES' : 'TWO ROUTES'); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow mb-3">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? 'DEUX VOIES' : 'TWO ROUTES'); ?>
+
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 <?php echo e($isFr ? 'Comment obtenir la nationalité française ?' : 'How do you get French citizenship?'); ?>
 
                             </h2>
@@ -411,13 +415,16 @@
             <section id="requirements" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED"); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED"); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Les conditions de la naturalisation par décret' : 'Requirements for naturalisation by decree'); ?>
 
                         </h2>
@@ -426,14 +433,21 @@
                         <?php $__currentLoopData = $requirements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6">
                                 <h3 class="font-bold text-[#10233e]">
-                                    <?php if($item[2]): ?>
+                                    <?php if($item[2] && !($isFr && $item[0] === 'Langue')): ?>
                                         <a href="<?php echo e($item[2]); ?>" class="text-[#0055A4] hover:underline"><?php echo e($item[0]); ?> →</a>
                                     <?php else: ?>
                                         <?php echo e($item[0]); ?>
 
                                     <?php endif; ?>
                                 </h3>
-                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed"><?php echo e($item[1]); ?></p>
+                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">
+                                    <?php if($isFr && $item[0] === 'Langue'): ?>
+                                        <a href="<?php echo e($langUrl); ?>" class="font-semibold text-[#0055A4] hover:underline">Niveau B2</a> à l'oral et à l'écrit
+                                    <?php else: ?>
+                                        <?php echo e($item[1]); ?>
+
+                                    <?php endif; ?>
+                                </p>
                             </article>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
@@ -449,13 +463,16 @@
             <section id="steps" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT"); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT"); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'La naturalisation en 7 étapes' : 'French naturalisation in 7 steps'); ?>
 
                         </h2>
@@ -506,7 +523,8 @@
 
             <section class="py-6 sm:py-10 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-                    <div class="relative rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 overflow-hidden">
+                    <div
+                        class="relative rounded-3xl bg-[#002654] text-white px-6 sm:px-10 py-10 sm:py-12 overflow-hidden">
                         <div class="max-w-3xl">
 
                             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -570,13 +588,16 @@
                             </div>
                         </div>
                         <div class="lg:col-span-8">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE'); ?></span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            <span class="eyebrow mb-3">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                <?php echo e($isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE'); ?>
+
+                            </span>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                                 <?php echo e($isFr ? 'Nationalité française par mariage' : 'French citizenship by marriage'); ?>
 
                             </h2>
@@ -602,13 +623,16 @@
             <section id="prepare" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500"><?php echo e($isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS'); ?></span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <?php echo e($isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS'); ?>
+
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             <?php echo e($isFr ? 'Comment nous vous préparons' : 'How we prepare you'); ?>
 
                         </h2>
@@ -659,7 +683,7 @@
 
             <?php echo $__env->make('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>sur la nationalité' : 'French<br>citizenship FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'French<br>citizenship FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,
@@ -728,4 +752,4 @@
     </div>
 </body>
 
-</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/french-citizenship.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/french-citizenship.blade.php ENDPATH**/ ?>

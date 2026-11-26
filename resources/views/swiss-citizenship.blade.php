@@ -111,7 +111,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.favicon')
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
@@ -120,7 +120,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -163,28 +163,29 @@
                                     class="hover:text-[#0055A4] transition-colors">{{ $isFr ? 'Suisse' : 'Switzerland' }}</a>
                                 <span>›</span>
                                 <span
-                                    class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation suisse' : 'Swiss Citizenship' }}</span>
+                                    class="text-slate-800 font-semibold">{{ $isFr ? 'Naturalisation' : 'Swiss Citizenship' }}</span>
                             </nav>
-
-                            <div class="inline-flex items-center gap-1.5 mb-5">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'SUISSE · NATURALISATION ORDINAIRE & FACILITÉE' : 'SWISS CITIZENSHIP · LANGUAGE REQUIREMENTS' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
-
+                                {{ $isFr ? 'SUISSE · NATURALISATION ORDINAIRE & FACILITÉE' : 'SWISS CITIZENSHIP · LANGUAGE REQUIREMENTS' }}
+                            </span>
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2]">
-                                {{ $isFr ? 'Naturalisation suisse :' : 'Swiss Citizenship: Reach' }}
-                                <br>
-                                <span class="text-[#0055a4]">
-                                    {{ $isFr ? 'Atteignez le niveau de langue' : 'the Language Level' }}
-                                </span>
-                                <br>
-                                <span class="swish relative inline-block">
-                                    {{ $isFr ? 'exigé' : 'Required' }}
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.2] mt-5">
+                                @if($isFr)
+                                    Naturalisation suisse :<br>
+                                    <span class="text-[#0055a4]">atteignez le niveau de langue </span><span
+                                        class="swish relative inline-block text-[#0055a4]">exigé</span>
+                                @else
+                                    Swiss Citizenship: Reach
+                                    <br>
+                                    <span class="text-[#0055a4]">the Language Level</span>
+                                    <br>
+                                    <span class="swish relative inline-block">Required</span>
+                                @endif
                             </h1>
 
                             <p class="mt-6 text-sm sm:text-base text-slate-500 leading-relaxed font-normal max-w-xl">
@@ -319,13 +320,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CONDITIONS' : 'REQUIREMENTS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'CONDITIONS' : 'REQUIREMENTS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Les conditions de la naturalisation suisse' : 'Swiss citizenship requirements' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -360,13 +363,15 @@
 
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'NIVEAU DE LANGUE' : 'LANGUAGE LEVEL' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'NIVEAU DE LANGUE' : 'LANGUAGE LEVEL' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         {{ $isFr ? 'Quel niveau de français pour la naturalisation suisse ?' : 'Swiss citizenship language requirements' }}
                     </h2>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -397,13 +402,15 @@
 
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'TEST ET ENTRETIEN' : 'TEST AND INTERVIEW' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'TEST ET ENTRETIEN' : 'TEST AND INTERVIEW' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         {{ $isFr ? 'La langue compte 2 fois : test et entretien' : 'Language counts twice: test and interview' }}
                     </h2>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -421,13 +428,15 @@
 
             <section class="py-16 sm:py-20 bg-[#f8fafc] border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                    <div class="inline-flex items-center gap-1.5 mb-3">
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                        <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                        <span
-                            class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CONJOINTS' : 'BY MARRIAGE' }}</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                    <span class="eyebrow mb-3">
+                        <span class="tricolor w-12">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        {{ $isFr ? 'CONJOINTS' : 'BY MARRIAGE' }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                         {{ $isFr ? 'Naturalisation facilitée pour les conjoints' : 'Swiss citizenship by marriage' }}
                     </h2>
                     <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -441,13 +450,15 @@
             <section class="py-16 sm:py-20 bg-white border-b border-slate-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'COURS EN DIRECT' : 'LIVE CLASSES' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Notre préparation' : 'How we prepare you' }}
                         </h2>
                     </div>

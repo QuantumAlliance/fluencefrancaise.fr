@@ -161,7 +161,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
@@ -169,7 +169,7 @@
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -261,22 +261,22 @@
                                 <span class="text-slate-300">›</span>
                                 <span class="text-slate-700 font-semibold">DELF A2</span>
                             </nav>
-
-                            <div class="inline-flex items-center gap-1.5 mb-4">
-                                <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                    {{ $isFr ? 'LE DIPLÔME A2 À VIE' : 'THE LIFETIME A2 DIPLOMA' }}
+                            <span class="eyebrow">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </span>
-                            </div>
-
+                                {{ $isFr ? 'LE DIPLÔME A2 À VIE' : 'THE LIFETIME A2 DIPLOMA' }}
+                            </span>
                             <h1
-                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl">
+                                class="text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#0c1e38] tracking-tight leading-[1.12] max-w-xl mt-5">
                                 @if($isFr)
-                                    DELF A2 : validez l'A2 pour votre carte de séjour
+                                    DELF A2 : validez l'A2 pour votre carte de <span
+                                        class="swish text-primary-600 inline">séjour</span>
                                 @else
-                                    DELF A2: Prove A2 for Your <span class="swish text-primary-600 inline">Residence </span>Permit
+                                    DELF A2: Prove A2 for Your <span class="swish text-primary-600 inline">Residence
+                                    </span>Permit
                                 @endif
                             </h1>
 
@@ -389,15 +389,16 @@
             <section id="at-a-glance" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-8 sm:mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'OFFICIEL ET DÉFINITIF' : 'OFFICIAL AND PERMANENT' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'OFFICIEL ET DÉFINITIF' : 'OFFICIAL AND PERMANENT' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Le DELF A2 en bref' : 'The DELF A2 at a glance' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -423,15 +424,16 @@
             <section class="py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-8 sm:mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'UN DIPLÔME, QUATRE COMPÉTENCES' : 'ONE DIPLOMA, FOUR SKILLS' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'UN DIPLÔME, QUATRE COMPÉTENCES' : 'ONE DIPLOMA, FOUR SKILLS' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Les 4 épreuves du DELF A2' : 'The 4 sections of the DELF A2' }}
                         </h2>
                     </div>
@@ -465,15 +467,16 @@
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'UN CHOIX STRATÉGIQUE' : 'A STRATEGIC CHOICE' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'UN CHOIX STRATÉGIQUE' : 'A STRATEGIC CHOICE' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Pourquoi le DELF A2 pour votre carte pluriannuelle ?' : "Why the DELF A2 for France's multi-year permit?" }}
                         </h2>
                         <div class="mt-5 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -520,15 +523,16 @@
             <section class="py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10 sm:mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'CHAQUE POINT COMPTE' : 'PROTECT EVERY MARK' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'CHAQUE POINT COMPTE' : 'PROTECT EVERY MARK' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Où les candidats perdent des points au DELF A2' : 'Where DELF A2 candidates lose points' }}
                         </h2>
                     </div>
@@ -556,15 +560,16 @@
             <section class="py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10 sm:mb-12">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'VOTRE PLAN A2' : 'YOUR A2 PLAN' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
+                            {{ $isFr ? 'VOTRE PLAN A2' : 'YOUR A2 PLAN' }}
+                        </span>
                         <h2
-                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-4xl md:text-[40px] font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                             {{ $isFr ? 'Notre préparation au DELF A2' : 'How we prepare you for the DELF A2' }}
                         </h2>
                     </div>

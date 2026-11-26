@@ -83,14 +83,14 @@
 
     $requirements = $isFr ? [
         ['Âge', '18 ans (demande possible dès 17 ans)', null],
-        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés.', null],
-        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses).', null],
-        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit.', $langUrl],
-        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40.', $civicUrl],
-        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français.', null],
-        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer.', null],
-        ['Conduite', 'Pas de condamnation qui fasse obstacle.', null],
-        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane).', null],
+        ['Résidence', '5 ans en France. 2 ans si vous avez obtenu un diplôme d\'enseignement supérieur français après 2 ans d\'études. Aucune durée minimale dans certains cas, par exemple pour les réfugiés', null],
+        ['Séjour régulier', 'Un titre de séjour valide au moment de la demande (sauf ressortissants de l\'UE, de l\'EEE et suisses)', null],
+        ['Langue', 'Niveau B2 à l\'oral et à l\'écrit', $langUrl],
+        ['Examen civique', 'Réussite obligatoire : 32 bonnes réponses sur 40', $civicUrl],
+        ['Valeurs', 'Signature de la charte des droits et devoirs du citoyen français', null],
+        ['Insertion professionnelle', 'Des revenus stables et suffisants pour votre foyer', null],
+        ['Conduite', 'Pas de condamnation qui fasse obstacle', null],
+        ['Coût', 'Timbre fiscal de 255 € (127,50 € en Guyane)', null],
     ] : [
         ['Age', '18 (you can apply from 17).', null],
         ['Residence', '5 years in France. 2 years if you earned a French higher-education diploma after 2 years of study. No minimum in some cases, such as for refugees.', null],
@@ -156,14 +156,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | {{ $siteName }}</title>
+    <title>{{ $isFr ? $title : $title . ' | ' . $siteName }}</title>
     <meta name="description" content="{{ $metaDesc }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="fr" href="{{ $frUrl }}">
     <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
     <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $title }} | {{ $siteName }}">
+    <meta property="og:title" content="{{ $isFr ? $title : $title . ' | ' . $siteName }}">
     <meta property="og:description" content="{{ $metaDesc }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -244,16 +244,16 @@
                             <span class="text-slate-700 font-semibold">{{ $crumb }}</span>
                         </nav>
 
-                        <div class="inline-flex items-center justify-center gap-1.5 mb-5">
-                            <span class="inline-block w-3.5 h-[3px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[3px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">
-                                {{ $isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH' }}
+                        <span class="eyebrow">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </span>
-                        </div>
-
+                            {{ $isFr ? 'LE PARCOURS 2026' : 'THE 2026 PATH' }}
+                        </span>
                         <h1
-                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15]">
+                            class="text-3xl sm:text-5xl lg:text-[48px] font-bold text-[#0c1e38] tracking-tight leading-[1.15] mt-5">
                             {{ $isFr ? 'Naturalisation française :' : 'French Citizenship:' }}
                             <span class="block w-fit max-w-full mx-auto text-[#0055A4] mt-1">
                                 {{ $isFr ? 'les conditions, étape par étape' : 'The Requirements, Step by Step' }}
@@ -303,13 +303,16 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         <div class="lg:col-span-7">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'DEUX VOIES' : 'TWO ROUTES' }}</span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15]">
+                            <span class="eyebrow mb-3">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                {{ $isFr ? 'DEUX VOIES' : 'TWO ROUTES' }}
+                            </span>
+                            <h2
+                                class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight leading-[1.15] mt-3">
                                 {{ $isFr ? 'Comment obtenir la nationalité française ?' : 'How do you get French citizenship?' }}
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -393,13 +396,15 @@
             <section id="requirements" class="scroll-mt-28 py-16 sm:py-20 bg-[#f4f7fb]">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="max-w-3xl mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED" }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'CE QUI EST DEMANDÉ' : "WHAT'S ASKED" }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Les conditions de la naturalisation par décret' : 'Requirements for naturalisation by decree' }}
                         </h2>
                     </div>
@@ -407,13 +412,19 @@
                         @foreach($requirements as $item)
                             <article class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6">
                                 <h3 class="font-bold text-[#10233e]">
-                                    @if($item[2])
+                                    @if($item[2] && !($isFr && $item[0] === 'Langue'))
                                         <a href="{{ $item[2] }}" class="text-[#0055A4] hover:underline">{{ $item[0] }} →</a>
                                     @else
                                         {{ $item[0] }}
                                     @endif
                                 </h3>
-                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">{{ $item[1] }}</p>
+                                <p class="mt-1.5 text-sm text-slate-500 leading-relaxed">
+                                    @if($isFr && $item[0] === 'Langue')
+                                        <a href="{{ $langUrl }}" class="font-semibold text-[#0055A4] hover:underline">Niveau B2</a> à l'oral et à l'écrit
+                                    @else
+                                        {{ $item[1] }}
+                                    @endif
+                                </p>
                             </article>
                         @endforeach
                     </div>
@@ -428,13 +439,15 @@
             <section id="steps" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                     <div class="mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT" }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? "DANS L'ORDRE" : "IN THE ORDER YOU'LL DO IT" }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'La naturalisation en 7 étapes' : 'French naturalisation in 7 steps' }}
                         </h2>
                     </div>
@@ -543,13 +556,15 @@
                             </div>
                         </div>
                         <div class="lg:col-span-8">
-                            <div class="inline-flex items-center gap-1.5 mb-3">
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                                <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                                <span
-                                    class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE' }}</span>
-                            </div>
-                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                            <span class="eyebrow mb-3">
+                                <span class="tricolor w-12">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                                {{ $isFr ? "L'AUTRE VOIE" : 'THE OTHER ROUTE' }}
+                            </span>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                                 {{ $isFr ? 'Nationalité française par mariage' : 'French citizenship by marriage' }}
                             </h2>
                             <div class="mt-4 space-y-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -572,13 +587,15 @@
             <section id="prepare" class="scroll-mt-28 py-16 sm:py-20 bg-white">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
                     <div class="text-center max-w-3xl mx-auto mb-10">
-                        <div class="inline-flex items-center gap-1.5 mb-3">
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#0055A4] rounded-full"></span>
-                            <span class="inline-block w-3.5 h-[2.5px] bg-[#EF4135] rounded-full mr-1.5"></span>
-                            <span
-                                class="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-slate-500">{{ $isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS' }}</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight">
+                        <span class="eyebrow mb-3">
+                            <span class="tricolor w-12">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            {{ $isFr ? 'LES 3 ÉTAPES EN FRANÇAIS' : 'THE 3 FRENCH STEPS' }}
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-[#10233e] tracking-tight mt-3">
                             {{ $isFr ? 'Comment nous vous préparons' : 'How we prepare you' }}
                         </h2>
                         <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -626,7 +643,7 @@
 
             @include('partials.faq-section', [
                 'eyebrow' => $isFr ? 'VOS QUESTIONS, NOS RÉPONSES' : 'YOUR QUESTIONS, ANSWERED',
-                'title' => $isFr ? 'Questions fréquentes<br>sur la nationalité' : 'French<br>citizenship FAQ',
+                'title' => $isFr ? 'Questions fréquentes' : 'French<br>citizenship FAQ',
                 'description' => $isFr ? 'Des réponses claires avant de passer à l\'étape suivante.' : 'Clear answers before you take your next step.',
                 'contactText' => $isFr ? 'Une autre question ?' : 'Have another question?',
                 'contactUrl' => $contactUrl,

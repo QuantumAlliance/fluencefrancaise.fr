@@ -3,18 +3,18 @@
     $siteName = $settings['site_name'] ?? 'Fluence Française';
     $footerData = isset($settings['footer_settings']) ? json_decode($settings['footer_settings'], true) : null;
     
-    // Determine language based on current URL prefix
-    $isFr = request()->is('fr*') || (!request()->is('en*') && app()->getLocale() === 'fr');
+    // French homepage is /, English homepage is /en. Other French pages use /fr.
+    $isFr = request()->is('fr*') || request()->is('/') || (!request()->is('en*') && app()->getLocale() === 'fr');
     
     $description = $isFr 
-        ? "Fluence Française : cours de français en ligne en direct avec un tuteur, du A1 au B2. Préparation au TCF IRN, TEF IRN, DELF et test fide, examen civique inclus, pour vos démarches en France et en Suisse."
+        ? "Fluence Française : cours de français en ligne, en direct avec un tuteur, du A1 au B2. Préparation au TCF IRN, au TEF IRN, au DELF et au test fide, examen civique inclus, pour vos démarches en France et en Suisse."
         : "Fluence Française: live online French classes with a tutor, A1 to B2. Prep for the TCF IRN, TEF IRN, DELF and fide test, civic exam included, for applications in France and Switzerland.";
 
     $quickLinks = [
-        ['text' => $isFr ? 'Accueil' : 'Home', 'url' => $isFr ? '/fr' : '/en'],
+        ['text' => $isFr ? 'Accueil' : 'Home', 'url' => $isFr ? '/' : '/en'],
         ['text' => $isFr ? 'Cours' : 'Courses', 'url' => $isFr ? '/fr/cours-de-francais-en-ligne' : '/en/online-french-classes'],
-        ['text' => $isFr ? 'Parrainage' : 'Referral', 'url' => $isFr ? '/fr/contact#parrainage' : '/en/contact#referral'],
-        ['text' => 'FAQ', 'url' => $isFr ? '/fr#faq' : '/en#faq']
+        ['text' => $isFr ? 'Parrainage' : 'Referral', 'url' => $isFr ? '/fr/contact/#parrainage' : '/en/contact#referral'],
+        ['text' => 'FAQ', 'url' => $isFr ? '/#faq' : '/en#faq']
     ];
 
     $examLinks = [
@@ -31,7 +31,8 @@
     ];
 
     $contactEmail = !empty($settings['contact_email']) ? $settings['contact_email'] : (!empty($footerData['contact']['email']) ? $footerData['contact']['email'] : 'contact@fluencefrancaise.fr');
-    $contactPhone = !empty($settings['contact_phone']) ? $settings['contact_phone'] : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '+33 1 23 45 67 89');
+    $contactPhone = !empty($settings['contact_phone']) ? $settings['contact_phone'] : (!empty($footerData['contact']['phone']) ? $footerData['contact']['phone'] : '');
+    $showPhone = preg_replace('/\D+/', '', (string) $contactPhone) !== '' && preg_replace('/\D+/', '', (string) $contactPhone) !== '33123456789';
 
     $socialLinks = $footerData['social'] ?? [
         'facebook' => '#',
@@ -41,7 +42,7 @@
     ];
 
     $independenceLine = $isFr
-        ? "Fluence Française est un organisme indépendant de préparation aux examens. Nous ne faisons pas passer le TCF, le TEF, le DELF, le DALF, le test fide ou l'examen civique, et nous ne sommes affiliés à aucun organisme certificateur."
+        ? "Fluence Française est une école de préparation indépendante. Nous ne faisons pas passer les examens TCF, TEF, DELF, DALF, fide ni l'examen civique, et nous ne sommes affiliés à aucun organisme certificateur."
         : "Fluence Française is an independent prep school. We don't administer the TCF, TEF, DELF, DALF, fide or civic exams, and we're not affiliated with any exam body.";
 ?>
 
@@ -97,14 +98,18 @@
                         <i class="fas fa-envelope text-[#5993d0] w-4"></i> 
                         <a href="mailto:<?php echo e($contactEmail); ?>" class="hover:text-white transition"><?php echo e($contactEmail); ?></a>
                     </li>
+                    <?php if($showPhone): ?>
                     <li class="flex items-center gap-3">
                         <i class="fas fa-phone text-[#5993d0] w-4"></i> 
                         <span><?php echo e($contactPhone); ?></span>
                     </li>
+                    <?php endif; ?>
+                    <?php if (! ($isFr)): ?>
                     <li class="flex items-center gap-3">
                         <i class="fab fa-whatsapp text-[#5993d0] w-4"></i> 
-                        <span><?php echo e($isFr ? 'WhatsApp disponible' : 'WhatsApp available'); ?></span>
+                        <span>WhatsApp available</span>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -163,4 +168,4 @@
         }
     ?>
 <?php endif; ?>
-<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\Fluence-Francaise\resources\views/partials/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Sushil Hemrom\fluencefrancaise\fluencefrancaise\resources\views/partials/footer.blade.php ENDPATH**/ ?>
